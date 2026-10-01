@@ -1,12 +1,14 @@
 import React from 'react';
 import { Instagram, Heart, MessageCircle, ExternalLink } from 'lucide-react';
 
-const INSTAGRAM_POSTS = [
+export const INSTAGRAM_POSTS = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=80',
-    title: 'Artisan Latte Art',
-    caption: 'Every cup is crafted with precision. Himalayan shade-grown Arabica extracted fresh daily. ☕✨',
+    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80',
+    localImage: '/instagram/post-1.jpg',
+    postUrl: 'https://www.instagram.com/coffee_adda9/',
+    title: 'Signature Latte Art',
+    caption: 'Silky microfoam & shade-grown Himalayan Arabica. Every single pour is crafted with artisan passion. ☕🇳🇵',
     likes: '142',
     comments: '18',
     category: 'Coffee',
@@ -14,26 +16,32 @@ const INSTAGRAM_POSTS = [
   {
     id: 2,
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDj8YXdAzpC2Ra10WpY_ctWF_IOU9EZ_tjGtEh0v2cDAsLQnAVIE0T-pU7yzhZRxlIYhsPOzqBkuAb78zrJOY6pOqwZQ5IARmXfNuTL8My1p6g75dq8m0TeBRdiEDx7-FoJQVSewUp6UDdakCYF_PWC1B8mN0fMgY5F4YKts-D1ffNr2pLtbcs1dcrgweKASvu9Lgx-yzPe7abmUW0bG4ZD6yTl2CUfbdh4FJRMSauiuUS7T2j8uhI_',
-    title: 'The Adda Sanctuary',
-    caption: 'Warm wood, lush green plants, and endless conversations. The spot where great minds gather. 🌿🤍',
+    localImage: '/instagram/post-2.jpg',
+    postUrl: 'https://www.instagram.com/coffee_adda9/',
+    title: 'The Budhanilkantha Haven',
+    caption: '“The Spot where great mind gathers.” Warm wooden architecture, peaceful vibes, and mountain air. 🌿🪵',
     likes: '238',
     comments: '29',
     category: 'Vibes',
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=800&q=80',
-    title: 'Himalayan Mo:Mo & Laphing',
-    caption: 'Craving something spicy with your iced brew? Our authentic Tibetan Laphing & juicy Mo:Mo hit the spot! 🔥🥟',
+    image: 'https://images.unsplash.com/photo-1625398407796-82650a8c135f?auto=format&fit=crop&w=800&q=80',
+    localImage: '/instagram/post-3.jpg',
+    postUrl: 'https://www.instagram.com/coffee_adda9/',
+    title: 'Himalayan Mo:Mo & Khaja',
+    caption: 'Freshly steamed handmade Himalayan dumplings paired with homemade roasted tomato-sesame achaar! 🥟🔥',
     likes: '195',
     comments: '34',
     category: 'Khaja',
   },
   {
     id: 4,
-    image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=800&q=80',
-    title: 'Espresso Alchemy',
-    caption: 'Rich crema, velvet texture, and chocolatey undertones. Poured by passionate local baristas. ☕',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+    localImage: '/instagram/post-4.jpg',
+    postUrl: 'https://www.instagram.com/coffee_adda9/',
+    title: 'Barista Espresso Extraction',
+    caption: 'Dialing in the morning roast. Precisely ground, weighed, and pulled on calibrated machinery for optimal crema. ☕⚡',
     likes: '174',
     comments: '12',
     category: 'Barista',
@@ -41,17 +49,21 @@ const INSTAGRAM_POSTS = [
   {
     id: 5,
     image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80',
-    title: 'Golden Croissants & Pastries',
-    caption: 'Crisp, flaky, and baked to golden perfection. Best paired with a warm Cappuccino or Flat White. 🥐',
+    localImage: '/instagram/post-5.jpg',
+    postUrl: 'https://www.instagram.com/coffee_adda9/',
+    title: 'House-Baked Croissants',
+    caption: 'Flaky, buttery, and baked fresh every single morning. Best enjoyed with our velvety Cappuccino. 🥐✨',
     likes: '210',
     comments: '21',
     category: 'Bakery',
   },
   {
     id: 6,
-    image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
-    title: 'Work & Study Adda',
-    caption: 'Quiet corners, fast fiber WiFi, and artisan caffeine fuel for developers, writers, and creators. 💻☕',
+    image: 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80',
+    localImage: '/instagram/post-6.jpg',
+    postUrl: 'https://www.instagram.com/coffee_adda9/',
+    title: 'Warm Community Adda',
+    caption: 'Adda is all about unhurried conversation, shared laughter, and community bonding over a warm cup. 💛👥',
     likes: '189',
     comments: '16',
     category: 'Community',
@@ -70,14 +82,13 @@ export default function InstagramFeed() {
             {/* Left: Avatar + Profile info */}
             <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
               {/* Profile Avatar with Instagram Gradient Ring */}
-              <div className="relative p-1 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 shadow-md">
+              <div className="relative p-1 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 shadow-md shrink-0">
                 <div className="p-0.5 bg-white rounded-full">
                   <img
                     src="/coffee-adda-instagram-avatar.jpg"
                     alt="Coffee Adda Official Instagram Profile"
                     className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover"
                     onError={(e) => {
-                      // Fallback if image fails
                       e.currentTarget.src = "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=300&q=80";
                     }}
                   />
@@ -137,14 +148,21 @@ export default function InstagramFeed() {
           {INSTAGRAM_POSTS.map((post) => (
             <a
               key={post.id}
-              href="https://www.instagram.com/coffee_adda9/"
+              href={post.postUrl || "https://www.instagram.com/coffee_adda9/"}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative block aspect-square rounded-2xl overflow-hidden shadow-sm bg-neutral-100 border border-neutral-200 cursor-pointer"
+              title={`View ${post.title} on Instagram`}
             >
               <img
-                src={post.image}
+                src={post.localImage || post.image}
                 alt={post.title}
+                onError={(e) => {
+                  // Fallback to high-res online image if local file is missing
+                  if (e.currentTarget.src !== post.image) {
+                    e.currentTarget.src = post.image;
+                  }
+                }}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 loading="lazy"
               />
