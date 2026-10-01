@@ -696,9 +696,9 @@ export default function CardFanCarousel({
                       onClick={(e) => {
                         e.stopPropagation();
                         if (onNavigate) {
-                          onNavigate('menu');
+                          onNavigate('product-detail', product.id);
                         } else {
-                          window.location.hash = '#menu';
+                          window.location.hash = `#product/${product.id}`;
                         }
                       }}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-forest hover:bg-brand-dark text-white text-xs font-bold shadow-xs hover:shadow-glow-gold transition-all duration-200 border border-brand-gold/30 shrink-0 cursor-pointer"

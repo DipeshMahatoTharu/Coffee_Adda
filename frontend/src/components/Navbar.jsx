@@ -89,7 +89,7 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
               About
             </a>
             <a
-              className={currentPage === 'menu' ? activeLinkClass : normalLinkClass}
+              className={currentPage === 'menu' || currentPage === 'product-detail' ? activeLinkClass : normalLinkClass}
               href="#menu"
               onClick={(e) => handleNav(e, 'menu')}
             >
@@ -190,7 +190,7 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
             </a>
             <a
               className={`block px-3 py-2 text-base font-semibold rounded-md ${
-                currentPage === 'menu'
+                currentPage === 'menu' || currentPage === 'product-detail'
                   ? 'bg-brand-forest text-white'
                   : 'text-neutral-700 hover:bg-brand-sage'
               }`}

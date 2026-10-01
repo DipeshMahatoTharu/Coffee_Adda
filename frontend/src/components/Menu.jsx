@@ -10,6 +10,7 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
+  ArrowRight,
 } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 12;
@@ -90,6 +91,14 @@ export default function Menu({ onNavigate }) {
       onNavigate('location');
     } else {
       window.location.hash = '#location';
+    }
+  };
+
+  const handleViewDetails = (item) => {
+    if (onNavigate) {
+      onNavigate('product-detail', item.id);
+    } else {
+      window.location.hash = `#product/${item.id}`;
     }
   };
 
@@ -237,7 +246,11 @@ export default function Menu({ onNavigate }) {
                 >
                   <div>
                     {/* Image Header with Badge & Price in NPR */}
-                    <div className="relative h-52 sm:h-56 overflow-hidden bg-neutral-100">
+                    <div
+                      onClick={() => handleViewDetails(item)}
+                      className="relative h-52 sm:h-56 overflow-hidden bg-neutral-100 cursor-pointer"
+                      title={`Click to view details of ${item.name}`}
+                    >
                       <img
                         alt={item.alt || item.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -268,7 +281,10 @@ export default function Menu({ onNavigate }) {
                     {/* Card Information */}
                     <div className="p-5 sm:p-6">
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <h3 className="font-serif text-lg sm:text-xl font-bold text-brand-forest group-hover:text-brand-gold transition-colors">
+                        <h3
+                          onClick={() => handleViewDetails(item)}
+                          className="font-serif text-lg sm:text-xl font-bold text-brand-forest group-hover:text-brand-gold transition-colors cursor-pointer"
+                        >
                           {item.name}
                         </h3>
                         <span className="text-[10px] sm:text-xs font-semibold text-emerald-800 bg-brand-sage px-2 py-0.5 rounded-full shrink-0">
@@ -293,16 +309,16 @@ export default function Menu({ onNavigate }) {
                     </div>
                   </div>
 
-                  {/* Informational CTA */}
+                  {/* View Details Action Button */}
                   <div className="p-5 pt-0 sm:p-6 sm:pt-0">
-                    <a
-                      href="#location"
-                      onClick={handleVisitUs}
+                    <button
+                      type="button"
+                      onClick={() => handleViewDetails(item)}
                       className="w-full py-2.5 px-4 rounded-xl bg-brand-forest hover:bg-brand-dark text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all duration-200 shadow-sm border border-brand-gold/30 group/btn cursor-pointer"
                     >
-                      <span>Visit Us to Taste</span>
-                      <MapPin className="w-3.5 h-3.5 text-brand-gold group-hover/btn:translate-x-0.5 transition-transform" />
-                    </a>
+                      <span>View Details</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-brand-gold group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
                   </div>
                 </article>
               ))}

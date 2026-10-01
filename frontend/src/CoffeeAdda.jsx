@@ -14,10 +14,19 @@ import Reviews from './components/Reviews';
 import InstagramFeed from './components/InstagramFeed';
 import Location from './components/Location';
 import Footer from './components/Footer';
+import ProductDetailPage from './components/ProductDetailPage';
 
 export default function CoffeeAdda() {
+  const [selectedProductId, setSelectedProductId] = useState(() => {
+    const hash = window.location.hash;
+    if (hash.startsWith('#product/')) return hash.replace('#product/', '');
+    if (hash.startsWith('#item/')) return hash.replace('#item/', '');
+    return 'hot-cappuccino';
+  });
+
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash;
+    if (hash.startsWith('#product/') || hash.startsWith('#item/')) return 'product-detail';
     if (hash === '#menu') return 'menu';
     if (hash === '#why-us') return 'why-us';
     if (hash === '#about') return 'about';
@@ -27,7 +36,13 @@ export default function CoffeeAdda() {
   });
 
   const navigateTo = (page, anchor) => {
-    if (page === 'menu') {
+    if (page === 'product-detail') {
+      const pId = anchor || selectedProductId || 'hot-cappuccino';
+      setSelectedProductId(pId);
+      setCurrentPage('product-detail');
+      window.location.hash = `#product/${pId}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'menu') {
       setCurrentPage('menu');
       window.location.hash = '#menu';
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -65,7 +80,17 @@ export default function CoffeeAdda() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash === '#menu') {
+      if (hash.startsWith('#product/')) {
+        const pId = hash.replace('#product/', '');
+        setSelectedProductId(pId);
+        setCurrentPage('product-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash.startsWith('#item/')) {
+        const pId = hash.replace('#item/', '');
+        setSelectedProductId(pId);
+        setCurrentPage('product-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#menu') {
         setCurrentPage('menu');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#why-us') {
@@ -107,7 +132,10 @@ export default function CoffeeAdda() {
 
       {/* Main Content View */}
       <main>
-        {currentPage === 'menu' ? (
+        {currentPage === 'product-detail' ? (
+          /* Dedicated Product Detail Page showing history & how it is made */
+          <ProductDetailPage productId={selectedProductId} onNavigate={navigateTo} />
+        ) : currentPage === 'menu' ? (
           /* Dedicated Complete Menu Page (157 Items) */
           <Menu onNavigate={navigateTo} />
         ) : currentPage === 'why-us' ? (
