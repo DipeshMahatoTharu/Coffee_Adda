@@ -15,6 +15,10 @@ export const SEED_PRODUCT_REVIEWS = {
       date: '2 days ago',
       reviewText: 'The Iced Mocha here is hands-down the best in the valley! Thick chocolate drizzle, ice chilled to perfection, and strong high-altitude espresso that doesn’t get washed out by the milk.',
       foodPhoto: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=800&q=80',
+      foodPhotos: [
+        'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80'
+      ],
       foodPhotoCaption: 'Enjoying my ice cold mocha on the garden terrace ✨',
       likes: 12,
     },
@@ -27,6 +31,9 @@ export const SEED_PRODUCT_REVIEWS = {
       date: '5 days ago',
       reviewText: 'Worked on my laptop for 3 hours and had this paired with a warm croissant. Rich cocoa taste and very smooth finish. Will be back!',
       foodPhoto: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80',
+      foodPhotos: [
+        'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80'
+      ],
       foodPhotoCaption: 'Perfect fuel for a morning remote work session at Adda',
       likes: 8,
     },
@@ -39,6 +46,7 @@ export const SEED_PRODUCT_REVIEWS = {
       date: '1 week ago',
       reviewText: 'Balanced sweetness, not sugary like other places. You actually taste the single origin espresso beans.',
       foodPhoto: null,
+      foodPhotos: [],
       likes: 4,
     },
   ],
@@ -53,6 +61,10 @@ export const SEED_PRODUCT_REVIEWS = {
       date: 'Yesterday',
       reviewText: 'Silky micro-foam with beautiful swan latte art. The Nuwakot Arabica beans give it such a warm nutty hazelnut aroma.',
       foodPhoto: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
+      foodPhotos: [
+        'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80'
+      ],
       foodPhotoCaption: 'Latte art on point today at Coffee Adda! ☕🦢',
       likes: 15,
     },
@@ -65,6 +77,11 @@ export const SEED_PRODUCT_REVIEWS = {
       date: '3 days ago',
       reviewText: 'Stopped by on our way back from Shivapuri National Park hike. Hot, comforting, and the foam held all the way to the last sip.',
       foodPhoto: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+      foodPhotos: [
+        'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80'
+      ],
       foodPhotoCaption: 'Post-hike cappuccino in the sunny courtyard',
       likes: 7,
     },
@@ -250,7 +267,11 @@ export function getProductReviews(productId, category) {
   const seedList = specificSeed.length > 0 ? specificSeed : categorySeed;
 
   // Local reviews go first (most recent), then seed reviews
-  return [...localReviews, ...seedList];
+  const combined = [...localReviews, ...seedList];
+  return combined.map((r) => ({
+    ...r,
+    foodPhotos: r.foodPhotos && r.foodPhotos.length > 0 ? r.foodPhotos : (r.foodPhoto ? [r.foodPhoto] : [])
+  }));
 }
 
 /**

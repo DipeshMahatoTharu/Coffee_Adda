@@ -15,7 +15,11 @@ import {
   Image as ImageIcon,
   ShieldCheck,
   ChevronRight,
-  Filter
+  ChevronLeft,
+  Filter,
+  Plus,
+  Layers,
+  Trash2
 } from 'lucide-react';
 import {
   getProductReviews,
@@ -68,7 +72,12 @@ export default function ProductCommunitySection({ product }) {
   const [reviews, setReviews] = useState([]);
   const [activeFilter, setActiveFilter] = useState('all'); // 'all' | 'photos'
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [lightboxPhoto, setLightboxPhoto] = useState(null);
+  
+  // Lightbox & Slider state
+  const [lightboxReview, setLightboxReview] = useState(null);
+  const [lightboxPhotoIndex, setLightboxPhotoIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState(1);
+  const [touchStartX, setTouchStartX] = useState(null);
   const [toastMessage, setToastMessage] = useState('');
 
   // Form state
@@ -77,7 +86,7 @@ export default function ProductCommunitySection({ product }) {
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [reviewText, setReviewText] = useState('');
-  const [foodPhotoPreview, setFoodPhotoPreview] = useState(null);
+  const [foodPhotosPreview, setFoodPhotosPreview] = useState([]);
   const [foodPhotoCaption, setFoodPhotoCaption] = useState('');
   const [profilePhotoPreview, setProfilePhotoPreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -98,26 +107,30 @@ export default function ProductCommunitySection({ product }) {
     }
   }, [toastMessage]);
 
-  // Extract all guest food photos for the gallery
-  const galleryPhotos = useMemo(() => {
+  // Extract all guest reviews that contain photos for the gallery
+  const galleryReviews = useMemo(() => {
     return reviews
-      .filter((r) => r.foodPhoto)
-      .map((r) => ({
-        id: r.id,
-        photo: r.foodPhoto,
-        caption: r.foodPhotoCaption || `Enjoying ${product.name}`,
-        authorName: r.authorName,
-        authorPhoto: r.authorPhoto,
-        rating: r.rating,
-        date: r.date,
-        reviewText: r.reviewText,
-      }));
-  }, [reviews, product.name]);
+      .filter((r) => (r.foodPhotos && r.foodPhotos.length > 0) || r.foodPhoto)
+      .map((r) => {
+        const photos = r.foodPhotos && r.foodPhotos.length > 0 ? r.foodPhotos : (r.foodPhoto ? [r.foodPhoto] : []);
+        return {
+          ...r,
+          foodPhotos: photos,
+          foodPhoto: photos[0],
+          foodPhotoCaption: r.foodPhotoCaption || `Enjoying ${product?.name || 'Coffee Adda'}`
+        };
+      });
+  }, [reviews, product?.name]);
 
-  // Filtered reviews
+  // Total count of all photos uploaded across all guest snaps
+  const totalPhotosCount = useMemo(() => {
+    return galleryReviews.reduce((acc, r) => acc + (r.foodPhotos?.length || 1), 0);
+  }, [galleryReviews]);
+
+  // Filtered reviews for feed
   const filteredReviews = useMemo(() => {
     if (activeFilter === 'photos') {
-      return reviews.filter((r) => r.foodPhoto);
+      return reviews.filter((r) => (r.foodPhotos && r.foodPhotos.length > 0) || r.foodPhoto);
     }
     return reviews;
   }, [reviews, activeFilter]);
@@ -129,16 +142,118 @@ export default function ProductCommunitySection({ product }) {
     return (sum / reviews.length).toFixed(1);
   }, [reviews]);
 
-  // Handle food photo file selection
-  const handleFoodPhotoChange = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    try {
-      const compressed = await compressImage(file, 1200, 0.85);
-      setFoodPhotoPreview(compressed);
-    } catch (err) {
-      console.error('Failed to process food image:', err);
+  // Open Lightbox for a specific review & photo index
+  const openLightbox = (review, photoIndex = 0) => {
+    setLightboxReview(review);
+    setLightboxPhotoIndex(photoIndex);
+    setSlideDirection(1);
+  };
+
+  const closeLightbox = () => {
+    setLightboxReview(null);
+    setLightboxPhotoIndex(0);
+  };
+
+  // Photos of the currently opened review in lightbox
+  const currentPhotos = useMemo(() => {
+    if (!lightboxReview) return [];
+    if (lightboxReview.foodPhotos && lightboxReview.foodPhotos.length > 0) {
+      return lightboxReview.foodPhotos;
     }
+    if (lightboxReview.foodPhoto) {
+      return [lightboxReview.foodPhoto];
+    }
+    return [];
+  }, [lightboxReview]);
+
+  // Next photo in the current review, or next review if at the end
+  const handleNextPhoto = (e) => {
+    if (e) e.stopPropagation();
+    if (currentPhotos.length > 1) {
+      setSlideDirection(1);
+      setLightboxPhotoIndex((prev) => (prev + 1) % currentPhotos.length);
+    } else if (galleryReviews.length > 1) {
+      handleNextReview();
+    }
+  };
+
+  // Previous photo in the current review, or previous review if at the start
+  const handlePrevPhoto = (e) => {
+    if (e) e.stopPropagation();
+    if (currentPhotos.length > 1) {
+      setSlideDirection(-1);
+      setLightboxPhotoIndex((prev) => (prev - 1 + currentPhotos.length) % currentPhotos.length);
+    } else if (galleryReviews.length > 1) {
+      handlePrevReview();
+    }
+  };
+
+  // Next Review in Gallery
+  const handleNextReview = (e) => {
+    if (e) e.stopPropagation();
+    if (galleryReviews.length <= 1) return;
+    const currIdx = galleryReviews.findIndex((r) => r.id === lightboxReview?.id);
+    const nextIdx = (currIdx + 1) % galleryReviews.length;
+    setSlideDirection(1);
+    setLightboxReview(galleryReviews[nextIdx]);
+    setLightboxPhotoIndex(0);
+  };
+
+  // Previous Review in Gallery
+  const handlePrevReview = (e) => {
+    if (e) e.stopPropagation();
+    if (galleryReviews.length <= 1) return;
+    const currIdx = galleryReviews.findIndex((r) => r.id === lightboxReview?.id);
+    const prevIdx = (currIdx - 1 + galleryReviews.length) % galleryReviews.length;
+    setSlideDirection(-1);
+    setLightboxReview(galleryReviews[prevIdx]);
+    setLightboxPhotoIndex(0);
+  };
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (!lightboxReview) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') {
+        if (currentPhotos.length > 1) {
+          setSlideDirection(1);
+          setLightboxPhotoIndex((prev) => (prev + 1) % currentPhotos.length);
+        } else if (galleryReviews.length > 1) {
+          handleNextReview();
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (currentPhotos.length > 1) {
+          setSlideDirection(-1);
+          setLightboxPhotoIndex((prev) => (prev - 1 + currentPhotos.length) % currentPhotos.length);
+        } else if (galleryReviews.length > 1) {
+          handlePrevReview();
+        }
+      } else if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxReview, currentPhotos.length, galleryReviews.length]);
+
+  // Handle multiple food photos file selection
+  const handleFoodPhotosChange = async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    try {
+      const remainingSlots = Math.max(0, 6 - foodPhotosPreview.length);
+      const selectedFiles = files.slice(0, remainingSlots);
+      const compressedList = await Promise.all(
+        selectedFiles.map((file) => compressImage(file, 1200, 0.85))
+      );
+      setFoodPhotosPreview((prev) => [...prev, ...compressedList]);
+    } catch (err) {
+      console.error('Failed to process food images:', err);
+    }
+  };
+
+  const handleRemoveFoodPhoto = (index) => {
+    setFoodPhotosPreview((prev) => prev.filter((_, i) => i !== index));
   };
 
   // Handle optional profile photo selection
@@ -168,7 +283,8 @@ export default function ProductCommunitySection({ product }) {
       rating: rating,
       date: 'Just now',
       reviewText: reviewText.trim(),
-      foodPhoto: foodPhotoPreview || null,
+      foodPhotos: foodPhotosPreview,
+      foodPhoto: foodPhotosPreview.length > 0 ? foodPhotosPreview[0] : null,
       foodPhotoCaption: foodPhotoCaption.trim() || `Tasting ${product.name}`,
       likes: 0,
       userCreated: true,
@@ -185,13 +301,13 @@ export default function ProductCommunitySection({ product }) {
     setAuthorRole('');
     setRating(5);
     setReviewText('');
-    setFoodPhotoPreview(null);
+    setFoodPhotosPreview([]);
     setFoodPhotoCaption('');
     setProfilePhotoPreview(null);
     setIsSubmitting(false);
     setIsModalOpen(false);
 
-    setToastMessage('🎉 Thank you! Your food photo and review are now live in the community gallery.');
+    setToastMessage('🎉 Thank you! Your food photos and review are now live in the community gallery.');
   };
 
   return (
@@ -266,53 +382,65 @@ export default function ProductCommunitySection({ product }) {
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-serif text-lg sm:text-xl font-bold text-brand-forest flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-brand-gold" />
-              <span>Patron Food Gallery ({galleryPhotos.length} {galleryPhotos.length === 1 ? 'Snap' : 'Snaps'})</span>
+              <span>Patron Food Gallery ({galleryReviews.length} {galleryReviews.length === 1 ? 'Snap' : 'Snaps'} • {totalPhotosCount} Photos)</span>
             </h3>
 
             <span className="text-[11px] text-neutral-400 font-medium hidden sm:inline">
-              Click any photo to view full size &amp; guest review
+              Click any photo to slide &amp; view full size
             </span>
           </div>
 
-          {galleryPhotos.length > 0 ? (
+          {galleryReviews.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4">
-              {galleryPhotos.map((item, idx) => (
-                <motion.div
-                  key={item.id || idx}
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  onClick={() => setLightboxPhoto(item)}
-                  className="relative group rounded-2xl overflow-hidden aspect-square bg-neutral-100 border border-neutral-200/90 shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer"
-                >
-                  <img
-                    src={item.photo}
-                    alt={item.caption || `Food photo of ${product.name}`}
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
-                    loading="lazy"
-                  />
+              {galleryReviews.map((rev, idx) => {
+                const photos = rev.foodPhotos || [rev.foodPhoto];
+                const mainPhoto = photos[0];
+                return (
+                  <motion.div
+                    key={rev.id || idx}
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    onClick={() => openLightbox(rev, 0)}
+                    className="relative group rounded-2xl overflow-hidden aspect-square bg-neutral-100 border border-neutral-200/90 shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer"
+                  >
+                    <img
+                      src={mainPhoto}
+                      alt={rev.foodPhotoCaption || `Food photo of ${product.name}`}
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
+                      loading="lazy"
+                    />
 
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
-                  {/* Expand icon on hover */}
-                  <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/40 backdrop-blur-xs flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-3.5 h-3.5" />
-                  </div>
+                    {/* Multi-photo indicator badge */}
+                    {photos.length > 1 && (
+                      <div className="absolute top-2.5 left-2.5 z-10 bg-black/75 backdrop-blur-xs text-brand-gold text-[10px] font-extrabold px-2 py-0.5 rounded-full flex items-center gap-1 border border-brand-gold/30 shadow-xs">
+                        <Layers className="w-3 h-3" />
+                        <span>{photos.length} Photos</span>
+                      </div>
+                    )}
 
-                  {/* Bottom details */}
-                  <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
-                    <div className="flex items-center gap-1 text-amber-300 text-[10px] font-bold mb-0.5">
-                      <Star className="w-3 h-3 fill-amber-300" />
-                      <span>{item.rating || 5}.0</span>
+                    {/* Expand icon on hover */}
+                    <div className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/40 backdrop-blur-xs flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Maximize2 className="w-3.5 h-3.5" />
                     </div>
-                    <p className="text-[11px] font-bold line-clamp-1 leading-tight text-white drop-shadow-xs">
-                      {item.authorName}
-                    </p>
-                    <p className="text-[10px] text-white/70 line-clamp-1">
-                      {item.caption}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* Bottom details */}
+                    <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
+                      <div className="flex items-center gap-1 text-amber-300 text-[10px] font-bold mb-0.5">
+                        <Star className="w-3 h-3 fill-amber-300" />
+                        <span>{rev.rating || 5}.0</span>
+                      </div>
+                      <p className="text-[11px] font-bold line-clamp-1 leading-tight text-white drop-shadow-xs">
+                        {rev.authorName}
+                      </p>
+                      <p className="text-[10px] text-white/70 line-clamp-1">
+                        {rev.foodPhotoCaption || `Enjoying ${product.name}`}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
 
               {/* Upload CTA Card inside gallery grid */}
               <motion.div
@@ -324,10 +452,10 @@ export default function ProductCommunitySection({ product }) {
                   <Camera className="w-5 h-5" />
                 </div>
                 <span className="text-xs font-bold text-brand-forest leading-tight">
-                  Add Your Photo
+                  Add Your Photos
                 </span>
                 <span className="text-[10px] text-neutral-500 mt-0.5">
-                  Share your Adda moment
+                  Share multiple Adda snaps
                 </span>
               </motion.div>
             </div>
@@ -340,13 +468,13 @@ export default function ProductCommunitySection({ product }) {
                 No guest photos uploaded yet!
               </h4>
               <p className="text-neutral-500 text-xs mt-1 mb-4 max-w-md mx-auto">
-                Be the very first patron to upload a snap enjoying {product.name} at Coffee Adda.
+                Be the very first patron to upload photos enjoying {product.name} at Coffee Adda.
               </p>
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="px-5 py-2.5 rounded-full bg-brand-forest text-white text-xs font-bold hover:bg-brand-dark transition-all shadow-sm cursor-pointer"
               >
-                Upload First Photo
+                Upload First Photos
               </button>
             </div>
           )}
@@ -384,163 +512,308 @@ export default function ProductCommunitySection({ product }) {
                 }`}
               >
                 <Camera className="w-3 h-3" />
-                <span>With Photos ({galleryPhotos.length})</span>
+                <span>With Photos ({galleryReviews.length})</span>
               </button>
             </div>
           </div>
 
           {/* Review Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {filteredReviews.map((rev) => (
-              <div
-                key={rev.id}
-                className="p-5 rounded-2xl bg-[#FAF8F5] border border-neutral-200/80 hover:border-brand-forest/30 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Review Header: User Profile Avatar / Logo */}
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-3">
-                      {/* Profile Photo OR Default Profile Logo if optional is not added */}
-                      <div className="relative w-11 h-11 rounded-full border border-brand-gold/40 flex items-center justify-center overflow-hidden shrink-0 shadow-xs bg-brand-forest/10">
-                        {rev.authorPhoto ? (
-                          <img
-                            src={rev.authorPhoto}
-                            alt={rev.authorName}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          // Default Profile Logo when no photo is uploaded (as requested!)
-                          <div
-                            className="w-full h-full flex flex-col items-center justify-center bg-brand-forest text-brand-gold font-bold text-xs"
-                            title={`${rev.authorName} (Default Profile Logo)`}
-                          >
-                            <User className="w-5 h-5 text-brand-gold" />
-                          </div>
-                        )}
-                      </div>
-
-                      <div>
-                        <div className="flex items-center gap-1.5">
-                          <h4 className="font-bold text-brand-forest text-sm leading-tight">
-                            {rev.authorName}
-                          </h4>
-                          <span className="inline-flex items-center text-[10px] text-emerald-700 bg-emerald-100/80 px-1.5 py-0.5 rounded-full font-medium" title="Verified Customer">
-                            <ShieldCheck className="w-2.5 h-2.5 mr-0.5" />
-                            Guest
-                          </span>
+            {filteredReviews.map((rev) => {
+              const photos = rev.foodPhotos && rev.foodPhotos.length > 0 ? rev.foodPhotos : (rev.foodPhoto ? [rev.foodPhoto] : []);
+              return (
+                <div
+                  key={rev.id}
+                  className="p-5 rounded-2xl bg-[#FAF8F5] border border-neutral-200/80 hover:border-brand-forest/30 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Review Header: User Profile Avatar / Logo */}
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-11 h-11 rounded-full border border-brand-gold/40 flex items-center justify-center overflow-hidden shrink-0 shadow-xs bg-brand-forest/10">
+                          {rev.authorPhoto ? (
+                            <img
+                              src={rev.authorPhoto}
+                              alt={rev.authorName}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div
+                              className="w-full h-full flex flex-col items-center justify-center bg-brand-forest text-brand-gold font-bold text-xs"
+                              title={`${rev.authorName} (Default Profile Logo)`}
+                            >
+                              <User className="w-5 h-5 text-brand-gold" />
+                            </div>
+                          )}
                         </div>
-                        <p className="text-[11px] text-neutral-500 font-medium">
-                          {rev.authorRole || 'Budhanilkantha Patron'} • {rev.date}
-                        </p>
+
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <h4 className="font-bold text-brand-forest text-sm leading-tight">
+                              {rev.authorName}
+                            </h4>
+                            <span className="inline-flex items-center text-[10px] text-emerald-700 bg-emerald-100/80 px-1.5 py-0.5 rounded-full font-medium" title="Verified Customer">
+                              <ShieldCheck className="w-2.5 h-2.5 mr-0.5" />
+                              Guest
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-neutral-500 font-medium">
+                            {rev.authorRole || 'Budhanilkantha Patron'} • {rev.date}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Star Rating */}
+                      <div className="flex items-center gap-0.5 text-brand-gold shrink-0">
+                        {[...Array(5)].map((_, sIdx) => (
+                          <Star
+                            key={sIdx}
+                            className={`w-3.5 h-3.5 ${
+                              sIdx < (rev.rating || 5)
+                                ? 'fill-amber-400 text-amber-400'
+                                : 'text-neutral-300'
+                            }`}
+                          />
+                        ))}
                       </div>
                     </div>
 
-                    {/* Star Rating */}
-                    <div className="flex items-center gap-0.5 text-brand-gold shrink-0">
-                      {[...Array(5)].map((_, sIdx) => (
-                        <Star
-                          key={sIdx}
-                          className={`w-3.5 h-3.5 ${
-                            sIdx < (rev.rating || 5)
-                              ? 'fill-amber-400 text-amber-400'
-                              : 'text-neutral-300'
-                          }`}
-                        />
-                      ))}
-                    </div>
+                    {/* Review Text */}
+                    <p className="text-neutral-700 text-xs sm:text-sm leading-relaxed mb-3">
+                      “{rev.reviewText}”
+                    </p>
                   </div>
 
-                  {/* Review Text */}
-                  <p className="text-neutral-700 text-xs sm:text-sm leading-relaxed mb-3">
-                    “{rev.reviewText}”
-                  </p>
-                </div>
+                  {/* Review Food Photos Attachment (Supports Multiple Photos & Slide) */}
+                  {photos.length > 0 && (
+                    <div className="mt-2 mb-3">
+                      {photos.length === 1 ? (
+                        <div
+                          onClick={() => openLightbox(rev, 0)}
+                          className="rounded-xl overflow-hidden border border-neutral-200/90 relative group cursor-pointer h-36 bg-neutral-100"
+                        >
+                          <img
+                            src={photos[0]}
+                            alt={rev.foodPhotoCaption || 'Food photo'}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/15 transition-colors" />
+                          <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white text-[11px] font-semibold drop-shadow-xs">
+                            <span className="flex items-center gap-1 bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded-full">
+                              <Camera className="w-3 h-3 text-brand-gold" />
+                              <span>Food Photo</span>
+                            </span>
+                            <span className="text-[10px] bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full">
+                              Tap to expand
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="space-y-1.5">
+                          <div
+                            onClick={() => openLightbox(rev, 0)}
+                            className="rounded-xl overflow-hidden border border-neutral-200/90 relative group cursor-pointer h-40 bg-neutral-100"
+                          >
+                            <img
+                              src={photos[0]}
+                              alt={rev.foodPhotoCaption || 'Food photo'}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-colors" />
+                            <div className="absolute top-2 left-2 bg-black/75 backdrop-blur-xs text-brand-gold text-[10px] font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-brand-gold/30">
+                              <Layers className="w-3 h-3" />
+                              <span>{photos.length} Photos • Click to slide</span>
+                            </div>
+                            <div className="absolute bottom-2 right-2 text-[10px] bg-black/60 text-white backdrop-blur-xs px-2 py-0.5 rounded-full font-medium">
+                              Tap to slide &amp; view all
+                            </div>
+                          </div>
 
-                {/* Review Food Photo Attachment (if present) */}
-                {rev.foodPhoto && (
-                  <div
-                    onClick={() => setLightboxPhoto({
-                      photo: rev.foodPhoto,
-                      caption: rev.foodPhotoCaption || `Enjoying ${product.name}`,
-                      authorName: rev.authorName,
-                      authorPhoto: rev.authorPhoto,
-                      rating: rev.rating,
-                      date: rev.date,
-                      reviewText: rev.reviewText,
-                    })}
-                    className="mt-2 mb-3 rounded-xl overflow-hidden border border-neutral-200/90 relative group cursor-pointer h-36 bg-neutral-100"
-                  >
-                    <img
-                      src={rev.foodPhoto}
-                      alt={rev.foodPhotoCaption || 'Food photo'}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/15 transition-colors" />
-                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white text-[11px] font-semibold drop-shadow-xs">
-                      <span className="flex items-center gap-1 bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded-full">
-                        <Camera className="w-3 h-3 text-brand-gold" />
-                        <span>Food Photo</span>
-                      </span>
-                      <span className="text-[10px] bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full">
-                        Tap to expand
-                      </span>
+                          {/* Miniature Thumbnail Row */}
+                          <div className="flex items-center gap-1.5">
+                            {photos.map((photo, pIdx) => (
+                              <button
+                                key={pIdx}
+                                type="button"
+                                onClick={() => openLightbox(rev, pIdx)}
+                                className="relative h-12 flex-1 rounded-lg overflow-hidden border border-neutral-200/80 hover:border-brand-gold hover:opacity-100 opacity-80 transition-all cursor-pointer"
+                              >
+                                <img src={photo} alt="" className="w-full h-full object-cover" />
+                                <span className="absolute bottom-0.5 right-1 text-[9px] bg-black/60 text-white font-bold px-1 rounded">
+                                  {pIdx + 1}
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
+                  )}
+
+                  {/* Review Footer: Helpful Reaction */}
+                  <div className="pt-2.5 border-t border-neutral-200/60 flex items-center justify-between text-[11px] text-neutral-500">
+                    <span className="flex items-center gap-1 text-emerald-800 font-medium">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                      <span>Dined at Coffee Adda</span>
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.currentTarget.classList.add('text-brand-forest', 'font-bold');
+                      }}
+                      className="hover:text-brand-forest transition-colors flex items-center gap-1 cursor-pointer"
+                    >
+                      <ThumbsUp className="w-3 h-3" />
+                      <span>Helpful ({rev.likes || 1})</span>
+                    </button>
                   </div>
-                )}
-
-                {/* Review Footer: Helpful Reaction */}
-                <div className="pt-2.5 border-t border-neutral-200/60 flex items-center justify-between text-[11px] text-neutral-500">
-                  <span className="flex items-center gap-1 text-emerald-800 font-medium">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                    <span>Dined at Coffee Adda</span>
-                  </span>
-
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.currentTarget.classList.add('text-brand-forest', 'font-bold');
-                    }}
-                    className="hover:text-brand-forest transition-colors flex items-center gap-1 cursor-pointer"
-                  >
-                    <ThumbsUp className="w-3 h-3" />
-                    <span>Helpful ({rev.likes || 1})</span>
-                  </button>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
       </div>
 
       {/* ======================================================== */}
-      {/* 3. LIGHTBOX MODAL FOR EXPANDED FOOD PHOTO */}
+      {/* 3. LIGHTBOX MODAL FOR EXPANDED FOOD PHOTO WITH SLIDER */}
       {/* ======================================================== */}
       <AnimatePresence>
-        {lightboxPhoto && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md">
+        {lightboxReview && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-neutral-900 border border-white/15 rounded-3xl overflow-hidden max-w-3xl w-full text-white shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]"
+              className="bg-neutral-900 border border-white/15 rounded-3xl overflow-hidden max-w-4xl w-full text-white shadow-2xl relative flex flex-col md:flex-row max-h-[92vh]"
             >
               {/* Close Button */}
               <button
-                onClick={() => setLightboxPhoto(null)}
-                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/60 text-white/80 hover:text-white flex items-center justify-center cursor-pointer transition-colors"
+                onClick={closeLightbox}
+                className="absolute top-4 right-4 z-30 w-9 h-9 rounded-full bg-black/70 hover:bg-black/95 text-white/80 hover:text-white flex items-center justify-center cursor-pointer transition-colors border border-white/15"
                 aria-label="Close dialog"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Photo Area */}
-              <div className="md:w-3/5 bg-black flex items-center justify-center overflow-hidden min-h-[300px]">
-                <img
-                  src={lightboxPhoto.photo}
-                  alt={lightboxPhoto.caption}
-                  className="w-full h-full max-h-[70vh] object-contain"
-                />
+              {/* Photo Area with Next / Prev Slider */}
+              <div
+                className="md:w-3/5 bg-black flex flex-col items-center justify-center relative min-h-[320px] sm:min-h-[460px] overflow-hidden select-none group/slider"
+                onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+                onTouchEnd={(e) => {
+                  if (touchStartX === null) return;
+                  const delta = e.changedTouches[0].clientX - touchStartX;
+                  if (delta > 50) handlePrevPhoto();
+                  else if (delta < -50) handleNextPhoto();
+                  setTouchStartX(null);
+                }}
+              >
+                {/* Photo Counter Pill */}
+                <div className="absolute top-4 left-4 z-20 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-gold flex items-center gap-1.5 border border-brand-gold/30 shadow-md">
+                  <Camera className="w-3.5 h-3.5" />
+                  <span>
+                    Photo {lightboxPhotoIndex + 1} of {currentPhotos.length}
+                  </span>
+                  {currentPhotos.length > 1 && (
+                    <span className="text-[10px] text-white/70 font-normal hidden sm:inline">
+                      • Click arrows or slide
+                    </span>
+                  )}
+                </div>
+
+                {/* Left Arrow (Prev Photo) */}
+                {(currentPhotos.length > 1 || galleryReviews.length > 1) && (
+                  <button
+                    type="button"
+                    onClick={handlePrevPhoto}
+                    aria-label="Previous photo"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/70 hover:bg-black/95 text-white flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 cursor-pointer shadow-xl border border-white/20 active:scale-95"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                )}
+
+                {/* Right Arrow (Next Photo) */}
+                {(currentPhotos.length > 1 || galleryReviews.length > 1) && (
+                  <button
+                    type="button"
+                    onClick={handleNextPhoto}
+                    aria-label="Next photo"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/70 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 cursor-pointer shadow-xl border border-white/20 active:scale-95"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                )}
+
+                {/* Main Photo with Slide Transition */}
+                <div className="w-full h-full flex items-center justify-center p-3 sm:p-5">
+                  <AnimatePresence mode="wait" custom={slideDirection}>
+                    <motion.img
+                      key={`${lightboxReview.id}-${lightboxPhotoIndex}`}
+                      custom={slideDirection}
+                      variants={{
+                        enter: (dir) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
+                        center: { x: 0, opacity: 1 },
+                        exit: (dir) => ({ x: dir > 0 ? -60 : 60, opacity: 0 }),
+                      }}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      src={currentPhotos[lightboxPhotoIndex] || currentPhotos[0]}
+                      alt={`${lightboxReview.authorName} photo ${lightboxPhotoIndex + 1}`}
+                      className="w-full h-full max-h-[66vh] object-contain"
+                    />
+                  </AnimatePresence>
+                </div>
+
+                {/* Bottom Slide Indicators (Dots & Thumbnail Strip) */}
+                {currentPhotos.length > 1 && (
+                  <div className="absolute bottom-3 left-0 right-0 z-20 flex flex-col items-center gap-1.5 px-4 pointer-events-auto">
+                    {/* Clickable Dots */}
+                    <div className="flex items-center gap-1.5 bg-black/75 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">
+                      {currentPhotos.map((_, dotIdx) => (
+                        <button
+                          key={dotIdx}
+                          type="button"
+                          onClick={() => {
+                            setSlideDirection(dotIdx > lightboxPhotoIndex ? 1 : -1);
+                            setLightboxPhotoIndex(dotIdx);
+                          }}
+                          className={`h-2 rounded-full transition-all cursor-pointer ${
+                            dotIdx === lightboxPhotoIndex
+                              ? 'w-6 bg-brand-gold'
+                              : 'w-2 bg-white/40 hover:bg-white/80'
+                          }`}
+                          aria-label={`Slide to photo ${dotIdx + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Mini Thumbnail Row */}
+                    <div className="flex items-center gap-1.5 p-1 bg-black/75 backdrop-blur-md rounded-xl border border-white/15 max-w-full overflow-x-auto">
+                      {currentPhotos.map((photo, pIdx) => (
+                        <button
+                          key={pIdx}
+                          type="button"
+                          onClick={() => {
+                            setSlideDirection(pIdx > lightboxPhotoIndex ? 1 : -1);
+                            setLightboxPhotoIndex(pIdx);
+                          }}
+                          className={`relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                            pIdx === lightboxPhotoIndex
+                              ? 'border-brand-gold scale-105 shadow-md'
+                              : 'border-transparent opacity-60 hover:opacity-100'
+                          }`}
+                          title={`Slide to photo ${pIdx + 1}`}
+                        >
+                          <img src={photo} alt="" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Info Sidebar */}
@@ -554,10 +827,10 @@ export default function ProductCommunitySection({ product }) {
                   {/* Guest Info */}
                   <div className="flex items-center gap-3 mt-4 mb-4">
                     <div className="w-10 h-10 rounded-full border border-brand-gold/40 flex items-center justify-center overflow-hidden shrink-0 bg-brand-forest/30">
-                      {lightboxPhoto.authorPhoto ? (
+                      {lightboxReview.authorPhoto ? (
                         <img
-                          src={lightboxPhoto.authorPhoto}
-                          alt={lightboxPhoto.authorName}
+                          src={lightboxReview.authorPhoto}
+                          alt={lightboxReview.authorName}
                           className="w-full h-full object-cover"
                         />
                       ) : (
@@ -566,10 +839,10 @@ export default function ProductCommunitySection({ product }) {
                     </div>
                     <div>
                       <h4 className="font-bold text-sm text-white">
-                        {lightboxPhoto.authorName}
+                        {lightboxReview.authorName}
                       </h4>
                       <p className="text-[11px] text-white/60">
-                        {lightboxPhoto.date || 'Coffee Adda Guest'}
+                        {lightboxReview.date || 'Coffee Adda Guest'}
                       </p>
                     </div>
                   </div>
@@ -580,35 +853,62 @@ export default function ProductCommunitySection({ product }) {
                       <Star
                         key={s}
                         className={`w-4 h-4 ${
-                          s < (lightboxPhoto.rating || 5)
+                          s < (lightboxReview.rating || 5)
                             ? 'fill-amber-400 text-amber-400'
                             : 'text-neutral-600'
                         }`}
                       />
                     ))}
                     <span className="text-xs font-bold text-white/80 ml-1">
-                      {lightboxPhoto.rating || 5}.0
+                      {lightboxReview.rating || 5}.0
                     </span>
                   </div>
 
                   {/* Caption */}
-                  {lightboxPhoto.caption && (
+                  {lightboxReview.foodPhotoCaption && (
                     <p className="text-xs font-semibold text-brand-gold mb-2 italic">
-                      “{lightboxPhoto.caption}”
+                      “{lightboxReview.foodPhotoCaption}”
                     </p>
                   )}
 
                   {/* Review Text */}
-                  {lightboxPhoto.reviewText && (
+                  {lightboxReview.reviewText && (
                     <p className="text-xs text-white/80 leading-relaxed">
-                      {lightboxPhoto.reviewText}
+                      {lightboxReview.reviewText}
                     </p>
                   )}
                 </div>
 
-                <div className="pt-4 border-t border-white/10 mt-6 text-[11px] text-white/50 flex items-center justify-between">
-                  <span>📍 Coffee Adda, Budhanilkantha</span>
-                  <span>Verified Patron Snap</span>
+                <div>
+                  {/* Next / Prev Review Navigation in Sidebar */}
+                  {galleryReviews.length > 1 && (
+                    <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between gap-2">
+                      <button
+                        type="button"
+                        onClick={handlePrevReview}
+                        className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white/90 flex items-center gap-1 transition-colors cursor-pointer"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                        <span>Prev Snap</span>
+                      </button>
+                      <span className="text-[11px] text-white/50 font-medium">
+                        {galleryReviews.findIndex((r) => r.id === lightboxReview.id) + 1} of {galleryReviews.length} Snaps
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleNextReview}
+                        className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white/90 flex items-center gap-1 transition-colors cursor-pointer"
+                      >
+                        <span>Next Snap</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  )}
+
+                  <div className="pt-3 border-t border-white/10 mt-3 text-[11px] text-white/50 flex items-center justify-between">
+                    <span>📍 Coffee Adda, Budhanilkantha</span>
+                    <span>Verified Patron Snap</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -617,7 +917,7 @@ export default function ProductCommunitySection({ product }) {
       </AnimatePresence>
 
       {/* ======================================================== */}
-      {/* 4. MODAL: UPLOAD FOOD PHOTO & SUBMIT REVIEW */}
+      {/* 4. MODAL: UPLOAD MULTIPLE FOOD PHOTOS & SUBMIT REVIEW */}
       {/* ======================================================== */}
       <AnimatePresence>
         {isModalOpen && (
@@ -645,7 +945,7 @@ export default function ProductCommunitySection({ product }) {
                   Share Your Experience
                 </h3>
                 <p className="text-xs text-neutral-600 mt-0.5">
-                  Upload a photo eating <span className="font-bold text-neutral-800">{product.name}</span> and share your thoughts with great minds gathering at Adda.
+                  Upload photos enjoying <span className="font-bold text-neutral-800">{product.name}</span>. Add multiple photos so others can slide through them!
                 </p>
               </div>
 
@@ -681,59 +981,86 @@ export default function ProductCommunitySection({ product }) {
                   </div>
                 </div>
 
-                {/* 2. Upload Dish/Eating Photo (The Core Feature) */}
+                {/* 2. Upload Multiple Food Photos */}
                 <div className="p-3.5 rounded-2xl bg-white border border-neutral-200/90 shadow-2xs">
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-xs font-bold text-brand-forest flex items-center gap-1.5">
                       <Camera className="w-3.5 h-3.5 text-brand-forest" />
-                      <span>Photo of You Eating or Enjoying This Item</span>
+                      <span>Photos of You Eating or Enjoying This Item</span>
                     </label>
-                    {foodPhotoPreview && (
-                      <button
-                        type="button"
-                        onClick={() => setFoodPhotoPreview(null)}
-                        className="text-[11px] text-rose-600 hover:underline flex items-center gap-0.5 font-medium cursor-pointer"
-                      >
-                        <X className="w-3 h-3" />
-                        Remove
-                      </button>
+                    {foodPhotosPreview.length > 0 && (
+                      <span className="text-[11px] font-bold text-neutral-500">
+                        {foodPhotosPreview.length} / 6 photos
+                      </span>
                     )}
                   </div>
 
-                  {foodPhotoPreview ? (
-                    <div className="relative rounded-xl overflow-hidden h-40 bg-neutral-100 border border-neutral-200/80 mb-2">
-                      <img
-                        src={foodPhotoPreview}
-                        alt="Dish snap preview"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md font-semibold">
-                        Preview: Added to Guest Gallery
+                  {foodPhotosPreview.length > 0 ? (
+                    <div>
+                      {/* Grid of uploaded photo thumbnails */}
+                      <div className="grid grid-cols-3 gap-2 mb-2">
+                        {foodPhotosPreview.map((photo, pIdx) => (
+                          <div key={pIdx} className="relative rounded-xl overflow-hidden aspect-square bg-neutral-100 border border-neutral-200/80 group">
+                            <img src={photo} alt={`Snap preview ${pIdx + 1}`} className="w-full h-full object-cover" />
+                            {pIdx === 0 && (
+                              <span className="absolute bottom-1 left-1 bg-brand-forest text-brand-gold text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow-xs">
+                                Cover
+                              </span>
+                            )}
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveFoodPhoto(pIdx)}
+                              className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/75 hover:bg-rose-600 text-white flex items-center justify-center transition-colors cursor-pointer"
+                              title="Remove photo"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          </div>
+                        ))}
+
+                        {/* Add more button */}
+                        {foodPhotosPreview.length < 6 && (
+                          <label className="border-2 border-dashed border-neutral-300 hover:border-brand-forest rounded-xl aspect-square flex flex-col items-center justify-center text-center cursor-pointer bg-neutral-50 hover:bg-brand-sage/10 transition-colors">
+                            <Plus className="w-5 h-5 text-brand-forest/70" />
+                            <span className="text-[10px] font-bold text-brand-forest mt-0.5">Add More</span>
+                            <input
+                              type="file"
+                              multiple
+                              accept="image/*"
+                              onChange={handleFoodPhotosChange}
+                              className="hidden"
+                            />
+                          </label>
+                        )}
                       </div>
+                      <p className="text-[10px] text-neutral-500 mb-2">
+                        💡 Patrons can slide through your photos in the community gallery!
+                      </p>
                     </div>
                   ) : (
                     <label className="border-2 border-dashed border-neutral-300 hover:border-brand-forest rounded-xl p-4 flex flex-col items-center justify-center text-center cursor-pointer bg-neutral-50/50 hover:bg-brand-sage/10 transition-colors">
                       <Upload className="w-6 h-6 text-brand-forest/60 mb-1" />
                       <span className="text-xs font-bold text-brand-forest">
-                        Click or tap to upload your food snap
+                        Click or tap to upload food snaps (select multiple)
                       </span>
                       <span className="text-[10px] text-neutral-500 mt-0.5">
-                        JPG, PNG, WEBP from your phone camera or gallery
+                        JPG, PNG, WEBP from your phone camera or gallery • Up to 6 photos
                       </span>
                       <input
                         type="file"
+                        multiple
                         accept="image/*"
-                        onChange={handleFoodPhotoChange}
+                        onChange={handleFoodPhotosChange}
                         className="hidden"
                       />
                     </label>
                   )}
 
                   {/* Food Photo Caption */}
-                  {foodPhotoPreview && (
+                  {foodPhotosPreview.length > 0 && (
                     <input
                       type="text"
-                      placeholder="Photo caption (e.g. Sipping my iced mocha on the sunlit terrace!)"
+                      placeholder="Photo caption (e.g. Tasting cappuccino in the sunny courtyard!)"
                       value={foodPhotoCaption}
                       onChange={(e) => setFoodPhotoCaption(e.target.value)}
                       className="w-full text-xs px-3 py-2 rounded-xl border border-neutral-200 bg-white focus:outline-none focus:ring-1 focus:ring-brand-forest mt-1"
