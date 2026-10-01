@@ -68,6 +68,173 @@ function compressImage(file, maxDimension = 1000, quality = 0.82) {
   });
 }
 
+/**
+ * ReviewCardPhotos:
+ * Elegant in-card photo presentation with natural 16:10 aspect ratio (no chopping/distortion),
+ * inline interactive next/prev photo slider, slide dots, thumbnail strip, and tap-to-expand lightbox.
+ */
+function ReviewCardPhotos({ review, onOpenLightbox }) {
+  const photos = review.foodPhotos && review.foodPhotos.length > 0
+    ? review.foodPhotos
+    : (review.foodPhoto ? [review.foodPhoto] : []);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideDir, setSlideDir] = useState(1);
+
+  if (photos.length === 0) return null;
+
+  const currentPhoto = photos[currentIndex] || photos[0];
+
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setSlideDir(-1);
+    setCurrentIndex((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
+  };
+
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setSlideDir(1);
+    setCurrentIndex((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleSelect = (idx, e) => {
+    e.stopPropagation();
+    setSlideDir(idx > currentIndex ? 1 : -1);
+    setCurrentIndex(idx);
+  };
+
+  return (
+    <div className="mt-3 mb-3.5 space-y-2 select-none">
+      {/* Main Image Frame with 16:10 natural proportion */}
+      <div
+        onClick={() => onOpenLightbox(review, currentIndex)}
+        className="relative w-full aspect-[16/10] max-h-72 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-200/90 shadow-xs hover:shadow-md group cursor-pointer transition-all duration-300"
+      >
+        <AnimatePresence mode="wait" custom={slideDir}>
+          <motion.img
+            key={currentPhoto}
+            custom={slideDir}
+            variants={{
+              enter: (dir) => ({ x: dir > 0 ? 35 : -35, opacity: 0 }),
+              center: { x: 0, opacity: 1 },
+              exit: (dir) => ({ x: dir > 0 ? -35 : 35, opacity: 0 }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            src={currentPhoto}
+            alt={review.foodPhotoCaption || `${review.authorName}'s food snap`}
+            className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500"
+            loading="lazy"
+          />
+        </AnimatePresence>
+
+        {/* Ambient Top & Bottom Contrast Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/35 opacity-70 group-hover:opacity-80 transition-opacity pointer-events-none" />
+
+        {/* Top Header Overlays */}
+        <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
+          {photos.length > 1 ? (
+            <div className="bg-black/75 backdrop-blur-md text-brand-gold text-[10px] font-extrabold px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-brand-gold/40 shadow-xs pointer-events-auto">
+              <Layers className="w-3 h-3" />
+              <span>{currentIndex + 1} / {photos.length} Photos</span>
+            </div>
+          ) : (
+            <div className="bg-black/70 backdrop-blur-md text-brand-gold text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 border border-brand-gold/30 shadow-xs">
+              <Camera className="w-3 h-3" />
+              <span>Guest Food Snap</span>
+            </div>
+          )}
+
+          <span className="text-[10px] text-white/95 bg-black/65 backdrop-blur-md px-2.5 py-1 rounded-full font-medium flex items-center gap-1 border border-white/20 shadow-xs">
+            <Maximize2 className="w-2.5 h-2.5 text-brand-gold" />
+            <span>Tap to zoom</span>
+          </span>
+        </div>
+
+        {/* In-Card Next / Prev Slider Buttons (when multiple photos) */}
+        {photos.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous photo"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/75 hover:bg-black/95 text-white flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 active:scale-95 border border-white/25 shadow-lg cursor-pointer opacity-90 sm:opacity-0 sm:group-hover:opacity-100"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next photo"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-black/75 hover:bg-black/95 text-white flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 active:scale-95 border border-white/25 shadow-lg cursor-pointer opacity-90 sm:opacity-0 sm:group-hover:opacity-100"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
+
+        {/* Bottom Bar: Caption & Slide Dots */}
+        <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-end justify-between gap-2 pointer-events-none">
+          {review.foodPhotoCaption ? (
+            <p className="text-[11px] text-white/95 font-medium line-clamp-1 drop-shadow-xs max-w-[65%]">
+              {review.foodPhotoCaption}
+            </p>
+          ) : <div />}
+
+          {/* Dots Indicator */}
+          {photos.length > 1 && (
+            <div className="flex items-center gap-1 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 ml-auto pointer-events-auto">
+              {photos.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={(e) => handleSelect(dotIdx, e)}
+                  aria-label={`Go to photo ${dotIdx + 1}`}
+                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                    dotIdx === currentIndex
+                      ? 'w-4 bg-brand-gold'
+                      : 'w-1.5 bg-white/45 hover:bg-white/90'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Miniature Thumbnails Row (when multiple photos) */}
+      {photos.length > 1 && (
+        <div className="flex items-center gap-2 overflow-x-auto pb-0.5 pt-0.5 no-scrollbar">
+          {photos.map((photo, pIdx) => (
+            <button
+              key={pIdx}
+              type="button"
+              onClick={(e) => handleSelect(pIdx, e)}
+              className={`relative h-12 w-16 sm:w-18 shrink-0 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                pIdx === currentIndex
+                  ? 'border-brand-gold ring-2 ring-brand-gold/40 scale-102 opacity-100 shadow-xs'
+                  : 'border-neutral-200/90 hover:border-neutral-400 opacity-65 hover:opacity-100'
+              }`}
+              title={`Preview photo ${pIdx + 1}`}
+            >
+              <img src={photo} alt="" className="w-full h-full object-cover" />
+              <span className="absolute bottom-0.5 right-0.5 text-[8px] bg-black/75 text-brand-gold font-extrabold px-1 rounded">
+                {pIdx + 1}
+              </span>
+            </button>
+          ))}
+          <span className="text-[10px] text-neutral-400 font-medium ml-1 shrink-0">
+            Click to switch photo
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ProductCommunitySection({ product }) {
   const [reviews, setReviews] = useState([]);
   const [activeFilter, setActiveFilter] = useState('all'); // 'all' | 'photos'
@@ -519,10 +686,8 @@ export default function ProductCommunitySection({ product }) {
 
           {/* Review Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {filteredReviews.map((rev) => {
-              const photos = rev.foodPhotos && rev.foodPhotos.length > 0 ? rev.foodPhotos : (rev.foodPhoto ? [rev.foodPhoto] : []);
-              return (
-                <div
+            {filteredReviews.map((rev) => (
+              <div
                   key={rev.id}
                   className="p-5 rounded-2xl bg-[#FAF8F5] border border-neutral-200/80 hover:border-brand-forest/30 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
                 >
@@ -584,71 +749,8 @@ export default function ProductCommunitySection({ product }) {
                     </p>
                   </div>
 
-                  {/* Review Food Photos Attachment (Supports Multiple Photos & Slide) */}
-                  {photos.length > 0 && (
-                    <div className="mt-2 mb-3">
-                      {photos.length === 1 ? (
-                        <div
-                          onClick={() => openLightbox(rev, 0)}
-                          className="rounded-xl overflow-hidden border border-neutral-200/90 relative group cursor-pointer h-36 bg-neutral-100"
-                        >
-                          <img
-                            src={photos[0]}
-                            alt={rev.foodPhotoCaption || 'Food photo'}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/15 transition-colors" />
-                          <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between text-white text-[11px] font-semibold drop-shadow-xs">
-                            <span className="flex items-center gap-1 bg-black/60 backdrop-blur-xs px-2 py-0.5 rounded-full">
-                              <Camera className="w-3 h-3 text-brand-gold" />
-                              <span>Food Photo</span>
-                            </span>
-                            <span className="text-[10px] bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-full">
-                              Tap to expand
-                            </span>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="space-y-1.5">
-                          <div
-                            onClick={() => openLightbox(rev, 0)}
-                            className="rounded-xl overflow-hidden border border-neutral-200/90 relative group cursor-pointer h-40 bg-neutral-100"
-                          >
-                            <img
-                              src={photos[0]}
-                              alt={rev.foodPhotoCaption || 'Food photo'}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-colors" />
-                            <div className="absolute top-2 left-2 bg-black/75 backdrop-blur-xs text-brand-gold text-[10px] font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1 border border-brand-gold/30">
-                              <Layers className="w-3 h-3" />
-                              <span>{photos.length} Photos • Click to slide</span>
-                            </div>
-                            <div className="absolute bottom-2 right-2 text-[10px] bg-black/60 text-white backdrop-blur-xs px-2 py-0.5 rounded-full font-medium">
-                              Tap to slide &amp; view all
-                            </div>
-                          </div>
-
-                          {/* Miniature Thumbnail Row */}
-                          <div className="flex items-center gap-1.5">
-                            {photos.map((photo, pIdx) => (
-                              <button
-                                key={pIdx}
-                                type="button"
-                                onClick={() => openLightbox(rev, pIdx)}
-                                className="relative h-12 flex-1 rounded-lg overflow-hidden border border-neutral-200/80 hover:border-brand-gold hover:opacity-100 opacity-80 transition-all cursor-pointer"
-                              >
-                                <img src={photo} alt="" className="w-full h-full object-cover" />
-                                <span className="absolute bottom-0.5 right-1 text-[9px] bg-black/60 text-white font-bold px-1 rounded">
-                                  {pIdx + 1}
-                                </span>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
+                  {/* Review Food Photos Attachment (Supports Multiple Photos, In-Card Slider & Lightbox) */}
+                  <ReviewCardPhotos review={rev} onOpenLightbox={openLightbox} />
 
                   {/* Review Footer: Helpful Reaction */}
                   <div className="pt-2.5 border-t border-neutral-200/60 flex items-center justify-between text-[11px] text-neutral-500">
@@ -669,8 +771,7 @@ export default function ProductCommunitySection({ product }) {
                     </button>
                   </div>
                 </div>
-              );
-            })}
+              ))}
           </div>
         </div>
 

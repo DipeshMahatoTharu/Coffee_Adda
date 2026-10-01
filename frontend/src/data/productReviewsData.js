@@ -60,10 +60,11 @@ export const SEED_PRODUCT_REVIEWS = {
       rating: 5,
       date: 'Yesterday',
       reviewText: 'Silky micro-foam with beautiful swan latte art. The Nuwakot Arabica beans give it such a warm nutty hazelnut aroma.',
-      foodPhoto: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
+      foodPhoto: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=900&q=80',
       foodPhotos: [
-        'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80'
+        'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80'
       ],
       foodPhotoCaption: 'Latte art on point today at Coffee Adda! ☕🦢',
       likes: 15,
@@ -76,11 +77,11 @@ export const SEED_PRODUCT_REVIEWS = {
       rating: 5,
       date: '3 days ago',
       reviewText: 'Stopped by on our way back from Shivapuri National Park hike. Hot, comforting, and the foam held all the way to the last sip.',
-      foodPhoto: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+      foodPhoto: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80',
       foodPhotos: [
-        'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80'
+        'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=80'
       ],
       foodPhotoCaption: 'Post-hike cappuccino in the sunny courtyard',
       likes: 7,
@@ -244,18 +245,39 @@ export const CATEGORY_DEFAULT_REVIEWS = {
   ]
 };
 
-const STORAGE_PREFIX = 'coffee_adda_dish_reviews_v1_';
+const STORAGE_PREFIX = 'coffee_adda_dish_reviews_v3_';
 
 /**
  * Get all reviews (combining localStorage user uploads + seed reviews)
+ * Migrates real user reviews from older storage versions (v1, v2) while
+ * ensuring updated seed multi-photos load fresh.
  */
 export function getProductReviews(productId, category) {
-  let localReviews = [];
+  let userReviews = [];
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
+      // 1. Check active storage version (v3)
       const stored = localStorage.getItem(`${STORAGE_PREFIX}${productId}`);
       if (stored) {
-        localReviews = JSON.parse(stored);
+        userReviews = JSON.parse(stored);
+      } else {
+        // 2. Check and migrate user-created reviews from previous versions (v1, v2)
+        const previousPrefixes = ['coffee_adda_dish_reviews_v2_', 'coffee_adda_dish_reviews_v1_'];
+        for (const prefix of previousPrefixes) {
+          const oldStored = localStorage.getItem(`${prefix}${productId}`);
+          if (oldStored) {
+            try {
+              const oldList = JSON.parse(oldStored);
+              // Migrate only true user submissions so stale seed data is not locked in
+              const migrated = oldList.filter((r) => r.userCreated || (!r.id?.startsWith('seed-') && !r.id?.startsWith('cat-')));
+              if (migrated.length > 0) {
+                userReviews = migrated;
+                localStorage.setItem(`${STORAGE_PREFIX}${productId}`, JSON.stringify(migrated));
+                break;
+              }
+            } catch (_) {}
+          }
+        }
       }
     }
   } catch (e) {
@@ -266,23 +288,32 @@ export function getProductReviews(productId, category) {
   const categorySeed = CATEGORY_DEFAULT_REVIEWS[category] || CATEGORY_DEFAULT_REVIEWS.default;
   const seedList = specificSeed.length > 0 ? specificSeed : categorySeed;
 
-  // Local reviews go first (most recent), then seed reviews
-  const combined = [...localReviews, ...seedList];
-  return combined.map((r) => ({
-    ...r,
-    foodPhotos: r.foodPhotos && r.foodPhotos.length > 0 ? r.foodPhotos : (r.foodPhoto ? [r.foodPhoto] : [])
-  }));
+  // Local user reviews go first (most recent), then seed reviews
+  const combined = [...userReviews, ...seedList];
+  return combined.map((r) => {
+    const photos = r.foodPhotos && r.foodPhotos.length > 0 ? r.foodPhotos : (r.foodPhoto ? [r.foodPhoto] : []);
+    return {
+      ...r,
+      foodPhotos: photos,
+      foodPhoto: photos[0] || null
+    };
+  });
 }
 
 /**
- * Save a new user review with optional food photo and optional profile photo to localStorage
+ * Save a new user review with optional food photo(s) and profile photo to localStorage
  */
 export function saveProductReview(productId, review) {
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
+      const reviewWithMeta = {
+        ...review,
+        userCreated: true,
+        foodPhotos: review.foodPhotos || (review.foodPhoto ? [review.foodPhoto] : [])
+      };
       const stored = localStorage.getItem(`${STORAGE_PREFIX}${productId}`);
       const list = stored ? JSON.parse(stored) : [];
-      list.unshift(review);
+      list.unshift(reviewWithMeta);
       localStorage.setItem(`${STORAGE_PREFIX}${productId}`, JSON.stringify(list));
       return list;
     }
