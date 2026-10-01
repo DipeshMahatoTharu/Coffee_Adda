@@ -66,9 +66,9 @@ export default function ReviewsPage({ onNavigate }) {
           </div>
         </div>
 
-        {/* Full Testimonials Columns Marquee + Add Review Modal */}
-        <div className="bg-white rounded-3xl p-4 sm:p-8 border border-neutral-200/90 shadow-sm mb-16">
-          <TestimonialsColumnsSection className="bg-transparent border-0 py-8 sm:py-12" />
+        {/* Full Testimonials Columns Marquee + Add Review Modal (seamless without white box) */}
+        <div className="mb-16">
+          <TestimonialsColumnsSection className="bg-transparent border-0 py-2 sm:py-6" hideHeader={true} />
         </div>
 
       </div>

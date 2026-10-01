@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CardFanCarousel from './ui/card-fan-carousel';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function FavoritesSection({ onNavigate }) {
   const [favoriteCategory, setFavoriteCategory] = useState('all');
@@ -26,7 +26,7 @@ export default function FavoritesSection({ onNavigate }) {
             Our Favorites
           </h2>
           <p className="text-neutral-600 mt-3 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-            Sample the most loved pours and signatures made daily at Coffee Adda. Available for dine-in or quick takeaway.
+            Sample the most loved pours and signatures made daily at Coffee Adda. Available for takeaway and quick pickup.
           </p>
         </div>
 
@@ -36,6 +36,7 @@ export default function FavoritesSection({ onNavigate }) {
             activeCategory={favoriteCategory}
             onCategoryChange={setFavoriteCategory}
             showCategoryFilters={true}
+            onNavigate={onNavigate}
           />
         </div>
 

@@ -11,6 +11,7 @@ import AboutPage from './components/AboutPage';
 import ReviewsPage from './components/ReviewsPage';
 import LocationPage from './components/LocationPage';
 import Reviews from './components/Reviews';
+import InstagramFeed from './components/InstagramFeed';
 import Location from './components/Location';
 import Footer from './components/Footer';
 
@@ -97,7 +98,7 @@ export default function CoffeeAdda() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-brand-cream text-neutral-800 font-sans antialiased selection:bg-brand-gold selection:text-brand-dark">
+    <div className="min-h-screen bg-brand-cream text-neutral-800 font-sans antialiased selection:bg-brand-gold selection:text-brand-dark overflow-x-hidden w-full max-w-full">
       {/* Top Announcement Banner */}
       <Banner />
 
@@ -144,6 +145,9 @@ export default function CoffeeAdda() {
 
             {/* Customer Reviews Vertical Infinite Scroll */}
             <Reviews />
+
+            {/* Instagram Community Feed (@coffee_adda9) */}
+            <InstagramFeed />
 
             {/* Store Location & Hours */}
             <Location />

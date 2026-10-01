@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { TextAnimate } from './text-animate';
 
 /**
  * ScrollExpansionHero
@@ -108,9 +109,11 @@ export default function ScrollExpansionHero({
           </h1>
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-base lg:text-lg text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            {description}
-          </p>
+          <div className="text-sm sm:text-base lg:text-lg text-neutral-600 max-w-2xl mx-auto font-normal leading-relaxed min-h-[3rem]">
+            <TextAnimate effect="typewriter" duration={2.4} delay={0.2} className="inline">
+              {description}
+            </TextAnimate>
+          </div>
         </motion.div>
 
         {/* Center: Scroll Expansion Media Visual */}

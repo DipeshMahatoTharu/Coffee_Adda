@@ -25,9 +25,26 @@
     --ring: 153 47% 15%;
     --radius: 0.75rem;
   }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* Custom Keyframe Animations */
+@keyframes text-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-text-caret {
+  animation: text-caret 0.8s step-end infinite;
+}
+
 @keyframes subtleFloat {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);

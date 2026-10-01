@@ -112,10 +112,6 @@ export default function LocationPage({ onNavigate }) {
                     <div className="flex gap-2 mt-1.5 flex-wrap">
                       <span className="text-xs font-semibold px-2.5 py-1 bg-brand-sage text-brand-forest rounded inline-flex items-center gap-1">
                         <Check className="w-3 h-3 text-brand-forest" />
-                        <span>Dine-in</span>
-                      </span>
-                      <span className="text-xs font-semibold px-2.5 py-1 bg-brand-sage text-brand-forest rounded inline-flex items-center gap-1">
-                        <Check className="w-3 h-3 text-brand-forest" />
                         <span>Takeaway</span>
                       </span>
                       <span className="text-xs font-semibold px-2.5 py-1 bg-brand-sage text-brand-forest rounded inline-flex items-center gap-1">

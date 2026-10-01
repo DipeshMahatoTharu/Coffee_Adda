@@ -1,52 +1,32 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Textarea } from "@/components/ui/textarea";
+"use client";
 
-function Component() {
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { TextAnimate } from "@/components/ui/text-animate";
+import AboutSection3 from "@/components/ui/about-section";
+
+export function DemoOne() {
+  return <AboutSection3 />;
+}
+
+export function TextAnimateDefault() {
+  const [run, setRun] = useState(0);
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Feedback</Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Send us feedback</DialogTitle>
-          <DialogDescription>
-            Watch{" "}
-            <a className="text-foreground hover:underline" href="#">
-              tutorials
-            </a>
-            , read Origin UI&lsquo;s{" "}
-            <a className="text-foreground hover:underline" href="#">
-              documentation
-            </a>
-            , or join our{" "}
-            <a className="text-foreground hover:underline" href="#">
-              Discord
-            </a>{" "}
-            for community help.
-          </DialogDescription>
-        </DialogHeader>
-        <form className="space-y-5">
-          <Textarea
-            id="feedback"
-            placeholder="How can we improve Origin UI?"
-            aria-label="Send feedback"
-          />
-          <div className="flex flex-col sm:flex-row sm:justify-end">
-            <Button type="button">Send feedback</Button>
-          </div>
-        </form>
-      </DialogContent>
-    </Dialog>
+    <div className="flex flex-col items-center gap-6">
+      <TextAnimate
+        key={run}
+        effect="typewriter"
+        duration={2}
+        className="text-foreground text-3xl font-semibold"
+      >
+        Ship beautiful interfaces, fast.
+      </TextAnimate>
+      <Button variant="outline" size="sm" onClick={() => setRun((n) => n + 1)}>
+        Replay
+      </Button>
+    </div>
   );
 }
 
-export { Component };
+export default DemoOne;

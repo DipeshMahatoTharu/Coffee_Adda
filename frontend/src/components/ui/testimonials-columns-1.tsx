@@ -176,7 +176,13 @@ export function TestimonialsColumn(props: TestimonialsColumnProps) {
   );
 }
 
-export default function TestimonialsColumnsSection({ className }: { className?: string }) {
+export default function TestimonialsColumnsSection({
+  className,
+  hideHeader = false,
+}: {
+  className?: string;
+  hideHeader?: boolean;
+}) {
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>(COFFEE_ADDA_TESTIMONIALS);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [name, setName] = useState('');
@@ -256,23 +262,25 @@ export default function TestimonialsColumnsSection({ className }: { className?: 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
-        >
-          <span className="block text-xs sm:text-sm font-semibold tracking-widest uppercase text-neutral-500 mb-2">
-            Customer Stories
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-forest tracking-tight">
-            What Our Guests Say
-          </h2>
-          <p className="text-neutral-600 mt-3 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            From the first sip to the last bite, our guests make Coffee Adda special. Here&apos;s what they have to say.
-          </p>
-        </motion.div>
+        {!hideHeader && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
+          >
+            <span className="block text-xs sm:text-sm font-semibold tracking-widest uppercase text-neutral-500 mb-2">
+              Customer Stories
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-forest tracking-tight">
+              What Our Guests Say
+            </h2>
+            <p className="text-neutral-600 mt-3 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+              From the first sip to the last bite, our guests make Coffee Adda special. Here&apos;s what they have to say.
+            </p>
+          </motion.div>
+        )}
 
         {/* Animated Three-Column Infinite Vertical Scrolling Carousel */}
         <div className="relative flex justify-center gap-6 max-h-[680px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">

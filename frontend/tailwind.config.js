@@ -61,6 +61,14 @@ export default {
       boxShadow: {
         'glow-gold': '0 0 35px -5px rgba(212, 175, 55, 0.35)',
         'glow-forest': '0 20px 40px -15px rgba(20, 56, 38, 0.4)'
+      },
+      keyframes: {
+        'text-caret': {
+          '50%': { opacity: '0' },
+        },
+      },
+      animation: {
+        'text-caret': 'text-caret 0.8s step-end infinite',
       }
     },
   },

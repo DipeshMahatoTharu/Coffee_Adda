@@ -32,16 +32,16 @@ export default function SpecialOffer({ onNavigate }) {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
+          <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto shrink-0">
             <a
               onClick={handleMenuClick}
-              className="px-8 py-4 rounded-full bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-extrabold text-sm sm:text-base shadow-lg hover:shadow-glow-gold hover:scale-105 transition-all duration-300 text-center cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-extrabold text-sm sm:text-base shadow-lg hover:shadow-glow-gold hover:scale-105 transition-all duration-300 text-center cursor-pointer"
               href="#menu"
             >
               Explore Menu
             </a>
             <a
-              className="px-6 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm sm:text-base border border-white/20 transition-all text-center"
+              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm sm:text-base border border-white/20 transition-all text-center"
               href="tel:+977014370000"
             >
               Reserve a Table

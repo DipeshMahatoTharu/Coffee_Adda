@@ -10,4 +10,12 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    host: true, // Exposes the dev server to your local network (Wi-Fi)
+    port: 5173,
+  },
+  preview: {
+    host: true, // Exposes the production preview to your local network
+    port: 5173,
+  },
 })

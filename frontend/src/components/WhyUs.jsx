@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Coffee, Leaf, HeartHandshake, Wifi, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Coffee, Leaf, HeartHandshake, Wifi } from 'lucide-react';
 
 export default function WhyUs({ onNavigate, isDedicatedPage = false }) {
   const handleAction = (e, target) => {
