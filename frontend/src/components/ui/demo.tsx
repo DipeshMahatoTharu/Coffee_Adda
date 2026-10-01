@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { TextAnimate } from "@/components/ui/text-animate";
 import AboutSection3 from "@/components/ui/about-section";
+import SearchWithCategory from "@/components/ui/search-with-category";
 
 export function DemoOne() {
-  return <AboutSection3 />;
+  return <SearchWithCategory />;
 }
 
 export function TextAnimateDefault() {

@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { menuCategories, menuItems } from '../data/menuData';
+import SearchWithCategory from './ui/search-with-category';
 import {
   Search,
   MapPin,
@@ -152,30 +153,25 @@ export default function Menu({ onNavigate }) {
           </div>
 
           {/* Search and Dietary Filter Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-neutral-200/90 shadow-sm">
-            {/* Search Input */}
-            <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
-              <input
-                type="text"
-                placeholder="Search dishes (e.g. laphing, momo, latte)..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-9 py-2 rounded-xl bg-neutral-50 border border-neutral-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-forest/40 focus:bg-white text-neutral-800 transition-all placeholder:text-neutral-400"
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-5 max-w-5xl mx-auto bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-3xl border border-neutral-200/90 shadow-sm">
+            {/* Search With Category Dropdown & Input */}
+            <div className="w-full lg:flex-1">
+              <SearchWithCategory
+                categories={menuCategories.map((c) => ({
+                  id: c.id,
+                  label: `${c.icon} ${c.label}`,
+                }))}
+                selectedCategory={selectedCategory}
+                onCategoryChange={setSelectedCategory}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                placeholder="Search coffee, laphing, momo, breakfast..."
+                label=""
               />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  aria-label="Clear search"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-700 p-0.5"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
             </div>
 
             {/* Dietary Toggles & Count */}
-            <div className="flex items-center justify-between w-full sm:w-auto gap-3">
+            <div className="flex items-center justify-between w-full lg:w-auto gap-3 pt-3 lg:pt-0 border-t lg:border-t-0 border-neutral-200/80">
               <div className="flex items-center gap-1.5">
                 <button
                   type="button"

@@ -114,11 +114,61 @@ export default function Footer({ onNavigate }) {
           <div className="lg:col-span-3 space-y-4">
             <h4 className="text-sm font-bold uppercase tracking-wider text-brand-gold">Menu Highlights</h4>
             <ul className="space-y-2.5 text-sm text-brand-sage/80">
-              <li><span className="text-white font-medium">Cappuccino / Double</span> — Rs. 180</li>
-              <li><span className="text-white font-medium">Café Latte</span> — Rs. 180</li>
-              <li><span className="text-white font-medium">Iced Latte &amp; Frappes</span> — from Rs. 200</li>
-              <li><span className="text-white font-medium">Tibetan Laphing (Jhol/Dry)</span> — from Rs. 65</li>
-              <li><span className="text-white font-medium">Mo:Mo Platter (25 pcs)</span> — from Rs. 600</li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate ? onNavigate('product-detail', 'hot-cappuccino') : window.location.hash = '#product/hot-cappuccino'}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  title="View Cappuccino details & history"
+                >
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Cappuccino / Double</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— Rs. 180</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate ? onNavigate('product-detail', 'hot-caffe-latte') : window.location.hash = '#product/hot-caffe-latte'}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  title="View Café Latte details & history"
+                >
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Café Latte</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— Rs. 180</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate ? onNavigate('product-detail', 'cold-iced-latte') : window.location.hash = '#product/cold-iced-latte'}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  title="View Iced Latte & Frappes details & history"
+                >
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Iced Latte &amp; Frappes</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— from Rs. 200</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate ? onNavigate('product-detail', 'laph-plain') : window.location.hash = '#product/laph-plain'}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  title="View Tibetan Laphing details & history"
+                >
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Tibetan Laphing (Jhol/Dry)</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— from Rs. 65</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate ? onNavigate('product-detail', 'platter-momo-veg') : window.location.hash = '#product/platter-momo-veg'}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  title="View Mo:Mo Platter details & history"
+                >
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Mo:Mo Platter (25 pcs)</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— from Rs. 600</span>
+                </button>
+              </li>
             </ul>
           </div>
 
