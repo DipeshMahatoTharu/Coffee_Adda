@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Star, MessageSquarePlus, CheckCircle2 } from 'lucide-react';
+import { Star, MessageSquarePlus, CheckCircle2, User, Upload, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import {
   Dialog,
@@ -22,7 +22,7 @@ export interface TestimonialItem {
   text: string;
   name: string;
   role: string;
-  image: string;
+  image?: string;
   rating?: number;
 }
 
@@ -154,12 +154,32 @@ export function TestimonialsColumn(props: TestimonialsColumnProps) {
 
             {/* Author Profile */}
             <div className="flex items-center gap-3 pt-4 mt-4 border-t border-neutral-200/70">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-10 h-10 rounded-full object-cover border border-brand-gold/40 shadow-xs shrink-0"
-                loading="lazy"
-              />
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-10 h-10 rounded-full object-cover border border-brand-gold/40 shadow-xs shrink-0"
+                  loading="lazy"
+                  onError={(e) => {
+                    // Fallback to default profile logo if image fails to load
+                    e.currentTarget.style.display = 'none';
+                    const fallback = e.currentTarget.parentElement?.querySelector('.default-profile-logo') as HTMLElement;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                />
+              ) : null}
+
+              {/* Default Profile Logo (Shown when no photo is provided or on load error) */}
+              <div
+                className={cn(
+                  "default-profile-logo w-10 h-10 rounded-full bg-brand-forest/10 border border-brand-gold/40 items-center justify-center text-brand-forest shadow-xs shrink-0",
+                  item.image ? "hidden" : "flex"
+                )}
+                title="Profile Logo"
+              >
+                <User className="w-5 h-5 text-brand-forest" />
+              </div>
+
               <div className="truncate">
                 <h4 className="font-serif text-sm font-bold text-brand-forest truncate">
                   {item.name}
@@ -192,6 +212,8 @@ export default function TestimonialsColumnsSection({
   const [reviewText, setReviewText] = useState('');
   const [successToast, setSuccessToast] = useState<string | null>(null);
 
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+
   // Distribute items into 3 columns dynamically
   const firstColumn: TestimonialItem[] = [];
   const secondColumn: TestimonialItem[] = [];
@@ -203,20 +225,33 @@ export default function TestimonialsColumnsSection({
     else thirdColumn.push(item);
   });
 
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Please choose an image under 5MB.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmitReview = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !reviewText.trim()) return;
 
-    // Pick an avatar image
-    const randomAvatar = DEFAULT_AVATARS[Math.floor(Math.random() * DEFAULT_AVATARS.length)];
-
+    // If no custom photo is added, leave image undefined so default profile logo is shown
     const newReview: TestimonialItem = {
       id: `review-${Date.now()}`,
       name: name.trim(),
       role: role.trim() || 'Guest',
       rating,
       text: reviewText.trim(),
-      image: randomAvatar,
+      image: photoPreview || undefined,
     };
 
     // Prepend to testimonials so it immediately joins the live review stream!
@@ -242,6 +277,7 @@ export default function TestimonialsColumnsSection({
     setRole('');
     setRating(5);
     setReviewText('');
+    setPhotoPreview(null);
     setIsDialogOpen(false);
 
     // Show celebratory feedback
@@ -371,6 +407,65 @@ export default function TestimonialsColumnsSection({
                       onChange={(e) => setRole(e.target.value)}
                       className="rounded-xl border-neutral-300 focus-visible:ring-brand-forest"
                     />
+                  </div>
+
+                  {/* Profile Photo (Optional) */}
+                  <div className="space-y-1.5 text-left">
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="author-photo-upload" className="text-xs font-bold text-brand-forest">
+                        Your Profile Photo <span className="text-neutral-500 font-normal">(Optional)</span>
+                      </Label>
+                      {photoPreview && (
+                        <button
+                          type="button"
+                          onClick={() => setPhotoPreview(null)}
+                          className="text-[11px] text-rose-600 hover:underline flex items-center gap-1 cursor-pointer font-medium"
+                        >
+                          <X className="w-3 h-3" />
+                          Remove Photo
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-3.5 p-3 rounded-2xl bg-white border border-neutral-200/90 shadow-2xs">
+                      {/* Avatar Preview or Default Profile Logo */}
+                      <div className="relative w-12 h-12 rounded-full border border-brand-gold/50 flex items-center justify-center overflow-hidden shrink-0 shadow-xs bg-brand-forest/10">
+                        {photoPreview ? (
+                          <img
+                            src={photoPreview}
+                            alt="Profile preview"
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-brand-forest" title="Default profile logo">
+                            <User className="w-6 h-6 text-brand-forest" />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Upload Button & Status */}
+                      <div className="flex-1 min-w-0">
+                        <label
+                          htmlFor="author-photo-upload"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-forest/10 hover:bg-brand-forest/15 text-brand-forest text-xs font-bold transition-colors cursor-pointer border border-brand-forest/20"
+                        >
+                          <Upload className="w-3.5 h-3.5 text-brand-forest" />
+                          <span>{photoPreview ? 'Change Photo' : 'Upload Photo'}</span>
+                        </label>
+                        <input
+                          id="author-photo-upload"
+                          type="file"
+                          accept="image/*"
+                          onChange={handlePhotoChange}
+                          className="hidden"
+                        />
+                        <p className="text-[11px] text-neutral-500 mt-1 truncate">
+                          {photoPreview
+                            ? 'Custom photo attached'
+                            : 'If no photo is added, default profile logo will be displayed'}
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Star Rating Picker */}
