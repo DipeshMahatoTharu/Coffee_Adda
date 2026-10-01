@@ -72,6 +72,18 @@ export default function Footer({ onNavigate }) {
                 <span>@coffee_adda9</span>
               </a>
               <a
+                aria-label="Follow Coffee Adda on TikTok @coffe.adda"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-black hover:text-white transition-all duration-300 text-xs font-medium border border-white/10 hover:border-transparent group"
+                href="https://www.tiktok.com/@coffe.adda?_r=1&_t=ZS-9ABXpRe6RQi"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg className="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.86 1.43-.05 2.69-1.04 3.05-2.41.13-.58.18-1.18.18-1.77V.02z"></path>
+                </svg>
+                <span>@coffe.adda</span>
+              </a>
+              <a
                 aria-label="Follow Coffee Adda on Facebook"
                 className="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"
                 href="https://www.facebook.com/"
@@ -80,17 +92,6 @@ export default function Footer({ onNavigate }) {
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path>
-                </svg>
-              </a>
-              <a
-                aria-label="Follow Coffee Adda on TikTok"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"
-                href="https://www.tiktok.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.86 1.43-.05 2.69-1.04 3.05-2.41.13-.58.18-1.18.18-1.77V.02z"></path>
                 </svg>
               </a>
             </div>

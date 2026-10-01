@@ -498,18 +498,35 @@ export default function AboutPage({ onNavigate }) {
               </div>
             </div>
 
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://www.instagram.com/coffee_adda9/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 hover:opacity-95 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
-            >
-              <Instagram className="w-4 h-4" />
-              <span>Follow on Instagram</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </motion.a>
+            <div className="flex flex-wrap items-center gap-3">
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://www.instagram.com/coffee_adda9/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 hover:opacity-95 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>Follow on Instagram</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://www.tiktok.com/@coffe.adda?_r=1&_t=ZS-9ABXpRe6RQi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-black hover:bg-neutral-900 border border-neutral-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+              >
+                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.86 1.43-.05 2.69-1.04 3.05-2.41.13-.58.18-1.18.18-1.77V.02z"></path>
+                </svg>
+                <span>Follow on TikTok</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </motion.a>
+            </div>
           </div>
         </motion.div>
 

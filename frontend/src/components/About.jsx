@@ -118,8 +118,21 @@ export default function About({ onNavigate }) {
                 <span className="text-xs font-bold">ig</span>
               </TimelineContent>
               <TimelineContent
-                as="button"
+                as="a"
                 animationNum={3}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                href="https://www.tiktok.com/@coffe.adda?_r=1&_t=ZS-9ABXpRe6RQi"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Coffee Adda on TikTok @coffe.adda"
+                className="w-7 h-7 sm:w-8 sm:h-8 border border-neutral-300/80 bg-white/90 hover:bg-black hover:text-white rounded-lg flex items-center justify-center transition-all cursor-pointer text-neutral-700 shadow-xs"
+              >
+                <span className="text-xs font-bold">tt</span>
+              </TimelineContent>
+              <TimelineContent
+                as="button"
+                animationNum={4}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
                 onClick={handleLocationNavigation}
