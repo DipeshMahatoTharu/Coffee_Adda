@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Star, MessageSquarePlus, CheckCircle2, User, Upload, X } from 'lucide-react';
+import { Star, MessageSquarePlus, CheckCircle2, User, Upload, X, Camera, Utensils } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import {
   Dialog,
@@ -16,6 +16,8 @@ import { Button } from './button';
 import { Input } from './input';
 import { Label } from './label';
 import { Textarea } from './textarea';
+import { menuItems } from '../../data/menuData';
+import { saveProductReview } from '../../data/productReviewsData';
 
 export interface TestimonialItem {
   id: string;
@@ -24,6 +26,8 @@ export interface TestimonialItem {
   role: string;
   image?: string;
   rating?: number;
+  dishName?: string;
+  dishPhoto?: string;
 }
 
 export const COFFEE_ADDA_TESTIMONIALS: TestimonialItem[] = [
@@ -150,6 +154,30 @@ export function TestimonialsColumn(props: TestimonialsColumnProps) {
               <p className="font-sans text-sm sm:text-[14px] leading-relaxed text-neutral-700 italic">
                 “{item.text}”
               </p>
+
+              {/* Optional Dish Name Badge */}
+              {item.dishName && (
+                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brand-forest/10 text-brand-forest text-[11px] font-bold mt-2">
+                  <Utensils className="w-3 h-3 text-brand-gold shrink-0" />
+                  <span className="truncate">Ate: {item.dishName}</span>
+                </div>
+              )}
+
+              {/* Optional Dish Food Photo */}
+              {item.dishPhoto && (
+                <div className="mt-3 rounded-xl overflow-hidden aspect-video relative border border-neutral-200/90 bg-neutral-100 shadow-2xs">
+                  <img
+                    src={item.dishPhoto}
+                    alt={item.dishName || 'Dish at Coffee Adda'}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <span className="absolute bottom-1.5 left-1.5 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded-md font-medium flex items-center gap-1">
+                    <Camera className="w-2.5 h-2.5 text-brand-gold" />
+                    <span>Food Snap</span>
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Author Profile */}
@@ -213,6 +241,8 @@ export default function TestimonialsColumnsSection({
   const [successToast, setSuccessToast] = useState<string | null>(null);
 
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [dishName, setDishName] = useState('');
+  const [dishPhotoPreview, setDishPhotoPreview] = useState<string | null>(null);
 
   // Distribute items into 3 columns dynamically
   const firstColumn: TestimonialItem[] = [];
@@ -240,6 +270,21 @@ export default function TestimonialsColumnsSection({
     }
   };
 
+  const handleDishPhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Please choose an image under 5MB.');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setDishPhotoPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmitReview = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !reviewText.trim()) return;
@@ -252,10 +297,35 @@ export default function TestimonialsColumnsSection({
       rating,
       text: reviewText.trim(),
       image: photoPreview || undefined,
+      dishName: dishName.trim() || undefined,
+      dishPhoto: dishPhotoPreview || undefined,
     };
 
     // Prepend to testimonials so it immediately joins the live review stream!
     setTestimonials((prev) => [newReview, ...prev]);
+
+    // If user entered a dish name or attached food photo, also sync into product community reviews!
+    if (dishName.trim()) {
+      const normalized = dishName.trim().toLowerCase();
+      const matched = menuItems.find((item) =>
+        item.name.toLowerCase().includes(normalized) ||
+        normalized.includes(item.name.toLowerCase())
+      );
+      const targetProductId = matched ? matched.id : 'cold-iced-mocha';
+      saveProductReview(targetProductId, {
+        id: `user-rev-from-general-${Date.now()}`,
+        authorName: name.trim(),
+        authorRole: role.trim() || 'Verified Adda Guest',
+        authorPhoto: photoPreview || null,
+        rating,
+        date: 'Just now',
+        reviewText: reviewText.trim(),
+        foodPhoto: dishPhotoPreview || null,
+        foodPhotoCaption: `Enjoyed ${dishName.trim()} at Coffee Adda`,
+        likes: 0,
+        userCreated: true,
+      });
+    }
 
     // Optional background sync with Django backend API if reachable
     fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api'}/reviews/`, {
@@ -275,13 +345,15 @@ export default function TestimonialsColumnsSection({
     // Reset form and close dialog
     setName('');
     setRole('');
+    setDishName('');
     setRating(5);
     setReviewText('');
     setPhotoPreview(null);
+    setDishPhotoPreview(null);
     setIsDialogOpen(false);
 
     // Show celebratory feedback
-    setSuccessToast(`Thank you, ${newReview.name}! Your review has been added to our guest wall.`);
+    setSuccessToast(`Thank you, ${newReview.name}! Your review${dishName ? ` & ${dishName} snap` : ''} has been added to our guest wall.`);
     setTimeout(() => {
       setSuccessToast(null);
     }, 6000);
@@ -466,6 +538,82 @@ export default function TestimonialsColumnsSection({
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Dish or Drink You Ate (Optional) */}
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="dish-name" className="text-xs font-bold text-brand-forest flex items-center gap-1.5">
+                      <Utensils className="w-3.5 h-3.5 text-brand-gold" />
+                      <span>Dish or Drink You Ate/Had <span className="text-neutral-500 font-normal">(Optional)</span></span>
+                    </Label>
+                    <Input
+                      id="dish-name"
+                      placeholder="e.g. Iced Mocha, Cappuccino, Chicken Momo, French Fries"
+                      value={dishName}
+                      onChange={(e) => setDishName(e.target.value)}
+                      className="rounded-xl border-neutral-300 focus-visible:ring-brand-forest"
+                    />
+                    {/* Quick suggestion pills */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {['Iced Mocha', 'Cappuccino', 'Doppio', 'Steam Veg Momo', 'French Fries'].map((d) => (
+                        <button
+                          key={d}
+                          type="button"
+                          onClick={() => setDishName(d)}
+                          className="px-2 py-0.5 rounded-lg text-[10px] font-semibold bg-brand-forest/5 hover:bg-brand-forest hover:text-white text-brand-forest transition-colors border border-brand-forest/15 cursor-pointer"
+                        >
+                          + {d}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Photo of What You Ate / Food Moment (Optional) */}
+                  <div className="space-y-1.5 text-left">
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="dish-photo-upload" className="text-xs font-bold text-brand-forest flex items-center gap-1.5">
+                        <Camera className="w-3.5 h-3.5 text-brand-forest" />
+                        <span>Photo of What You Ate <span className="text-neutral-500 font-normal">(Optional)</span></span>
+                      </Label>
+                      {dishPhotoPreview && (
+                        <button
+                          type="button"
+                          onClick={() => setDishPhotoPreview(null)}
+                          className="text-[11px] text-rose-600 hover:underline flex items-center gap-1 cursor-pointer font-medium"
+                        >
+                          <X className="w-3 h-3" />
+                          Remove Photo
+                        </button>
+                      )}
+                    </div>
+
+                    {dishPhotoPreview ? (
+                      <div className="relative rounded-2xl overflow-hidden aspect-video bg-neutral-100 border border-neutral-200/90 shadow-2xs">
+                        <img
+                          src={dishPhotoPreview}
+                          alt="Dish food moment preview"
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute bottom-2 left-2 bg-black/60 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded-md font-medium">
+                          Food Photo attached (Joins Dish Gallery)
+                        </div>
+                      </div>
+                    ) : (
+                      <label
+                        htmlFor="dish-photo-upload"
+                        className="flex items-center justify-center gap-2 p-3 rounded-2xl border-2 border-dashed border-neutral-300 hover:border-brand-forest bg-white hover:bg-brand-sage/10 transition-colors cursor-pointer text-center"
+                      >
+                        <Camera className="w-4 h-4 text-brand-forest" />
+                        <span className="text-xs font-bold text-brand-forest">Upload Photo of What You Ate</span>
+                        <input
+                          id="dish-photo-upload"
+                          type="file"
+                          accept="image/*"
+                          onChange={handleDishPhotoChange}
+                          className="hidden"
+                        />
+                      </label>
+                    )}
                   </div>
 
                   {/* Star Rating Picker */}
