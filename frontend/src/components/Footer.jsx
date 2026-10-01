@@ -10,6 +10,14 @@ export default function Footer({ onNavigate }) {
     } else {
       if (page === 'menu') {
         window.location.hash = '#menu';
+      } else if (page === 'why-us') {
+        window.location.hash = '#why-us';
+      } else if (page === 'about') {
+        window.location.hash = '#about';
+      } else if (page === 'reviews') {
+        window.location.hash = '#reviews';
+      } else if (page === 'location') {
+        window.location.hash = '#location';
       } else if (anchor) {
         window.location.hash = anchor;
       } else {
@@ -86,11 +94,11 @@ export default function Footer({ onNavigate }) {
             <h4 className="text-sm font-bold uppercase tracking-wider text-brand-gold">Quick Links</h4>
             <ul className="space-y-2.5 text-sm text-brand-sage/80">
               <li><a className="hover:text-white transition-colors cursor-pointer" href="#home" onClick={(e) => handleNav(e, 'home')}>Home</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#about" onClick={(e) => handleNav(e, 'home', '#about')}>Our Story</a></li>
+              <li><a className="hover:text-white transition-colors cursor-pointer" href="#about" onClick={(e) => handleNav(e, 'about')}>Our Story</a></li>
               <li><a className="hover:text-white transition-colors cursor-pointer" href="#menu" onClick={(e) => handleNav(e, 'menu')}>Complete Menu</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#why-us" onClick={(e) => handleNav(e, 'home', '#why-us')}>Why Coffee Adda</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#reviews" onClick={(e) => handleNav(e, 'home', '#reviews')}>Guest Reviews</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#location" onClick={(e) => handleNav(e, 'home', '#location')}>Get Directions</a></li>
+              <li><a className="hover:text-white transition-colors cursor-pointer" href="#why-us" onClick={(e) => handleNav(e, 'why-us')}>Why Coffee Adda</a></li>
+              <li><a className="hover:text-white transition-colors cursor-pointer" href="#reviews" onClick={(e) => handleNav(e, 'reviews')}>Guest Reviews</a></li>
+              <li><a className="hover:text-white transition-colors cursor-pointer" href="#location" onClick={(e) => handleNav(e, 'location')}>Get Directions</a></li>
             </ul>
           </div>
 

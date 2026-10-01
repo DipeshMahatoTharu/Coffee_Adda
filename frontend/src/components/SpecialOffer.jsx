@@ -1,6 +1,16 @@
 import React from 'react';
 
-export default function SpecialOffer() {
+export default function SpecialOffer({ onNavigate }) {
+  const handleMenuClick = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('menu');
+    } else {
+      window.location.hash = '#menu';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="py-16 bg-brand-forest text-white relative overflow-hidden" data-purpose="promotional-banner">
       {/* Decorative subtle gold rays matching brand logo crest */}
@@ -10,7 +20,7 @@ export default function SpecialOffer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-gradient-to-r from-emerald-950 via-brand-forest to-emerald-900 p-8 sm:p-12 lg:p-16 rounded-3xl border border-brand-gold/40 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="max-w-2xl text-center lg:text-left space-y-3">
-            <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-md border border-brand-gold/30">
+            <span className="block text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-gold mb-2">
               Budhanilkantha Sanctuary
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-cream">
@@ -24,7 +34,8 @@ export default function SpecialOffer() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
             <a
-              className="px-8 py-4 rounded-full bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-extrabold text-sm sm:text-base shadow-lg hover:shadow-glow-gold hover:scale-105 transition-all duration-300 text-center"
+              onClick={handleMenuClick}
+              className="px-8 py-4 rounded-full bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-extrabold text-sm sm:text-base shadow-lg hover:shadow-glow-gold hover:scale-105 transition-all duration-300 text-center cursor-pointer"
               href="#menu"
             >
               Explore Menu

@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Star } from 'lucide-react';
+import { Star, MessageSquarePlus, CheckCircle2 } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from './dialog';
+import { Button } from './button';
+import { Input } from './input';
+import { Label } from './label';
+import { Textarea } from './textarea';
 
 export interface TestimonialItem {
   id: string;
@@ -87,6 +101,14 @@ export const COFFEE_ADDA_TESTIMONIALS: TestimonialItem[] = [
   },
 ];
 
+const DEFAULT_AVATARS = [
+  'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&h=200&q=80',
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&h=200&q=80',
+  'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=200&h=200&q=80',
+  'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&h=200&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80',
+];
+
 interface TestimonialsColumnProps {
   testimonials: TestimonialItem[];
   duration?: number;
@@ -155,9 +177,73 @@ export function TestimonialsColumn(props: TestimonialsColumnProps) {
 }
 
 export default function TestimonialsColumnsSection({ className }: { className?: string }) {
-  const firstColumn = COFFEE_ADDA_TESTIMONIALS.slice(0, 3);
-  const secondColumn = COFFEE_ADDA_TESTIMONIALS.slice(3, 6);
-  const thirdColumn = COFFEE_ADDA_TESTIMONIALS.slice(6, 9);
+  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(COFFEE_ADDA_TESTIMONIALS);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
+  const [rating, setRating] = useState(5);
+  const [hoverRating, setHoverRating] = useState<number | null>(null);
+  const [reviewText, setReviewText] = useState('');
+  const [successToast, setSuccessToast] = useState<string | null>(null);
+
+  // Distribute items into 3 columns dynamically
+  const firstColumn: TestimonialItem[] = [];
+  const secondColumn: TestimonialItem[] = [];
+  const thirdColumn: TestimonialItem[] = [];
+
+  testimonials.forEach((item, index) => {
+    if (index % 3 === 0) firstColumn.push(item);
+    else if (index % 3 === 1) secondColumn.push(item);
+    else thirdColumn.push(item);
+  });
+
+  const handleSubmitReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !reviewText.trim()) return;
+
+    // Pick an avatar image
+    const randomAvatar = DEFAULT_AVATARS[Math.floor(Math.random() * DEFAULT_AVATARS.length)];
+
+    const newReview: TestimonialItem = {
+      id: `review-${Date.now()}`,
+      name: name.trim(),
+      role: role.trim() || 'Guest',
+      rating,
+      text: reviewText.trim(),
+      image: randomAvatar,
+    };
+
+    // Prepend to testimonials so it immediately joins the live review stream!
+    setTestimonials((prev) => [newReview, ...prev]);
+
+    // Optional background sync with Django backend API if reachable
+    fetch(`${import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api'}/reviews/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        author: name.trim(),
+        role: role.trim() || 'Guest',
+        rating,
+        quote: reviewText.trim(),
+        avatar_bg: 'bg-brand-sage text-brand-forest',
+      }),
+    }).catch(() => {
+      // Ignore network errors in standalone mode
+    });
+
+    // Reset form and close dialog
+    setName('');
+    setRole('');
+    setRating(5);
+    setReviewText('');
+    setIsDialogOpen(false);
+
+    // Show celebratory feedback
+    setSuccessToast(`Thank you, ${newReview.name}! Your review has been added to our guest wall.`);
+    setTimeout(() => {
+      setSuccessToast(null);
+    }, 6000);
+  };
 
   return (
     <section
@@ -175,10 +261,10 @@ export default function TestimonialsColumnsSection({ className }: { className?: 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center max-w-2xl mx-auto mb-14 sm:mb-18"
+          className="text-center max-w-2xl mx-auto mb-12 sm:mb-16"
         >
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase text-brand-forest bg-white px-3.5 py-1 rounded-full mb-3 border border-brand-forest/15 shadow-xs">
-            CUSTOMER STORIES
+          <span className="block text-xs sm:text-sm font-semibold tracking-widest uppercase text-neutral-500 mb-2">
+            Customer Stories
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-forest tracking-tight">
             What Our Guests Say
@@ -189,23 +275,169 @@ export default function TestimonialsColumnsSection({ className }: { className?: 
         </motion.div>
 
         {/* Animated Three-Column Infinite Vertical Scrolling Carousel */}
-        <div className="relative flex justify-center gap-6 max-h-[740px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+        <div className="relative flex justify-center gap-6 max-h-[680px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
           {/* Column 1 (Visible on all screens) */}
-          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn testimonials={firstColumn} duration={16} />
 
           {/* Column 2 (Visible on tablet & desktop) */}
           <TestimonialsColumn
             testimonials={secondColumn}
             className="hidden md:flex"
-            duration={19}
+            duration={20}
           />
 
           {/* Column 3 (Visible on desktop) */}
           <TestimonialsColumn
             testimonials={thirdColumn}
             className="hidden lg:flex"
-            duration={17}
+            duration={18}
           />
+        </div>
+
+        {/* BELOW OF REVIEW: Add Review Callout & Dialog Trigger */}
+        <div className="mt-12 text-center flex flex-col items-center justify-center gap-3">
+          {successToast && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-900 text-xs sm:text-sm font-semibold shadow-sm mb-2"
+            >
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>{successToast}</span>
+            </motion.div>
+          )}
+
+          <div className="bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-neutral-200/90 shadow-md max-w-xl w-full mx-auto">
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-forest">
+              Enjoyed your visit to Coffee Adda?
+            </h3>
+            <p className="text-neutral-600 text-xs sm:text-sm mt-1 mb-5">
+              Your feedback helps us brew better coffee and make our Budhanilkantha space even warmer.
+            </p>
+
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  className="bg-brand-forest hover:bg-brand-dark text-white font-bold px-8 py-3.5 rounded-full text-sm shadow-md hover:shadow-glow-gold hover:-translate-y-0.5 transition-all duration-300 border border-brand-gold/40 inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <MessageSquarePlus className="w-4 h-4 text-brand-gold" />
+                  <span>Add a Review</span>
+                </Button>
+              </DialogTrigger>
+
+              <DialogContent className="sm:max-w-[480px] bg-brand-cream border-brand-gold/30 p-6 sm:p-7 rounded-2xl">
+                <DialogHeader>
+                  <DialogTitle className="font-serif text-2xl font-bold text-brand-forest">
+                    Share Your Experience
+                  </DialogTitle>
+                  <DialogDescription className="text-xs sm:text-sm text-neutral-600">
+                    We&apos;d love to hear your thoughts on our coffee, treats, or café ambiance.
+                  </DialogDescription>
+                </DialogHeader>
+
+                <form onSubmit={handleSubmitReview} className="space-y-4 pt-2">
+                  {/* Name Input */}
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="author-name" className="text-xs font-bold text-brand-forest">
+                      Your Name <span className="text-rose-500">*</span>
+                    </Label>
+                    <Input
+                      id="author-name"
+                      placeholder="e.g. Aarav Sharma"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      className="rounded-xl border-neutral-300 focus-visible:ring-brand-forest"
+                    />
+                  </div>
+
+                  {/* Role / Tag Input */}
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="author-role" className="text-xs font-bold text-brand-forest">
+                      Your Role or Tag
+                    </Label>
+                    <Input
+                      id="author-role"
+                      placeholder="e.g. Regular Guest, Remote Professional, Coffee Lover"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                      className="rounded-xl border-neutral-300 focus-visible:ring-brand-forest"
+                    />
+                  </div>
+
+                  {/* Star Rating Picker */}
+                  <div className="space-y-1.5 text-left">
+                    <Label className="text-xs font-bold text-brand-forest">
+                      Rating
+                    </Label>
+                    <div className="flex items-center gap-1 pt-1">
+                      {[1, 2, 3, 4, 5].map((starValue) => {
+                        const isFilled = (hoverRating ?? rating) >= starValue;
+                        return (
+                          <button
+                            key={starValue}
+                            type="button"
+                            onClick={() => setRating(starValue)}
+                            onMouseEnter={() => setHoverRating(starValue)}
+                            onMouseLeave={() => setHoverRating(null)}
+                            className="p-1 rounded-md transition-transform hover:scale-110 focus:outline-none cursor-pointer"
+                            aria-label={`Rate ${starValue} stars`}
+                          >
+                            <Star
+                              className={cn(
+                                "w-6 h-6 transition-colors",
+                                isFilled
+                                  ? "fill-brand-gold text-brand-gold"
+                                  : "text-neutral-300"
+                              )}
+                            />
+                          </button>
+                        );
+                      })}
+                      <span className="text-xs font-bold text-brand-forest ml-2">
+                        {rating} / 5 Stars
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Review Text */}
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="review-text" className="text-xs font-bold text-brand-forest">
+                      Your Review <span className="text-rose-500">*</span>
+                    </Label>
+                    <Textarea
+                      id="review-text"
+                      placeholder="Tell us what you liked about the coffee, taste, or atmosphere..."
+                      value={reviewText}
+                      onChange={(e) => setReviewText(e.target.value)}
+                      required
+                      className="min-h-[100px] rounded-xl border-neutral-300 focus-visible:ring-brand-forest"
+                    />
+                  </div>
+
+                  {/* Footer Actions */}
+                  <DialogFooter className="pt-3 gap-2">
+                    <DialogClose asChild>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="rounded-xl border-neutral-300 text-neutral-700 hover:bg-neutral-100"
+                      >
+                        Cancel
+                      </Button>
+                    </DialogClose>
+                    <Button
+                      type="submit"
+                      disabled={!name.trim() || !reviewText.trim()}
+                      className="rounded-xl bg-brand-forest hover:bg-brand-dark text-white font-bold"
+                    >
+                      Publish Review
+                    </Button>
+                  </DialogFooter>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
       </div>
     </section>

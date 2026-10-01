@@ -21,10 +21,11 @@ coffee_adda/
 │   ├── manage.py
 │   ├── db.sqlite3                # Pre-seeded SQLite database
 │   ├── requirements.txt          # Backend Python dependencies
-│   ├── coffee_adda_backend/      # Project settings, CORS & URL routing
+│   ├── config/                   # Project settings, CORS & URL routing
 │   │   ├── settings.py
 │   │   ├── urls.py
-│   │   └── wsgi.py
+│   │   ├── wsgi.py
+│   │   └── asgi.py
 │   └── api/                      # App: Models, Serializers, Views & Seed data
 │       ├── models.py             # Category, MenuItem, Order, OrderItem, Review
 │       ├── serializers.py

@@ -19,6 +19,14 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
     } else {
       if (page === 'menu') {
         window.location.hash = '#menu';
+      } else if (page === 'why-us') {
+        window.location.hash = '#why-us';
+      } else if (page === 'about') {
+        window.location.hash = '#about';
+      } else if (page === 'reviews') {
+        window.location.hash = '#reviews';
+      } else if (page === 'location') {
+        window.location.hash = '#location';
       } else if (anchor) {
         window.location.hash = anchor;
       } else {
@@ -74,9 +82,9 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
               Home
             </a>
             <a
-              className={normalLinkClass}
+              className={currentPage === 'about' ? activeLinkClass : normalLinkClass}
               href="#about"
-              onClick={(e) => handleNav(e, 'home', '#about')}
+              onClick={(e) => handleNav(e, 'about')}
             >
               About
             </a>
@@ -88,23 +96,23 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
               Menu
             </a>
             <a
-              className={normalLinkClass}
+              className={currentPage === 'why-us' ? activeLinkClass : normalLinkClass}
               href="#why-us"
-              onClick={(e) => handleNav(e, 'home', '#why-us')}
+              onClick={(e) => handleNav(e, 'why-us')}
             >
               Why Us
             </a>
             <a
-              className={normalLinkClass}
+              className={currentPage === 'reviews' ? activeLinkClass : normalLinkClass}
               href="#reviews"
-              onClick={(e) => handleNav(e, 'home', '#reviews')}
+              onClick={(e) => handleNav(e, 'reviews')}
             >
               Reviews
             </a>
             <a
-              className={normalLinkClass}
+              className={currentPage === 'location' ? activeLinkClass : normalLinkClass}
               href="#location"
-              onClick={(e) => handleNav(e, 'home', '#location')}
+              onClick={(e) => handleNav(e, 'location')}
             >
               Location
             </a>
@@ -116,7 +124,7 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
             <a
               className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold text-white bg-brand-forest hover:bg-brand-dark shadow-md hover:shadow-glow-gold hover:-translate-y-0.5 transition-all duration-300 border border-brand-gold/40 cursor-pointer"
               href="#location"
-              onClick={(e) => handleNav(e, 'home', '#location')}
+              onClick={(e) => handleNav(e, 'location')}
             >
               <span>Visit Us</span>
               <svg className="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,9 +178,13 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
               Home
             </a>
             <a
-              className="block px-3 py-2 text-base font-semibold text-neutral-700 hover:bg-brand-sage rounded-md"
+              className={`block px-3 py-2 text-base font-semibold rounded-md ${
+                currentPage === 'about'
+                  ? 'bg-brand-forest text-white'
+                  : 'text-neutral-700 hover:bg-brand-sage'
+              }`}
               href="#about"
-              onClick={(e) => handleNav(e, 'home', '#about')}
+              onClick={(e) => handleNav(e, 'about')}
             >
               About Us
             </a>
@@ -188,23 +200,35 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
               Our Complete Menu
             </a>
             <a
-              className="block px-3 py-2 text-base font-semibold text-neutral-700 hover:bg-brand-sage rounded-md"
+              className={`block px-3 py-2 text-base font-semibold rounded-md ${
+                currentPage === 'why-us'
+                  ? 'bg-brand-forest text-white'
+                  : 'text-neutral-700 hover:bg-brand-sage'
+              }`}
               href="#why-us"
-              onClick={(e) => handleNav(e, 'home', '#why-us')}
+              onClick={(e) => handleNav(e, 'why-us')}
             >
               Why Coffee Adda
             </a>
             <a
-              className="block px-3 py-2 text-base font-semibold text-neutral-700 hover:bg-brand-sage rounded-md"
+              className={`block px-3 py-2 text-base font-semibold rounded-md ${
+                currentPage === 'reviews'
+                  ? 'bg-brand-forest text-white'
+                  : 'text-neutral-700 hover:bg-brand-sage'
+              }`}
               href="#reviews"
-              onClick={(e) => handleNav(e, 'home', '#reviews')}
+              onClick={(e) => handleNav(e, 'reviews')}
             >
               Guest Reviews
             </a>
             <a
-              className="block px-3 py-2 text-base font-semibold text-neutral-700 hover:bg-brand-sage rounded-md"
+              className={`block px-3 py-2 text-base font-semibold rounded-md ${
+                currentPage === 'location'
+                  ? 'bg-brand-forest text-white'
+                  : 'text-neutral-700 hover:bg-brand-sage'
+              }`}
               href="#location"
-              onClick={(e) => handleNav(e, 'home', '#location')}
+              onClick={(e) => handleNav(e, 'location')}
             >
               Find Location
             </a>
@@ -212,7 +236,7 @@ export default function Navbar({ currentPage = 'home', onNavigate }) {
               <a
                 className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-brand-forest text-white font-bold shadow-md"
                 href="#location"
-                onClick={(e) => handleNav(e, 'home', '#location')}
+                onClick={(e) => handleNav(e, 'location')}
               >
                 <span>Visit Our Café</span>
                 <svg className="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">

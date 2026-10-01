@@ -115,12 +115,10 @@ export default function ImageStreamHero({
 
         {/* Center Hero Content — Clean typography with solid brand forest green */}
         <div className="relative z-10 flex-1 max-w-2xl mx-auto text-center space-y-6 py-4">
-          {/* Clean Brand Badge: Coffee Adda • Budhanilkantha */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-sage/80 border border-brand-forest/15 shadow-xs">
+          {/* Clean Brand Tagline: Coffee Adda • Budhanilkantha */}
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-widest text-neutral-500 uppercase">
             <Coffee className="w-4 h-4 text-brand-forest" />
-            <span className="text-xs sm:text-sm font-bold tracking-wider text-brand-forest uppercase">
-              Coffee Adda • Budhanilkantha
-            </span>
+            <span>Coffee Adda • Budhanilkantha</span>
           </div>
 
           {/* Main Headline — Solid Dark Green Brand Color */}
@@ -141,7 +139,7 @@ export default function ImageStreamHero({
               onClick={(e) => {
                 if (onNavigate) {
                   e.preventDefault();
-                  onNavigate('home', '#location');
+                  onNavigate('location');
                 }
               }}
               className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-brand-forest text-white font-bold text-sm sm:text-base shadow-md hover:bg-brand-dark hover:shadow-glow-gold hover:-translate-y-0.5 transition-all duration-300 border border-brand-gold/60 flex items-center justify-center gap-2 group cursor-pointer"
@@ -165,15 +163,24 @@ export default function ImageStreamHero({
 
           {/* Trust Indicators */}
           <div className="pt-5 border-t border-brand-forest/10 grid grid-cols-2 gap-3 max-w-md mx-auto">
-            <div className="flex items-center justify-center sm:justify-start gap-2.5 bg-white/80 backdrop-blur-xs p-2.5 rounded-xl border border-brand-forest/10 shadow-xs">
+            <button
+              type="button"
+              onClick={(e) => {
+                if (onNavigate) {
+                  e.preventDefault();
+                  onNavigate('reviews');
+                }
+              }}
+              className="flex items-center justify-center sm:justify-start gap-2.5 bg-white/80 backdrop-blur-xs p-2.5 rounded-xl border border-brand-forest/10 shadow-xs hover:border-brand-forest/40 hover:bg-white transition-all cursor-pointer text-left"
+            >
               <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
                 <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
               </div>
               <div className="text-left">
                 <p className="font-bold text-xs sm:text-sm text-neutral-900 leading-tight">4.8 Rating</p>
-                <p className="text-[10px] text-neutral-500">36+ reviews</p>
+                <p className="text-[10px] text-neutral-500 hover:text-brand-forest">36+ reviews →</p>
               </div>
-            </div>
+            </button>
 
             <div className="flex items-center justify-center sm:justify-start gap-2.5 bg-white/80 backdrop-blur-xs p-2.5 rounded-xl border border-brand-forest/10 shadow-xs">
               <div className="w-8 h-8 rounded-lg bg-emerald-100 text-brand-forest flex items-center justify-center shrink-0">

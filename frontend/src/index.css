@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 153 47% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 153 47% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 153 47% 15%;
+    --primary: 153 47% 15%;
+    --primary-foreground: 40 33% 97%;
+    --secondary: 140 22% 93%;
+    --secondary-foreground: 153 47% 15%;
+    --muted: 140 18% 93%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 43 65% 52%;
+    --accent-foreground: 153 47% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 140 14% 88%;
+    --input: 140 14% 86%;
+    --ring: 153 47% 15%;
+    --radius: 0.75rem;
+  }
+}
+
 /* Custom Keyframe Animations */
 @keyframes subtleFloat {
   0%, 100% {
