@@ -105,6 +105,11 @@ export default function CoffeeAdda() {
       } else if (hash === '#location') {
         setCurrentPage('location');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#community-section') {
+        // In-page anchor on product detail page - do not leave product-detail
+        const el = document.getElementById('community-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        return;
       } else {
         setCurrentPage('home');
         if (hash && hash !== '#home') {
