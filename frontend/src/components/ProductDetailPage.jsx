@@ -18,7 +18,7 @@ import {
   Flame,
   Zap,
 } from 'lucide-react';
-import { menuItems, menuCategories } from '../data/menuData';
+import { menuItems, menuCategories, getFallbackImage } from '../data/menuData';
 import { getProductStory } from '../data/productStories';
 
 export default function ProductDetailPage({ productId, onNavigate }) {
@@ -192,6 +192,10 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                   src={product.image}
                   alt={product.alt || product.name}
                   className="w-full h-full object-cover transition-transform duration-700"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = getFallbackImage(product.category);
+                  }}
                 />
                 
                 {/* Subtle dark gradient overlay */}
@@ -592,6 +596,10 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                         alt={relItem.alt || relItem.name}
                         className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500"
                         loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = getFallbackImage(relItem.category);
+                        }}
                       />
                       <span className="absolute bottom-2.5 right-2.5 bg-white/95 backdrop-blur-md text-brand-forest text-xs font-extrabold px-2.5 py-0.5 rounded-lg shadow-xs">
                         Rs. {relItem.price}

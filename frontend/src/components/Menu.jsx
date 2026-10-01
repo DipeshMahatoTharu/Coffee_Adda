@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { menuCategories, menuItems } from '../data/menuData';
+import { menuCategories, menuItems, getFallbackImage } from '../data/menuData';
 import SearchWithCategory from './ui/search-with-category';
 import {
   Search,
@@ -252,6 +252,10 @@ export default function Menu({ onNavigate }) {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         src={item.image}
                         loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = getFallbackImage(item.category);
+                        }}
                       />
                       {/* Subtle Dark Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />

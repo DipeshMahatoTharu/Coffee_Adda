@@ -406,7 +406,7 @@ export const menuItems = [
     dietary: 'veg',
     description: 'Rich dark chocolate and cold espresso combined over ice with fresh milk and chocolate swirl.',
     details: ['🍫 Dark Chocolate', '🧊 Cold & Rich'],
-    image: 'https://images.unsplash.com/photo-1530373239216-42518e6e4063?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80',
     alt: 'Tall glass of iced mocha with dark chocolate drizzle'
   },
   {
@@ -632,7 +632,7 @@ export const menuItems = [
     dietary: 'veg',
     description: 'Tropical ripe mango pulp blended rich and thick, finished with crunchy roasted granola crunch.',
     details: ['🥭 Sweet Mango', '✨ Granola Crunch'],
-    image: 'https://images.unsplash.com/photo-1546883468-a37f3f1619d8?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80',
     alt: 'Mango smoothie with golden mango puree'
   },
   {
@@ -777,7 +777,7 @@ export const menuItems = [
     dietary: 'veg',
     description: 'Ripe bananas blended with thick mountain yogurt and natural honey for a wholesome treat.',
     details: ['🍌 Sweet Bananas', '🍯 Natural Honey'],
-    image: 'https://images.unsplash.com/photo-1546883468-a37f3f1619d8?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1528498033373-3c6c08e93d79?auto=format&fit=crop&w=600&q=80',
     alt: 'Banana lassi with banana slice garnish'
   },
   {
@@ -1118,7 +1118,7 @@ export const menuItems = [
     dietary: 'non-veg',
     description: 'Slow-cooked minced chicken simmered in rich San Marzano tomato sauce with aromatic garlic, basil, and Italian oregano over pasta.',
     details: ['🍗 Minced Chicken Ragù', '🍅 Italian Herb Tomato'],
-    image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281081?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80',
     alt: 'Chicken Bolognese pasta with rich red meat sauce'
   },
   {
@@ -1533,7 +1533,7 @@ export const menuItems = [
     dietary: 'veg',
     description: 'Roasted crunchy peanuts tossed with diced tomatoes, onions, cilantro, green chilies, and tangy chaat masala.',
     details: ['🥜 Roasted Peanuts', '🍋 Tangy Chaat Masala'],
-    image: 'https://images.unsplash.com/photo-1569460275615-74dccb1a82f2?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=600&q=80',
     alt: 'Spicy peanut sadheko snack with diced tomatoes and herbs'
   },
   {
@@ -1572,7 +1572,7 @@ export const menuItems = [
     dietary: 'veg',
     description: 'Golden, crispy hand-cut potatoes fried to perfection, lightly salted and served with creamy dip.',
     details: ['🍟 Golden Crispy', '🧂 Sea Salted'],
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80',
     alt: 'Basket of golden crispy french fries with dip'
   },
   {
@@ -1728,7 +1728,7 @@ export const menuItems = [
     dietary: 'veg',
     description: 'Crispy potato chips tossed with garlic, ginger, chopped chilies, onions, and spicy Indo-Chinese sauce.',
     details: ['🥔 Crispy Chips', '🌶️ Spicy Garlic Glaze'],
-    image: 'https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=600&q=80',
     alt: 'Chips chilly tossed in spicy sweet chili sauce'
   },
   {
@@ -1862,7 +1862,7 @@ export const menuItems = [
     dietary: 'veg',
     description: 'The King of Beers: crisp, clean American lager brewed with the finest barley malt and rice.',
     details: ['🍺 650ml Bottle', '🧊 Ice Chilled'],
-    image: 'https://images.unsplash.com/photo-1608270178650-671607999650?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled Budweiser beer bottle with condensation'
   },
   {
@@ -2146,3 +2146,24 @@ export const reviewsData = [
     avatarBg: "bg-emerald-100 text-emerald-900"
   }
 ];
+
+export const CATEGORY_FALLBACK_IMAGES = {
+  'coffee-hot': 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+  'cold-beverages': 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80',
+  'tea-special': 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80',
+  'shakes-lassi': 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80',
+  'bakery-breakfast': 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80',
+  'momo-special': 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80',
+  'chowmein-noodles': 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80',
+  'pasta-corndogs': 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80',
+  'burgers-sandwiches': 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80',
+  'pizza-laphing': 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80',
+  'snacks-sides': 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80',
+  'bar-lounge': 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&q=80',
+  default: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80',
+};
+
+export const getFallbackImage = (category) => {
+  return CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES.default;
+};
+
