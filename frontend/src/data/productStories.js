@@ -39,6 +39,34 @@ export const SPECIFIC_PRODUCT_STORIES = {
     artisanQuote: '“A great espresso is the purest truth in coffee—it hides nothing and reveals everything.”',
   },
 
+  'hot-doppio': {
+    history: `The Doppio—Italian for "double"—is the purest, boldest expression of pure espresso craftsmanship. Originating in Rome and Milan as the drink of choice for connoisseurs seeking double the concentration, body, and intensity of a standard single shot, a true Doppio requires recalibrating grind size, flow rate, and portafilter geometry. At Coffee Adda in Budhanilkantha, our baristas craft the Doppio using 20 grams of shade-grown Himalayan Arabica beans grown in Nuwakot, delivering a luscious double-layer tiger-stripe crema, profound dark chocolate notes, and an invigorating caffeine punch for the great minds gathering at our Adda.`,
+    howItIsMade: [
+      {
+        step: 1,
+        title: 'Double-Basket Dosing (20 Grams)',
+        detail: 'We dose 20 grams of freshly ground high-altitude Nepali Arabica into a precision bottomless double portafilter basket.',
+      },
+      {
+        step: 2,
+        title: 'WDT Needle Distribution & Leveling',
+        detail: 'The grounds are declumped using ultra-fine acupuncture needles to prevent water micro-channeling across the wider surface.',
+      },
+      {
+        step: 3,
+        title: 'Precision 30-lb Hydro-Tamp',
+        detail: 'Evenly compressed with a calibrated tamper to ensure perfectly uniform puck resistance across the 58mm basket.',
+      },
+      {
+        step: 4,
+        title: '9-Bar Synchronized Twin Extraction',
+        detail: 'Extracted at 93.5°C under 9 bars of hydraulic pressure for 28 seconds, yielding 60ml of rich, syrupy espresso with thick golden crema.',
+      },
+    ],
+    tastingNotes: ['Intense Dark Chocolate', 'Roasted Walnuts', 'Brown Sugar Crema', 'Bold Mountain Body'],
+    artisanQuote: '“Double the intensity, double the craft. The Doppio is the heartbeat of our morning coffee ritual.”',
+  },
+
   'hot-cappuccino': {
     history: `The cappuccino gets its name from the brown habits worn by the Capuchin friars in 17th-century Vienna and Italy. Historically crafted as "Kapuziner"—coffee with cream and sugar—it evolved into the modern Italian classic of equal thirds espresso, steamed milk, and dense foam. At Coffee Adda, our baristas elevate the cappuccino into an artistic ritual: local fresh dairy is texturized to a glossy micro-foam and poured over fresh Himalayan espresso, finished with handcrafted rosetta or swan latte art.`,
     howItIsMade: [
