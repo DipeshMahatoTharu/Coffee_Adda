@@ -17,9 +17,11 @@ import {
   ShieldCheck,
   Flame,
   Zap,
+  Camera,
 } from 'lucide-react';
 import { menuItems, menuCategories, getFallbackImage } from '../data/menuData';
 import { getProductStory } from '../data/productStories';
+import ProductCommunitySection from './ProductCommunitySection';
 
 export default function ProductDetailPage({ productId, onNavigate }) {
   const [copied, setCopied] = useState(false);
@@ -281,11 +283,15 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                     {product.subCategory}
                   </span>
 
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-amber-500 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200/60">
-                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  <a
+                    href="#community-section"
+                    className="flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100/80 px-3 py-1 rounded-full border border-amber-200/80 transition-colors cursor-pointer group"
+                    title="Jump to Guest Photos & Reviews"
+                  >
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400 group-hover:scale-110 transition-transform" />
                     <span>4.9</span>
-                    <span className="text-neutral-400 font-normal">/ 5.0 (Budhanilkantha Guest Fav)</span>
-                  </div>
+                    <span className="text-neutral-500 font-normal">/ 5.0 • Guest Snaps &amp; Reviews ↓</span>
+                  </a>
                 </motion.div>
 
                 {/* Title */}
@@ -378,6 +384,18 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                   >
                     <Phone className="w-4 h-4 text-brand-forest" />
                     <span>Call Ahead</span>
+                  </motion.a>
+
+                  {/* Jump to Community Snaps */}
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="#community-section"
+                    aria-label="View guest photos and reviews"
+                    className="w-full sm:w-auto py-3.5 px-4 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold text-sm border border-amber-200 shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Camera className="w-4 h-4 text-amber-600" />
+                    <span>Snaps</span>
                   </motion.a>
 
                   {/* Share Button */}
@@ -546,6 +564,13 @@ export default function ProductDetailPage({ productId, onNavigate }) {
             )}
           </motion.div>
 
+        </div>
+
+        {/* ======================================================== */}
+        {/* GUEST FOOD MOMENTS GALLERY & COMMUNITY REVIEWS */}
+        {/* ======================================================== */}
+        <div id="community-section" className="scroll-mt-24">
+          <ProductCommunitySection product={product} />
         </div>
 
         {/* ======================================================== */}
