@@ -8,7 +8,6 @@ import {
   Check,
   Star,
   Clock,
-  Sparkles,
   BookOpen,
   ChefHat,
   Coffee,
@@ -226,9 +225,8 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                     transition={{ type: "spring", stiffness: 300, damping: 18, delay: 0.25 }}
                     className="absolute top-4 left-4"
                   >
-                    <span className="bg-brand-forest/90 backdrop-blur-md text-brand-gold text-xs font-extrabold uppercase px-3 py-1 rounded-full tracking-wider border border-brand-gold/40 shadow-md flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-brand-gold fill-brand-gold" />
-                      <span>{product.tag}</span>
+                    <span className="bg-brand-forest/90 backdrop-blur-md text-brand-gold text-xs font-extrabold uppercase px-3 py-1 rounded-full tracking-wider border border-brand-gold/40 shadow-md">
+                      {product.tag}
                     </span>
                   </motion.div>
                 )}
