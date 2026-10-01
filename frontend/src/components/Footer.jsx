@@ -122,7 +122,7 @@ export default function Footer({ onNavigate }) {
                   title="View Cappuccino details & history"
                 >
                   <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Cappuccino / Double</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— Rs. 180</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- Rs. 180</span>
                 </button>
               </li>
               <li>
@@ -133,7 +133,7 @@ export default function Footer({ onNavigate }) {
                   title="View Café Latte details & history"
                 >
                   <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Café Latte</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— Rs. 180</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- Rs. 180</span>
                 </button>
               </li>
               <li>
@@ -144,7 +144,7 @@ export default function Footer({ onNavigate }) {
                   title="View Iced Latte & Frappes details & history"
                 >
                   <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Iced Latte &amp; Frappes</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— from Rs. 200</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 200</span>
                 </button>
               </li>
               <li>
@@ -155,7 +155,7 @@ export default function Footer({ onNavigate }) {
                   title="View Tibetan Laphing details & history"
                 >
                   <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Tibetan Laphing (Jhol/Dry)</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— from Rs. 65</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 65</span>
                 </button>
               </li>
               <li>
@@ -166,7 +166,7 @@ export default function Footer({ onNavigate }) {
                   title="View Mo:Mo Platter details & history"
                 >
                   <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Mo:Mo Platter (25 pcs)</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">— from Rs. 600</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 600</span>
                 </button>
               </li>
             </ul>
