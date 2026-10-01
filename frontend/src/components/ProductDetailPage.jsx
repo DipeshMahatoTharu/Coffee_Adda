@@ -245,17 +245,7 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                   </motion.div>
                 )}
 
-                {/* Floating Dietary Badge */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 }}
-                  className="absolute top-4 right-4"
-                >
-                  <span className="bg-white/95 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full shadow-md border border-neutral-200/80 flex items-center gap-1">
-                    {product.dietary === 'veg' ? '🌱 Pure Veg' : product.dietary === 'egg' ? '🍳 Contains Egg' : '🍗 Non-Veg'}
-                  </span>
-                </motion.div>
+
 
                 {/* Like Button with Tap Animation */}
                 <motion.button
