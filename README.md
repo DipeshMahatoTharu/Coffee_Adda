@@ -192,6 +192,7 @@ flowchart TD
 | **Icons** | **Lucide React** | Clean, lightweight SVG iconography across all controls and badges |
 | **Backend** | **Python 3.12 + Django 6** | RESTful endpoints, seed management commands, administrative dashboard |
 | **API Framework** | **Django REST Framework** | ModelSerializers, CORS headers, API routing |
+| **Database** | **PostgreSQL + psycopg2** | Production relational storage configured via environment variables (.env) |
 | **Deployment** | **Vercel** | Edge hosting, production previews, zero-downtime deployments |
 
 ---
@@ -326,8 +327,13 @@ python -m venv venv
 # macOS/Linux:
 source venv/bin/activate
 
-# Install Python requirements
+# Install Python requirements (including PostgreSQL psycopg2 driver)
 pip install -r requirements.txt
+
+# Configure environment variables
+# Copy .env.example to .env and configure your PostgreSQL database credentials:
+copy .env.example .env      # On Windows
+# cp .env.example .env      # On macOS/Linux
 
 # Run migrations & seed data
 python manage.py migrate
