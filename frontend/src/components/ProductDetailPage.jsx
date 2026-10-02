@@ -19,7 +19,7 @@ import {
   Zap,
   Camera,
 } from 'lucide-react';
-import { menuItems, menuCategories, getStoredMenuItems, getFallbackImage } from '../data/menuData';
+import { menuItems, menuCategories, getStoredMenuItems, getFallbackImage, subscribeToMenuUpdates } from '../data/menuData';
 import { getProductStory } from '../data/productStories';
 import ProductCommunitySection from './ProductCommunitySection';
 
@@ -29,11 +29,9 @@ export default function ProductDetailPage({ productId, onNavigate }) {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    const handleUpdate = () => {
-      setItems(getStoredMenuItems());
-    };
-    window.addEventListener('coffee_adda_menu_updated', handleUpdate);
-    return () => window.removeEventListener('coffee_adda_menu_updated', handleUpdate);
+    return subscribeToMenuUpdates((updated) => {
+      setItems(updated);
+    });
   }, []);
 
   // Find product in items or fallback

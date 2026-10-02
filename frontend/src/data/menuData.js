@@ -2168,6 +2168,7 @@ export const getFallbackImage = (category) => {
 };
 
 export const MENU_STORAGE_KEY = 'coffee_adda_menu_items';
+export const MENU_BROADCAST_CHANNEL = 'coffee_adda_menu_channel';
 
 export const getStoredMenuItems = () => {
   if (typeof window === 'undefined') return menuItems;
@@ -2185,11 +2186,26 @@ export const getStoredMenuItems = () => {
   return menuItems;
 };
 
+export const getStoredMenuItem = (id, fallback = null) => {
+  const items = getStoredMenuItems();
+  return items.find((item) => item.id === id) || fallback;
+};
+
 export const saveStoredMenuItems = (items) => {
   if (typeof window === 'undefined') return;
   try {
     localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(items));
-    window.dispatchEvent(new Event('coffee_adda_menu_updated'));
+    window.dispatchEvent(new CustomEvent('coffee_adda_menu_updated', { detail: items }));
+
+    if (typeof BroadcastChannel !== 'undefined') {
+      try {
+        const bc = new BroadcastChannel(MENU_BROADCAST_CHANNEL);
+        bc.postMessage({ type: 'MENU_UPDATED', items });
+        bc.close();
+      } catch {
+        // Fallback silently if BroadcastChannel is restricted
+      }
+    }
   } catch (err) {
     console.error('Error saving menu items to storage:', err);
   }
@@ -2199,11 +2215,65 @@ export const resetStoredMenuItems = () => {
   if (typeof window === 'undefined') return menuItems;
   try {
     localStorage.removeItem(MENU_STORAGE_KEY);
-    window.dispatchEvent(new Event('coffee_adda_menu_updated'));
+    window.dispatchEvent(new CustomEvent('coffee_adda_menu_updated', { detail: menuItems }));
+
+    if (typeof BroadcastChannel !== 'undefined') {
+      try {
+        const bc = new BroadcastChannel(MENU_BROADCAST_CHANNEL);
+        bc.postMessage({ type: 'MENU_UPDATED', items: menuItems });
+        bc.close();
+      } catch {}
+    }
   } catch (err) {
     console.error('Error resetting stored menu items:', err);
   }
   return menuItems;
+};
+
+/**
+ * Universally subscribes to menu updates across current window,
+ * other browser tabs (via storage event and BroadcastChannel), and direct dispatches.
+ */
+export const subscribeToMenuUpdates = (callback) => {
+  if (typeof window === 'undefined') return () => {};
+
+  const handleCustom = (e) => {
+    const updated = e?.detail || getStoredMenuItems();
+    callback(updated);
+  };
+
+  const handleStorage = (e) => {
+    if (!e || e.key === MENU_STORAGE_KEY) {
+      callback(getStoredMenuItems());
+    }
+  };
+
+  let bc = null;
+  if (typeof BroadcastChannel !== 'undefined') {
+    try {
+      bc = new BroadcastChannel(MENU_BROADCAST_CHANNEL);
+      bc.onmessage = (event) => {
+        if (event?.data?.type === 'MENU_UPDATED') {
+          callback(event.data.items || getStoredMenuItems());
+        }
+      };
+    } catch {
+      bc = null;
+    }
+  }
+
+  window.addEventListener('coffee_adda_menu_updated', handleCustom);
+  window.addEventListener('storage', handleStorage);
+
+  return () => {
+    window.removeEventListener('coffee_adda_menu_updated', handleCustom);
+    window.removeEventListener('storage', handleStorage);
+    if (bc) {
+      try {
+        bc.close();
+      } catch {}
+    }
+  };
 };
 
 

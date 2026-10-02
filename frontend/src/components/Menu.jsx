@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { menuCategories, menuItems, getStoredMenuItems, getFallbackImage } from '../data/menuData';
+import { menuCategories, menuItems, getStoredMenuItems, getFallbackImage, subscribeToMenuUpdates } from '../data/menuData';
 import SearchWithCategory from './ui/search-with-category';
 import {
   Search,
@@ -23,13 +23,11 @@ export default function Menu({ onNavigate }) {
   const [dietaryFilter, setDietaryFilter] = useState('all'); // 'all' | 'veg' | 'egg' | 'non-veg'
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Sync menu items if updated in Admin
+  // Sync menu items if updated in Admin (same-tab, cross-tab, and BroadcastChannel)
   useEffect(() => {
-    const handleUpdate = () => {
-      setItems(getStoredMenuItems());
-    };
-    window.addEventListener('coffee_adda_menu_updated', handleUpdate);
-    return () => window.removeEventListener('coffee_adda_menu_updated', handleUpdate);
+    return subscribeToMenuUpdates((updated) => {
+      setItems(updated);
+    });
   }, []);
 
   // Filter menu items based on category, search query, and dietary selection

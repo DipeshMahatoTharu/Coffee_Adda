@@ -8,6 +8,9 @@ media/
 staticfiles/
 venv/
 .env
+.env*
+*.env
+frontend/.env
 env/
 ENV/
 *.log

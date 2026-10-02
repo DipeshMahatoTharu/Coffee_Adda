@@ -1,9 +1,35 @@
-import React, { useState } from 'react';
-import CardFanCarousel from './ui/card-fan-carousel';
+import React, { useState, useEffect, useMemo } from 'react';
+import CardFanCarousel, { COFFEE_ADDA_PRODUCTS } from './ui/card-fan-carousel';
 import { ArrowRight } from 'lucide-react';
+import { getStoredMenuItems, subscribeToMenuUpdates } from '../data/menuData';
 
 export default function FavoritesSection({ onNavigate }) {
   const [favoriteCategory, setFavoriteCategory] = useState('all');
+  const [storedItems, setStoredItems] = useState(getStoredMenuItems);
+
+  useEffect(() => {
+    return subscribeToMenuUpdates((updated) => {
+      setStoredItems(updated);
+    });
+  }, []);
+
+  // Merge admin edits (price, image, name, description) into carousel items
+  const carouselItems = useMemo(() => {
+    const itemMap = new Map((storedItems || []).map((i) => [i.id, i]));
+    return COFFEE_ADDA_PRODUCTS.map((prod) => {
+      const live = itemMap.get(prod.id);
+      if (!live) return prod;
+      return {
+        ...prod,
+        name: live.name || prod.name,
+        price: live.price !== undefined ? live.price : prod.price,
+        image: live.image || prod.image,
+        description: live.description || prod.description,
+        badge: live.tag || prod.badge,
+        tags: Array.isArray(live.details) && live.details.length > 0 ? live.details : prod.tags,
+      };
+    });
+  }, [storedItems]);
 
   const handleViewMore = (e) => {
     e.preventDefault();
@@ -33,6 +59,7 @@ export default function FavoritesSection({ onNavigate }) {
         {/* Card Fan Carousel */}
         <div className="mb-4">
           <CardFanCarousel
+            items={carouselItems}
             activeCategory={favoriteCategory}
             onCategoryChange={setFavoriteCategory}
             showCategoryFilters={true}

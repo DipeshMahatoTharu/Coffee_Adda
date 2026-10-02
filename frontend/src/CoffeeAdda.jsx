@@ -154,13 +154,15 @@ export default function CoffeeAdda() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const isAdmin = currentPage === 'admin';
+
   return (
-    <div className="min-h-screen bg-brand-cream text-neutral-800 font-sans antialiased selection:bg-brand-gold selection:text-brand-dark overflow-x-hidden w-full max-w-full">
+    <div className={`min-h-screen ${isAdmin ? 'bg-[#150404] text-neutral-100 selection:bg-red-700 selection:text-white' : 'bg-brand-cream text-neutral-800 selection:bg-brand-gold selection:text-brand-dark'} font-sans antialiased overflow-x-hidden w-full max-w-full`}>
       {/* Top Announcement Banner */}
-      <Banner />
+      <Banner isAdmin={isAdmin} />
 
       {/* Sticky Header Navigation */}
-      <Navbar currentPage={currentPage} onNavigate={navigateTo} />
+      <Navbar currentPage={currentPage} onNavigate={navigateTo} isAdmin={isAdmin} />
 
       {/* Main Content View */}
       <main>
@@ -225,7 +227,7 @@ export default function CoffeeAdda() {
       </main>
 
       {/* Footer */}
-      <Footer onNavigate={navigateTo} />
+      <Footer onNavigate={navigateTo} isAdmin={isAdmin} />
     </div>
   );
 }
