@@ -21,9 +21,8 @@ export default function Default() {
           secondaryCtaLabel="Reserve a Table"
           secondaryHref="#location"
           deadline={deadline}
-          overlayColor="rgba(20, 56, 38, 0.95)"
-          posterSrc="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80"
-          videoSrc="/hero-video.mp4"
+          imageSrc="/coffee-banner.jpg"
+          imageAlt="Fresh artisanal coffee at Coffee Adda"
         />
       </div>
     </div>

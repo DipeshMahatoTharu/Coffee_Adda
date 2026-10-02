@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -12,11 +12,12 @@ export type AnimatedBannerProps = {
   href?: string;
   secondaryCtaLabel?: string;
   secondaryHref?: string;
-  videoSrc: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  videoSrc?: string;
   posterSrc?: string;
   /** Countdown target. Renders a DD:HH:MM:SS timer that ticks down to it. */
   deadline?: Date | number | string;
-  /** Solid color faded from the text side of the banner. */
   overlayColor?: string;
   className?: string;
   onNavigate?: (page: string, anchor?: string) => void;
@@ -59,7 +60,7 @@ function Countdown({ target }: { target: number }) {
     >
       {segments.map((segment, index) => (
         <span className="flex items-center gap-1" key={index}>
-          <span className="rounded-lg bg-black/40 border border-white/15 px-2 py-1 backdrop-blur-md shadow-xs">
+          <span className="rounded-lg bg-black/45 border border-white/20 px-2 py-1 backdrop-blur-md shadow-xs">
             {pad(segment)}
           </span>
           {index < segments.length - 1 ? (
@@ -79,10 +80,11 @@ export function AnimatedBanner({
   href = "#menu",
   secondaryCtaLabel,
   secondaryHref = "#location",
+  imageSrc = "/coffee-banner.jpg",
+  imageAlt = "Artisanal freshly brewed coffee at Coffee Adda",
   videoSrc,
   posterSrc,
   deadline,
-  overlayColor = "rgba(20, 56, 38, 0.95)",
   className,
   onNavigate,
 }: AnimatedBannerProps) {
@@ -105,24 +107,21 @@ export function AnimatedBanner({
     }
   };
 
+  const effectiveImage = imageSrc || posterSrc || "/coffee-banner.jpg";
+
   return (
     <div
       className={cn(
-        "group relative block w-full overflow-hidden rounded-3xl border border-brand-gold/30 shadow-2xl [--banner-overlay:var(--overlay)] transition-all duration-300",
+        "group relative block w-full overflow-hidden rounded-3xl border border-brand-gold/30 bg-brand-forest shadow-2xl transition-all duration-300",
         className,
       )}
-      style={{ ["--overlay" as string]: overlayColor }}
     >
-      {/* Background Cinematic Video */}
-      <video
-        aria-hidden="true"
-        autoPlay
-        className="absolute inset-0 h-full w-full object-cover scale-[1.02]"
-        loop
-        muted
-        playsInline
-        poster={posterSrc}
-        src={videoSrc}
+      {/* Background Coffee Visual */}
+      <img
+        src={effectiveImage}
+        alt={imageAlt || title}
+        loading="eager"
+        className="absolute inset-0 h-full w-full object-cover object-right md:object-center transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
       {/* Decorative Brand Accent Vector Circles in the background */}
@@ -135,20 +134,26 @@ export function AnimatedBanner({
         className="absolute -right-12 -bottom-12 w-80 h-80 rounded-full border border-brand-gold/20 pointer-events-none"
       />
 
-      {/* Gradient Overlay: Deep rich brand-forest on the text side, gently translucent over video */}
+      {/* Gradient Overlay: Deep rich brand-dark on the text side, gently translucent over the coffee image on the right */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-[var(--banner-overlay)] via-[var(--banner-overlay)]/90 sm:via-[var(--banner-overlay)]/80 to-black/40"
+        className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 sm:via-brand-forest/80 to-transparent pointer-events-none"
+      />
+
+      {/* Subtle bottom vignette to ensure contrast for buttons */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-black/20 pointer-events-none"
       />
 
       {/* Interactive hover depth glow */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-[var(--banner-overlay)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-30"
+        className="absolute inset-0 bg-brand-forest/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
       />
 
       {/* Content Layer */}
-      <div className="relative z-10 flex min-h-[280px] sm:min-h-[320px] lg:min-h-[340px] flex-col justify-between p-6 sm:p-10 lg:p-12 text-white">
+      <div className="relative z-10 flex min-h-[300px] sm:min-h-[340px] lg:min-h-[360px] flex-col justify-between p-6 sm:p-10 lg:p-12 text-white">
         
         {/* Top bar: Badge and optional countdown timer */}
         <div className="flex items-center justify-between gap-4">
@@ -161,13 +166,13 @@ export function AnimatedBanner({
         </div>
 
         {/* Bottom / Main Content */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pt-4">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pt-6">
           <div className="max-w-2xl space-y-3">
             <h2 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-sm">
               {title}
             </h2>
             {subtitle ? (
-              <p className="text-sm sm:text-base leading-relaxed text-brand-cream/85 max-w-xl font-normal">
+              <p className="text-sm sm:text-base leading-relaxed text-brand-cream/90 max-w-xl font-normal drop-shadow-xs">
                 {subtitle}
               </p>
             ) : null}
@@ -188,7 +193,7 @@ export function AnimatedBanner({
               <a
                 href={secondaryHref}
                 onClick={handleSecondaryClick}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 hover:bg-brand-forest text-white font-bold text-xs sm:text-sm border border-emerald-600/40 hover:border-brand-gold/50 backdrop-blur-md shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/70 hover:bg-brand-forest text-white font-bold text-xs sm:text-sm border border-brand-gold/40 hover:border-brand-gold backdrop-blur-md shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
               >
                 <span>{secondaryCtaLabel}</span>
               </a>
