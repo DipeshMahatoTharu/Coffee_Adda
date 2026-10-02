@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import gsap from 'gsap';
 import { ChevronLeft, ChevronRight, MapPin, Coffee, Star, ArrowRight } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { getStoredMenuItems, subscribeToMenuUpdates } from '../../data/menuData';
 
 export interface CoffeeProduct {
   id: string;
@@ -290,6 +291,88 @@ export default function CardFanCarousel({
   const [internalCategory, setInternalCategory] = useState<string>('all');
   const activeCategory = externalCategory !== undefined ? externalCategory : internalCategory;
 
+  // Real-time synchronization with Admin menu changes
+  const [storedMenu, setStoredMenu] = useState(() => getStoredMenuItems());
+
+  useEffect(() => {
+    return subscribeToMenuUpdates((updated) => {
+      setStoredMenu(updated);
+    });
+  }, []);
+
+  // Merge the base favorites with any live updates made by admin in AdminPage
+  const liveItems = useMemo(() => {
+    const baseList = items === COFFEE_ADDA_PRODUCTS ? COFFEE_ADDA_PRODUCTS : items;
+
+    // Filter and update base products with live admin values
+    const updatedBase = baseList
+      .filter((p) => {
+        // If storedMenu has items, ensure product wasn't deleted by admin
+        return storedMenu.some((sm) => sm.id === p.id);
+      })
+      .map((p) => {
+        const live = storedMenu.find((sm) => sm.id === p.id);
+        if (!live) return p;
+        return {
+          ...p,
+          name: live.name || p.name,
+          price: typeof live.price === 'number' ? live.price : p.price,
+          image: live.image || p.image,
+          alt: live.alt || live.name || p.alt,
+          description: live.description || p.description,
+          badge: live.tag || p.badge,
+          tags: Array.isArray(live.details) && live.details.length > 0 ? live.details : p.tags,
+          category: live.subCategory || live.category || p.category,
+        };
+      });
+
+    // Also include any newly created items from admin that have favorite tags
+    const extraNewItems: CoffeeProduct[] = storedMenu
+      .filter((sm) => {
+        const isAlreadyInBase = baseList.some((p) => p.id === sm.id);
+        if (isAlreadyInBase) return false;
+        const tag = (sm.tag || '').toLowerCase();
+        return (
+          tag.includes('popular') ||
+          tag.includes('bestseller') ||
+          tag.includes('barista') ||
+          tag.includes('chef') ||
+          tag.includes('special') ||
+          tag.includes('fav') ||
+          tag.includes('new')
+        );
+      })
+      .map((sm) => {
+        let fCat: 'hot' | 'cold' | 'bakery' = 'hot';
+        if (sm.category === 'cold-beverages' || sm.category === 'shakes-lassi') {
+          fCat = 'cold';
+        } else if (
+          sm.category === 'breakfast' ||
+          sm.category === 'burgers-sandwiches' ||
+          sm.category === 'momo-platters'
+        ) {
+          fCat = 'bakery';
+        }
+        return {
+          id: sm.id,
+          name: sm.name,
+          category: sm.subCategory || 'House Special',
+          filterCategory: fCat,
+          description: sm.description || 'Artisanal speciality prepared fresh at Coffee Adda.',
+          price: sm.price,
+          badge: sm.tag || 'Special',
+          image:
+            sm.image ||
+            'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
+          alt: sm.alt || sm.name,
+          tags: Array.isArray(sm.details) && sm.details.length > 0 ? sm.details : ['Signature Recipe'],
+          linkUrl: '#menu',
+        };
+      });
+
+    return [...updatedBase, ...extraNewItems];
+  }, [items, storedMenu]);
+
   const handleSelectCategory = (cat: string) => {
     setActiveIndex(0);
     if (onCategoryChange) {
@@ -301,8 +384,8 @@ export default function CardFanCarousel({
 
   // Filter products based on selected category
   const filteredProducts = activeCategory === 'all'
-    ? items
-    : items.filter(item => item.filterCategory === activeCategory);
+    ? liveItems
+    : liveItems.filter(item => item.filterCategory === activeCategory);
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
