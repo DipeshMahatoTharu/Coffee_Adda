@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileCheck, ArrowLeft, Coffee, DollarSign, Wifi, Users, Scale, MapPin } from 'lucide-react';
+import { FileCheck, ArrowLeft, Coffee, DollarSign, Wifi, Users, Scale, MapPin, Phone } from 'lucide-react';
 
 export default function TermsConditionsPage({ onNavigate }) {
   const handleBack = (e) => {
@@ -121,6 +121,13 @@ export default function TermsConditionsPage({ onNavigate }) {
               <p className="flex items-center gap-2 text-neutral-600">
                 <MapPin className="w-4 h-4 text-brand-gold shrink-0" />
                 <span>Q9F5+8XJ, Budhanilkantha, Bagmati Province 44600, Nepal</span>
+              </p>
+              <p className="flex items-center gap-2 text-neutral-600">
+                <Phone className="w-4 h-4 text-brand-gold shrink-0" />
+                <span>Inquiries: </span>
+                <a href="tel:+9779763531091" className="font-semibold text-brand-forest hover:text-brand-gold hover:underline transition-colors">
+                  +977 9763531091
+                </a>
               </p>
               <p className="text-neutral-600">
                 Opening Hours: Sun - Sat, 7:00 AM - 9:00 PM NPT

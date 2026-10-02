@@ -190,7 +190,7 @@ export default function Footer({ onNavigate }) {
               </p>
               <p>
                 <strong className="text-white block font-medium">Contact:</strong>
-                +977 980-0000000 • Budhanilkantha
+                <a href="tel:+9779763531091" className="hover:text-brand-gold transition-colors">+977 9763531091</a> • Budhanilkantha
               </p>
             </div>
           </div>

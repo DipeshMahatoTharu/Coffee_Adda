@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Clock, Coffee, Check, Star } from 'lucide-react';
+import { MapPin, Clock, Coffee, Check, Star, Phone } from 'lucide-react';
 
 export default function Location() {
   return (
@@ -60,6 +60,17 @@ export default function Location() {
                     <span className="block text-xs text-emerald-700 mt-0.5 font-medium">
                       No holiday closures
                     </span>
+                  </div>
+                </div>
+
+                {/* Phone Inquiries */}
+                <div className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-brand-forest mt-0.5 shrink-0" />
+                  <div>
+                    <strong className="block text-brand-forest font-semibold">Phone Inquiries</strong>
+                    <a href="tel:+9779763531091" className="text-neutral-700 hover:text-brand-forest font-semibold hover:underline transition-colors">
+                      +977 9763531091
+                    </a>
                   </div>
                 </div>
 

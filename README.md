@@ -111,8 +111,8 @@ Built with **React 18**, **Vite**, **Tailwind CSS**, and **Framer Motion** on th
 
 ### 🌐 4. Social Hub & Café Hospitality
 - Integrated official links to **TikTok** ([@coffe.adda](https://www.tiktok.com/@coffe.adda)) and **Instagram** ([@coffee_adda9](https://www.instagram.com/coffee_adda9/)).
-- **One-Tap Preorder & Call Ahead**: Direct `tel:` links to café counter (`+977 984-1837856`).
-- **Interactive Location Guide**: Budhanilkantha operating hours (`7:00 AM – 9:00 PM`), landmark directions, and Google Maps embed.
+- **One-Tap Preorder & Call Ahead**: Direct `tel:` links to café counter (`+977 9763531091`).
+- **Interactive Location Guide**: Budhanilkantha operating hours (`7:00 AM - 9:00 PM`), landmark directions, and Google Maps embed.
 
 ---
 

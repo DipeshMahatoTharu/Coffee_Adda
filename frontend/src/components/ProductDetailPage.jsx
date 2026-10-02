@@ -377,9 +377,9 @@ export default function ProductDetailPage({ productId, onNavigate }) {
                   <motion.a
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    href="tel:+9779841837856"
+                    href="tel:+9779763531091"
                     className="w-full sm:w-auto py-3.5 px-5 rounded-2xl bg-neutral-100 hover:bg-neutral-200 text-neutral-800 font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 border border-neutral-300/80 cursor-pointer"
-                    title="Call Coffee Adda for takeaway or preorder"
+                    title="Call Coffee Adda (+977 9763531091) for takeaway or preorder"
                   >
                     <Phone className="w-4 h-4 text-brand-forest" />
                     <span>Call Ahead</span>

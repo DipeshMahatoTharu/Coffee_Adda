@@ -20,9 +20,9 @@ export default function Banner() {
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             Barista Bar Open Now
           </span>
-          <a className="hover:text-white transition-colors inline-flex items-center gap-1" href="tel:+977014370000">
+          <a className="hover:text-white transition-colors inline-flex items-center gap-1" href="tel:+9779763531091">
             <Phone className="w-3 h-3" />
-            <span>01-437-XXXX</span>
+            <span>+977 9763531091</span>
           </a>
         </div>
       </div>

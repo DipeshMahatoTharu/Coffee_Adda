@@ -98,8 +98,8 @@ export default function LocationPage({ onNavigate }) {
                   <Phone className="w-5 h-5 text-brand-forest mt-0.5 shrink-0" />
                   <div>
                     <strong className="block text-brand-forest font-semibold">Phone Inquiries &amp; Orders</strong>
-                    <a href="tel:+977014370000" className="text-brand-forest hover:underline font-medium">
-                      01-437-XXXX • +977 980-0000000
+                    <a href="tel:+9779763531091" className="text-brand-forest hover:text-brand-gold hover:underline font-semibold">
+                      +977 9763531091
                     </a>
                   </div>
                 </div>
