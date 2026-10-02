@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Footer({ onNavigate }) {
+export default function Footer({ onNavigate, isAdmin = false }) {
   const currentYear = new Date().getFullYear();
 
   const handleNav = (e, page, anchor) => {
@@ -34,18 +34,36 @@ export default function Footer({ onNavigate }) {
 
   return (
     <footer
-      className="bg-brand-forest text-brand-cream border-t border-brand-gold/20 pt-16 pb-12 relative overflow-hidden"
+      className={`border-t pt-16 pb-12 relative overflow-hidden transition-colors duration-500 ${
+        isAdmin
+          ? 'bg-[#1e0707] text-red-100 border-red-800/80'
+          : 'bg-brand-forest text-brand-cream border-brand-gold/20'
+      }`}
       data-purpose="site-footer"
     >
-      {/* Subtle gold accent background orb */}
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Background orb */}
+      <div
+        className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl pointer-events-none ${
+          isAdmin ? 'bg-red-600/10' : 'bg-brand-gold/5'
+        }`}
+      ></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b ${
+            isAdmin ? 'border-red-900/60' : 'border-white/10'
+          }`}
+        >
           {/* Col 1: Brand & Logo */}
           <div className="lg:col-span-4 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-brand-gold to-white shadow-glow-gold">
+              <div
+                className={`w-14 h-14 rounded-full p-0.5 shadow-md ${
+                  isAdmin
+                    ? 'bg-gradient-to-tr from-amber-400 to-red-600'
+                    : 'bg-gradient-to-tr from-brand-gold to-white shadow-glow-gold'
+                }`}
+              >
                 <img
                   alt="Coffee Adda Circular Logo"
                   className="w-full h-full object-cover rounded-full bg-white"
@@ -54,20 +72,35 @@ export default function Footer({ onNavigate }) {
               </div>
               <div>
                 <span className="block font-serif text-2xl font-bold tracking-tight text-white">Coffee Adda</span>
-                <span className="block text-[11px] tracking-widest uppercase text-brand-gold font-semibold">
-                  Artisan Coffee &amp; Warm Moments
+                <span
+                  className={`block text-[11px] tracking-widest uppercase font-semibold ${
+                    isAdmin ? 'text-amber-400' : 'text-brand-gold'
+                  }`}
+                >
+                  {isAdmin ? 'Staff Administration Environment' : 'Artisan Coffee & Warm Moments'}
                 </span>
               </div>
             </div>
 
-            <p className="text-brand-sage/80 text-sm leading-relaxed max-w-sm">
+            <p className={`text-sm leading-relaxed max-w-sm ${isAdmin ? 'text-red-200/80' : 'text-brand-sage/80'}`}>
               Handcrafted coffees, warm local hospitality, and delicious fresh bites. Visit us in Budhanilkantha for your daily caffeine ritual.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 text-brand-gold">
+            {isAdmin && (
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-700/80 text-xs font-bold text-red-200">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span>Admin Red Theme Active</span>
+              </div>
+            )}
+
+            <div className={`flex flex-wrap items-center gap-3 ${isAdmin ? 'text-red-200' : 'text-brand-gold'}`}>
               <a
                 aria-label="Follow Coffee Adda on Instagram @coffee_adda9"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-forest hover:border-brand-gold transition-all duration-300 text-xs font-medium border border-white/10 group"
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-300 text-xs font-medium border group ${
+                  isAdmin
+                    ? 'bg-red-950/60 border-red-800 text-red-200 hover:bg-red-900 hover:text-white'
+                    : 'bg-white/10 hover:bg-brand-gold hover:text-brand-forest hover:border-brand-gold border-white/10'
+                }`}
                 href="https://www.instagram.com/coffee_adda9/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -79,7 +112,11 @@ export default function Footer({ onNavigate }) {
               </a>
               <a
                 aria-label="Follow Coffee Adda on TikTok @coffe.adda"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-black hover:text-white transition-all duration-300 text-xs font-medium border border-white/10 hover:border-transparent group"
+                className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-300 text-xs font-medium border group ${
+                  isAdmin
+                    ? 'bg-red-950/60 border-red-800 text-red-200 hover:bg-black hover:text-white'
+                    : 'bg-white/10 hover:bg-black hover:text-white border-white/10'
+                }`}
                 href="https://www.tiktok.com/@coffe.adda?_r=1&_t=ZS-9ABXpRe6RQi"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -91,7 +128,11 @@ export default function Footer({ onNavigate }) {
               </a>
               <a
                 aria-label="Follow Coffee Adda on Facebook"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"
+                className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  isAdmin
+                    ? 'bg-red-950/60 border border-red-800 text-red-200 hover:bg-red-700 hover:text-white'
+                    : 'bg-white/10 hover:bg-brand-gold hover:text-brand-dark'
+                }`}
                 href="https://www.facebook.com/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -105,74 +146,108 @@ export default function Footer({ onNavigate }) {
 
           {/* Col 2: Navigation Links */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-brand-gold">Quick Links</h4>
-            <ul className="space-y-2.5 text-sm text-brand-sage/80">
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#home" onClick={(e) => handleNav(e, 'home')}>Home</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#about" onClick={(e) => handleNav(e, 'about')}>Our Story</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#menu" onClick={(e) => handleNav(e, 'menu')}>Complete Menu</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#why-us" onClick={(e) => handleNav(e, 'why-us')}>Why Coffee Adda</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#reviews" onClick={(e) => handleNav(e, 'reviews')}>Guest Reviews</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer" href="#location" onClick={(e) => handleNav(e, 'location')}>Get Directions</a></li>
+            <h4 className={`text-sm font-bold uppercase tracking-wider ${isAdmin ? 'text-amber-400' : 'text-brand-gold'}`}>
+              Quick Links
+            </h4>
+            <ul className={`space-y-2.5 text-sm ${isAdmin ? 'text-red-200/80' : 'text-brand-sage/80'}`}>
+              <li><a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-white'}`} href="#home" onClick={(e) => handleNav(e, 'home')}>Home</a></li>
+              <li><a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-white'}`} href="#about" onClick={(e) => handleNav(e, 'about')}>Our Story</a></li>
+              <li><a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-white'}`} href="#menu" onClick={(e) => handleNav(e, 'menu')}>Complete Menu</a></li>
+              <li><a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-white'}`} href="#why-us" onClick={(e) => handleNav(e, 'why-us')}>Why Coffee Adda</a></li>
+              <li><a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-white'}`} href="#reviews" onClick={(e) => handleNav(e, 'reviews')}>Guest Reviews</a></li>
+              <li><a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-white'}`} href="#location" onClick={(e) => handleNav(e, 'location')}>Get Directions</a></li>
             </ul>
           </div>
 
           {/* Col 3: Menu Highlights with Exact NPR Prices */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-brand-gold">Menu Highlights</h4>
-            <ul className="space-y-2.5 text-sm text-brand-sage/80">
+            <h4 className={`text-sm font-bold uppercase tracking-wider ${isAdmin ? 'text-amber-400' : 'text-brand-gold'}`}>
+              Menu Highlights
+            </h4>
+            <ul className={`space-y-2.5 text-sm ${isAdmin ? 'text-red-200/80' : 'text-brand-sage/80'}`}>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'hot-cappuccino') : window.location.hash = '#product/hot-cappuccino'}
-                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
+                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
+                  }`}
                   title="View Cappuccino details & history"
                 >
-                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Cappuccino / Double</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- Rs. 180</span>
+                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
+                    Cappuccino / Double
+                  </span>
+                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
+                    - Rs. 180
+                  </span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'hot-caffe-latte') : window.location.hash = '#product/hot-caffe-latte'}
-                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
+                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
+                  }`}
                   title="View Café Latte details & history"
                 >
-                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Café Latte</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- Rs. 180</span>
+                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
+                    Café Latte
+                  </span>
+                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
+                    - Rs. 180
+                  </span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'cold-iced-latte') : window.location.hash = '#product/cold-iced-latte'}
-                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
+                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
+                  }`}
                   title="View Iced Latte & Frappes details & history"
                 >
-                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Iced Latte &amp; Frappes</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 200</span>
+                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
+                    Iced Latte &amp; Frappes
+                  </span>
+                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
+                    - from Rs. 200
+                  </span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'laph-plain') : window.location.hash = '#product/laph-plain'}
-                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
+                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
+                  }`}
                   title="View Tibetan Laphing details & history"
                 >
-                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Tibetan Laphing (Jhol/Dry)</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 65</span>
+                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
+                    Tibetan Laphing (Jhol/Dry)
+                  </span>
+                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
+                    - from Rs. 65
+                  </span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'platter-momo-veg') : window.location.hash = '#product/platter-momo-veg'}
-                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
+                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
+                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
+                  }`}
                   title="View Mo:Mo Platter details & history"
                 >
-                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Mo:Mo Platter (25 pcs)</span>
-                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 600</span>
+                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
+                    Mo:Mo Platter (25 pcs)
+                  </span>
+                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
+                    - from Rs. 600
+                  </span>
                 </button>
               </li>
             </ul>
@@ -180,8 +255,10 @@ export default function Footer({ onNavigate }) {
 
           {/* Col 4: Contact & Hours */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-brand-gold">Cafe Info</h4>
-            <div className="space-y-3 text-sm text-brand-sage/80">
+            <h4 className={`text-sm font-bold uppercase tracking-wider ${isAdmin ? 'text-amber-400' : 'text-brand-gold'}`}>
+              Cafe Info
+            </h4>
+            <div className={`space-y-3 text-sm ${isAdmin ? 'text-red-200/80' : 'text-brand-sage/80'}`}>
               <p>
                 <strong className="text-white block font-medium">Location:</strong>
                 Q9F5+8XJ, Budhanilkantha, Bagmati Province 44600
@@ -192,18 +269,34 @@ export default function Footer({ onNavigate }) {
               </p>
               <p>
                 <strong className="text-white block font-medium">Contact:</strong>
-                <a href="tel:+9779763531091" className="hover:text-brand-gold transition-colors">+977 9763531091</a> • Budhanilkantha
+                <a
+                  href="tel:+9779763531091"
+                  className={`transition-colors ${isAdmin ? 'hover:text-amber-300 text-red-200' : 'hover:text-brand-gold'}`}
+                >
+                  +977 9763531091
+                </a>{' '}
+                • Budhanilkantha
               </p>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-brand-sage/60 gap-4">
+        <div className={`pt-8 flex flex-col md:flex-row items-center justify-between text-xs gap-4 ${isAdmin ? 'text-red-300/60' : 'text-brand-sage/60'}`}>
           <p>© {currentYear} Coffee Adda. All rights reserved. &quot;The Spot where great mind gathers&quot; • Budhanilkantha, Kathmandu.</p>
           <div className="flex space-x-6">
-            <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#privacy" onClick={(e) => handleNav(e, 'privacy')}>Privacy Policy</a>
-            <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#terms" onClick={(e) => handleNav(e, 'terms')}>Terms of Service</a>
-            <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#admin" onClick={(e) => handleNav(e, 'admin')}>Staff Admin</a>
+            <a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'}`} href="#privacy" onClick={(e) => handleNav(e, 'privacy')}>Privacy Policy</a>
+            <a className={`transition-colors cursor-pointer ${isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'}`} href="#terms" onClick={(e) => handleNav(e, 'terms')}>Terms of Service</a>
+            <a
+              className={`transition-colors cursor-pointer ${
+                isAdmin
+                  ? 'text-red-400 font-bold underline decoration-red-500 underline-offset-4 hover:text-white'
+                  : 'hover:text-brand-gold'
+              }`}
+              href="#admin"
+              onClick={(e) => handleNav(e, 'admin')}
+            >
+              Staff Admin
+            </a>
           </div>
         </div>
       </div>
