@@ -139,13 +139,12 @@ export default function Menu({ onNavigate }) {
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
                   type="button"
-                  className={`flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+                  className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-brand-forest text-white shadow-md border border-brand-gold/40 scale-105'
                       : 'bg-white text-neutral-700 hover:bg-brand-sage hover:text-brand-forest border border-neutral-200/90 shadow-xs'
                   }`}
                 >
-                  <span>{cat.icon}</span>
                   <span>{cat.label}</span>
                 </button>
               );
@@ -159,7 +158,7 @@ export default function Menu({ onNavigate }) {
               <SearchWithCategory
                 categories={menuCategories.map((c) => ({
                   id: c.id,
-                  label: `${c.icon} ${c.label}`,
+                  label: c.label,
                 }))}
                 selectedCategory={selectedCategory}
                 onCategoryChange={setSelectedCategory}
@@ -187,38 +186,35 @@ export default function Menu({ onNavigate }) {
                 <button
                   type="button"
                   onClick={() => setDietaryFilter('veg')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
                     dietaryFilter === 'veg'
                       ? 'bg-emerald-700 text-white'
                       : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100'
                   }`}
                 >
-                  <span>🌱</span>
-                  <span>Veg</span>
+                  Veg
                 </button>
                 <button
                   type="button"
                   onClick={() => setDietaryFilter('egg')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
                     dietaryFilter === 'egg'
                       ? 'bg-amber-600 text-white'
                       : 'bg-amber-50 text-amber-900 hover:bg-amber-100'
                   }`}
                 >
-                  <span>🍳</span>
-                  <span>Egg</span>
+                  Egg
                 </button>
                 <button
                   type="button"
                   onClick={() => setDietaryFilter('non-veg')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
                     dietaryFilter === 'non-veg'
                       ? 'bg-rose-800 text-white'
                       : 'bg-rose-50 text-rose-900 hover:bg-rose-100'
                   }`}
                 >
-                  <span>🍗</span>
-                  <span>Non-Veg</span>
+                  Non-Veg
                 </button>
               </div>
 
@@ -272,9 +268,15 @@ export default function Menu({ onNavigate }) {
                         Rs. {item.price}
                       </span>
 
-                      {/* Dietary Icon */}
-                      <span className="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-xs px-2 py-0.5 rounded-md shadow-xs font-semibold">
-                        {item.dietary === 'veg' ? '🌱 Veg' : item.dietary === 'egg' ? '🍳 Egg' : '🍗 Non-Veg'}
+                      {/* Dietary Badge */}
+                      <span className={`absolute top-3 right-3 text-xs px-2.5 py-0.5 rounded-md shadow-xs font-bold ${
+                        item.dietary === 'veg'
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300/80'
+                          : item.dietary === 'egg'
+                          ? 'bg-amber-100 text-amber-800 border border-amber-300/80'
+                          : 'bg-rose-100 text-rose-800 border border-rose-300/80'
+                      }`}>
+                        {item.dietary === 'veg' ? 'Veg' : item.dietary === 'egg' ? 'Egg' : 'Non-Veg'}
                       </span>
                     </div>
 

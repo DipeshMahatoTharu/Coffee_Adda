@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Circular Brand Forest Base -->
+  <circle cx="32" cy="32" r="30" fill="#143826" stroke="#D4AF37" stroke-width="2.5" />
+  
+  <!-- Subtle Inner Ring -->
+  <circle cx="32" cy="32" r="26.5" fill="none" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="2 1.5" opacity="0.6" />
+
+  <!-- Steam Whisps -->
+  <path d="M26 15 C24 18 28 20 26 23" fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" opacity="0.9" />
+  <path d="M32 13 C30 17 34 19 32 23" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" />
+  <path d="M38 15 C36 18 40 20 38 23" fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" opacity="0.9" />
+
+  <!-- Coffee Cup Body -->
+  <path d="M20 26 H42 C42 26 42 38 31 38 C20 38 20 26 20 26 Z" fill="#FAF8F5" stroke="#D4AF37" stroke-width="1.5" stroke-linejoin="round" />
+
+  <!-- Cup Handle -->
+  <path d="M42 28 C46 28 47.5 30 47.5 32.5 C47.5 35 45.5 36.5 42 36.5" fill="none" stroke="#FAF8F5" stroke-width="2.2" stroke-linecap="round" />
+
+  <!-- Cup Saucer Plate -->
+  <path d="M17 41 C21 43 41 43 45 41" fill="none" stroke="#D4AF37" stroke-width="2.4" stroke-linecap="round" />
+
+  <!-- Coffee Bean Emblem in Center of Cup -->
+  <ellipse cx="31" cy="31.5" rx="3.5" ry="4.5" fill="#143826" transform="rotate(20 31 31.5)" />
+  <path d="M30 28 C32.5 30.5 29.5 32.5 32 35" fill="none" stroke="#D4AF37" stroke-width="0.9" stroke-linecap="round" />
+</svg>

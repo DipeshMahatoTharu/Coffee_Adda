@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Coffee, Star, Leaf } from 'lucide-react';
 import { TextAnimate } from './text-animate';
 
 /**
@@ -85,7 +86,7 @@ export default function ScrollExpansionHero({
         >
           {/* Brand Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-brand-gold/40 shadow-xs">
-            <span className="text-sm">✨</span>
+            <Coffee className="w-4 h-4 text-brand-gold" />
             <span className="text-xs sm:text-sm font-semibold tracking-wider text-brand-forest uppercase">
               {badgeText}
             </span>
@@ -188,14 +189,16 @@ export default function ScrollExpansionHero({
               style={{ x: reviewBadgeX, y: reviewBadgeY }}
               className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-2xl shadow-xl border border-brand-gold/30 max-w-[200px] hidden sm:block"
             >
-              <div className="flex items-center gap-1 text-amber-400 text-xs mb-1">
-                ★★★★★
+              <div className="flex items-center gap-1 text-amber-400 mb-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                ))}
               </div>
               <p className="text-xs font-bold text-brand-forest leading-snug">
                 &quot;Best Cappuccino in town!&quot;
               </p>
               <p className="text-[10px] text-neutral-400 mt-0.5 font-medium">
-                — Local Coffee Guide
+                - Local Coffee Guide
               </p>
             </motion.div>
 
@@ -204,7 +207,7 @@ export default function ScrollExpansionHero({
               style={{ x: beanBadgeX, y: beanBadgeY }}
               className="absolute bottom-20 left-4 sm:bottom-24 sm:left-6 bg-brand-forest/95 backdrop-blur-md text-brand-cream p-2.5 sm:p-3 rounded-2xl shadow-xl border border-brand-gold/40 flex items-center gap-2 hidden sm:flex"
             >
-              <span className="text-xl">🌱</span>
+              <Leaf className="w-5 h-5 text-brand-gold" />
               <div>
                 <p className="text-[10px] uppercase tracking-wider text-brand-gold font-bold">
                   Direct Origin

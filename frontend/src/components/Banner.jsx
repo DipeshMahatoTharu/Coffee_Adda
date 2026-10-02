@@ -11,7 +11,7 @@ export default function Banner() {
         <div className="flex items-center space-x-2 mx-auto sm:mx-0 overflow-hidden text-center sm:text-left">
           <Coffee className="w-4 h-4 text-brand-gold shrink-0" />
           <span className="font-medium tracking-wide">
-            Welcoming you daily <strong className="text-white font-semibold">7:00 AM – 9:00 PM</strong> • Budhanilkantha, Bagmati Province •{' '}
+            Welcoming you daily <strong className="text-white font-semibold">7:00 AM - 9:00 PM</strong> • Budhanilkantha, Bagmati Province •{' '}
             <span className="hidden md:inline">Fresh Batches Roasted Daily</span>
           </span>
         </div>

@@ -36,11 +36,11 @@ export const SPECIFIC_PRODUCT_STORIES = {
       },
     ],
     tastingNotes: ['Dark Cocoa', 'Roasted Hazelnut', 'Bergamot Citrus', 'Velvety Crema'],
-    artisanQuote: '“A great espresso is the purest truth in coffee—it hides nothing and reveals everything.”',
+    artisanQuote: '“A great espresso is the purest truth in coffee - it hides nothing and reveals everything.”',
   },
 
   'hot-doppio': {
-    history: `The Doppio—Italian for "double"—is the purest, boldest expression of pure espresso craftsmanship. Originating in Rome and Milan as the drink of choice for connoisseurs seeking double the concentration, body, and intensity of a standard single shot, a true Doppio requires recalibrating grind size, flow rate, and portafilter geometry. At Coffee Adda in Budhanilkantha, our baristas craft the Doppio using 20 grams of shade-grown Himalayan Arabica beans grown in Nuwakot, delivering a luscious double-layer tiger-stripe crema, profound dark chocolate notes, and an invigorating caffeine punch for the great minds gathering at our Adda.`,
+    history: `The Doppio - Italian for "double" - is the purest, boldest expression of pure espresso craftsmanship. Originating in Rome and Milan as the drink of choice for connoisseurs seeking double the concentration, body, and intensity of a standard single shot, a true Doppio requires recalibrating grind size, flow rate, and portafilter geometry. At Coffee Adda in Budhanilkantha, our baristas craft the Doppio using 20 grams of shade-grown Himalayan Arabica beans grown in Nuwakot, delivering a luscious double-layer tiger-stripe crema, profound dark chocolate notes, and an invigorating caffeine punch for the great minds gathering at our Adda.`,
     howItIsMade: [
       {
         step: 1,
@@ -68,7 +68,7 @@ export const SPECIFIC_PRODUCT_STORIES = {
   },
 
   'hot-cappuccino': {
-    history: `The cappuccino gets its name from the brown habits worn by the Capuchin friars in 17th-century Vienna and Italy. Historically crafted as "Kapuziner"—coffee with cream and sugar—it evolved into the modern Italian classic of equal thirds espresso, steamed milk, and dense foam. At Coffee Adda, our baristas elevate the cappuccino into an artistic ritual: local fresh dairy is texturized to a glossy micro-foam and poured over fresh Himalayan espresso, finished with handcrafted rosetta or swan latte art.`,
+    history: `The cappuccino gets its name from the brown habits worn by the Capuchin friars in 17th-century Vienna and Italy. Historically crafted as "Kapuziner" - coffee with cream and sugar - it evolved into the modern Italian classic of equal thirds espresso, steamed milk, and dense foam. At Coffee Adda, our baristas elevate the cappuccino into an artistic ritual: local fresh dairy is texturized to a glossy micro-foam and poured over fresh Himalayan espresso, finished with handcrafted rosetta or swan latte art.`,
     howItIsMade: [
       {
         step: 1,
@@ -83,7 +83,7 @@ export const SPECIFIC_PRODUCT_STORIES = {
       {
         step: 3,
         title: 'Micro-Foam Texturization',
-        detail: 'The milk is swirled into a vortex, bringing the temperature to 62°C–65°C to caramelize natural lactose into glossy, velvet microfoam.',
+        detail: 'The milk is swirled into a vortex, bringing the temperature to 62°C - 65°C to caramelize natural lactose into glossy, velvet microfoam.',
       },
       {
         step: 4,
@@ -92,11 +92,11 @@ export const SPECIFIC_PRODUCT_STORIES = {
       },
     ],
     tastingNotes: ['Sweet Milk Cream', 'Warm Caramel', 'Toasted Almond', 'Balanced Arabica'],
-    artisanQuote: '“Equal parts science and heart—served at the ideal temperature to savor the natural sweetness.”',
+    artisanQuote: '“Equal parts science and heart - served at the ideal temperature to savor the natural sweetness.”',
   },
 
   'hot-caffe-latte': {
-    history: `Caffè Latte—literally "coffee milk" in Italian—has long been the ultimate comfort beverage of morning breakfast tables across Europe. When introduced to Kathmandu's growing specialty coffee culture, it became the beloved companion of writers, students, and thinkers who linger over long conversations. Coffee Adda's recipe emphasizes gentle extraction and delicate micro-foam, making it smoothly drinkable from the first sip to the last drop.`,
+    history: `Caffè Latte - literally "coffee milk" in Italian - has long been the ultimate comfort beverage of morning breakfast tables across Europe. When introduced to Kathmandu's growing specialty coffee culture, it became the beloved companion of writers, students, and thinkers who linger over long conversations. Coffee Adda's recipe emphasizes gentle extraction and delicate micro-foam, making it smoothly drinkable from the first sip to the last drop.`,
     howItIsMade: [
       {
         step: 1,
@@ -179,7 +179,7 @@ export const SPECIFIC_PRODUCT_STORIES = {
       },
     ],
     tastingNotes: ['Spicy Sichuan Chili', 'Zesty Black Vinegar', 'Garlic Crunch', 'Silky Bouncy Texture'],
-    artisanQuote: '“Bouncy, tangy, and unapologetically fiery—the ultimate comfort snack of the Kathmandu valley.”',
+    artisanQuote: '“Bouncy, tangy, and unapologetically fiery - the ultimate comfort snack of the Kathmandu valley.”',
   },
 
   'laphing-soup': {
@@ -266,7 +266,7 @@ export const SPECIFIC_PRODUCT_STORIES = {
       },
     ],
     tastingNotes: ['Juicy & Tender', 'Fresh Ginger Aromatic', 'Nutty Sesame Dip', 'Golden Steamed Wrapper'],
-    artisanQuote: '“Delicate, juicy, and comforting—the quintessential companion to an afternoon coffee.”',
+    artisanQuote: '“Delicate, juicy, and comforting - the quintessential companion to an afternoon coffee.”',
   },
 
   // ==========================================
@@ -468,7 +468,7 @@ export function getProductStory(item) {
         },
       ],
       tastingNotes: ['Fiery Red Chili', 'Tangy Vinegar Kick', 'Bouncy Texture', 'Garlic Crunch'],
-      artisanQuote: `“Addictive, bouncy, and spicy—a Kathmandu valley obsession made fresh daily.”`,
+      artisanQuote: `“Addictive, bouncy, and spicy - a Kathmandu valley obsession made fresh daily.”`,
     };
   }
 
@@ -498,7 +498,7 @@ export function getProductStory(item) {
         },
       ],
       tastingNotes: ['Juicy Spiced Center', 'Tender Dough Wrapper', 'Roasted Tomato Achaar', 'Timur Aroma'],
-      artisanQuote: `“Handcrafted with care—every bite bursts with authentic Himalayan flavor.”`,
+      artisanQuote: `“Handcrafted with care - every bite bursts with authentic Himalayan flavor.”`,
     };
   }
 

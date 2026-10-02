@@ -422,7 +422,7 @@ export default function ProductDetailPage({ productId, onNavigate }) {
 
                 <p className="text-xs text-neutral-500 mt-3 text-center sm:text-left flex items-center justify-center sm:justify-start gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-neutral-400" />
-                  <span>Freshly made daily from 7:00 AM – 9:00 PM • Takeaway available</span>
+                  <span>Freshly made daily from 7:00 AM - 9:00 PM • Takeaway available</span>
                 </p>
               </motion.div>
 

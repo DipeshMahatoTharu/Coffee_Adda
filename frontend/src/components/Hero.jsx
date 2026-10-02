@@ -1,4 +1,5 @@
 import React from 'react';
+import { Coffee, Star, Leaf } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -13,7 +14,7 @@ export default function Hero() {
           <div className="lg:col-span-6 space-y-7 text-center lg:text-left">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-sage border border-brand-gold/50 shadow-sm">
-              <span className="text-sm">✨</span>
+              <Coffee className="w-4 h-4 text-brand-gold" />
               <span className="text-xs sm:text-sm font-semibold tracking-wider text-brand-forest uppercase">
                 Artisan Coffee &amp; Bakery • Budhanilkantha
               </span>
@@ -53,7 +54,7 @@ export default function Hero() {
             <div className="pt-6 border-t border-neutral-200/80 grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 font-bold">
-                  ★
+                  <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
                 </div>
                 <div>
                   <p className="font-bold text-base text-neutral-900 leading-tight">4.8 Rating</p>
@@ -62,7 +63,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-brand-forest font-bold">
-                  🌿
+                  <Leaf className="w-4 h-4 text-brand-forest" />
                 </div>
                 <div>
                   <p className="font-bold text-base text-neutral-900 leading-tight">100% Arabica</p>
@@ -113,14 +114,18 @@ export default function Hero() {
                 className="absolute -top-6 -right-4 sm:-right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-brand-gold/30 max-w-[210px] hidden sm:block animate-bounce"
                 style={{ animationDuration: '4s' }}
               >
-                <div className="flex items-center gap-1 text-amber-400 text-sm mb-1">★★★★★</div>
-                <p className="text-xs font-bold text-brand-forest leading-snug">"Best Cappuccino in town!"</p>
-                <p className="text-[10px] text-neutral-400 mt-1 font-medium">— Local Coffee Guide</p>
+                <div className="flex items-center gap-1 text-amber-400 mb-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-xs font-bold text-brand-forest leading-snug">&quot;Best Cappuccino in town!&quot;</p>
+                <p className="text-[10px] text-neutral-400 mt-1 font-medium">- Local Coffee Guide</p>
               </div>
 
               {/* Floating Coffee Bean Badge */}
               <div className="absolute -bottom-5 -left-4 sm:-left-6 bg-brand-forest text-brand-cream p-3 rounded-2xl shadow-xl border border-brand-gold/40 flex items-center gap-2.5">
-                <span className="text-2xl">🌱</span>
+                <Leaf className="w-5 h-5 text-brand-gold" />
                 <div>
                   <p className="text-[11px] uppercase tracking-wider text-brand-gold font-bold">Direct Origin</p>
                   <p className="text-xs font-semibold">Bagmati Mountain Beans</p>

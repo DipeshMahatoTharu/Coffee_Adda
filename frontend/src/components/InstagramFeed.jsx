@@ -8,7 +8,7 @@ export const INSTAGRAM_POSTS = [
     localImage: '/instagram/post-1.jpg',
     postUrl: 'https://www.instagram.com/coffee_adda9/',
     title: 'Signature Latte Art',
-    caption: 'Silky microfoam & shade-grown Himalayan Arabica. Every single pour is crafted with artisan passion. ☕🇳🇵',
+    caption: 'Silky microfoam & shade-grown Himalayan Arabica. Every single pour is crafted with artisan passion.',
     likes: '142',
     comments: '18',
     category: 'Coffee',
@@ -19,7 +19,7 @@ export const INSTAGRAM_POSTS = [
     localImage: '/instagram/post-2.jpg',
     postUrl: 'https://www.instagram.com/coffee_adda9/',
     title: 'The Budhanilkantha Haven',
-    caption: '“The Spot where great mind gathers.” Warm wooden architecture, peaceful vibes, and mountain air. 🌿🪵',
+    caption: '“The Spot where great mind gathers.” Warm wooden architecture, peaceful vibes, and mountain air.',
     likes: '238',
     comments: '29',
     category: 'Vibes',
@@ -30,7 +30,7 @@ export const INSTAGRAM_POSTS = [
     localImage: '/instagram/post-3.jpg',
     postUrl: 'https://www.instagram.com/coffee_adda9/',
     title: 'Himalayan Mo:Mo & Khaja',
-    caption: 'Freshly steamed handmade Himalayan dumplings paired with homemade roasted tomato-sesame achaar! 🥟🔥',
+    caption: 'Freshly steamed handmade Himalayan dumplings paired with homemade roasted tomato-sesame achaar.',
     likes: '195',
     comments: '34',
     category: 'Khaja',
@@ -41,7 +41,7 @@ export const INSTAGRAM_POSTS = [
     localImage: '/instagram/post-4.jpg',
     postUrl: 'https://www.instagram.com/coffee_adda9/',
     title: 'Barista Espresso Extraction',
-    caption: 'Dialing in the morning roast. Precisely ground, weighed, and pulled on calibrated machinery for optimal crema. ☕⚡',
+    caption: 'Dialing in the morning roast. Precisely ground, weighed, and pulled on calibrated machinery for optimal crema.',
     likes: '174',
     comments: '12',
     category: 'Barista',
@@ -52,7 +52,7 @@ export const INSTAGRAM_POSTS = [
     localImage: '/instagram/post-5.jpg',
     postUrl: 'https://www.instagram.com/coffee_adda9/',
     title: 'House-Baked Croissants',
-    caption: 'Flaky, buttery, and baked fresh every single morning. Best enjoyed with our velvety Cappuccino. 🥐✨',
+    caption: 'Flaky, buttery, and baked fresh every single morning. Best enjoyed with our velvety Cappuccino.',
     likes: '210',
     comments: '21',
     category: 'Bakery',
@@ -63,7 +63,7 @@ export const INSTAGRAM_POSTS = [
     localImage: '/instagram/post-6.jpg',
     postUrl: 'https://www.instagram.com/coffee_adda9/',
     title: 'Warm Community Adda',
-    caption: 'Adda is all about unhurried conversation, shared laughter, and community bonding over a warm cup. 💛👥',
+    caption: 'Adda is all about unhurried conversation, shared laughter, and community bonding over a warm cup.',
     likes: '189',
     comments: '16',
     category: 'Community',
@@ -81,8 +81,8 @@ export default function InstagramFeed() {
             
             {/* Left: Avatar + Profile info */}
             <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-              {/* Profile Avatar with Instagram Gradient Ring */}
-              <div className="relative p-1 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 shadow-md shrink-0">
+              {/* Profile Avatar */}
+              <div className="relative p-1 rounded-full bg-brand-forest border-2 border-brand-gold/60 shadow-md shrink-0">
                 <div className="p-0.5 bg-white rounded-full">
                   <img
                     src="/coffee-adda-instagram-avatar.jpg"
@@ -93,7 +93,7 @@ export default function InstagramFeed() {
                     }}
                   />
                 </div>
-                <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-pink-500 text-white flex items-center justify-center shadow-xs border-2 border-white">
+                <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-brand-gold text-brand-dark flex items-center justify-center shadow-xs border-2 border-white">
                   <Instagram className="w-3.5 h-3.5" />
                 </div>
               </div>
@@ -105,7 +105,7 @@ export default function InstagramFeed() {
                     Official Page
                   </span>
                 </div>
-                <p className="text-sm font-semibold text-pink-600 mt-0.5">@coffee_adda9</p>
+                <p className="text-sm font-semibold text-brand-forest/80 mt-0.5">@coffee_adda9</p>
                 <p className="text-xs sm:text-sm text-neutral-600 mt-1 max-w-md">
                   &ldquo;The Spot where great mind gathers&rdquo; • Artisan coffee, Tibetan laphing &amp; cozy community vibes in Budhanilkantha.
                 </p>
@@ -118,9 +118,9 @@ export default function InstagramFeed() {
                 href="https://www.instagram.com/coffee_adda9/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 w-full sm:w-auto rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 hover:from-purple-700 hover:via-pink-600 hover:to-amber-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 w-full sm:w-auto rounded-2xl bg-brand-forest hover:bg-brand-dark text-white font-bold text-sm shadow-md hover:shadow-lg transition-all border border-brand-gold/40 cursor-pointer"
               >
-                <Instagram className="w-4 h-4" />
+                <Instagram className="w-4 h-4 text-brand-gold" />
                 <span>Follow @coffee_adda9</span>
                 <ExternalLink className="w-3.5 h-3.5 opacity-80" />
               </a>

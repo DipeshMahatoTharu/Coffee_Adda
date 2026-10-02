@@ -19,7 +19,7 @@ export const SEED_PRODUCT_REVIEWS = {
         'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=800&q=80',
         'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=800&q=80'
       ],
-      foodPhotoCaption: 'Enjoying my ice cold mocha on the garden terrace ✨',
+      foodPhotoCaption: 'Enjoying my ice cold mocha on the garden terrace ',
       likes: 12,
     },
     {
@@ -66,7 +66,7 @@ export const SEED_PRODUCT_REVIEWS = {
         'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=900&q=80',
         'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80'
       ],
-      foodPhotoCaption: 'Latte art on point today at Coffee Adda! ☕🦢',
+      foodPhotoCaption: 'Latte art on point today at Coffee Adda! ',
       likes: 15,
     },
     {
@@ -98,7 +98,7 @@ export const SEED_PRODUCT_REVIEWS = {
       date: '3 days ago',
       reviewText: 'Tiger-stripe crema was thick and fragrant. Extracted just right without any harsh sourness. True 20g double shot craftsmanship.',
       foodPhoto: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Golden tiger-stripe crema on this Doppio shot 🔥',
+      foodPhotoCaption: 'Golden tiger-stripe crema on this Doppio shot ',
       likes: 9,
     },
     {
@@ -124,7 +124,7 @@ export const SEED_PRODUCT_REVIEWS = {
       date: 'Yesterday',
       reviewText: 'Paper-thin translucent wrappers and piping hot vegetable filling. The sesame-tomato achar has the perfect hint of timur and roasted coriander!',
       foodPhoto: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Steaming hot momo basket with fire yellow achar 🥟🔥',
+      foodPhotoCaption: 'Steaming hot momo basket with fire yellow achar ',
       likes: 18,
     },
     {
@@ -150,7 +150,7 @@ export const SEED_PRODUCT_REVIEWS = {
       date: '2 days ago',
       reviewText: 'Extra crispy on the outside, fluffy inside! Lightly seasoned and served hot with spicy house dip.',
       foodPhoto: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Golden crunch french fries with garlic chili sauce 🍟',
+      foodPhotoCaption: 'Golden crunch french fries with garlic chili sauce ',
       likes: 11,
     }
   ],
@@ -165,7 +165,7 @@ export const SEED_PRODUCT_REVIEWS = {
       date: '3 days ago',
       reviewText: 'Served ice chilled with cold frosted glassware. Perfect after sunset on the open balcony with some spicy peanut sadheko.',
       foodPhoto: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Chilling out with cold beers on the balcony 🍻',
+      foodPhotoCaption: 'Chilling out with cold beers on the balcony ',
       likes: 14,
     }
   ]
@@ -183,7 +183,7 @@ export const CATEGORY_DEFAULT_REVIEWS = {
       date: '3 days ago',
       reviewText: 'Authentic high-altitude Nepali coffee extracted with precision. Warm, aromatic and served with genuine smiles from the baristas.',
       foodPhoto: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Fresh brew at our favorite corner table ☕',
+      foodPhotoCaption: 'Fresh brew at our favorite corner table ',
       likes: 6,
     }
   ],
@@ -197,7 +197,7 @@ export const CATEGORY_DEFAULT_REVIEWS = {
       date: '4 days ago',
       reviewText: 'So refreshing and properly chilled. The balance of flavor and coolness hits right on warm Kathmandu afternoons.',
       foodPhoto: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Cooling down with this iced delight 🧊',
+      foodPhotoCaption: 'Cooling down with this iced delight ',
       likes: 5,
     }
   ],
@@ -225,7 +225,7 @@ export const CATEGORY_DEFAULT_REVIEWS = {
       date: 'Just recently',
       reviewText: 'Fresh, crunchy, and packed with authentic Nepali spices. Goes so well with either cold drinks or a hot beverage.',
       foodPhoto: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Can’t stop munching on this! 😋',
+      foodPhotoCaption: 'Can’t stop munching on this! ',
       likes: 8,
     }
   ],
@@ -239,7 +239,7 @@ export const CATEGORY_DEFAULT_REVIEWS = {
       date: 'Recently',
       reviewText: 'Freshly prepared right after ordering. Great taste, generous portion, and served in the cozy ambiance of Budhanilkantha.',
       foodPhoto: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
-      foodPhotoCaption: 'Great food, great vibes at Coffee Adda ✨',
+      foodPhotoCaption: 'Great food, great vibes at Coffee Adda ',
       likes: 7,
     }
   ]

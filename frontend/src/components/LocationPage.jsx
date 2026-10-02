@@ -58,7 +58,7 @@ export default function LocationPage({ onNavigate }) {
                     Open Daily
                   </span>
                 </div>
-                <p className="text-xs text-neutral-500 mt-1">Specialty Café • Rs 1–500 per person</p>
+                <p className="text-xs text-neutral-500 mt-1">Specialty Café • Rs 1 - 500 per person</p>
                 <div className="flex items-center gap-2 mt-3">
                   <div className="flex items-center text-amber-400 gap-0.5">
                     {[...Array(5)].map((_, i) => (
@@ -86,7 +86,7 @@ export default function LocationPage({ onNavigate }) {
                   <Clock className="w-5 h-5 text-brand-forest mt-0.5 shrink-0" />
                   <div>
                     <strong className="block text-brand-forest font-semibold">Opening Hours</strong>
-                    <span className="text-neutral-600">Monday – Sunday: 7:00 AM – 9:00 PM</span>
+                    <span className="text-neutral-600">Monday - Sunday: 7:00 AM - 9:00 PM</span>
                     <span className="block text-xs text-emerald-700 mt-0.5 font-medium">
                       Open 7 days a week • No holiday closures
                     </span>

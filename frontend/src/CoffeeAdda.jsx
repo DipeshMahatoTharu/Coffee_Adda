@@ -15,6 +15,8 @@ import InstagramFeed from './components/InstagramFeed';
 import Location from './components/Location';
 import Footer from './components/Footer';
 import ProductDetailPage from './components/ProductDetailPage';
+import PrivacyPolicyPage from './components/PrivacyPolicyPage';
+import TermsConditionsPage from './components/TermsConditionsPage';
 
 export default function CoffeeAdda() {
   const [selectedProductId, setSelectedProductId] = useState(() => {
@@ -32,6 +34,8 @@ export default function CoffeeAdda() {
     if (hash === '#about') return 'about';
     if (hash === '#reviews') return 'reviews';
     if (hash === '#location') return 'location';
+    if (hash === '#privacy') return 'privacy';
+    if (hash === '#terms') return 'terms';
     return 'home';
   });
 
@@ -61,6 +65,14 @@ export default function CoffeeAdda() {
     } else if (page === 'location') {
       setCurrentPage('location');
       window.location.hash = '#location';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'privacy') {
+      setCurrentPage('privacy');
+      window.location.hash = '#privacy';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'terms') {
+      setCurrentPage('terms');
+      window.location.hash = '#terms';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setCurrentPage('home');
@@ -104,6 +116,12 @@ export default function CoffeeAdda() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#location') {
         setCurrentPage('location');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#privacy') {
+        setCurrentPage('privacy');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#terms') {
+        setCurrentPage('terms');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#community-section') {
         // In-page anchor on product detail page - do not leave product-detail
@@ -155,6 +173,12 @@ export default function CoffeeAdda() {
         ) : currentPage === 'location' ? (
           /* Dedicated Location Page */
           <LocationPage onNavigate={navigateTo} />
+        ) : currentPage === 'privacy' ? (
+          /* Dedicated Privacy Policy Page */
+          <PrivacyPolicyPage onNavigate={navigateTo} />
+        ) : currentPage === 'terms' ? (
+          /* Dedicated Terms & Conditions Page */
+          <TermsConditionsPage onNavigate={navigateTo} />
         ) : (
           /* Home Page with Hero, Favorites Fan Carousel, Special Offer, About, Reviews, Location */
           <>

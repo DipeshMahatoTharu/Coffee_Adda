@@ -43,7 +43,7 @@ export default function AboutSection3() {
           {/* Header with social icons */}
           <div className="flex justify-between items-center mb-8 w-[85%] absolute lg:top-4 md:top-0 sm:-top-2 -top-3 z-10">
             <div className="flex items-center gap-2 text-xl">
-              <span className="text-red-500 animate-spin">✱</span>
+              <span className="w-2 h-2 rounded-full bg-red-500"></span>
               <TimelineContent
                 as="span"
                 animationNum={0}

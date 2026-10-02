@@ -8,7 +8,11 @@ export default function Footer({ onNavigate }) {
     if (onNavigate) {
       onNavigate(page, anchor);
     } else {
-      if (page === 'menu') {
+      if (page === 'privacy') {
+        window.location.hash = '#privacy';
+      } else if (page === 'terms') {
+        window.location.hash = '#terms';
+      } else if (page === 'menu') {
         window.location.hash = '#menu';
       } else if (page === 'why-us') {
         window.location.hash = '#why-us';
@@ -61,7 +65,7 @@ export default function Footer({ onNavigate }) {
             <div className="flex flex-wrap items-center gap-3 text-brand-gold">
               <a
                 aria-label="Follow Coffee Adda on Instagram @coffee_adda9"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-purple-600 hover:via-pink-500 hover:to-amber-500 hover:text-white transition-all duration-300 text-xs font-medium border border-white/10 hover:border-transparent group"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-forest hover:border-brand-gold transition-all duration-300 text-xs font-medium border border-white/10 group"
                 href="https://www.instagram.com/coffee_adda9/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -182,7 +186,7 @@ export default function Footer({ onNavigate }) {
               </p>
               <p>
                 <strong className="text-white block font-medium">Hours:</strong>
-                Sun – Sat: 7:00 AM – 9:00 PM
+                Sun - Sat: 7:00 AM - 9:00 PM
               </p>
               <p>
                 <strong className="text-white block font-medium">Contact:</strong>
@@ -195,9 +199,8 @@ export default function Footer({ onNavigate }) {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-brand-sage/60 gap-4">
           <p>© {currentYear} Coffee Adda. All rights reserved. &quot;The Spot where great mind gathers&quot; • Budhanilkantha, Kathmandu.</p>
           <div className="flex space-x-6">
-            <a className="hover:text-brand-gold transition-colors" href="#">Privacy Policy</a>
-            <a className="hover:text-brand-gold transition-colors" href="#">Terms of Service</a>
-            <a className="hover:text-brand-gold transition-colors" href="#">Café Guidelines</a>
+            <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#privacy" onClick={(e) => handleNav(e, 'privacy')}>Privacy Policy</a>
+            <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#terms" onClick={(e) => handleNav(e, 'terms')}>Terms of Service</a>
           </div>
         </div>
       </div>

@@ -76,20 +76,20 @@ export default function ImageStreamHero({
           <span>Coffee Adda • Budhanilkantha</span>
         </motion.div>
 
-        {/* Main Headline — Softer ivory tone without harsh white glare */}
+        {/* Main Headline - Authentic mountain coffee and cafe kitchen */}
         <motion.h1
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-serif text-4xl sm:text-6xl lg:text-7xl font-extrabold text-neutral-200 tracking-tight leading-[1.12] drop-shadow-md"
         >
-          Your Perfect Cup,<br />
+          Artisan Coffee &amp;<br />
           <span className="text-amber-200/90 font-normal italic">
-            Brewed Fresh.
+            Warm Adda Moments.
           </span>
         </motion.h1>
 
-        {/* Supporting Description — Soft, warm tone with Typewriter TextAnimate */}
+        {/* Supporting Description - Concrete local cafe copy */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export default function ImageStreamHero({
           className="text-base sm:text-lg lg:text-xl text-neutral-300 max-w-2xl mx-auto font-normal leading-relaxed min-h-[3.5rem] sm:min-h-[2.5rem]"
         >
           <TextAnimate effect="typewriter" duration={2.4} delay={0.2} className="inline">
-            {description}
+            Single-origin Nepali Arabica, handmade Himalayan khaja, fresh bakery treats, and a peaceful garden terrace in Budhanilkantha.
           </TextAnimate>
         </motion.p>
 
@@ -135,7 +135,7 @@ export default function ImageStreamHero({
           </a>
         </motion.div>
 
-        {/* Trust Indicators */}
+        {/* Authentic Highlights */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -157,7 +157,7 @@ export default function ImageStreamHero({
             </div>
             <div className="text-left">
               <p className="font-bold text-xs sm:text-sm text-neutral-200 leading-tight">4.8 Rating</p>
-              <p className="text-[11px] text-neutral-400 group-hover:text-amber-200 transition-colors">36+ reviews →</p>
+              <p className="text-[11px] text-neutral-400 group-hover:text-amber-200 transition-colors">Guest reviews &rarr;</p>
             </div>
           </button>
 
@@ -180,7 +180,7 @@ export default function ImageStreamHero({
           className="inline-flex items-center gap-2 text-xs sm:text-sm font-normal text-neutral-400 pt-1"
         >
           <Clock className="w-4 h-4 text-brand-gold/80" />
-          <span>Open Daily: 7:00 AM – 9:00 PM • Budhanilkantha</span>
+          <span>Open Daily: 7:00 AM - 9:00 PM • Budhanilkantha</span>
         </motion.div>
       </div>
 

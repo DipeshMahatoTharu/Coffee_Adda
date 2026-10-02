@@ -227,7 +227,7 @@ export default function About({ onNavigate }) {
                 className="flex items-center gap-2 text-xs text-neutral-600"
               >
                 <Clock className="w-3.5 h-3.5 text-brand-gold" />
-                <span>Open Daily: 7 AM – 9 PM</span>
+                <span>Open Daily: 7 AM - 9 PM</span>
               </TimelineContent>
             </div>
           </div>

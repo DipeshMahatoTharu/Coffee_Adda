@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Instagram,
   ExternalLink,
+  Check,
 } from 'lucide-react';
 
 // Animation variants for smooth scroll triggers
@@ -226,7 +227,7 @@ export default function AboutPage({ onNavigate }) {
               What Does &quot;Adda&quot; Mean to Us?
             </h2>
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
-              In Nepali tradition, an <strong>Adda</strong> is far more than a physical space—it is an informal ritual. It is the table where lifelong friendships deepen, where debates spark over steaming cups of milk tea or bold espresso, and where writers, artists, and innovators come to sit with their thoughts.
+              In Nepali tradition, an <strong>Adda</strong> is far more than a physical space - it is an informal ritual. It is the table where lifelong friendships deepen, where debates spark over steaming cups of milk tea or bold espresso, and where writers, artists, and innovators come to sit with their thoughts.
             </p>
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
               When we built Coffee Adda in Budhanilkantha, we wanted to build a neighbourhood haven away from the hustle and pollution of city centers. A space with open natural light, warm timber finishes, potted greenery, and the comforting aroma of fresh grinds and baked butter croissants.
@@ -351,8 +352,8 @@ export default function AboutPage({ onNavigate }) {
                   whileHover={{ x: 5 }}
                   className="flex items-start gap-2.5 transition-transform"
                 >
-                  <span className="w-5 h-5 rounded-full bg-brand-forest text-white flex items-center justify-center text-xs shrink-0 mt-0.5 shadow-2xs">
-                    ✓
+                  <span className="w-5 h-5 rounded-full bg-brand-forest text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    <Check className="w-3 h-3" />
                   </span>
                   <span><strong>{item.title}</strong> {item.desc}</span>
                 </motion.li>
@@ -429,8 +430,8 @@ export default function AboutPage({ onNavigate }) {
                 transition={{ duration: 0.2 }}
                 className="flex items-center gap-3 p-3.5 rounded-xl bg-brand-cream/80 hover:bg-white border border-neutral-200/70 hover:border-brand-forest/40 text-sm font-semibold text-neutral-800 transition-colors shadow-2xs"
               >
-                <span className="w-6 h-6 rounded-full bg-brand-forest text-white flex items-center justify-center text-xs shrink-0">
-                  ✓
+                <span className="w-6 h-6 rounded-full bg-brand-forest text-white flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5" />
                 </span>
                 <span>{item}</span>
               </motion.div>
@@ -440,7 +441,7 @@ export default function AboutPage({ onNavigate }) {
           <div className="mt-8 pt-6 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-neutral-600">
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-emerald-700 shrink-0" />
-              <span>Open Daily: <strong>7:00 AM – 9:00 PM</strong> (No holidays)</span>
+              <span>Open Daily: <strong>7:00 AM - 9:00 PM</strong> (No holidays)</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-brand-forest shrink-0" />
@@ -470,16 +471,12 @@ export default function AboutPage({ onNavigate }) {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="absolute -right-10 -bottom-10 w-72 h-72 bg-pink-500 rounded-full blur-3xl pointer-events-none"
+            className="absolute -right-10 -bottom-10 w-72 h-72 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"
           />
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
             <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-              <motion.div
-                animate={{ y: [0, -4, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative p-1 rounded-full bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 shadow-md shrink-0"
-              >
+              <div className="relative p-1 rounded-full bg-brand-forest border-2 border-brand-gold/50 shadow-md shrink-0">
                 <img
                   src="/coffee-adda-instagram-avatar.jpg"
                   alt="Coffee Adda Instagram"
@@ -488,9 +485,9 @@ export default function AboutPage({ onNavigate }) {
                     e.currentTarget.src = 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=300&q=80';
                   }}
                 />
-              </motion.div>
+              </div>
               <div>
-                <span className="text-xs uppercase tracking-wider text-pink-400 font-semibold">Join Our Community</span>
+                <span className="text-xs uppercase tracking-wider text-brand-gold font-semibold">Join Our Community</span>
                 <h4 className="font-serif text-2xl font-bold text-white">@coffee_adda9</h4>
                 <p className="text-xs sm:text-sm text-neutral-300 mt-0.5">
                   Follow us for daily brews, behind-the-scenes moments, and community updates in Budhanilkantha.
@@ -499,18 +496,16 @@ export default function AboutPage({ onNavigate }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <a
                 href="https://www.instagram.com/coffee_adda9/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 hover:opacity-95 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-bold text-sm shadow-md transition-all cursor-pointer"
               >
                 <Instagram className="w-4 h-4" />
                 <span>Follow on Instagram</span>
                 <ExternalLink className="w-3.5 h-3.5" />
-              </motion.a>
+              </a>
 
               <motion.a
                 whileHover={{ scale: 1.05 }}

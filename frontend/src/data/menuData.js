@@ -5,19 +5,19 @@
  */
 
 export const menuCategories = [
-  { id: 'all', label: 'All Items', icon: '🍽️' },
-  { id: 'hot-beverages', label: 'Coffee Bar', icon: '☕' },
-  { id: 'tea-special', label: 'Tea Special', icon: '🫖' },
-  { id: 'cold-beverages', label: 'Cold Coffee', icon: '🧊' },
-  { id: 'shakes-lassi', label: 'Shakes, Frappes & Lassi', icon: '🥤' },
-  { id: 'breakfast', label: 'Breakfast & Eggs', icon: '🍳' },
-  { id: 'burgers-sandwiches', label: 'Burgers & Sandwiches', icon: '🍔' },
-  { id: 'momo-platters', label: 'Mo:Mo & Platters', icon: '🥟' },
-  { id: 'pasta-corndogs', label: 'Pasta & Corn Dogs', icon: '🍝' },
-  { id: 'laphing', label: 'Laphing Special', icon: '🥢' },
-  { id: 'khaja-mains', label: 'Khaja Set & Mains', icon: '🍛' },
-  { id: 'snacks-sides', label: 'Snacks, Chillies & Nan', icon: '🍟' },
-  { id: 'bar-lounge', label: 'Bar, Spirits & Hukka', icon: '🍷' },
+  { id: 'all', label: 'All Items' },
+  { id: 'hot-beverages', label: 'Coffee Bar' },
+  { id: 'tea-special', label: 'Tea Special' },
+  { id: 'cold-beverages', label: 'Cold Coffee' },
+  { id: 'shakes-lassi', label: 'Shakes, Frappes & Lassi' },
+  { id: 'breakfast', label: 'Breakfast & Eggs' },
+  { id: 'burgers-sandwiches', label: 'Burgers & Sandwiches' },
+  { id: 'momo-platters', label: 'Mo:Mo & Platters' },
+  { id: 'pasta-corndogs', label: 'Pasta & Corn Dogs' },
+  { id: 'laphing', label: 'Laphing Special' },
+  { id: 'khaja-mains', label: 'Khaja Set & Mains' },
+  { id: 'snacks-sides', label: 'Snacks, Chillies & Nan' },
+  { id: 'bar-lounge', label: 'Bar, Spirits & Hukka' },
 ];
 
 export const menuItems = [
@@ -33,7 +33,7 @@ export const menuItems = [
     tag: 'Classic',
     dietary: 'veg',
     description: 'Concentrated single shot pulled with golden hazelnut crema from shade-grown high-altitude Arabica beans.',
-    details: ['☕ Pure Arabica', '🔥 Hot (1.5oz)'],
+    details: ['Pure Arabica','Hot (1.5oz)'],
     image: 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&q=80',
     alt: 'Single origin espresso with golden crema'
   },
@@ -46,7 +46,7 @@ export const menuItems = [
     tag: 'Double Shot',
     dietary: 'veg',
     description: 'Bold double shot of concentrated espresso offering intense aroma and deep dark cocoa tasting notes.',
-    details: ['☕ Double Shot', '⚡ High Caffeine'],
+    details: ['Double Shot','High Caffeine'],
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
     alt: 'Bold double shot espresso in ceramic cup'
   },
@@ -59,7 +59,7 @@ export const menuItems = [
     tag: 'Smooth',
     dietary: 'veg',
     description: 'Classic single shot espresso lengthened with hot mountain water for a clean, aromatic finish.',
-    details: ['💧 Hot Water Dilution', '🔥 Hot (8oz)'],
+    details: ['Hot Water Dilution','Hot (8oz)'],
     image: 'https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=600&q=80',
     alt: 'Fresh hot Americano coffee with crema'
   },
@@ -72,7 +72,7 @@ export const menuItems = [
     tag: 'Strong',
     dietary: 'veg',
     description: 'Intense double espresso pulled over hot water for the caffeine purist seeking deep roasted flavor.',
-    details: ['☕ Double Shot', '🔥 Hot (10oz)'],
+    details: ['Double Shot','Hot (10oz)'],
     image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
     alt: 'Steaming double Americano in ceramic mug'
   },
@@ -85,7 +85,7 @@ export const menuItems = [
     tag: 'Barista Pick',
     dietary: 'veg',
     description: 'Gentle espresso harmonized with generous silky micro-foam in our signature sage ceramic mug.',
-    details: ['🥛 Silky Micro-foam', '🔥 Hot (10oz)'],
+    details: ['Silky Micro-foam','Hot (10oz)'],
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-HydCGjJv_Tr3FhQJ-oXJCh5HT86JQnendHcw2JskFuZGYpXrv_flzBcfbWlH6zpOiIQ8GVrdVtOfZowkSqUtb-XUnOoJs_TRYLs54sZq5lvQ5FexFPcfP15FlUVcc39910_k9wJR6g54EsWJ7u_QaRy1XQxnW1TTBCi8zLh9-K6C1Tbrewg0vkMYqxL8vjmDGvlTQWE3g-docRIf5-duA2vbweeJYjTo-Q8e_Lky7XCmqM_lIrVG',
     alt: 'Velvety caffe latte with swan latte art in sage cup'
   },
@@ -98,7 +98,7 @@ export const menuItems = [
     tag: 'Popular',
     dietary: 'veg',
     description: 'Rich, balanced espresso crowned with equal parts textured milk and velvety airy foam with rosetta art.',
-    details: ['🥛 Dense Froth', '🔥 Hot (8oz)'],
+    details: ['Dense Froth','Hot (8oz)'],
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMjTB-ditOYgxnlYcLY6V54j2iwNiXT1m2XqIew3Bkse2f-SZYiDFV-55N0Et_85yx-V4H22ZM_cPsw8ly8xP-9k3h7gD4LBH6sdAZPstftH2YNWoQcEz3o8r_jyvunOGXrq99_KEHJGzpwC47b1j3IQtTlsJgr7beMTWxLmM8tGpzlK6jzSf7MhyxwYluZO13U_z_-G_A9O1I7ZbGUEbPi1iDi2OYysiTSYK92b117sjC-bO6nXih',
     alt: 'Artisanal cappuccino with delicate foam art'
   },
@@ -111,7 +111,7 @@ export const menuItems = [
     tag: 'Indulgent',
     dietary: 'veg',
     description: 'Double espresso blended with molten dark chocolate, steamed milk, and light cocoa dusting.',
-    details: ['🍫 Dark Chocolate', '🔥 Hot (8oz)'],
+    details: ['Dark Chocolate','Hot (8oz)'],
     image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80',
     alt: 'Hot cafe mocha with chocolate drizzle'
   },
@@ -124,7 +124,7 @@ export const menuItems = [
     tag: 'House Special',
     dietary: 'veg',
     description: 'Smooth espresso and steamed milk sweetened with natural wild Himalayan blossom honey.',
-    details: ['🍯 Pure Honey', '🔥 Hot (10oz)'],
+    details: ['Pure Honey','Hot (10oz)'],
     image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80',
     alt: 'Warm honey latte in ceramic cup'
   },
@@ -137,7 +137,7 @@ export const menuItems = [
     tag: 'Sweet Fav',
     dietary: 'veg',
     description: 'Freshly steamed milk marked with vanilla syrup, rich espresso, and buttery golden caramel drizzle.',
-    details: ['🧈 Buttery Caramel', '🔥 Hot (10oz)'],
+    details: ['Buttery Caramel','Hot (10oz)'],
     image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80',
     alt: 'Caramel macchiato with criss-cross caramel drizzle'
   },
@@ -150,7 +150,7 @@ export const menuItems = [
     tag: 'Chef Special',
     dietary: 'veg',
     description: 'Decadent specialty creation loaded with rich fudge, espresso, steamed cream, and dark cocoa shavings.',
-    details: ['🍫 Fudge Loaded', '✨ Signature Dessert'],
+    details: ['Fudge Loaded','Signature Dessert'],
     image: 'https://images.unsplash.com/photo-1579888944880-d98341245702?auto=format&fit=crop&w=600&q=80',
     alt: 'Mocha madness with whipped cream and chocolate swirls'
   },
@@ -167,7 +167,7 @@ export const menuItems = [
     tag: 'Pure Mountain Leaf',
     dietary: 'veg',
     description: 'Crisp and golden amber liquor brewed from handpicked high-altitude orthodox tea leaves from Eastern Nepal.',
-    details: ['🍃 Handpicked Leaf', '🔥 Steaming Hot'],
+    details: ['Handpicked Leaf','Steaming Hot'],
     image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80',
     alt: 'Steaming cup of pure black tea in clear glass mug'
   },
@@ -180,7 +180,7 @@ export const menuItems = [
     tag: 'Zesty & Fresh',
     dietary: 'veg',
     description: 'Fragrant black tea brightened with freshly squeezed mountain lemon juice for an invigorating citrus finish.',
-    details: ['🍋 Fresh Lemon Slice', '🍃 Uplifting Sips'],
+    details: ['Fresh Lemon Slice','Uplifting Sips'],
     image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80',
     alt: 'Glass cup of hot lemon tea with lemon wheel garnish'
   },
@@ -192,8 +192,8 @@ export const menuItems = [
     price: 70,
     tag: 'Everyday Classic',
     dietary: 'veg',
-    description: 'The soul of Nepali morning addas — rich black tea simmered gently with whole fresh milk and sugar.',
-    details: ['🥛 Fresh Simmered Milk', '☕ Authentic Dudh Chiya'],
+    description: 'The soul of Nepali morning addas  -  rich black tea simmered gently with whole fresh milk and sugar.',
+    details: ['Fresh Simmered Milk','Authentic Dudh Chiya'],
     image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80',
     alt: 'Traditional Nepali milk tea poured into glass cup'
   },
@@ -206,7 +206,7 @@ export const menuItems = [
     tag: 'Warming Spices',
     dietary: 'veg',
     description: 'Brisk black tea boiled with crushed green cardamom, cinnamon quills, cloves, and fiery ginger root.',
-    details: ['🌿 Whole Spices', '🔥 Warming Decoction'],
+    details: ['Whole Spices','Warming Decoction'],
     image: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80',
     alt: 'Aromatic black spiced masala tea with star anise and cinnamon'
   },
@@ -219,7 +219,7 @@ export const menuItems = [
     tag: 'House Favorite',
     dietary: 'veg',
     description: 'Our house signature spiced milk tea decoction simmered with mountain cardamom, cloves, ginger, and fresh milk.',
-    details: ['🥛 Spiced Dairy Brew', '✨ House Blend'],
+    details: ['Spiced Dairy Brew','House Blend'],
     image: 'https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80',
     alt: 'Steaming cup of spiced masala chai with milk froth'
   },
@@ -232,7 +232,7 @@ export const menuItems = [
     tag: 'Rustic Clay Kulhad',
     dietary: 'veg',
     description: 'Aromatic spiced milk tea served in an authentic earthen terracotta clay pot (kulhad/matka) for an earthy smoky aroma.',
-    details: ['🏺 Terracotta Clay Cup', '💨 Earthy Smoky Note'],
+    details: ['Terracotta Clay Cup','Earthy Smoky Note'],
     image: 'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=600&q=80',
     alt: 'Authentic matka chai served in clay kulhad pot'
   },
@@ -245,7 +245,7 @@ export const menuItems = [
     tag: 'Choco Delight',
     dietary: 'veg',
     description: 'Rich fusion of robust milk tea simmered with molten Dutch dark cocoa and topped with chocolate shavings.',
-    details: ['🍫 Dark Dutch Cocoa', '🥛 Creamy Dessert Sip'],
+    details: ['Dark Dutch Cocoa','Creamy Dessert Sip'],
     image: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80',
     alt: 'Rich chocolate tea with cocoa dust in cozy mug'
   },
@@ -258,7 +258,7 @@ export const menuItems = [
     tag: 'Wellness & Detox',
     dietary: 'veg',
     description: 'Steamed whole green tea leaves from Ilam mountain gardens, offering gentle vegetal sweetness and light finish.',
-    details: ['🍃 100% Whole Leaf', '🌱 Clean Detox'],
+    details: ['100% Whole Leaf','Clean Detox'],
     image: 'https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=600&q=80',
     alt: 'Glass cup of fresh green tea with floating green leaves'
   },
@@ -271,7 +271,7 @@ export const menuItems = [
     tag: 'Citrus Detox',
     dietary: 'veg',
     description: 'Pure Ilam green tea infused with freshly cut mountain lemon slices for an energizing antioxidant-rich cup.',
-    details: ['🍋 Fresh Cut Lemon', '🌱 Immunity Boost'],
+    details: ['Fresh Cut Lemon','Immunity Boost'],
     image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80',
     alt: 'Green tea with lemon slice in glass cup'
   },
@@ -284,7 +284,7 @@ export const menuItems = [
     tag: 'Throat Soother',
     dietary: 'veg',
     description: 'Steaming cup of freshly squeezed lemon juice steeped in hot water to soothe the throat and refresh the senses.',
-    details: ['🍋 100% Real Citrus', '🔥 Steaming Hot'],
+    details: ['100% Real Citrus','Steaming Hot'],
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
     alt: 'Steaming mug of hot lemon water with lemon slice'
   },
@@ -297,7 +297,7 @@ export const menuItems = [
     tag: 'Immunity Boost',
     dietary: 'veg',
     description: 'Golden wild forest honey stirred with fresh tart mountain lemon juice into steaming hot mountain spring water.',
-    details: ['🍯 Pure Wild Honey', '🍋 Fresh Tart Lemon'],
+    details: ['Pure Wild Honey','Fresh Tart Lemon'],
     image: 'https://images.unsplash.com/photo-1546852199-2d8e8c4aaada?auto=format&fit=crop&w=600&q=80',
     alt: 'Hot lemon with honey swirl and honey dipper'
   },
@@ -310,7 +310,7 @@ export const menuItems = [
     tag: 'Winter Classic',
     dietary: 'veg',
     description: 'Freshly crushed pungent ginger root simmered with natural mountain honey and fresh lemon juice. Highly recommended for cool Budhanilkantha mornings.',
-    details: ['🫚 Crushed Ginger', '🍯 Mountain Honey', '🍋 Tart Lemon'],
+    details: ['🫚 Crushed Ginger','Mountain Honey','Tart Lemon'],
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
     alt: 'Hot lemon ginger honey tea with ginger slices and lemon'
   },
@@ -323,7 +323,7 @@ export const menuItems = [
     tag: 'Calming Floral',
     dietary: 'veg',
     description: 'Dried fragrant organic rose petals steeped gently for a delicate floral aroma and calming subtle sweetness.',
-    details: ['🌹 Dried Rose Petals', '✨ Calming Aromatics'],
+    details: ['Dried Rose Petals','Calming Aromatics'],
     image: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80',
     alt: 'Delicate pink rose petal herbal tea in transparent teapot and cup'
   },
@@ -336,7 +336,7 @@ export const menuItems = [
     tag: 'Fruity Delight',
     dietary: 'veg',
     description: 'Sweet juicy peach fruit essence infused into gentle steeped tea leaves, bursting with fruity aroma.',
-    details: ['🍑 Juicy Peach', '🍃 Refreshing Sips'],
+    details: ['Juicy Peach','Refreshing Sips'],
     image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80',
     alt: 'Peach tea in tall glass with sliced fresh peaches'
   },
@@ -353,7 +353,7 @@ export const menuItems = [
     tag: 'Crisp',
     dietary: 'veg',
     description: 'Fresh double espresso pulled directly over hand-cut crystal clear ice cubes for instant cooling.',
-    details: ['🧊 On The Rocks', '⚡ Strong & Crisp'],
+    details: ['On The Rocks','Strong & Crisp'],
     image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80',
     alt: 'Espresso on the rocks in tumbler glass'
   },
@@ -366,7 +366,7 @@ export const menuItems = [
     tag: 'Refreshing',
     dietary: 'veg',
     description: 'Cold mountain spring water mixed with bold espresso and poured over mountain ice cubes.',
-    details: ['🧊 Cold Water Brew', '⚡ Zero Sugar'],
+    details: ['Cold Water Brew','Zero Sugar'],
     image: 'https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=600&q=80',
     alt: 'Tall glass of iced americano with condensation'
   },
@@ -379,7 +379,7 @@ export const menuItems = [
     tag: 'All-Day Fav',
     dietary: 'veg',
     description: 'Fresh espresso poured gently over cold whole milk and ice, creating smooth coffee-milk layers.',
-    details: ['🥛 Creamy Layers', '🧊 Tall Glass'],
+    details: ['Creamy Layers','Tall Glass'],
     image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80',
     alt: 'Iced latte with layered espresso and milk over ice'
   },
@@ -392,7 +392,7 @@ export const menuItems = [
     tag: 'Frothy',
     dietary: 'veg',
     description: 'Chilled espresso and milk crowned with a thick velvety layer of cold aerated milk foam.',
-    details: ['🥛 Cold Micro-foam', '🧊 Crisp Chill'],
+    details: ['Cold Micro-foam','Crisp Chill'],
     image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80',
     alt: 'Iced cappuccino topped with thick cold foam'
   },
@@ -405,7 +405,7 @@ export const menuItems = [
     tag: 'Popular',
     dietary: 'veg',
     description: 'Rich dark chocolate and cold espresso combined over ice with fresh milk and chocolate swirl.',
-    details: ['🍫 Dark Chocolate', '🧊 Cold & Rich'],
+    details: ['Dark Chocolate','Cold & Rich'],
     image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80',
     alt: 'Tall glass of iced mocha with dark chocolate drizzle'
   },
@@ -418,7 +418,7 @@ export const menuItems = [
     tag: 'Summer Fav',
     dietary: 'veg',
     description: 'Chilled vanilla milk marked with espresso shot and generous golden buttery caramel drizzle.',
-    details: ['🧈 Salted Caramel', '⚡ High Energy'],
+    details: ['Salted Caramel','High Energy'],
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDNjPKlqKtESQ0TETpEvAJ6w_PSCQk9WgAA1Jgc4uHzJoZ09hVO10rICprzoG_ZB8gMYCO23wsuw-CQV0X0VvgsdhD3Y5eCXnqJGkFbUj2EZ4nLeyMkKTkPZnm92CqElBheeuEToElHeY9b_110tlgan7d383KkzKtSMQTFxQbL1heAHP0ZZ0M4-u3hl2cdUpx7-OUCjgjAi3OT0QSz4-fRL6cH04idkadg3soDM8gnkUMfW_UD4cSA',
     alt: 'Iced caramel macchiato with caramel swirl'
   },
@@ -431,7 +431,7 @@ export const menuItems = [
     tag: 'Ultimate Treat',
     dietary: 'veg',
     description: 'Our show-stopping iced creation with double espresso, blended chocolate fudge, whipped cream and cocoa.',
-    details: ['🍫 Loaded Fudge', '✨ House Signature'],
+    details: ['Loaded Fudge','House Signature'],
     image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80',
     alt: 'Decadent iced mocha madness topped with whipped cream'
   },
@@ -448,7 +448,7 @@ export const menuItems = [
     tag: 'Refreshing',
     dietary: 'veg',
     description: 'Fresh mountain garden mint leaves muddled with lime wedges, cane sugar syrup, and fizzy soda over ice.',
-    details: ['🌿 Fresh Mint', '🍋 Lime & Soda'],
+    details: ['Fresh Mint','Lime & Soda'],
     image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80',
     alt: 'Classic mint lime mojito with crushed ice and straw'
   },
@@ -461,7 +461,7 @@ export const menuItems = [
     tag: 'Signature Chill',
     dietary: 'veg',
     description: 'Crushed seasonal fresh fruits, muddled fresh mint, citrus juice and sparkling soda poured over ice.',
-    details: ['🍓 Crushed Fruits', '🌿 Muddled Mint'],
+    details: ['Crushed Fruits','Muddled Mint'],
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
     alt: 'Fruit crush mojito with vibrant fruit layers'
   },
@@ -474,7 +474,7 @@ export const menuItems = [
     tag: 'Comforting',
     dietary: 'veg',
     description: 'Velvety melted dark cocoa simmered with fresh whole milk and a hint of vanilla warmth.',
-    details: ['🍫 Pure Cocoa', '🔥 Hot Mug'],
+    details: ['Pure Cocoa','Hot Mug'],
     image: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80',
     alt: 'Hot chocolate in rustic ceramic mug with cocoa powder'
   },
@@ -487,7 +487,7 @@ export const menuItems = [
     tag: 'Creamy Classic',
     dietary: 'veg',
     description: 'Thick, creamy milkshake blended with premium dairy ice cream in your choice of Chocolate, Vanilla, or Strawberry.',
-    details: ['🍨 Ice Cream Blended', '🍓 3 Flavor Choices'],
+    details: ['Ice Cream Blended','3 Flavor Choices'],
     image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80',
     alt: 'Thick creamy milkshake with whipped cream and cherry'
   },
@@ -500,7 +500,7 @@ export const menuItems = [
     tag: 'Top Favorite',
     dietary: 'veg',
     description: 'Crisp Oreo cookies crushed and blended with rich vanilla ice cream, whole milk, and dark chocolate drizzle.',
-    details: ['🍪 Real Oreo Cookies', '🍫 Chocolate Swirl'],
+    details: ['Real Oreo Cookies','Chocolate Swirl'],
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80',
     alt: 'Oreo milkshake with cookie crumbles on top'
   },
@@ -513,7 +513,7 @@ export const menuItems = [
     tag: 'Popular',
     dietary: 'veg',
     description: 'Rich creamy vanilla shake infused with crunchy chocolate Oreo cookie crumbles.',
-    details: ['🍪 Oreo Bits', '🥛 Rich Cream'],
+    details: ['Oreo Bits','Rich Cream'],
     image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80',
     alt: 'Classic Oreo shake in tall glass'
   },
@@ -526,7 +526,7 @@ export const menuItems = [
     tag: 'Chocolate Crunch',
     dietary: 'veg',
     description: 'Crispy KitKat wafer bars blended with velvety ice cream and chocolate sauce.',
-    details: ['🍫 KitKat Bars', '✨ Wafer Crunch'],
+    details: ['KitKat Bars','Wafer Crunch'],
     image: 'https://images.unsplash.com/photo-1579888944880-d98341245702?auto=format&fit=crop&w=600&q=80',
     alt: 'Kitkat milkshake with chocolate drizzle'
   },
@@ -538,8 +538,8 @@ export const menuItems = [
     price: 280,
     tag: 'Fruity Delight',
     dietary: 'veg',
-    description: 'Wild blueberries blended smoothly with vanilla ice cream and whole milk for a rich purple treat.',
-    details: ['🫐 Real Blueberries', '🍨 Creamy Blend'],
+    description: 'Wild blueberries blended smoothly with vanilla ice cream and whole milk for a rich berry treat.',
+    details: ['🫐 Real Blueberries','Creamy Blend'],
     image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80',
     alt: 'Blueberry milkshake in glass with berry garnish'
   },
@@ -552,7 +552,7 @@ export const menuItems = [
     tag: 'Zesty Refresher',
     dietary: 'veg',
     description: 'Freshly squeezed lemon juice, muddled wild mint, cane syrup, and chilled soda water.',
-    details: ['🍋 Fresh Lemons', '🌿 Garden Mint'],
+    details: ['Fresh Lemons','Garden Mint'],
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled mint lemonade with lemon slice'
   },
@@ -565,7 +565,7 @@ export const menuItems = [
     tag: 'Cool Brew',
     dietary: 'veg',
     description: 'Slow-steeped Himalayan black tea served cold over ice with natural sweet peach and freshly squeezed lemon.',
-    details: ['🍑 Peach Essence', '🍋 Fresh Lemon'],
+    details: ['Peach Essence','Fresh Lemon'],
     image: 'https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=600&q=80',
     alt: 'Iced tea with lemon and peach slices'
   },
@@ -578,7 +578,7 @@ export const menuItems = [
     tag: 'Nepali Zing',
     dietary: 'veg',
     description: 'Chilled soda spiked with roasted cumin, chaat masala, rock salt, and tangy fresh lemon juice.',
-    details: ['🧂 Rock Salt & Cumin', '🍋 Lemon Zing'],
+    details: ['Rock Salt & Cumin','Lemon Zing'],
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
     alt: 'Spiced masala soda in tall glass with lemon'
   },
@@ -591,7 +591,7 @@ export const menuItems = [
     tag: 'Tart & Sweet',
     dietary: 'veg',
     description: 'Crisp, chilled red cranberry juice served tall with crystal ice.',
-    details: ['🍒 Pure Cranberry', '🧊 Chilled Glass'],
+    details: ['Pure Cranberry','Chilled Glass'],
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled cranberry juice with ice'
   },
@@ -604,7 +604,7 @@ export const menuItems = [
     tag: 'Chilled Can',
     dietary: 'veg',
     description: 'Your choice of chilled Coke, Fanta, or Sprite served over ice cubes with lemon slice.',
-    details: ['🥤 Choice of Soda', '🧊 Served Over Ice'],
+    details: ['Choice of Soda','Served Over Ice'],
     image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled soft drink in glass with ice'
   },
@@ -618,7 +618,7 @@ export const menuItems = [
     tag: 'Crunchy',
     dietary: 'veg',
     description: 'Thick real strawberry fruit smoothie blended with crushed ice, topped with crispy crunchy pearls.',
-    details: ['🍓 Real Strawberries', '✨ Crunchy Topping'],
+    details: ['Real Strawberries','Crunchy Topping'],
     image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80',
     alt: 'Strawberry smoothie in jar with crunchy topping'
   },
@@ -631,7 +631,7 @@ export const menuItems = [
     tag: 'Tropical',
     dietary: 'veg',
     description: 'Tropical ripe mango pulp blended rich and thick, finished with crunchy roasted granola crunch.',
-    details: ['🥭 Sweet Mango', '✨ Granola Crunch'],
+    details: ['Sweet Mango','Granola Crunch'],
     image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80',
     alt: 'Mango smoothie with golden mango puree'
   },
@@ -644,7 +644,7 @@ export const menuItems = [
     tag: 'Antioxidant',
     dietary: 'veg',
     description: 'Lush dark blueberries blended with natural mountain yogurt, honey, and a crunch topping.',
-    details: ['🫐 Wild Blueberry', '🥣 Mountain Yogurt'],
+    details: ['🫐 Wild Blueberry','Mountain Yogurt'],
     image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80',
     alt: 'Blueberry smoothie with fresh berries'
   },
@@ -657,7 +657,7 @@ export const menuItems = [
     tag: 'Chef Deluxe',
     dietary: 'veg',
     description: 'Loaded deluxe smoothie crafted from a vibrant medley of fresh seasonal Himalayan fruits and honey.',
-    details: ['🍎 Multi-fruit Blend', '🍯 Pure Honey'],
+    details: ['Multi-fruit Blend','Pure Honey'],
     image: 'https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=600&q=80',
     alt: 'Multi fruit smoothie with assorted fresh fruit garnish'
   },
@@ -671,7 +671,7 @@ export const menuItems = [
     tag: 'Smooth & Rich',
     dietary: 'veg',
     description: 'Iced espresso blended with Madagascar vanilla syrup, chilled milk, and whipped cream topping.',
-    details: ['☕ Espresso Blend', '🍨 French Vanilla'],
+    details: ['Espresso Blend','French Vanilla'],
     image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80',
     alt: 'Vanilla frappe with whipped cream'
   },
@@ -684,7 +684,7 @@ export const menuItems = [
     tag: 'Nutty Note',
     dietary: 'veg',
     description: 'Roasted hazelnut syrup blended with chilled double espresso, milk, and crushed ice.',
-    details: ['🌰 Roasted Hazelnut', '☕ Double Espresso'],
+    details: ['Roasted Hazelnut','Double Espresso'],
     image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80',
     alt: 'Hazelnut frappe with coffee bean topping'
   },
@@ -697,7 +697,7 @@ export const menuItems = [
     tag: 'Caramel Swirl',
     dietary: 'veg',
     description: 'Smooth coffee frappe blended with buttery caramel sauce and topped with golden caramel drizzle.',
-    details: ['🧈 Golden Caramel', '☕ Blended Cold'],
+    details: ['Golden Caramel','Blended Cold'],
     image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80',
     alt: 'Caramel frappe with golden caramel drizzle'
   },
@@ -710,7 +710,7 @@ export const menuItems = [
     tag: 'Cookie Blend',
     dietary: 'veg',
     description: 'Blended iced coffee mixed with crunchy Oreo cookies and chocolate syrup drizzle.',
-    details: ['🍪 Crushed Oreo', '☕ Coffee Infused'],
+    details: ['Crushed Oreo','Coffee Infused'],
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80',
     alt: 'Oreo frappe with cookie pieces'
   },
@@ -723,7 +723,7 @@ export const menuItems = [
     tag: 'Cooling',
     dietary: 'veg',
     description: 'A cooling combination of dark chocolate, refreshing garden mint, and chilled espresso.',
-    details: ['🍫 Dark Chocolate', '🌿 Cooling Mint'],
+    details: ['Dark Chocolate','Cooling Mint'],
     image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80',
     alt: 'Choco mint frappe with green mint leaf'
   },
@@ -736,7 +736,7 @@ export const menuItems = [
     tag: 'Decadent',
     dietary: 'veg',
     description: 'Ice-blended espresso and Belgian chocolate with whipped cream and cocoa shavings.',
-    details: ['🍫 Belgian Chocolate', '☕ Double Espresso'],
+    details: ['Belgian Chocolate','Double Espresso'],
     image: 'https://images.unsplash.com/photo-1579888944880-d98341245702?auto=format&fit=crop&w=600&q=80',
     alt: 'Mocha frappe with whipped cream and chocolate fudge'
   },
@@ -750,7 +750,7 @@ export const menuItems = [
     tag: 'Traditional',
     dietary: 'veg',
     description: 'Authentic curd churned traditional style with a pinch of roasted cumin and Himalayan salt.',
-    details: ['🥣 Fresh Curd', '🧊 Refreshing'],
+    details: ['Fresh Curd','Refreshing'],
     image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80',
     alt: 'Authentic plain lassi in clay cup'
   },
@@ -763,7 +763,7 @@ export const menuItems = [
     tag: 'Popular',
     dietary: 'veg',
     description: 'Traditional sweet yogurt beverage churned thick and chilled with aromatic green cardamom.',
-    details: ['🥣 Thick Sweet Curd', '🌿 Green Cardamom'],
+    details: ['Thick Sweet Curd','Green Cardamom'],
     image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80',
     alt: 'Sweet lassi with creamy foam on top'
   },
@@ -776,7 +776,7 @@ export const menuItems = [
     tag: 'Energy Booster',
     dietary: 'veg',
     description: 'Ripe bananas blended with thick mountain yogurt and natural honey for a wholesome treat.',
-    details: ['🍌 Sweet Bananas', '🍯 Natural Honey'],
+    details: ['Sweet Bananas','Natural Honey'],
     image: 'https://images.unsplash.com/photo-1528498033373-3c6c08e93d79?auto=format&fit=crop&w=600&q=80',
     alt: 'Banana lassi with banana slice garnish'
   },
@@ -789,7 +789,7 @@ export const menuItems = [
     tag: 'Delicate',
     dietary: 'veg',
     description: 'Creamy churned yogurt flavored with pure vanilla extract and crushed ice.',
-    details: ['🍨 Vanilla Scent', '🥣 Creamy Texture'],
+    details: ['Vanilla Scent','Creamy Texture'],
     image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80',
     alt: 'Vanilla flavored lassi in tall glass'
   },
@@ -802,7 +802,7 @@ export const menuItems = [
     tag: 'Fusion Delight',
     dietary: 'veg',
     description: 'A delicious fusion of fresh mountain curd and molten chocolate fudge syrup.',
-    details: ['🍫 Chocolate Fudge', '🥣 Fresh Curd'],
+    details: ['Chocolate Fudge','Fresh Curd'],
     image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80',
     alt: 'Chocolate lassi with chocolate syrup swirl'
   },
@@ -815,7 +815,7 @@ export const menuItems = [
     tag: 'Berry Sweet',
     dietary: 'veg',
     description: 'Fresh local strawberries blended with rich mountain yogurt and served chilled.',
-    details: ['🍓 Strawberry Puree', '🥣 Churned Curd'],
+    details: ['Strawberry Puree','Churned Curd'],
     image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80',
     alt: 'Pink strawberry lassi with strawberry on rim'
   },
@@ -832,7 +832,7 @@ export const menuItems = [
     tag: 'Crisp & Warm',
     dietary: 'veg',
     description: 'Two slices of freshly browned golden toasted artisan bread served warm and crisp.',
-    details: ['🍞 2 Slices', '🧈 Warm & Crispy'],
+    details: ['2 Slices','Warm & Crispy'],
     image: 'https://images.unsplash.com/photo-1584776296944-ab6fb57b0bdd?auto=format&fit=crop&w=600&q=80',
     alt: 'Two slices of golden toasted bread on a plate'
   },
@@ -845,7 +845,7 @@ export const menuItems = [
     tag: 'Morning Classic',
     dietary: 'veg',
     description: 'Golden toasted artisan bread slices generously slathered with rich melting dairy butter.',
-    details: ['🧈 Creamy Dairy Butter', '🍞 2 Crisp Slices'],
+    details: ['Creamy Dairy Butter','2 Crisp Slices'],
     image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80',
     alt: 'Warm golden toast topped with melting butter slab'
   },
@@ -858,7 +858,7 @@ export const menuItems = [
     tag: 'Sweet Favorite',
     dietary: 'egg',
     description: 'Thick sliced bread dipped in a vanilla-cinnamon egg custard and griddled to golden caramel perfection.',
-    details: ['🍯 Cinnamon & Honey', '🍳 Egg Custard Dipped'],
+    details: ['Cinnamon & Honey','Egg Custard Dipped'],
     image: 'https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=600&q=80',
     alt: 'Golden French toast dusted with powdered sugar and berries'
   },
@@ -871,7 +871,7 @@ export const menuItems = [
     tag: 'High Protein',
     dietary: 'egg',
     description: 'Light and fluffy two-egg pan-folded omelet lightly seasoned with rock salt and ground black pepper.',
-    details: ['🥚 2 Farm Eggs', '🍳 Pan Folded Fluffy'],
+    details: ['2 Farm Eggs','Pan Folded Fluffy'],
     image: 'https://images.unsplash.com/photo-1510693206972-df098062cb71?auto=format&fit=crop&w=600&q=80',
     alt: 'Fluffy folded plain egg omelet on plate'
   },
@@ -884,7 +884,7 @@ export const menuItems = [
     tag: 'Nepali Style',
     dietary: 'egg',
     description: 'Whipped double egg omelet loaded with finely chopped red onions, crisp green chilies, fresh coriander, and spices.',
-    details: ['🌶️ Green Chilly & Herbs', '🥚 2 Farm Eggs'],
+    details: ['Green Chilly & Herbs','2 Farm Eggs'],
     image: 'https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80',
     alt: 'Spiced Nepali masala omelet with onions and chilies'
   },
@@ -897,7 +897,7 @@ export const menuItems = [
     tag: 'Runny Yolk',
     dietary: 'egg',
     description: 'Fresh skillet-fried farm egg with tender whites and delicate runny golden yolk, sprinkled with black pepper.',
-    details: ['🍳 Runny Yolk', '⚡ Quick Protein'],
+    details: ['Runny Yolk','Quick Protein'],
     image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80',
     alt: 'Sunny side up egg with golden yolk'
   },
@@ -910,7 +910,7 @@ export const menuItems = [
     tag: 'Wholesome',
     dietary: 'egg',
     description: 'Two freshly boiled high-altitude farm eggs halved and served with Himalayan black salt and cracked pepper.',
-    details: ['🥚 2 Boiled Eggs', '🧂 Himalayan Rock Salt'],
+    details: ['2 Boiled Eggs','Himalayan Rock Salt'],
     image: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=600&q=80',
     alt: 'Hard boiled eggs halved on plate with black pepper'
   },
@@ -923,7 +923,7 @@ export const menuItems = [
     tag: 'Crispy Edges',
     dietary: 'egg',
     description: 'Sizzling pan-fried egg with crispy golden lacy edges, tender whites, and soft center.',
-    details: ['🍳 Crispy Lacy Edges', '🔥 Sizzling Skillet'],
+    details: ['Crispy Lacy Edges','Sizzling Skillet'],
     image: 'https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=600&q=80',
     alt: 'Crispy edged fried egg on breakfast plate'
   },
@@ -936,7 +936,7 @@ export const menuItems = [
     tag: 'Velvety Soft',
     dietary: 'egg',
     description: 'Slow-cooked creamy scrambled eggs folded gently with fresh dairy butter and chives.',
-    details: ['🧈 Butter Folded', '🥚 Silky & Soft'],
+    details: ['Butter Folded','Silky & Soft'],
     image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80',
     alt: 'Fluffy creamy scrambled eggs garnished with herbs'
   },
@@ -949,7 +949,7 @@ export const menuItems = [
     tag: 'Grand Feast',
     dietary: 'non-veg',
     description: 'The ultimate morning feast: Toasted artisan bread + choice of 2 savory sausages or bacon + 2 eggs (boiled or fried) + crispy garlic potatoes + dairy butter + sweet fruit jam + fresh seasonal fruit bowl.',
-    details: ['🍞 Toast + Butter/Jam', '🍳 2 Eggs + 2 Sausages/Bacon', '🥔 Crispy Garlic Potato', '🍎 Seasonal Fruit Bowl'],
+    details: ['Toast + Butter/Jam','2 Eggs + 2 Sausages/Bacon','Crispy Garlic Potato','Seasonal Fruit Bowl'],
     image: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=600&q=80',
     alt: 'Full breakfast platter with eggs, sausages, toast, garlic potatoes and fresh fruit bowl'
   },
@@ -966,7 +966,7 @@ export const menuItems = [
     tag: 'Bestseller',
     dietary: 'non-veg',
     description: 'Juicy seasoned chicken patty grilled to perfection, melted cheddar cheese, crisp lettuce, tomato & house sauce.',
-    details: ['🍗 Juicy Patty', '🧀 Cheddar Melt'],
+    details: ['Juicy Patty','Cheddar Melt'],
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80',
     alt: 'Gourmet chicken burger with lettuce and cheddar cheese'
   },
@@ -979,7 +979,7 @@ export const menuItems = [
     tag: 'Protein Rich',
     dietary: 'egg',
     description: 'Golden fried egg layered with caramelized onions, fresh garden greens, sliced tomatoes and tangy herb mayo.',
-    details: ['🍳 Farm Fresh Egg', '🍞 Toasted Bun'],
+    details: ['Farm Fresh Egg','Toasted Bun'],
     image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80',
     alt: 'Egg burger with fresh greens in brioche bun'
   },
@@ -992,7 +992,7 @@ export const menuItems = [
     tag: 'Budget Friendly',
     dietary: 'veg',
     description: 'Crispy spiced vegetable patty loaded with cucumber, tomato, fresh lettuce, and signature mayonnaise.',
-    details: ['🌱 Crispy Veg Patty', '🥗 Garden Fresh'],
+    details: ['Crispy Veg Patty','Garden Fresh'],
     image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=600&q=80',
     alt: 'Crispy vegetarian burger with garden greens'
   },
@@ -1005,7 +1005,7 @@ export const menuItems = [
     tag: 'Cheesy',
     dietary: 'veg',
     description: 'Golden toasted artisan bread filled with fresh vegetables, house butter, and rich melted mozzarella cheese.',
-    details: ['🧀 Melted Mozzarella', '🍞 Grilled Crisp'],
+    details: ['Melted Mozzarella','Grilled Crisp'],
     image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80',
     alt: 'Toasted vegetable cheese sandwich with melted cheese'
   },
@@ -1018,7 +1018,7 @@ export const menuItems = [
     tag: 'Popular',
     dietary: 'non-veg',
     description: 'Tender spiced shredded chicken tossed with savory dressing, black pepper, and crisp lettuce in toasted bread.',
-    details: ['🍗 Shredded Chicken', '🌿 Spiced Dressing'],
+    details: ['Shredded Chicken','Spiced Dressing'],
     image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=600&q=80',
     alt: 'Grilled chicken sandwich sliced diagonally'
   },
@@ -1031,7 +1031,7 @@ export const menuItems = [
     tag: 'Classic',
     dietary: 'egg',
     description: 'Fluffy farm-fresh egg omelette seasoned with Himalayan herbs, sandwiched inside warm toasted bread slices.',
-    details: ['🍳 Farm Egg Omelette', '🍞 Warm Toasted'],
+    details: ['Farm Egg Omelette','Warm Toasted'],
     image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80',
     alt: 'Classic toasted egg sandwich with herbs'
   },
@@ -1048,7 +1048,7 @@ export const menuItems = [
     tag: 'Sharing Feast',
     dietary: 'veg',
     description: 'Grand 25 pcs tasting platter: 5 pcs Steamed + 5 pcs Fried + 5 pcs Sadheko + 5 pcs Kothey + 5 pcs Chilly Mo:Mo with spicy chutney.',
-    details: ['🥟 25 Pieces Total', '🌶️ 5 Styles in One'],
+    details: ['25 Pieces Total','5 Styles in One'],
     image: 'https://images.unsplash.com/photo-1625398407796-82650a8c135f?auto=format&fit=crop&w=600&q=80',
     alt: 'Grand vegetable momo platter with assorted styles and spicy chutney'
   },
@@ -1061,7 +1061,7 @@ export const menuItems = [
     tag: 'Local Favorite',
     dietary: 'non-veg',
     description: 'Authentic 25 pcs buff extravaganza: 5 Steamed + 5 Deep Fried + 5 Pungent Sadheko + 5 Pan-fried Kothey + 5 Spicy Chilly Mo:Mo.',
-    details: ['🥟 25 Pieces Buff', '🌶️ Includes Sadheko & Chilly'],
+    details: ['25 Pieces Buff','Includes Sadheko & Chilly'],
     image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80',
     alt: 'Authentic Nepali buff momo platter with sesame and tomato achar'
   },
@@ -1074,7 +1074,7 @@ export const menuItems = [
     tag: 'Chef Signature',
     dietary: 'non-veg',
     description: 'The ultimate chicken lover feast: 5 Steamed + 5 Fried + 5 Tangy Sadheko + 5 Crispy Kothey + 5 Fiery Chilly Chicken Mo:Mo.',
-    details: ['🥟 25 Pieces Chicken', '🔥 Perfect for Groups'],
+    details: ['25 Pieces Chicken','Perfect for Groups'],
     image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80',
     alt: 'Steaming chicken momo platter garnished with herbs and sauces'
   },
@@ -1087,7 +1087,7 @@ export const menuItems = [
     tag: 'Hot & Spicy',
     dietary: 'non-veg',
     description: '2 Packets of fiery Current Noodles wok-tossed and served with 2 Fried Eggs, 2 Savory Sausages, and fresh crisp garden salad.',
-    details: ['🍜 2x Current Noodles', '🍳 2 Eggs + 2 Sausages'],
+    details: ['2x Current Noodles','2 Eggs + 2 Sausages'],
     image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=600&q=80',
     alt: 'Spicy noodle platter with fried sausages and sunny eggs'
   },
@@ -1104,7 +1104,7 @@ export const menuItems = [
     tag: 'House Premium',
     dietary: 'non-veg',
     description: 'Silky al dente spaghetti twirled in rich egg yolk cream sauce, aged parmesan cheese, cracked black peppercorns, and savory crispy bits.',
-    details: ['🍝 Al Dente Spaghetti', '🧀 Aged Parmesan & Cream'],
+    details: ['Al Dente Spaghetti','Aged Parmesan & Cream'],
     image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80',
     alt: 'Creamy spaghetti carbonara with parmesan and black pepper'
   },
@@ -1117,7 +1117,7 @@ export const menuItems = [
     tag: 'Hearty Meat Sauce',
     dietary: 'non-veg',
     description: 'Slow-cooked minced chicken simmered in rich San Marzano tomato sauce with aromatic garlic, basil, and Italian oregano over pasta.',
-    details: ['🍗 Minced Chicken Ragù', '🍅 Italian Herb Tomato'],
+    details: ['Minced Chicken Ragù','Italian Herb Tomato'],
     image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80',
     alt: 'Chicken Bolognese pasta with rich red meat sauce'
   },
@@ -1130,7 +1130,7 @@ export const menuItems = [
     tag: 'Spicy & Zesty',
     dietary: 'veg',
     description: 'Tender pasta tossed in fiery red tomato sauce infused with toasted red chilies, garlic slivers, olive oil, and fresh basil leaves.',
-    details: ['🌶️ Spicy Red Chili', '🌿 Fresh Basil & Garlic'],
+    details: ['Spicy Red Chili','Fresh Basil & Garlic'],
     image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80',
     alt: 'Penne all arrabbiata with spicy red tomato sauce'
   },
@@ -1143,7 +1143,7 @@ export const menuItems = [
     tag: 'Rich & Creamy',
     dietary: 'veg',
     description: 'Decadent creamy white sauce made from fresh dairy cream, butter, and grated parmesan tossed with al dente pasta and herbs.',
-    details: ['🥛 Dairy Cream & Butter', '🧀 Grated Parmesan'],
+    details: ['Dairy Cream & Butter','Grated Parmesan'],
     image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80',
     alt: 'Creamy fettuccine alfredo with parmesan and herbs'
   },
@@ -1156,7 +1156,7 @@ export const menuItems = [
     tag: 'Crispy Skewer',
     dietary: 'non-veg',
     description: 'Juicy sausage or spiced filling dipped in sweet golden cornmeal batter, deep-fried until crisp and drizzled with mustard and ketchup.',
-    details: ['🌭 Crispy Corn Crust', '🍅 Ketchup & Mustard Dip'],
+    details: ['Crispy Corn Crust','Ketchup & Mustard Dip'],
     image: 'https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=600&q=80',
     alt: 'Crispy golden corn dogs on wooden stick with ketchup and mustard'
   },
@@ -1169,7 +1169,7 @@ export const menuItems = [
     tag: 'Epic Cheese Pull',
     dietary: 'veg',
     description: 'Thick block of creamy mozzarella cheese enclosed in crunchy sweet cornmeal batter, fried golden with epic stretchy cheese pull.',
-    details: ['🧀 Stretchy Mozzarella', '⚡ Crunchy Golden Crust'],
+    details: ['Stretchy Mozzarella','Crunchy Golden Crust'],
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80',
     alt: 'Korean style mozzarella cheese corn dog with gooey cheese pull'
   },
@@ -1186,7 +1186,7 @@ export const menuItems = [
     tag: 'Street Classic',
     dietary: 'veg',
     description: 'Traditional silky cold mung bean jelly roll tossed in spicy Sichuan pepper oil, dark soy sauce, crushed garlic, and vinegar. Served in Jhol or Dry style.',
-    details: ['🌶️ Spicy Chili Oil', '🥢 Jhol or Dry Option'],
+    details: ['Spicy Chili Oil','Jhol or Dry Option'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Tibetan yellow rolled laphing noodles in spicy red chili garlic sauce'
   },
@@ -1199,7 +1199,7 @@ export const menuItems = [
     tag: 'Bestseller',
     dietary: 'veg',
     description: 'Silky yellow laphing sheets wrapped around seasoned chewy instant noodles, immersed in fiery garlic-chili vinegar sauce.',
-    details: ['🍜 Noodle Stuffed', '🔥 Fiery Garlic Broth'],
+    details: ['Noodle Stuffed','Fiery Garlic Broth'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Noodle-stuffed Tibetan laphing rolls in red chili sauce'
   },
@@ -1212,7 +1212,7 @@ export const menuItems = [
     tag: 'Crunchy Favorite',
     dietary: 'veg',
     description: 'Coffee Adda special twist: crisp spiced potato chips rolled snugly inside tender cold laphing with spicy tangy chili sauce.',
-    details: ['🥔 Crunchy Spiced Chips', '🌶️ Hot & Tangy'],
+    details: ['Crunchy Spiced Chips','Hot & Tangy'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Chips stuffed spicy laphing rolls'
   },
@@ -1225,7 +1225,7 @@ export const menuItems = [
     tag: 'All-in-One',
     dietary: 'veg',
     description: 'The ultimate laphing bowl loaded with tender gluten jelly, noodles, and crunchy potato chips drenched in spicy Sichuan sauce.',
-    details: ['🥢 Jelly + Noodles + Chips', '⚡ Extra Spicy'],
+    details: ['Jelly + Noodles + Chips','Extra Spicy'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Mix loaded laphing with noodles and chips in chili broth'
   },
@@ -1238,7 +1238,7 @@ export const menuItems = [
     tag: 'Savory Special',
     dietary: 'non-veg',
     description: 'Tender spiced minced chicken tucked inside silky cold laphing sheets, dressed in chili-infused garlic vinegar and roasted sesame seeds.',
-    details: ['🍗 Spiced Minced Chicken', '🥢 Jhol or Dry Option'],
+    details: ['Spiced Minced Chicken','Jhol or Dry Option'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Chicken stuffed laphing rolls with spicy broth'
   },
@@ -1255,7 +1255,7 @@ export const menuItems = [
     tag: 'Authentic',
     dietary: 'veg',
     description: 'Crisp beaten rice (baji), roasted soybeans (bhatmas), spicy potato curry (aloo sadheko), fresh green salad and house pickles.',
-    details: ['🍚 Beaten Rice', '🥗 Bhatmas & Aloo'],
+    details: ['Beaten Rice','Bhatmas & Aloo'],
     image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80',
     alt: 'Traditional Nepali vegetarian khaja set on brass thali'
   },
@@ -1268,7 +1268,7 @@ export const menuItems = [
     tag: 'Bestseller',
     dietary: 'non-veg',
     description: 'Nepali style spiced chicken curry served with crunchy beaten rice, roasted bhatmas, spiced aloo and tomato chutney.',
-    details: ['🍗 Chicken Curry', '🍚 Beaten Rice Platter'],
+    details: ['Chicken Curry','Beaten Rice Platter'],
     image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80',
     alt: 'Nepali chicken khaja set with roasted soybeans and beaten rice'
   },
@@ -1281,7 +1281,7 @@ export const menuItems = [
     tag: 'Local Favorite',
     dietary: 'non-veg',
     description: 'Pan-fried spicy buff choila/curry paired with beaten rice, spiced potato pickle, crunchy bhatmas and fresh salad.',
-    details: ['🥩 Spiced Buff Meat', '🌶️ Authentic Flavors'],
+    details: ['Spiced Buff Meat','Authentic Flavors'],
     image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80',
     alt: 'Buff khaja set with seasoned beaten rice and chutneys'
   },
@@ -1294,7 +1294,7 @@ export const menuItems = [
     tag: 'Special Combo',
     dietary: 'non-veg',
     description: 'The complete feast featuring spiced chicken, savory buff, boiled egg, beaten rice, aloo sadheko and assorted condiments.',
-    details: ['🍗 Chicken + Buff + Egg', '👑 Royal Feast'],
+    details: ['Chicken + Buff + Egg','Royal Feast'],
     image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80',
     alt: 'Deluxe mix khaja set with meat curries, egg, and beaten rice'
   },
@@ -1307,7 +1307,7 @@ export const menuItems = [
     tag: 'Flavorful',
     dietary: 'non-veg',
     description: 'Steaming noodles generously smothered in rich, aromatic minced buff keema gravy cooked with garlic, ginger and herbs.',
-    details: ['🥩 Minced Buff Sauce', '🍜 Wok Noodles'],
+    details: ['Minced Buff Sauce','Wok Noodles'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Savory noodles topped with rich spiced buff keema'
   },
@@ -1320,7 +1320,7 @@ export const menuItems = [
     tag: 'Popular',
     dietary: 'non-veg',
     description: 'Wok-tossed noodles crowned with seasoned minced chicken gravy, fresh chopped scallions and fragrant spices.',
-    details: ['🍗 Chicken Keema', '🌿 Fresh Scallions'],
+    details: ['Chicken Keema','Fresh Scallions'],
     image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80',
     alt: 'Stir fried noodles with spiced chicken keema topping'
   },
@@ -1333,7 +1333,7 @@ export const menuItems = [
     tag: 'House Special',
     dietary: 'non-veg',
     description: 'Signature noodle bowl topped with combined minced chicken and savory buff keema simmered in house masala.',
-    details: ['🍗 Chicken & Buff', '🌶️ Rich & Spicy'],
+    details: ['Chicken & Buff','Rich & Spicy'],
     image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=600&q=80',
     alt: 'Special mix keema noodles garnished with cilantro'
   },
@@ -1346,7 +1346,7 @@ export const menuItems = [
     tag: 'Warm & Comforting',
     dietary: 'non-veg',
     description: 'Steaming aromatic Himalayan soup noodles with tender chicken strips, carrots, cabbage, and rich spiced broth.',
-    details: ['🍜 Warm Broth', '🍗 Chicken Strips'],
+    details: ['Warm Broth','Chicken Strips'],
     image: 'https://images.unsplash.com/photo-1547928576-a4a33237cbc3?auto=format&fit=crop&w=600&q=80',
     alt: 'Steaming bowl of chicken thukpa soup with vegetables'
   },
@@ -1359,7 +1359,7 @@ export const menuItems = [
     tag: 'Hearty',
     dietary: 'non-veg',
     description: 'Slow-simmered mountain broth with noodles, savory buff slices, garlic, ginger and seasonal greens.',
-    details: ['🥩 Buff Slices', '🌶️ Spiced Soup'],
+    details: ['Buff Slices','Spiced Soup'],
     image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=600&q=80',
     alt: 'Hearty buff thukpa noodle soup bowl'
   },
@@ -1372,7 +1372,7 @@ export const menuItems = [
     tag: 'Vegetarian Option',
     dietary: 'egg',
     description: 'Wholesome hot noodle soup with fresh boiled eggs, garden veggies, and garlic-infused vegetable broth.',
-    details: ['🍳 Farm Eggs', '🍜 Comforting Broth'],
+    details: ['Farm Eggs','Comforting Broth'],
     image: 'https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&w=600&q=80',
     alt: 'Egg thukpa noodle soup with soft eggs and greens'
   },
@@ -1385,7 +1385,7 @@ export const menuItems = [
     tag: 'Pure Veg',
     dietary: 'veg',
     description: 'Gentle and soothing Himalayan vegetable noodle soup packed with fresh cabbage, carrots, onion and cilantro.',
-    details: ['🌱 100% Vegetarian', '🥕 Garden Vegetables'],
+    details: ['100% Vegetarian','Garden Vegetables'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Healthy vegetable thukpa with fresh mountain greens'
   },
@@ -1398,7 +1398,7 @@ export const menuItems = [
     tag: 'Deluxe Soup',
     dietary: 'non-veg',
     description: 'Grand bowl loaded with chicken, buff, boiled egg, vegetables and hot flavored Himalayan soup broth.',
-    details: ['👑 Chicken, Buff & Egg', '🍜 King Size'],
+    details: ['Chicken, Buff & Egg','King Size'],
     image: 'https://images.unsplash.com/photo-1547928576-a4a33237cbc3?auto=format&fit=crop&w=600&q=80',
     alt: 'Deluxe mix thukpa noodle soup bowl with assorted meats'
   },
@@ -1411,7 +1411,7 @@ export const menuItems = [
     tag: 'Wok Fresh',
     dietary: 'veg',
     description: 'Fluffy basmati rice tossed in hot wok with sweet carrots, green peas, capsicum and soy seasoning.',
-    details: ['🍚 Basmati Rice', '🌱 Fresh Vegetables'],
+    details: ['Basmati Rice','Fresh Vegetables'],
     image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80',
     alt: 'Wok tossed vegetable fried rice with fresh herbs'
   },
@@ -1424,7 +1424,7 @@ export const menuItems = [
     tag: 'Popular',
     dietary: 'non-veg',
     description: 'Aromatic fried rice stir-fried with diced tender chicken, scallions, eggs, and cracked black pepper.',
-    details: ['🍗 Tender Chicken', '🍳 Wok Stirred'],
+    details: ['Tender Chicken','Wok Stirred'],
     image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80',
     alt: 'Chicken fried rice served hot with garnishes'
   },
@@ -1437,7 +1437,7 @@ export const menuItems = [
     tag: 'Spicy & Savory',
     dietary: 'non-veg',
     description: 'Smoky wok-tossed basmati rice with spiced shredded buff, soy sauce, and aromatic garlic butter.',
-    details: ['🥩 Spiced Buff Pieces', '🍚 Fragrant Rice'],
+    details: ['Spiced Buff Pieces','Fragrant Rice'],
     image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80',
     alt: 'Buff fried rice tossed with spices and scallions'
   },
@@ -1450,7 +1450,7 @@ export const menuItems = [
     tag: 'Chef Choice',
     dietary: 'non-veg',
     description: 'Ultimate fried rice combination with chicken, buff, egg, and crunchy garden vegetables in wok glaze.',
-    details: ['👑 Chicken, Buff & Egg', '🍚 Deluxe Basmati'],
+    details: ['Chicken, Buff & Egg','Deluxe Basmati'],
     image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80',
     alt: 'Special mixed fried rice platter with meats and vegetables'
   },
@@ -1467,7 +1467,7 @@ export const menuItems = [
     tag: 'Must Try',
     dietary: 'veg',
     description: 'Crispy fried potato wedges tossed in authentic Mustang jimbu herbs, roasted chili flakes and garlic butter.',
-    details: ['🥔 Crispy Wedges', '🌿 Authentic Jimbu Herb'],
+    details: ['Crispy Wedges','Authentic Jimbu Herb'],
     image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80',
     alt: 'Mustang aalu crispy spiced potato wedges with mountain herbs'
   },
@@ -1480,7 +1480,7 @@ export const menuItems = [
     tag: 'Authentic',
     dietary: 'non-veg',
     description: 'Smoky dried meat shredded and tossed with raw mustard oil, roasted garlic, green chili, onion and fresh lemon.',
-    details: ['🥩 Smoky Dried Meat', '🌶️ Spicy & Pungent'],
+    details: ['Smoky Dried Meat','Spicy & Pungent'],
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
     alt: 'Spicy sukuti sadheko traditional Nepali dried meat salad'
   },
@@ -1493,7 +1493,7 @@ export const menuItems = [
     tag: 'Bestseller',
     dietary: 'non-veg',
     description: 'Seared spiced chicken marinated with fresh coriander, diced red onions, tomatoes, green chilies and lime.',
-    details: ['🍗 Spiced Chicken', '🍋 Fresh Lime & Coriander'],
+    details: ['Spiced Chicken','Fresh Lime & Coriander'],
     image: 'https://images.unsplash.com/photo-1606471191009-63994c53433b?auto=format&fit=crop&w=600&q=80',
     alt: 'Tangy and spicy chicken sadheko salad'
   },
@@ -1506,7 +1506,7 @@ export const menuItems = [
     tag: 'Spicy',
     dietary: 'non-veg',
     description: 'Tender spiced buff cubes marinated in roasted fenugreek, garlic ginger paste, mustard oil and fresh herbs.',
-    details: ['🥩 Tender Buff Cubes', '🌶️ Roasted Fenugreek'],
+    details: ['Tender Buff Cubes','Roasted Fenugreek'],
     image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80',
     alt: 'Traditional buff sadheko served with garnishes'
   },
@@ -1519,7 +1519,7 @@ export const menuItems = [
     tag: 'Classic',
     dietary: 'veg',
     description: 'Deep roasted crunchy soybeans mixed with raw mustard oil, finely chopped onions, chilies and lemon juice.',
-    details: ['🌱 Roasted Soybeans', '⚡ High Protein Crunch'],
+    details: ['Roasted Soybeans','High Protein Crunch'],
     image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80',
     alt: 'Crunchy roasted bhatmas sadheko with onions and chilies'
   },
@@ -1532,7 +1532,7 @@ export const menuItems = [
     tag: 'Addictive',
     dietary: 'veg',
     description: 'Roasted crunchy peanuts tossed with diced tomatoes, onions, cilantro, green chilies, and tangy chaat masala.',
-    details: ['🥜 Roasted Peanuts', '🍋 Tangy Chaat Masala'],
+    details: ['Roasted Peanuts','Tangy Chaat Masala'],
     image: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=600&q=80',
     alt: 'Spicy peanut sadheko snack with diced tomatoes and herbs'
   },
@@ -1545,7 +1545,7 @@ export const menuItems = [
     tag: 'Comfort Food',
     dietary: 'veg',
     description: 'Two packets of crunchy crushed Wai-Wai noodles tossed with onions, tomatoes, green chilies, seasoning & lime.',
-    details: ['🍜 2x Wai-Wai Noodles', '🌶️ Nostalgic Taste'],
+    details: ['2x Wai-Wai Noodles','Nostalgic Taste'],
     image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80',
     alt: 'Crunchy spicy Wai-Wai sadheko street snack'
   },
@@ -1558,7 +1558,7 @@ export const menuItems = [
     tag: 'Traditional',
     dietary: 'veg',
     description: 'Tender boiled potatoes spiced with roasted fenugreek oil, turmeric, green chilies, cilantro and lemon juice.',
-    details: ['🥔 Spiced Potatoes', '🌿 Roasted Fenugreek'],
+    details: ['Spiced Potatoes','Roasted Fenugreek'],
     image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80',
     alt: 'Authentic Nepali aalu sadheko potato salad'
   },
@@ -1571,7 +1571,7 @@ export const menuItems = [
     tag: 'Crispy',
     dietary: 'veg',
     description: 'Golden, crispy hand-cut potatoes fried to perfection, lightly salted and served with creamy dip.',
-    details: ['🍟 Golden Crispy', '🧂 Sea Salted'],
+    details: ['Golden Crispy','Sea Salted'],
     image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80',
     alt: 'Basket of golden crispy french fries with dip'
   },
@@ -1584,7 +1584,7 @@ export const menuItems = [
     tag: 'Spicy',
     dietary: 'veg',
     description: 'Hot crispy potato fries dusted generously with zesty, tangy and fiery African peri-peri spice mix.',
-    details: ['🍟 Peri-Peri Dust', '🌶️ Zesty Kick'],
+    details: ['Peri-Peri Dust','Zesty Kick'],
     image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=80',
     alt: 'Crispy peri peri seasoned fries with red spice blend'
   },
@@ -1597,7 +1597,7 @@ export const menuItems = [
     tag: 'Cheesy Delight',
     dietary: 'veg',
     description: 'Crispy golden breaded spheres that melt in your mouth with an oozy, savory melted cheese center.',
-    details: ['🧀 Molten Cheese Center', '✨ Golden Crust'],
+    details: ['Molten Cheese Center','Golden Crust'],
     image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80',
     alt: 'Crispy golden cheese balls with cheese pull'
   },
@@ -1610,7 +1610,7 @@ export const menuItems = [
     tag: 'Crispy Fish',
     dietary: 'non-veg',
     description: 'Fresh fish fillets cut into batons, herb-marinated, rolled in crunchy breadcrumbs and fried golden.',
-    details: ['🐟 Tender Fish Fillet', '🍋 Tartar Dip'],
+    details: ['Tender Fish Fillet','Tartar Dip'],
     image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80',
     alt: 'Golden crispy fish fingers served with dip and lemon'
   },
@@ -1623,7 +1623,7 @@ export const menuItems = [
     tag: 'House Special',
     dietary: 'non-veg',
     description: 'Chef signature mountain-spiced succulent chicken kababs grilled over hot embers with garlic mint chutney.',
-    details: ['🍗 Pahadi Spices', '🔥 Charcoal Grilled'],
+    details: ['Pahadi Spices','Charcoal Grilled'],
     image: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80',
     alt: 'Juicy spiced chicken kababs on wooden platter'
   },
@@ -1636,7 +1636,7 @@ export const menuItems = [
     tag: 'Tea Time Fav',
     dietary: 'veg',
     description: 'Crispy chickpea-flour fritters with finely sliced onions, seasonal vegetables, green chili and cumin.',
-    details: ['🌱 Gram Flour Crunch', '☕ Perfect With Coffee'],
+    details: ['Gram Flour Crunch','Perfect With Coffee'],
     image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80',
     alt: 'Golden vegetable pakoda fritters with mint chutney'
   },
@@ -1649,7 +1649,7 @@ export const menuItems = [
     tag: 'Quick Snack',
     dietary: 'non-veg',
     description: 'Two grilled savory sausages served hot with our house spicy tomato and mustard dipping sauces.',
-    details: ['🌭 2 Pieces Grilled', '🍅 Spicy Dips'],
+    details: ['2 Pieces Grilled','Spicy Dips'],
     image: 'https://images.unsplash.com/photo-1585325701165-351af916e581?auto=format&fit=crop&w=600&q=80',
     alt: 'Grilled savory sausages served with mustard dip'
   },
@@ -1662,7 +1662,7 @@ export const menuItems = [
     tag: 'Spicy Bite',
     dietary: 'non-veg',
     description: 'Sliced grilled sausages tossed with red onions, tomatoes, fresh cilantro, fiery green chilies and lemon.',
-    details: ['🌭 Sliced Sausages', '🍋 Pungent Mustard Dressing'],
+    details: ['Sliced Sausages','Pungent Mustard Dressing'],
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
     alt: 'Spicy sausage sadheko with onions and cilantro'
   },
@@ -1675,7 +1675,7 @@ export const menuItems = [
     tag: 'Crunchy',
     dietary: 'veg',
     description: 'Seasoned potato sticks deep-fried to a golden crunch, dusted with savory mountain spice seasoning.',
-    details: ['🥔 Potato Sticks', '🧂 Spice Dusted'],
+    details: ['Potato Sticks','Spice Dusted'],
     image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80',
     alt: 'Crunchy golden potato sticks with dip'
   },
@@ -1688,7 +1688,7 @@ export const menuItems = [
     tag: 'Spicy Favorite',
     dietary: 'non-veg',
     description: 'Wok-tossed chicken chunks stir-fried in a fiery dark soy chili sauce with bell peppers and crunchy onions.',
-    details: ['🍗 Boneless Chicken', '🌶️ Wok Tossed'],
+    details: ['Boneless Chicken','Wok Tossed'],
     image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80',
     alt: 'Fiery chicken chilly with bell peppers and onions'
   },
@@ -1701,7 +1701,7 @@ export const menuItems = [
     tag: 'Hot & Spicy',
     dietary: 'non-veg',
     description: 'Crispy seasoned buff meat stir-fried with hot green chilies, garlic, capsicum, and thick spicy gravy.',
-    details: ['🥩 Crispy Buff', '🔥 Fiery Green Chilies'],
+    details: ['Crispy Buff','Fiery Green Chilies'],
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
     alt: 'Spicy buff chilly stir fried with bell peppers'
   },
@@ -1714,7 +1714,7 @@ export const menuItems = [
     tag: 'Tangy Spicy',
     dietary: 'non-veg',
     description: 'Sliced savory sausages tossed in hot wok with onions, green peppers, soy sauce and sweet chili glaze.',
-    details: ['🌭 Sliced Sausages', '🌶️ Sweet & Spicy'],
+    details: ['Sliced Sausages','Sweet & Spicy'],
     image: 'https://images.unsplash.com/photo-1585325701165-351af916e581?auto=format&fit=crop&w=600&q=80',
     alt: 'Sausage chilly with capsicum and chili glaze'
   },
@@ -1727,7 +1727,7 @@ export const menuItems = [
     tag: 'Crispy Snack',
     dietary: 'veg',
     description: 'Crispy potato chips tossed with garlic, ginger, chopped chilies, onions, and spicy Indo-Chinese sauce.',
-    details: ['🥔 Crispy Chips', '🌶️ Spicy Garlic Glaze'],
+    details: ['Crispy Chips','Spicy Garlic Glaze'],
     image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=600&q=80',
     alt: 'Chips chilly tossed in spicy sweet chili sauce'
   },
@@ -1740,7 +1740,7 @@ export const menuItems = [
     tag: 'Stuffed Bread',
     dietary: 'non-veg',
     description: 'Oven-baked flatbread stuffed generously with spiced minced chicken, fresh herbs, and coriander butter.',
-    details: ['🍗 Chicken Keema Stuffed', '🔥 Oven Baked'],
+    details: ['Chicken Keema Stuffed','Oven Baked'],
     image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80',
     alt: 'Stuffed chicken keema naan cut into wedges'
   },
@@ -1753,7 +1753,7 @@ export const menuItems = [
     tag: 'Cheesy',
     dietary: 'veg',
     description: 'Fresh clay-oven flatbread stuffed with savory melted mozzarella cheese and brushed with melted butter.',
-    details: ['🧀 Mozzarella Stuffed', '🧈 Butter Glazed'],
+    details: ['Mozzarella Stuffed','Butter Glazed'],
     image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80',
     alt: 'Warm cheese naan with melted cheese pull'
   },
@@ -1766,7 +1766,7 @@ export const menuItems = [
     tag: 'Aromatic',
     dietary: 'veg',
     description: 'Soft tandoori flatbread studded with roasted minced garlic, fresh coriander leaves and melted butter.',
-    details: ['🧄 Roasted Garlic', '🧈 Herb Butter'],
+    details: ['Roasted Garlic','Herb Butter'],
     image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80',
     alt: 'Garlic naan brushed with butter and chopped coriander'
   },
@@ -1779,7 +1779,7 @@ export const menuItems = [
     tag: 'Classic',
     dietary: 'veg',
     description: 'Traditional pillowy soft clay-oven baked naan brushed with golden creamy alpine butter.',
-    details: ['🧈 Pure Butter', '🍞 Soft & Fluffy'],
+    details: ['Pure Butter','Soft & Fluffy'],
     image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80',
     alt: 'Traditional butter naan bread fresh from the oven'
   },
@@ -1792,7 +1792,7 @@ export const menuItems = [
     tag: 'Fresh & Healthy',
     dietary: 'veg',
     description: 'Bowl of seasonal mountain fruits, freshly diced and dressed with light citrus honey glaze.',
-    details: ['🍎 Seasonal Fruits', '🍯 Natural Honey Touch'],
+    details: ['Seasonal Fruits','Natural Honey Touch'],
     image: 'https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=600&q=80',
     alt: 'Colorful bowl of diced fresh seasonal fruit salad'
   },
@@ -1805,7 +1805,7 @@ export const menuItems = [
     tag: 'Crisp',
     dietary: 'veg',
     description: 'Crisp farm cucumbers, ripe tomatoes, carrots, sliced red onion, and green chilies served with lemon wedges.',
-    details: ['🥒 Fresh Cucumbers & Tomatoes', '🍋 Lemon Dressing'],
+    details: ['Fresh Cucumbers & Tomatoes','Lemon Dressing'],
     image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80',
     alt: 'Fresh crisp garden green salad platter with lemon'
   },
@@ -1818,7 +1818,7 @@ export const menuItems = [
     tag: 'Spicy Salad',
     dietary: 'veg',
     description: 'Fresh sliced garden vegetables marinated in mustard oil, roasted fenugreek, green chili and lemon.',
-    details: ['🥗 Fresh Garden Veggies', '🍋 Sadheko Dressing'],
+    details: ['Fresh Garden Veggies','Sadheko Dressing'],
     image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80',
     alt: 'Spicy Nepali salad sadheko with mustard oil dressing'
   },
@@ -1835,7 +1835,7 @@ export const menuItems = [
     tag: 'Lounge Ritual',
     dietary: 'veg',
     description: 'Premium coal-heated hookah pipe prepared in your favorite fruity or mint herbal flavor.',
-    details: ['💨 Smooth Smoke', '🌿 Choice of Flavor'],
+    details: ['Smooth Smoke','Choice of Flavor'],
     image: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80',
     alt: 'Garnished shisha hookah pipe in ambient lounge'
   },
@@ -1848,7 +1848,7 @@ export const menuItems = [
     tag: 'Deluxe Special',
     dietary: 'veg',
     description: 'Deluxe garnished hookah setup with chilled fruit base, fresh mint infusion, and dense cooling vapor.',
-    details: ['🍉 Fruit Ice Base', '✨ Long Lasting'],
+    details: ['Fruit Ice Base','Long Lasting'],
     image: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80',
     alt: 'Garnished hookah pipe with fruit base'
   },
@@ -1861,7 +1861,7 @@ export const menuItems = [
     tag: 'Imported Brand',
     dietary: 'veg',
     description: 'The King of Beers: crisp, clean American lager brewed with the finest barley malt and rice.',
-    details: ['🍺 650ml Bottle', '🧊 Ice Chilled'],
+    details: ['650ml Bottle','Ice Chilled'],
     image: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled Budweiser beer bottle with condensation'
   },
@@ -1874,7 +1874,7 @@ export const menuItems = [
     tag: 'Danish Pilsner',
     dietary: 'veg',
     description: 'Probably the best beer in the world: crisp, refreshing Danish pilsner with well-balanced bitterness.',
-    details: ['🍺 650ml Bottle', '🇩🇰 Danish Malt'],
+    details: ['650ml Bottle','Danish Malt'],
     image: 'https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled Carlsberg beer bottle'
   },
@@ -1887,7 +1887,7 @@ export const menuItems = [
     tag: 'Local Favorite',
     dietary: 'veg',
     description: 'Crisp and bottom-fermented lager with mild bitterness and rich floral hop aroma.',
-    details: ['🍺 650ml Bottle', '🌿 Hop Aroma'],
+    details: ['650ml Bottle','Hop Aroma'],
     image: 'https://images.unsplash.com/photo-1618886614638-80e3c103d31a?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled Tuborg beer bottle with frosty glass'
   },
@@ -1900,7 +1900,7 @@ export const menuItems = [
     tag: 'Nepali Brew',
     dietary: 'veg',
     description: 'Brewed with pure Himalayan water: bold, robust malt character and smooth finish.',
-    details: ['🍺 650ml Bottle', '🏔️ Himalayan Water'],
+    details: ['650ml Bottle','Himalayan Water'],
     image: 'https://images.unsplash.com/photo-1584225065152-4a1454aa3d4e?auto=format&fit=crop&w=600&q=80',
     alt: 'Gorkha strong beer bottle'
   },
@@ -1913,7 +1913,7 @@ export const menuItems = [
     tag: 'Craft Brew',
     dietary: 'veg',
     description: 'Nepal premier craft pilsner brewed with imported noble hops and pure spring water.',
-    details: ['🍺 650ml Bottle', '✨ Craft Pilsner'],
+    details: ['650ml Bottle','Craft Pilsner'],
     image: 'https://images.unsplash.com/photo-1567696911980-2eed69a46042?auto=format&fit=crop&w=600&q=80',
     alt: 'Barahsinghe craft beer bottle with frothy glass'
   },
@@ -1926,7 +1926,7 @@ export const menuItems = [
     tag: 'Crisp & Sweet',
     dietary: 'veg',
     description: 'Crisp fermented sparkling apple cider offering a refreshing fruit-forward effervescence.',
-    details: ['🍎 Fermented Apple', '✨ Bubbly'],
+    details: ['Fermented Apple','Bubbly'],
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80',
     alt: 'Sparkling apple cider in stemmed glass'
   },
@@ -1939,7 +1939,7 @@ export const menuItems = [
     tag: 'Signature Cocktail',
     dietary: 'veg',
     description: 'Classic cocktail shaken with silver tequila, triple sec, and fresh lime juice, served with salted rim.',
-    details: ['🍸 Silver Tequila', '🍋 Salted Rim'],
+    details: ['Silver Tequila','Salted Rim'],
     image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80',
     alt: 'Margarita cocktail with lime wheel on salted glass rim'
   },
@@ -1952,7 +1952,7 @@ export const menuItems = [
     tag: 'Winter Special',
     dietary: 'veg',
     description: 'Traditional warming winter punch with spiced Khukri rum, cloves, cinnamon stick, honey and citrus peel.',
-    details: ['🥃 Spiced Rum', '🔥 Hot Spiced Punch'],
+    details: ['Spiced Rum','Hot Spiced Punch'],
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
     alt: 'Hot rum punch in glass with cinnamon stick and orange'
   },
@@ -1965,7 +1965,7 @@ export const menuItems = [
     tag: 'Warm Spirit',
     dietary: 'veg',
     description: 'Warm dark rum mixed with spiced mountain water, lemon juice, and honey warmth.',
-    details: ['🥃 Dark Rum', '🍋 Lemon & Honey'],
+    details: ['Dark Rum','Lemon & Honey'],
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
     alt: 'Warm hot rum punch mug with lemon slice'
   },
@@ -1979,7 +1979,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 600 (60ml)',
     dietary: 'veg',
     description: 'Smoky reserve blended malt scotch and grain spirits finished in charred oak barrels. Bottle: Rs. 4500 (Full), Rs. 2300 (Half).',
-    details: ['🥃 30ml: Rs. 350', '🥃 60ml: Rs. 600', '🍾 Full: Rs. 4500'],
+    details: ['30ml: Rs. 350','60ml: Rs. 600','Full: Rs. 4500'],
     image: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=600&q=80',
     alt: 'Old Durbar whisky bottle with amber dram over ice'
   },
@@ -1992,7 +1992,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 550 (60ml)',
     dietary: 'veg',
     description: 'Smooth blended whisky crafted with English malt and purified mountain spring water. Bottle: Rs. 3200 (Full), Rs. 1950 (Half).',
-    details: ['🥃 30ml: Rs. 350', '🥃 60ml: Rs. 550', '🍾 Full: Rs. 3200'],
+    details: ['30ml: Rs. 350','60ml: Rs. 550','Full: Rs. 3200'],
     image: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=600&q=80',
     alt: 'Old Durbar red whisky glass with ice'
   },
@@ -2005,7 +2005,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 840 (60ml)',
     dietary: 'veg',
     description: 'World-famous Scotch whisky blending light whiskies from Scotland east coast with dark peaty whiskies. Full Bottle: Rs. 7500.',
-    details: ['🥃 30ml: Rs. 450', '🥃 60ml: Rs. 840', '🍾 Full: Rs. 7500'],
+    details: ['30ml: Rs. 450','60ml: Rs. 840','Full: Rs. 7500'],
     image: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=600&q=80',
     alt: 'Johnnie Walker scotch whisky bottle on bar counter'
   },
@@ -2018,7 +2018,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 520 (60ml)',
     dietary: 'veg',
     description: 'Grand Himalayan dark rum distilled since 1959 with rich treacle, dark honey and caramel aromas. Full Bottle: Rs. 3100.',
-    details: ['🥃 30ml: Rs. 350', '🥃 60ml: Rs. 520', '🍾 Full: Rs. 3100'],
+    details: ['30ml: Rs. 350','60ml: Rs. 520','Full: Rs. 3100'],
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
     alt: 'Khukri rum bottle and glass with ice'
   },
@@ -2031,7 +2031,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 530 (60ml)',
     dietary: 'veg',
     description: 'Iconic vatted 7-year aged dark rum with unmistakable notes of molasses, oak wood, and sweet vanilla. Full Bottle: Rs. 3130.',
-    details: ['🥃 30ml: Rs. 360', '🥃 60ml: Rs. 530', '🍾 Full: Rs. 3130'],
+    details: ['30ml: Rs. 360','60ml: Rs. 530','Full: Rs. 3130'],
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
     alt: 'Old monk dark rum bottle and shot'
   },
@@ -2045,7 +2045,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 600 (90ml)',
     dietary: 'veg',
     description: 'Distilled 5 times with French grain and blended with pure glacial spring water of Mt. Everest. Full Bottle: Rs. 3500.',
-    details: ['🍸 30ml: Rs. 300', '🍸 90ml: Rs. 600', '🍾 Full: Rs. 3500'],
+    details: ['30ml: Rs. 300','90ml: Rs. 600','Full: Rs. 3500'],
     image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80',
     alt: 'Chilled 8848 vodka shot on ice'
   },
@@ -2058,7 +2058,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 1000 (90ml)',
     dietary: 'veg',
     description: 'World famous Swedish winter wheat vodka distilled continuously for legendary purity. Full Bottle: Rs. 8000.',
-    details: ['🍸 30ml: Rs. 500', '🍸 90ml: Rs. 1000', '🍾 Full: Rs. 8000'],
+    details: ['30ml: Rs. 500','90ml: Rs. 1000','Full: Rs. 8000'],
     image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80',
     alt: 'Absolut vodka bottle and martini glass'
   },
@@ -2071,7 +2071,7 @@ export const menuItems = [
     tag: 'Peg 30ml / Rs. 600 (90ml)',
     dietary: 'veg',
     description: 'Triple-distilled and 10-times charcoal filtered for iconic smoothness and crisp dry taste. Full Bottle: Rs. 3500.',
-    details: ['🍸 30ml: Rs. 300', '🍸 90ml: Rs. 600', '🍾 Full: Rs. 3500'],
+    details: ['30ml: Rs. 300','90ml: Rs. 600','Full: Rs. 3500'],
     image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80',
     alt: 'Smirnoff vodka bottle and glass with lemon'
   },
@@ -2085,7 +2085,7 @@ export const menuItems = [
     tag: 'Full Bottle',
     dietary: 'veg',
     description: 'South African premium estate bottled wine boasting smooth ruby fruit notes and balanced finish.',
-    details: ['🍷 Full Bottle', '🇿🇦 South African Vintage'],
+    details: ['Full Bottle','South African Vintage'],
     image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80',
     alt: 'Robertson wine bottle and goblet of red wine'
   },
@@ -2098,7 +2098,7 @@ export const menuItems = [
     tag: 'Full Bottle',
     dietary: 'veg',
     description: 'Sweet and fruit-forward mountain vintage red wine crafted locally in Nepal.',
-    details: ['🍷 Full Bottle', '🏔️ Local Favorite'],
+    details: ['Full Bottle','Local Favorite'],
     image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&q=80',
     alt: 'King Hills wine bottle and wine glass'
   },
@@ -2111,7 +2111,7 @@ export const menuItems = [
     tag: 'French Classic',
     dietary: 'veg',
     description: 'Authentic French wine bottled in its distinctive curved neck bottle with luscious berry bouquet.',
-    details: ['🍷 Full Bottle', '🇫🇷 Product of France'],
+    details: ['Full Bottle','Product of France'],
     image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80',
     alt: 'JP Chenet French wine bottle and glass'
   }

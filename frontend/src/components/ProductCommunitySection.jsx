@@ -19,7 +19,9 @@ import {
   Filter,
   Plus,
   Layers,
-  Trash2
+  Trash2,
+  MapPin,
+  Info
 } from 'lucide-react';
 import {
   getProductReviews,
@@ -474,7 +476,7 @@ export default function ProductCommunitySection({ product }) {
     setIsSubmitting(false);
     setIsModalOpen(false);
 
-    setToastMessage('🎉 Thank you! Your food photos and review are now live in the community gallery.');
+    setToastMessage('Thank you! Your food photos and review are now live in the community gallery.');
   };
 
   return (
@@ -1007,7 +1009,10 @@ export default function ProductCommunitySection({ product }) {
                   )}
 
                   <div className="pt-3 border-t border-white/10 mt-3 text-[11px] text-white/50 flex items-center justify-between">
-                    <span>📍 Coffee Adda, Budhanilkantha</span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-brand-gold" />
+                      Coffee Adda, Budhanilkantha
+                    </span>
                     <span>Verified Patron Snap</span>
                   </div>
                 </div>
@@ -1077,7 +1082,7 @@ export default function ProductCommunitySection({ product }) {
                       </button>
                     ))}
                     <span className="text-xs font-bold text-neutral-700 ml-2">
-                      {rating === 5 ? 'Exceptional! 🌟' : rating === 4 ? 'Very Good! ✨' : `${rating} Stars`}
+                      {rating === 5 ? 'Exceptional' : rating === 4 ? 'Very Good' : `${rating} Stars`}
                     </span>
                   </div>
                 </div>
@@ -1134,8 +1139,9 @@ export default function ProductCommunitySection({ product }) {
                           </label>
                         )}
                       </div>
-                      <p className="text-[10px] text-neutral-500 mb-2">
-                        💡 Patrons can slide through your photos in the community gallery!
+                      <p className="text-[10px] text-neutral-500 mb-2 flex items-center gap-1">
+                        <Info className="w-3 h-3 text-brand-forest shrink-0" />
+                        <span>Patrons can slide through your photos in the community gallery!</span>
                       </p>
                     </div>
                   ) : (
