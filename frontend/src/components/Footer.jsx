@@ -1,25 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { getStoredMenuItems, subscribeToMenuUpdates } from '../data/menuData';
+import React from 'react';
 
-export default function Footer({ onNavigate, isAdmin = false }) {
+export default function Footer({ onNavigate }) {
   const currentYear = new Date().getFullYear();
-  const [items, setItems] = useState(getStoredMenuItems);
-
-  useEffect(() => {
-    return subscribeToMenuUpdates((updated) => {
-      setItems(updated);
-    });
-  }, []);
-
-  const getItemPrice = (id, fallback) => {
-    const item = items.find((i) => i.id === id);
-    return item ? item.price : fallback;
-  };
-
-  const getItemName = (id, fallback) => {
-    const item = items.find((i) => i.id === id);
-    return item ? item.name : fallback;
-  };
 
   const handleNav = (e, page, anchor) => {
     e.preventDefault();
@@ -142,85 +124,55 @@ export default function Footer({ onNavigate, isAdmin = false }) {
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'hot-cappuccino') : window.location.hash = '#product/hot-cappuccino'}
-                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
-                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
-                  }`}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
                   title="View Cappuccino details & history"
                 >
-                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
-                    {getItemName('hot-cappuccino', 'Cappuccino / Double')}
-                  </span>
-                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
-                    - Rs. {getItemPrice('hot-cappuccino', 180)}
-                  </span>
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Cappuccino / Double</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- Rs. 180</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'hot-caffe-latte') : window.location.hash = '#product/hot-caffe-latte'}
-                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
-                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
-                  }`}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
                   title="View Café Latte details & history"
                 >
-                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
-                    {getItemName('hot-caffe-latte', 'Café Latte')}
-                  </span>
-                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
-                    - Rs. {getItemPrice('hot-caffe-latte', 180)}
-                  </span>
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Café Latte</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- Rs. 180</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'cold-iced-latte') : window.location.hash = '#product/cold-iced-latte'}
-                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
-                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
-                  }`}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
                   title="View Iced Latte & Frappes details & history"
                 >
-                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
-                    {getItemName('cold-iced-latte', 'Iced Latte & Frappes')}
-                  </span>
-                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
-                    - from Rs. {getItemPrice('cold-iced-latte', 200)}
-                  </span>
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Iced Latte &amp; Frappes</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 200</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'laph-plain') : window.location.hash = '#product/laph-plain'}
-                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
-                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
-                  }`}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
                   title="View Tibetan Laphing details & history"
                 >
-                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
-                    {getItemName('laph-plain', 'Tibetan Laphing (Jhol/Dry)')}
-                  </span>
-                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
-                    - from Rs. {getItemPrice('laph-plain', 65)}
-                  </span>
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Tibetan Laphing (Jhol/Dry)</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 65</span>
                 </button>
               </li>
               <li>
                 <button
                   type="button"
                   onClick={() => onNavigate ? onNavigate('product-detail', 'platter-momo-veg') : window.location.hash = '#product/platter-momo-veg'}
-                  className={`text-left transition-colors cursor-pointer group flex items-center justify-between w-full ${
-                    isAdmin ? 'hover:text-amber-300' : 'hover:text-brand-gold'
-                  }`}
+                  className="hover:text-brand-gold text-left transition-colors cursor-pointer group flex items-center justify-between w-full"
                   title="View Mo:Mo Platter details & history"
                 >
-                  <span className={`font-medium transition-colors ${isAdmin ? 'text-white group-hover:text-amber-300' : 'text-white group-hover:text-brand-gold'}`}>
-                    {getItemName('platter-momo-veg', 'Mo:Mo Platter (25 pcs)')}
-                  </span>
-                  <span className={isAdmin ? 'text-red-300/80 group-hover:text-amber-300' : 'text-brand-sage/70 group-hover:text-brand-gold'}>
-                    - from Rs. {getItemPrice('platter-momo-veg', 600)}
-                  </span>
+                  <span className="text-white font-medium group-hover:text-brand-gold transition-colors">Mo:Mo Platter (25 pcs)</span>
+                  <span className="text-brand-sage/70 group-hover:text-brand-gold">- from Rs. 600</span>
                 </button>
               </li>
             </ul>

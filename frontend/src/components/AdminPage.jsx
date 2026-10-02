@@ -31,7 +31,6 @@ import {
   saveStoredMenuItems,
   resetStoredMenuItems,
   getFallbackImage,
-  subscribeToMenuUpdates,
 } from '../data/menuData';
 
 const SESSION_STORAGE_KEY = 'coffee_adda_staff_session';
@@ -136,11 +135,13 @@ export default function AdminPage({ onNavigate }) {
     }, 3500);
   };
 
-  // Sync with storage if updated elsewhere (cross-tab and real-time sync)
+  // Sync with storage if updated elsewhere
   useEffect(() => {
-    return subscribeToMenuUpdates((updated) => {
-      setItems(updated);
-    });
+    const handleUpdate = () => {
+      setItems(getStoredMenuItems());
+    };
+    window.addEventListener('coffee_adda_menu_updated', handleUpdate);
+    return () => window.removeEventListener('coffee_adda_menu_updated', handleUpdate);
   }, []);
 
   // Track brute-force lockout countdown

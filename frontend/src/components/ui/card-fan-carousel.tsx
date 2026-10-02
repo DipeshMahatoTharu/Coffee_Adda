@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import { ChevronLeft, ChevronRight, MapPin, Coffee, Star, ArrowRight } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { getStoredMenuItems, subscribeToMenuUpdates } from '../../data/menuData';
 
 export interface CoffeeProduct {
   id: string;
@@ -291,88 +290,6 @@ export default function CardFanCarousel({
   const [internalCategory, setInternalCategory] = useState<string>('all');
   const activeCategory = externalCategory !== undefined ? externalCategory : internalCategory;
 
-  // Real-time synchronization with Admin menu changes
-  const [storedMenu, setStoredMenu] = useState(() => getStoredMenuItems());
-
-  useEffect(() => {
-    return subscribeToMenuUpdates((updated) => {
-      setStoredMenu(updated);
-    });
-  }, []);
-
-  // Merge the base favorites with any live updates made by admin in AdminPage
-  const liveItems = useMemo(() => {
-    const baseList = items === COFFEE_ADDA_PRODUCTS ? COFFEE_ADDA_PRODUCTS : items;
-
-    // Filter and update base products with live admin values
-    const updatedBase = baseList
-      .filter((p) => {
-        // If storedMenu has items, ensure product wasn't deleted by admin
-        return storedMenu.some((sm) => sm.id === p.id);
-      })
-      .map((p) => {
-        const live = storedMenu.find((sm) => sm.id === p.id);
-        if (!live) return p;
-        return {
-          ...p,
-          name: live.name || p.name,
-          price: typeof live.price === 'number' ? live.price : p.price,
-          image: live.image || p.image,
-          alt: live.alt || live.name || p.alt,
-          description: live.description || p.description,
-          badge: live.tag || p.badge,
-          tags: Array.isArray(live.details) && live.details.length > 0 ? live.details : p.tags,
-          category: live.subCategory || live.category || p.category,
-        };
-      });
-
-    // Also include any newly created items from admin that have favorite tags
-    const extraNewItems: CoffeeProduct[] = storedMenu
-      .filter((sm) => {
-        const isAlreadyInBase = baseList.some((p) => p.id === sm.id);
-        if (isAlreadyInBase) return false;
-        const tag = (sm.tag || '').toLowerCase();
-        return (
-          tag.includes('popular') ||
-          tag.includes('bestseller') ||
-          tag.includes('barista') ||
-          tag.includes('chef') ||
-          tag.includes('special') ||
-          tag.includes('fav') ||
-          tag.includes('new')
-        );
-      })
-      .map((sm) => {
-        let fCat: 'hot' | 'cold' | 'bakery' = 'hot';
-        if (sm.category === 'cold-beverages' || sm.category === 'shakes-lassi') {
-          fCat = 'cold';
-        } else if (
-          sm.category === 'breakfast' ||
-          sm.category === 'burgers-sandwiches' ||
-          sm.category === 'momo-platters'
-        ) {
-          fCat = 'bakery';
-        }
-        return {
-          id: sm.id,
-          name: sm.name,
-          category: sm.subCategory || 'House Special',
-          filterCategory: fCat,
-          description: sm.description || 'Artisanal speciality prepared fresh at Coffee Adda.',
-          price: sm.price,
-          badge: sm.tag || 'Special',
-          image:
-            sm.image ||
-            'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80',
-          alt: sm.alt || sm.name,
-          tags: Array.isArray(sm.details) && sm.details.length > 0 ? sm.details : ['Signature Recipe'],
-          linkUrl: '#menu',
-        };
-      });
-
-    return [...updatedBase, ...extraNewItems];
-  }, [items, storedMenu]);
-
   const handleSelectCategory = (cat: string) => {
     setActiveIndex(0);
     if (onCategoryChange) {
@@ -384,8 +301,8 @@ export default function CardFanCarousel({
 
   // Filter products based on selected category
   const filteredProducts = activeCategory === 'all'
-    ? liveItems
-    : liveItems.filter(item => item.filterCategory === activeCategory);
+    ? items
+    : items.filter(item => item.filterCategory === activeCategory);
 
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -484,9 +401,9 @@ export default function CardFanCarousel({
       let pointerEvents: 'auto' | 'none' = 'auto';
 
       if (diff === 0) {
-        // Center Active Card - Upright, elevated, prominent at Y = 0 (no ceiling breach)
+        // Center Active Card - Upright, elevated, prominent
         targetX = 0;
-        targetY = isMobile ? 0 : 0;
+        targetY = 0;
         targetRot = 0;
         targetScale = isMobile ? 1.0 : 1.04;
         targetZ = 35;
@@ -494,77 +411,83 @@ export default function CardFanCarousel({
         pointerEvents = 'auto';
 
         if (isHovered) {
-          targetY -= isMobile ? 6 : 8;
+          targetY -= isMobile ? 4 : 6;
           targetScale = isMobile ? 1.02 : 1.06;
           targetZ = 45;
         }
       } else if (diff === 1) {
-        // Immediate Right Card (slopes gracefully downward)
-        targetX = isMobile ? 80 : isTablet ? 170 : 220;
-        targetY = isMobile ? 12 : 16;
-        targetRot = isMobile ? 5 : 7.5;
-        targetScale = isMobile ? 0.88 : 0.91;
+        // Immediate Right Card (slopes gently, wide enough so text remains clearly visible)
+        targetX = isMobile ? 95 : isTablet ? 195 : 260;
+        targetY = isMobile ? 8 : 12;
+        targetRot = isMobile ? 2.5 : 4;
+        targetScale = isMobile ? 0.90 : 0.94;
         targetZ = 24;
-        targetOpacity = isMobile ? 0.80 : 0.92;
+        targetOpacity = isMobile ? 0.92 : 0.98;
         pointerEvents = 'auto';
 
         if (isHovered) {
           targetY -= 6;
-          targetScale *= 1.02;
-          targetRot *= 0.7;
-          targetZ = 30;
+          targetScale *= 1.04;
+          targetRot *= 0.3;
+          targetZ = 40;
+          targetOpacity = 1;
         }
       } else if (diff === -1) {
-        // Immediate Left Card (slopes gracefully downward)
-        targetX = isMobile ? -80 : isTablet ? -170 : -220;
-        targetY = isMobile ? 12 : 16;
-        targetRot = isMobile ? -5 : -7.5;
-        targetScale = isMobile ? 0.88 : 0.91;
+        // Immediate Left Card (slopes gently, wide enough so text remains clearly visible)
+        targetX = isMobile ? -95 : isTablet ? -195 : -260;
+        targetY = isMobile ? 8 : 12;
+        targetRot = isMobile ? -2.5 : -4;
+        targetScale = isMobile ? 0.90 : 0.94;
         targetZ = 24;
-        targetOpacity = isMobile ? 0.80 : 0.92;
+        targetOpacity = isMobile ? 0.92 : 0.98;
         pointerEvents = 'auto';
 
         if (isHovered) {
           targetY -= 6;
-          targetScale *= 1.02;
-          targetRot *= 0.7;
-          targetZ = 30;
+          targetScale *= 1.04;
+          targetRot *= 0.3;
+          targetZ = 40;
+          targetOpacity = 1;
         }
       } else if (diff === 2) {
-        // Outer Right Card (subtle on tablet, hidden on phone to avoid clutter)
-        targetX = isMobile ? 150 : isTablet ? 300 : 390;
-        targetY = isMobile ? 24 : 32;
-        targetRot = isMobile ? 10 : 15;
-        targetScale = isMobile ? 0.72 : 0.78;
+        // Outer Right Card
+        targetX = isMobile ? 165 : isTablet ? 340 : 460;
+        targetY = isMobile ? 18 : 24;
+        targetRot = isMobile ? 5 : 7.5;
+        targetScale = isMobile ? 0.78 : 0.84;
         targetZ = 14;
-        targetOpacity = isMobile ? 0 : 0.65;
+        targetOpacity = isMobile ? 0 : 0.90;
         pointerEvents = isMobile ? 'none' : 'auto';
 
         if (isHovered) {
           targetY -= 4;
-          targetZ = 20;
+          targetScale *= 1.03;
+          targetZ = 30;
+          targetOpacity = 1;
         }
       } else if (diff === -2) {
-        // Outer Left Card (subtle on tablet, hidden on phone to avoid clutter)
-        targetX = isMobile ? -150 : isTablet ? -300 : -390;
-        targetY = isMobile ? 24 : 32;
-        targetRot = isMobile ? -10 : -15;
-        targetScale = isMobile ? 0.72 : 0.78;
+        // Outer Left Card
+        targetX = isMobile ? -165 : isTablet ? -340 : -460;
+        targetY = isMobile ? 18 : 24;
+        targetRot = isMobile ? -5 : -7.5;
+        targetScale = isMobile ? 0.78 : 0.84;
         targetZ = 14;
-        targetOpacity = isMobile ? 0 : 0.65;
+        targetOpacity = isMobile ? 0 : 0.90;
         pointerEvents = isMobile ? 'none' : 'auto';
 
         if (isHovered) {
           targetY -= 4;
-          targetZ = 20;
+          targetScale *= 1.03;
+          targetZ = 30;
+          targetOpacity = 1;
         }
       } else {
         // Hidden cards outside visible deck
         const dir = Math.sign(diff);
-        targetX = dir * (isMobile ? 240 : 520);
-        targetY = 45;
-        targetRot = dir * 18;
-        targetScale = 0.6;
+        targetX = dir * (isMobile ? 260 : 560);
+        targetY = 40;
+        targetRot = dir * 14;
+        targetScale = 0.65;
         targetZ = 1;
         targetOpacity = 0;
         pointerEvents = 'none';
@@ -706,8 +629,8 @@ export default function CardFanCarousel({
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
                 className={cn(
-                  "absolute top-2 sm:top-5 w-[245px] xs:w-[265px] sm:w-[290px] md:w-[315px] h-[395px] sm:h-[450px] md:h-[475px]",
-                  "rounded-3xl overflow-hidden shadow-xl border bg-[#FAF8F5] cursor-pointer transition-shadow duration-300 flex flex-col justify-between select-none",
+                  "absolute top-2 sm:top-5 w-[245px] xs:w-[268px] sm:w-[295px] md:w-[320px] h-[405px] sm:h-[455px] md:h-[480px]",
+                  "rounded-3xl overflow-hidden shadow-xl border bg-white cursor-pointer transition-shadow duration-300 flex flex-col justify-between select-none",
                   isCenter
                     ? "border-brand-gold shadow-2xl ring-2 ring-brand-gold/60"
                     : isHovered
@@ -720,7 +643,7 @@ export default function CardFanCarousel({
                 }}
               >
                 {/* Upper Image Section */}
-                <div className="relative h-[200px] sm:h-[240px] md:h-[255px] w-full overflow-hidden bg-brand-forest/5 shrink-0">
+                <div className="relative h-[190px] sm:h-[225px] md:h-[240px] w-full overflow-hidden bg-brand-forest/5 shrink-0">
                   <img
                     src={product.image}
                     alt={product.alt}
@@ -744,30 +667,43 @@ export default function CardFanCarousel({
                   </div>
                 </div>
 
-                {/* Lower Information Area */}
-                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-[#FAF8F5]">
+                {/* Lower Information Area - 100% visible text */}
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between bg-white">
                   <div>
-                    <div className="flex items-start justify-between gap-2 mb-1.5 min-h-[28px]">
-                      <h3 className="font-serif text-base sm:text-lg md:text-xl font-bold text-brand-forest leading-snug line-clamp-1">
-                        {product.name}
-                      </h3>
-                      <span className="text-[10px] sm:text-xs font-semibold text-emerald-800 bg-brand-sage px-2 py-0.5 rounded-full shrink-0 mt-0.5">
+                    {/* Category Tag on its own row so title gets full width */}
+                    <div className="flex items-center justify-between gap-1.5 mb-1.5">
+                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200/70 px-2.5 py-0.5 rounded-full">
                         {product.category}
                       </span>
+                      {isCenter && (
+                        <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200/60 px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" />
+                          Featured
+                        </span>
+                      )}
                     </div>
 
-                    <p className="text-neutral-600 text-xs sm:text-[13px] line-clamp-2 leading-relaxed">
+                    {/* Product Name - 2 lines max, never truncated or clipped into '...' */}
+                    <h3
+                      className="font-serif text-base sm:text-lg md:text-xl font-bold text-brand-forest leading-snug line-clamp-2 min-h-[2.5rem] sm:min-h-[2.75rem] flex items-center"
+                      title={product.name}
+                    >
+                      {product.name}
+                    </h3>
+
+                    {/* Description with high contrast and readable text */}
+                    <p className="text-neutral-700 text-xs sm:text-[13px] line-clamp-2 leading-relaxed mt-1">
                       {product.description}
                     </p>
                   </div>
 
                   {/* Feature Tags & Action Button */}
-                  <div className="pt-2 border-t border-neutral-200/70 flex items-center justify-between gap-2">
+                  <div className="pt-2.5 mt-2 border-t border-neutral-100 flex items-center justify-between gap-2">
                     <div className="flex items-center gap-1.5 flex-wrap">
                       {product.tags && product.tags.slice(0, 2).map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="bg-white/90 border border-neutral-200/60 px-2 py-0.5 rounded text-[10px] text-neutral-600 font-medium"
+                          className="bg-neutral-50 border border-neutral-200/80 px-2 py-0.5 rounded text-[10px] text-neutral-700 font-medium"
                         >
                           {tag}
                         </span>
@@ -784,7 +720,7 @@ export default function CardFanCarousel({
                           window.location.hash = `#product/${product.id}`;
                         }
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-forest hover:bg-brand-dark text-white text-xs font-bold shadow-xs hover:shadow-glow-gold transition-all duration-200 border border-brand-gold/30 shrink-0 cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-forest hover:bg-brand-dark text-white text-xs font-bold shadow-sm hover:shadow-glow-gold transition-all duration-200 border border-brand-gold/40 shrink-0 cursor-pointer"
                     >
                       <span>View Detail</span>
                       <ArrowRight className="w-3 h-3 text-brand-gold" />

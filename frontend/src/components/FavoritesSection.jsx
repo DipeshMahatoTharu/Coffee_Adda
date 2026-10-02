@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import CardFanCarousel from './ui/card-fan-carousel';
 import { ArrowRight } from 'lucide-react';
-import { getStoredMenuItems, subscribeToMenuUpdates } from '../data/menuData';
 
 export default function FavoritesSection({ onNavigate }) {
   const [favoriteCategory, setFavoriteCategory] = useState('all');
-  const [itemsCount, setItemsCount] = useState(() => getStoredMenuItems().length);
-
-  useEffect(() => {
-    return subscribeToMenuUpdates((items) => {
-      setItemsCount(items.length);
-    });
-  }, []);
 
   const handleViewMore = (e) => {
     e.preventDefault();
@@ -59,7 +51,7 @@ export default function FavoritesSection({ onNavigate }) {
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-brand-gold group-hover:translate-x-1.5 transition-transform" />
           </a>
           <p className="text-neutral-500 text-xs mt-2.5 font-medium">
-            Explore our complete {itemsCount}+ item menu with breakfast, laphing, pasta, teas &amp; bar specials
+            Explore our complete 150+ item menu with breakfast, laphing, pasta, teas &amp; bar specials
           </p>
         </div>
       </div>
