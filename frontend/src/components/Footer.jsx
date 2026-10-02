@@ -12,6 +12,8 @@ export default function Footer({ onNavigate }) {
         window.location.hash = '#privacy';
       } else if (page === 'terms') {
         window.location.hash = '#terms';
+      } else if (page === 'admin') {
+        window.location.hash = '#admin';
       } else if (page === 'menu') {
         window.location.hash = '#menu';
       } else if (page === 'why-us') {
@@ -201,6 +203,7 @@ export default function Footer({ onNavigate }) {
           <div className="flex space-x-6">
             <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#privacy" onClick={(e) => handleNav(e, 'privacy')}>Privacy Policy</a>
             <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#terms" onClick={(e) => handleNav(e, 'terms')}>Terms of Service</a>
+            <a className="hover:text-brand-gold transition-colors cursor-pointer" href="#admin" onClick={(e) => handleNav(e, 'admin')}>Staff Admin</a>
           </div>
         </div>
       </div>

@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 import ProductDetailPage from './components/ProductDetailPage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import TermsConditionsPage from './components/TermsConditionsPage';
+import AdminPage from './components/AdminPage';
 
 export default function CoffeeAdda() {
   const [selectedProductId, setSelectedProductId] = useState(() => {
@@ -36,6 +37,7 @@ export default function CoffeeAdda() {
     if (hash === '#location') return 'location';
     if (hash === '#privacy') return 'privacy';
     if (hash === '#terms') return 'terms';
+    if (hash === '#admin') return 'admin';
     return 'home';
   });
 
@@ -73,6 +75,10 @@ export default function CoffeeAdda() {
     } else if (page === 'terms') {
       setCurrentPage('terms');
       window.location.hash = '#terms';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (page === 'admin') {
+      setCurrentPage('admin');
+      window.location.hash = '#admin';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       setCurrentPage('home');
@@ -122,6 +128,9 @@ export default function CoffeeAdda() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#terms') {
         setCurrentPage('terms');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#admin') {
+        setCurrentPage('admin');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#community-section') {
         // In-page anchor on product detail page - do not leave product-detail
@@ -179,6 +188,9 @@ export default function CoffeeAdda() {
         ) : currentPage === 'terms' ? (
           /* Dedicated Terms & Conditions Page */
           <TermsConditionsPage onNavigate={navigateTo} />
+        ) : currentPage === 'admin' ? (
+          /* Dedicated Staff Admin Management Page */
+          <AdminPage onNavigate={navigateTo} />
         ) : (
           /* Home Page with Hero, Favorites Fan Carousel, Special Offer, About, Reviews, Location */
           <>

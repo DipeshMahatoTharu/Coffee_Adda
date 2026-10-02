@@ -2167,3 +2167,43 @@ export const getFallbackImage = (category) => {
   return CATEGORY_FALLBACK_IMAGES[category] || CATEGORY_FALLBACK_IMAGES.default;
 };
 
+export const MENU_STORAGE_KEY = 'coffee_adda_menu_items';
+
+export const getStoredMenuItems = () => {
+  if (typeof window === 'undefined') return menuItems;
+  try {
+    const raw = localStorage.getItem(MENU_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.warn('Error reading stored menu items:', err);
+  }
+  return menuItems;
+};
+
+export const saveStoredMenuItems = (items) => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(MENU_STORAGE_KEY, JSON.stringify(items));
+    window.dispatchEvent(new Event('coffee_adda_menu_updated'));
+  } catch (err) {
+    console.error('Error saving menu items to storage:', err);
+  }
+};
+
+export const resetStoredMenuItems = () => {
+  if (typeof window === 'undefined') return menuItems;
+  try {
+    localStorage.removeItem(MENU_STORAGE_KEY);
+    window.dispatchEvent(new Event('coffee_adda_menu_updated'));
+  } catch (err) {
+    console.error('Error resetting stored menu items:', err);
+  }
+  return menuItems;
+};
+
+

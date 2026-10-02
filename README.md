@@ -134,6 +134,14 @@ Built with **React 18**, **Vite**, **Tailwind CSS**, and **Framer Motion** on th
 - **One-Tap Preorder & Call Ahead**: Direct phone links to cafe counter (`+977 9763531091`).
 - **Interactive Location Guide (`#location`)**: Budhanilkantha operating hours (7:00 AM - 9:00 PM), landmark directions, and Google Maps embed.
 
+### 7. Staff Admin & Live Menu Management (`#admin`)
+- **Admin Authentication**: Secure staff login portal (`admin` / `admin123`).
+- **Photo Updates**: Live upload of new dish/coffee photos directly from device or via image URL with instant preview.
+- **Dynamic Price Adjustments**: Quick `[-10]` and `[+10]` adjustments and custom price inputs that sync live across the entire website.
+- **Category & Type Reassignment**: Move items seamlessly across all 12 categories (Coffee Bar, Cold Coffee, Tea Special, etc.).
+- **Item Deletion & Creation**: Full CRUD management with safe deletion confirmations and new item addition.
+- **Django Superuser & Admin Dashboard**: Dedicated Django `MenuItemAdmin` with image thumbnails, price actions, and `python manage.py create_admin`.
+
 ---
 
 ## System Architecture
@@ -141,14 +149,15 @@ Built with **React 18**, **Vite**, **Tailwind CSS**, and **Framer Motion** on th
 ```mermaid
 flowchart TD
     subgraph Client["Frontend Architecture (React 18 + Vite)"]
-        Router["Hash-Based Route Controller (#home, #menu, #about, #product/:id, #reviews, #location, #privacy, #terms)"]
+        Router["Hash-Based Route Controller (#home, #menu, #about, #product/:id, #reviews, #location, #privacy, #terms, #admin)"]
         Hero["Cinematic Video Hero with Typewriter and Audio Controls"]
         BannerComp["Animated Banner (Artisanal Coffee Feature)"]
         MenuComp["Menu Engine with SearchWithCategory and Dietary Filters"]
         DetailComp["Product Detail Page (Heritage Lore, Craft Steps, Steam Physics)"]
         CommunityComp["Guest Snaps and Food Gallery (Photo Upload and Dish Reviews)"]
+        AdminComp["Staff Admin Portal (Live Menu Management, Photo Upload, Price Controls)"]
         LegalComp["Compliance Views (Privacy Policy and Terms of Service)"]
-        DataLayer["menuData.js (150+ Transcribed Items and Review Store)"]
+        DataLayer["menuData.js (150+ Transcribed Items, Reactive Storage and Sync)"]
     end
 
     subgraph Backend["Backend Architecture (Django REST Framework)"]
@@ -245,6 +254,7 @@ coffee_adda/
 │   │   │   ├── LocationPage.jsx   # Standalone location, hours and directions page
 │   │   │   ├── PrivacyPolicyPage.jsx # Legal privacy policy page
 │   │   │   ├── TermsConditionsPage.jsx # Legal terms and conditions page
+│   │   │   ├── AdminPage.jsx      # Staff admin portal for live menu management
 │   │   │   ├── InstagramFeed.jsx  # Social community carousel with official links
 │   │   │   └── Footer.jsx         # Cafe footer with hours, location and social links
 │   │   ├── data/

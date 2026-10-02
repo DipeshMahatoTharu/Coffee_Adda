@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { menuCategories, menuItems, getFallbackImage } from '../data/menuData';
+import { menuCategories, menuItems, getStoredMenuItems, getFallbackImage } from '../data/menuData';
 import SearchWithCategory from './ui/search-with-category';
 import {
   Search,
@@ -17,14 +17,24 @@ import {
 const ITEMS_PER_PAGE = 12;
 
 export default function Menu({ onNavigate }) {
+  const [items, setItems] = useState(getStoredMenuItems);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [dietaryFilter, setDietaryFilter] = useState('all'); // 'all' | 'veg' | 'egg' | 'non-veg'
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Sync menu items if updated in Admin
+  useEffect(() => {
+    const handleUpdate = () => {
+      setItems(getStoredMenuItems());
+    };
+    window.addEventListener('coffee_adda_menu_updated', handleUpdate);
+    return () => window.removeEventListener('coffee_adda_menu_updated', handleUpdate);
+  }, []);
+
   // Filter menu items based on category, search query, and dietary selection
   const filteredMenuItems = useMemo(() => {
-    return menuItems.filter((item) => {
+    return items.filter((item) => {
       const matchesCategory =
         selectedCategory === 'all' || item.category === selectedCategory;
 
@@ -42,7 +52,7 @@ export default function Menu({ onNavigate }) {
 
       return matchesCategory && matchesSearch && matchesDietary;
     });
-  }, [selectedCategory, searchQuery, dietaryFilter]);
+  }, [items, selectedCategory, searchQuery, dietaryFilter]);
 
   // Reset page when category, search query, or dietary filter changes
   useEffect(() => {

@@ -19,16 +19,25 @@ import {
   Zap,
   Camera,
 } from 'lucide-react';
-import { menuItems, menuCategories, getFallbackImage } from '../data/menuData';
+import { menuItems, menuCategories, getStoredMenuItems, getFallbackImage } from '../data/menuData';
 import { getProductStory } from '../data/productStories';
 import ProductCommunitySection from './ProductCommunitySection';
 
 export default function ProductDetailPage({ productId, onNavigate }) {
+  const [items, setItems] = useState(getStoredMenuItems);
   const [copied, setCopied] = useState(false);
   const [liked, setLiked] = useState(false);
 
-  // Find product in menuItems or fallback
-  const product = menuItems.find((item) => item.id === productId) || menuItems[0];
+  useEffect(() => {
+    const handleUpdate = () => {
+      setItems(getStoredMenuItems());
+    };
+    window.addEventListener('coffee_adda_menu_updated', handleUpdate);
+    return () => window.removeEventListener('coffee_adda_menu_updated', handleUpdate);
+  }, []);
+
+  // Find product in items or fallback
+  const product = items.find((item) => item.id === productId) || items[0] || menuItems[0];
   const story = getProductStory(product);
 
   // Check if beverage is hot to display steam/aroma animation
@@ -42,7 +51,7 @@ export default function ProductDetailPage({ productId, onNavigate }) {
   const categoryLabel = categoryObj ? categoryObj.label : product?.subCategory || 'Menu';
 
   // Find related / complementary items
-  const relatedItems = menuItems
+  const relatedItems = items
     .filter((item) => item.id !== product?.id && (item.category === product?.category || item.tag === 'Popular'))
     .slice(0, 3);
 

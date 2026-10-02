@@ -25,8 +25,12 @@ class CategoryListCreateView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
+class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
 class MenuItemListCreateView(generics.ListCreateAPIView):
-    queryset = MenuItem.objects.filter(is_available=True)
+    queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
 
     def get_queryset(self):
@@ -34,7 +38,14 @@ class MenuItemListCreateView(generics.ListCreateAPIView):
         category_slug = self.request.query_params.get('category')
         if category_slug and category_slug != 'all':
             queryset = queryset.filter(category__slug=category_slug)
+        available_only = self.request.query_params.get('available')
+        if available_only == 'true':
+            queryset = queryset.filter(is_available=True)
         return queryset
+
+class MenuItemDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
 
 class ReviewListView(generics.ListCreateAPIView):
     queryset = Review.objects.filter(is_approved=True)
