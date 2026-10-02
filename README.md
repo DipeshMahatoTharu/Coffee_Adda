@@ -223,8 +223,9 @@ coffee_adda/
 ├── frontend/                      # React Single Page Application (Vite + Tailwind)
 │   ├── public/
 │   │   ├── coffee-banner.jpg      # Authentic latte art banner photography
-│   │   ├── coffee-cup.svg         # Clean custom SVG favicon
-│   │   └── hero.mp4               # Background ambience video
+│   │   ├── og-image.jpg           # Open Graph and social share link preview image
+│   │   ├── favicon.svg            # Clean custom SVG favicon
+│   │   └── hero-poster.jpg        # Background ambience poster image
 │   ├── src/
 │   │   ├── components/            # UI and Feature Components
 │   │   │   ├── ui/                # Radix and Shadcn primitives
