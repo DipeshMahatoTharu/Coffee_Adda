@@ -4,17 +4,32 @@ Django settings for coffee_adda_backend project.
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from backend/.env or root .env
+load_dotenv(BASE_DIR.parent / '.env', override=True)
+load_dotenv(BASE_DIR / '.env', override=True)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-coffee-adda-budhanilkantha-artisan-roast-key'
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-coffee-adda-budhanilkantha-artisan-roast-key'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    h.strip()
+    for h in os.environ.get(
+        'ALLOWED_HOSTS',
+        'localhost,127.0.0.1,coffee-adda.vercel.app,*'
+    ).split(',')
+    if h.strip()
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -65,13 +80,37 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 ASGI_APPLICATION = 'config.asgi.application'
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Database Configuration
+# Uses PostgreSQL if DB_ENGINE is explicitly postgresql and DB_PASSWORD is set, or if DATABASE_URL is set;
+# otherwise falls back to SQLite so local development works immediately.
+DATABASE_URL = os.environ.get('DATABASE_URL')
+db_engine = os.environ.get('DB_ENGINE', '')
+db_password = os.environ.get('DB_PASSWORD', '')
+
+if DATABASE_URL:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
-}
+elif 'postgresql' in db_engine and db_password and db_password != 'your_postgres_password_here':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('DB_NAME', 'coffee_adda_db'),
+            'USER': os.environ.get('DB_USER', 'postgres'),
+            'PASSWORD': db_password,
+            'HOST': os.environ.get('DB_HOST', 'localhost'),
+            'PORT': os.environ.get('DB_PORT', '5432'),
+            'CONN_MAX_AGE': 600,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

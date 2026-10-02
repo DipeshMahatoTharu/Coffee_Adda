@@ -43,9 +43,10 @@ const SESSION_DURATION_MS = 2 * 60 * 60 * 1000;
 
 // Precomputed SHA-256 hashes of authorized administrative credentials
 const AUTHORIZED_STAFF_HASHES = [
-  '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',
-  '24ac1f0a2a11291920cd6981863c7d2cd47a19700498f88111f0b264b207c7ad',
-  'e255eec1151b0717d2b6c3fd116c146b3fcf3163dd1551b5e535f074c4b5c408',
+  '4d1a0f21c34ee125d9e4719bca8e9c1ab615859a4bb3a5e33d9a27b99d65ace6', // primary custom administrator
+  '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', // standard staff
+  '24ac1f0a2a11291920cd6981863c7d2cd47a19700498f88111f0b264b207c7ad', // secondary staff
+  'e255eec1151b0717d2b6c3fd116c146b3fcf3163dd1551b5e535f074c4b5c408', // master key
 ];
 
 async function sha256Hex(str) {
