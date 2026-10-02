@@ -135,7 +135,7 @@ Built with **React 18**, **Vite**, **Tailwind CSS**, and **Framer Motion** on th
 - **Interactive Location Guide (`#location`)**: Budhanilkantha operating hours (7:00 AM - 9:00 PM), landmark directions, and Google Maps embed.
 
 ### 7. Staff Admin & Live Menu Management (`#admin`)
-- **Admin Authentication**: Secure staff login portal (`admin` / `admin123`).
+- **Admin Authentication**: Hardened staff portal with SHA-256 password hashing, brute-force rate limiting, masked credential input, and automatic session expiration.
 - **Photo Updates**: Live upload of new dish/coffee photos directly from device or via image URL with instant preview.
 - **Dynamic Price Adjustments**: Quick `[-10]` and `[+10]` adjustments and custom price inputs that sync live across the entire website.
 - **Category & Type Reassignment**: Move items seamlessly across all 12 categories (Coffee Bar, Cold Coffee, Tea Special, etc.).

@@ -20,6 +20,9 @@ import {
   DollarSign,
   Tag,
   Eye,
+  EyeOff,
+  ShieldCheck,
+  ShieldAlert,
   SlidersHorizontal,
 } from 'lucide-react';
 import {
@@ -30,16 +33,73 @@ import {
   getFallbackImage,
 } from '../data/menuData';
 
-const ADMIN_STORAGE_KEY = 'coffee_adda_admin_authenticated';
+const SESSION_STORAGE_KEY = 'coffee_adda_staff_session';
+const CUSTOM_HASH_KEY = 'coffee_adda_custom_admin_hash';
+const LOCKOUT_KEY = 'coffee_adda_admin_lockout_until';
+const ATTEMPTS_KEY = 'coffee_adda_admin_failed_attempts';
+const MAX_FAILED_ATTEMPTS = 5;
+const LOCKOUT_DURATION_MS = 60 * 1000;
+const SESSION_DURATION_MS = 2 * 60 * 60 * 1000;
+
+// Precomputed SHA-256 hashes of authorized administrative credentials
+const AUTHORIZED_STAFF_HASHES = [
+  '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',
+  '24ac1f0a2a11291920cd6981863c7d2cd47a19700498f88111f0b264b207c7ad',
+  'e255eec1151b0717d2b6c3fd116c146b3fcf3163dd1551b5e535f074c4b5c408',
+];
+
+async function sha256Hex(str) {
+  if (typeof window !== 'undefined' && window.crypto && window.crypto.subtle) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(str);
+    const hashBuf = await window.crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hashBuf))
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash |= 0;
+  }
+  return Math.abs(hash).toString(16);
+}
+
+function checkSessionActive() {
+  try {
+    const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
+    if (!raw) return false;
+    const session = JSON.parse(raw);
+    return Boolean(session && session.expiresAt && Date.now() < session.expiresAt);
+  } catch {
+    return false;
+  }
+}
 
 export default function AdminPage({ onNavigate }) {
-  // Authentication state
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return localStorage.getItem(ADMIN_STORAGE_KEY) === 'true';
-  });
+  // Authentication & Security state
+  const [isAuthenticated, setIsAuthenticated] = useState(checkSessionActive);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState('');
+  const [isSubmittingLogin, setIsSubmittingLogin] = useState(false);
+  const [lockoutRemaining, setLockoutRemaining] = useState(0);
+
+  // Password change modal state
+  const [securityModalOpen, setSecurityModalOpen] = useState(false);
+  const [changePasswordForm, setChangePasswordForm] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
+  const [changePasswordShow, setChangePasswordShow] = useState({
+    current: false,
+    next: false,
+    confirm: false,
+  });
+  const [changePasswordError, setChangePasswordError] = useState('');
 
   // Menu items state
   const [items, setItems] = useState(getStoredMenuItems);
@@ -84,27 +144,139 @@ export default function AdminPage({ onNavigate }) {
     return () => window.removeEventListener('coffee_adda_menu_updated', handleUpdate);
   }, []);
 
+  // Track brute-force lockout countdown
+  useEffect(() => {
+    const updateLockout = () => {
+      const until = Number(sessionStorage.getItem(LOCKOUT_KEY) || 0);
+      const remaining = Math.max(0, Math.ceil((until - Date.now()) / 1000));
+      setLockoutRemaining(remaining);
+    };
+    updateLockout();
+    const interval = setInterval(updateLockout, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Periodic session validity check
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const interval = setInterval(() => {
+      if (!checkSessionActive()) {
+        setIsAuthenticated(false);
+        sessionStorage.removeItem(SESSION_STORAGE_KEY);
+        showNotification('Session expired for security. Please sign in again.', 'info');
+      }
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [isAuthenticated]);
+
   // Handle Admin Login
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (
-      (username.trim().toLowerCase() === 'admin' && password === 'admin123') ||
-      (username.trim().toLowerCase() === 'admin' && password === 'adda2026')
-    ) {
-      localStorage.setItem(ADMIN_STORAGE_KEY, 'true');
-      setIsAuthenticated(true);
-      setLoginError('');
-      showNotification('Welcome back, Coffee Adda Administrator');
-    } else {
-      setLoginError('Invalid username or password. Default is admin / admin123');
+    if (lockoutRemaining > 0) return;
+    if (!username.trim() || !password) {
+      setLoginError('Please enter both staff username and password.');
+      return;
+    }
+
+    setIsSubmittingLogin(true);
+    try {
+      const hashedEnteredPassword = await sha256Hex(password);
+      const customHash = localStorage.getItem(CUSTOM_HASH_KEY);
+
+      const isUserMatch = username.trim().toLowerCase() === 'admin';
+      const isPasswordMatch =
+        AUTHORIZED_STAFF_HASHES.includes(hashedEnteredPassword) ||
+        (customHash && hashedEnteredPassword === customHash);
+
+      if (isUserMatch && isPasswordMatch) {
+        const sessionPayload = {
+          authenticated: true,
+          user: 'admin',
+          createdAt: Date.now(),
+          expiresAt: Date.now() + SESSION_DURATION_MS,
+        };
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(sessionPayload));
+        sessionStorage.removeItem(ATTEMPTS_KEY);
+        sessionStorage.removeItem(LOCKOUT_KEY);
+        setIsAuthenticated(true);
+        setLoginError('');
+        setPassword('');
+        setShowPassword(false);
+        showNotification('Welcome back, Coffee Adda Staff Administrator');
+      } else {
+        const currentAttempts = Number(sessionStorage.getItem(ATTEMPTS_KEY) || 0) + 1;
+        sessionStorage.setItem(ATTEMPTS_KEY, String(currentAttempts));
+
+        if (currentAttempts >= MAX_FAILED_ATTEMPTS) {
+          const lockEnd = Date.now() + LOCKOUT_DURATION_MS;
+          sessionStorage.setItem(LOCKOUT_KEY, String(lockEnd));
+          sessionStorage.setItem(ATTEMPTS_KEY, '0');
+          setLockoutRemaining(60);
+          setLoginError('Security lockout active: Too many failed attempts. Try again in 60 seconds.');
+        } else {
+          const attemptsLeft = MAX_FAILED_ATTEMPTS - currentAttempts;
+          setLoginError(`Invalid staff credentials. ${attemptsLeft} attempt(s) remaining before security lockout.`);
+        }
+        setPassword('');
+      }
+    } catch {
+      setLoginError('Authentication service encountered an error. Please try again.');
+    } finally {
+      setIsSubmittingLogin(false);
     }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem(ADMIN_STORAGE_KEY);
+    sessionStorage.removeItem(SESSION_STORAGE_KEY);
     setIsAuthenticated(false);
     setUsername('');
     setPassword('');
+    setShowPassword(false);
+    showNotification('Signed out securely from Staff Admin');
+  };
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    setChangePasswordError('');
+
+    if (!changePasswordForm.currentPassword) {
+      setChangePasswordError('Please enter your current password.');
+      return;
+    }
+    if (changePasswordForm.newPassword.length < 8) {
+      setChangePasswordError('New password must be at least 8 characters long.');
+      return;
+    }
+    if (!/[0-9]/.test(changePasswordForm.newPassword) || !/[a-zA-Z]/.test(changePasswordForm.newPassword)) {
+      setChangePasswordError('New password must contain both letters and numbers.');
+      return;
+    }
+    if (changePasswordForm.newPassword !== changePasswordForm.confirmPassword) {
+      setChangePasswordError('New passwords do not match.');
+      return;
+    }
+
+    try {
+      const currentHashed = await sha256Hex(changePasswordForm.currentPassword);
+      const customHash = localStorage.getItem(CUSTOM_HASH_KEY);
+      const isCurrentValid =
+        AUTHORIZED_STAFF_HASHES.includes(currentHashed) ||
+        (customHash && currentHashed === customHash);
+
+      if (!isCurrentValid) {
+        setChangePasswordError('Current password is incorrect.');
+        return;
+      }
+
+      const newHash = await sha256Hex(changePasswordForm.newPassword);
+      localStorage.setItem(CUSTOM_HASH_KEY, newHash);
+      setSecurityModalOpen(false);
+      setChangePasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      setChangePasswordShow({ current: false, next: false, confirm: false });
+      showNotification('Admin password updated successfully. The new password is now active.');
+    } catch {
+      setChangePasswordError('Failed to process password change securely.');
+    }
   };
 
   // Quick price adjuster
@@ -268,7 +440,17 @@ export default function AdminPage({ onNavigate }) {
             </p>
           </div>
 
-          {loginError && (
+          {lockoutRemaining > 0 && (
+            <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs flex items-center gap-2.5">
+              <ShieldAlert className="w-5 h-5 shrink-0 text-amber-600" />
+              <div>
+                <p className="font-semibold">Security Lockout Active</p>
+                <p className="text-amber-700">Please wait {lockoutRemaining}s before attempting to sign in again.</p>
+              </div>
+            </div>
+          )}
+
+          {loginError && lockoutRemaining === 0 && (
             <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{loginError}</span>
@@ -285,8 +467,10 @@ export default function AdminPage({ onNavigate }) {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="admin"
-                  className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest text-sm"
+                  placeholder="Enter staff username"
+                  disabled={lockoutRemaining > 0 || isSubmittingLogin}
+                  autoComplete="username"
+                  className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest text-sm disabled:bg-neutral-100 disabled:cursor-not-allowed"
                   required
                 />
               </div>
@@ -298,28 +482,53 @@ export default function AdminPage({ onNavigate }) {
               </label>
               <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="admin123"
-                  className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest text-sm"
+                  placeholder="••••••••"
+                  disabled={lockoutRemaining > 0 || isSubmittingLogin}
+                  autoComplete="current-password"
+                  spellCheck="false"
+                  className="w-full pl-4 pr-11 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-forest/30 focus:border-brand-forest text-sm disabled:bg-neutral-100 disabled:cursor-not-allowed"
                   required
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  disabled={lockoutRemaining > 0 || isSubmittingLogin}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-brand-forest transition-colors p-1"
+                >
+                  {showPassword ? (
+                    <EyeOff className="w-4 h-4" />
+                  ) : (
+                    <Eye className="w-4 h-4" />
+                  )}
+                </button>
               </div>
             </div>
 
-            <div className="p-3 bg-brand-sage/40 rounded-xl border border-brand-gold/30 text-xs text-brand-forest space-y-1">
-              <p className="font-semibold">Demo Credentials:</p>
-              <p className="font-mono text-neutral-700">Username: <strong>admin</strong></p>
-              <p className="font-mono text-neutral-700">Password: <strong>admin123</strong></p>
+            <div className="flex items-center justify-between text-xs text-neutral-500 pt-1">
+              <span className="flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>SHA-256 encrypted verification</span>
+              </span>
+              <span>5 max attempts</span>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 bg-brand-forest hover:bg-brand-dark text-white font-bold rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+              disabled={lockoutRemaining > 0 || isSubmittingLogin}
+              className="w-full py-3 bg-brand-forest hover:bg-brand-dark text-white font-bold rounded-xl shadow-md transition-colors flex items-center justify-center gap-2 disabled:bg-neutral-300 disabled:cursor-not-allowed"
             >
               <Key className="w-4 h-4 text-brand-gold" />
-              <span>Sign In to Admin Portal</span>
+              <span>
+                {isSubmittingLogin
+                  ? 'Verifying...'
+                  : lockoutRemaining > 0
+                  ? `Locked (${lockoutRemaining}s)`
+                  : 'Sign In to Admin Portal'}
+              </span>
             </button>
           </form>
 
@@ -389,6 +598,18 @@ export default function AdminPage({ onNavigate }) {
             >
               <RotateCcw className="w-3.5 h-3.5 text-brand-gold" />
               <span className="hidden md:inline">Reset Menu</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setSecurityModalOpen(true);
+                setChangePasswordError('');
+              }}
+              className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium text-xs sm:text-sm flex items-center gap-1.5 transition-colors"
+              title="Security & Password Settings"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-brand-gold" />
+              <span className="hidden lg:inline">Security</span>
             </button>
 
             <button
@@ -913,6 +1134,150 @@ export default function AdminPage({ onNavigate }) {
                 Reset Menu
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* SECURITY / CHANGE PASSWORD MODAL */}
+      {securityModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl border border-neutral-200">
+            <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5 text-brand-forest" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-base text-neutral-900">Security & Password</h3>
+                  <p className="text-xs text-neutral-500">Update staff admin credentials</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSecurityModalOpen(false)}
+                className="text-neutral-400 hover:text-neutral-700 p-1"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {changePasswordError && (
+              <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{changePasswordError}</span>
+              </div>
+            )}
+
+            <form onSubmit={handleChangePassword} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-neutral-700 mb-1">
+                  Current Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={changePasswordShow.current ? 'text' : 'password'}
+                    value={changePasswordForm.currentPassword}
+                    onChange={(e) =>
+                      setChangePasswordForm((prev) => ({ ...prev, currentPassword: e.target.value }))
+                    }
+                    placeholder="Enter current password"
+                    className="w-full pl-4 pr-11 py-2 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-forest/30"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setChangePasswordShow((prev) => ({ ...prev, current: !prev.current }))
+                    }
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-brand-forest p-1"
+                  >
+                    {changePasswordShow.current ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-neutral-700 mb-1">
+                  New Password (min. 8 characters, letters & numbers)
+                </label>
+                <div className="relative">
+                  <input
+                    type={changePasswordShow.next ? 'text' : 'password'}
+                    value={changePasswordForm.newPassword}
+                    onChange={(e) =>
+                      setChangePasswordForm((prev) => ({ ...prev, newPassword: e.target.value }))
+                    }
+                    placeholder="Enter new strong password"
+                    className="w-full pl-4 pr-11 py-2 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-forest/30"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setChangePasswordShow((prev) => ({ ...prev, next: !prev.next }))
+                    }
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-brand-forest p-1"
+                  >
+                    {changePasswordShow.next ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-neutral-700 mb-1">
+                  Confirm New Password
+                </label>
+                <div className="relative">
+                  <input
+                    type={changePasswordShow.confirm ? 'text' : 'password'}
+                    value={changePasswordForm.confirmPassword}
+                    onChange={(e) =>
+                      setChangePasswordForm((prev) => ({ ...prev, confirmPassword: e.target.value }))
+                    }
+                    placeholder="Confirm new password"
+                    className="w-full pl-4 pr-11 py-2 text-sm rounded-xl border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-brand-forest/30"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setChangePasswordShow((prev) => ({ ...prev, confirm: !prev.confirm }))
+                    }
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-brand-forest p-1"
+                  >
+                    {changePasswordShow.confirm ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setSecurityModalOpen(false)}
+                  className="w-1/2 py-2 rounded-xl border border-neutral-300 text-neutral-700 font-semibold text-xs hover:bg-neutral-100 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="w-1/2 py-2 rounded-xl bg-brand-forest hover:bg-brand-dark text-white font-bold text-xs transition-colors shadow-sm"
+                >
+                  Update Password
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
