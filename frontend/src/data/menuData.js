@@ -4,6 +4,8 @@
  * Transcribed with 100% accuracy from all official physical menu sheets.
  */
 
+import { fetchSupabaseMenuItems, subscribeToSupabaseMenuChanges } from '../services/supabaseService';
+
 export const menuCategories = [
   { id: 'all', label: 'All Items' },
   { id: 'hot-beverages', label: 'Coffee Bar' },
@@ -2274,6 +2276,34 @@ export const subscribeToMenuUpdates = (callback) => {
       } catch {}
     }
   };
+};
+
+/**
+ * Synchronizes client-side menu data with Supabase cloud database if configured,
+ * and sets up live real-time WebSocket listening.
+ */
+export const initMenuWithSupabase = async () => {
+  if (typeof window === 'undefined') return null;
+  try {
+    const { data, error } = await fetchSupabaseMenuItems();
+    if (!error && Array.isArray(data) && data.length > 0) {
+      saveStoredMenuItems(data);
+    }
+
+    // Subscribe to live realtime database updates across all visitors
+    if (typeof subscribeToSupabaseMenuChanges === 'function') {
+      subscribeToSupabaseMenuChanges((freshItems) => {
+        if (Array.isArray(freshItems) && freshItems.length > 0) {
+          saveStoredMenuItems(freshItems);
+        }
+      });
+    }
+
+    return data;
+  } catch (err) {
+    console.warn('Supabase sync notice:', err);
+  }
+  return null;
 };
 
 

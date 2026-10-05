@@ -107,7 +107,45 @@ export async function deleteSupabaseMenuItem(id) {
 }
 
 /**
- * Fetch reviews from Supabase
+ * Listen for real-time changes to menu_items table in Supabase
+ */
+export function subscribeToSupabaseMenuChanges(callback) {
+  if (!isSupabaseConfigured || !supabase || typeof callback !== 'function') {
+    return () => {};
+  }
+
+  try {
+    const channel = supabase
+      .channel('schema-db-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'menu_items',
+        },
+        async () => {
+          const { data } = await fetchSupabaseMenuItems();
+          if (Array.isArray(data) && data.length > 0) {
+            callback(data);
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      try {
+        supabase.removeChannel(channel);
+      } catch (_) {}
+    };
+  } catch (err) {
+    console.warn('Supabase realtime subscription notice:', err);
+    return () => {};
+  }
+}
+
+/**
+ * Fetch approved customer reviews from Supabase
  */
 export async function fetchSupabaseReviews() {
   if (!isSupabaseConfigured || !supabase) {

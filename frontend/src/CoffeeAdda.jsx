@@ -18,8 +18,14 @@ import ProductDetailPage from './components/ProductDetailPage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import TermsConditionsPage from './components/TermsConditionsPage';
 import AdminPage from './components/AdminPage';
+import { initMenuWithSupabase } from './data/menuData';
 
 export default function CoffeeAdda() {
+  // Sync menu items from Supabase cloud database on mount
+  useEffect(() => {
+    initMenuWithSupabase();
+  }, []);
+
   const [selectedProductId, setSelectedProductId] = useState(() => {
     const hash = window.location.hash;
     if (hash.startsWith('#product/')) return hash.replace('#product/', '');
