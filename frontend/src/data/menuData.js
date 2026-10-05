@@ -2276,23 +2276,4 @@ export const subscribeToMenuUpdates = (callback) => {
   };
 };
 
-/**
- * Synchronizes client-side menu data with Supabase cloud database if configured.
- */
-export const initMenuWithSupabase = async () => {
-  if (typeof window === 'undefined') return null;
-  try {
-    const { fetchSupabaseMenuItems } = await import('../services/supabaseService');
-    const { data, error } = await fetchSupabaseMenuItems();
-    if (!error && Array.isArray(data) && data.length > 0) {
-      saveStoredMenuItems(data);
-      return data;
-    }
-  } catch (err) {
-    console.warn('Supabase sync notice:', err);
-  }
-  return null;
-};
-
-
 

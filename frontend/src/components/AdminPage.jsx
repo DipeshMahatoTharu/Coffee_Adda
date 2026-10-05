@@ -33,11 +33,6 @@ import {
   getFallbackImage,
   subscribeToMenuUpdates,
 } from '../data/menuData';
-import {
-  upsertSupabaseMenuItem,
-  deleteSupabaseMenuItem,
-  isSupabaseConfigured,
-} from '../services/supabaseService';
 
 const SESSION_STORAGE_KEY = 'coffee_adda_staff_session';
 const CUSTOM_HASH_KEY = 'coffee_adda_custom_admin_hash';
@@ -396,9 +391,6 @@ export default function AdminPage({ onNavigate }) {
 
     setItems(updatedList);
     saveStoredMenuItems(updatedList);
-    if (isSupabaseConfigured) {
-      upsertSupabaseMenuItem(newItemObj).catch(() => {});
-    }
     setEditingItem(null);
     setIsCreatingNew(false);
   };
@@ -406,14 +398,10 @@ export default function AdminPage({ onNavigate }) {
   // Delete item
   const handleConfirmDelete = () => {
     if (!deleteConfirmItem) return;
-    const itemToDelete = deleteConfirmItem;
-    const updated = items.filter((i) => i.id !== itemToDelete.id);
+    const updated = items.filter((i) => i.id !== deleteConfirmItem.id);
     setItems(updated);
     saveStoredMenuItems(updated);
-    if (isSupabaseConfigured) {
-      deleteSupabaseMenuItem(itemToDelete.id).catch(() => {});
-    }
-    showNotification(`Deleted ${itemToDelete.name} from menu`);
+    showNotification(`Deleted ${deleteConfirmItem.name} from menu`);
     setDeleteConfirmItem(null);
   };
 
@@ -612,15 +600,6 @@ export default function AdminPage({ onNavigate }) {
                   <span className="text-[10px] uppercase font-extrabold px-1.5 py-0.5 rounded bg-red-700 text-white">
                     Live
                   </span>
-                  {isSupabaseConfigured && (
-                    <span
-                      className="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950 border border-emerald-600/80 text-emerald-300 shadow-sm"
-                      title="Connected to Supabase Cloud Database"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      Supabase Cloud DB
-                    </span>
-                  )}
                 </div>
                 <p className="text-[11px] text-red-300/80">Menu Management Portal</p>
               </div>
