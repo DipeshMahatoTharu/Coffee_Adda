@@ -1,0 +1,3301 @@
+[
+{
+  "model": "api.category",
+  "pk": 1,
+  "fields": {
+    "name": "Hot Brews",
+    "slug": "hot",
+    "display_order": 1
+  }
+},
+{
+  "model": "api.category",
+  "pk": 2,
+  "fields": {
+    "name": "Cold Specials",
+    "slug": "cold",
+    "display_order": 2
+  }
+},
+{
+  "model": "api.category",
+  "pk": 3,
+  "fields": {
+    "name": "Artisan Bakery",
+    "slug": "bakery",
+    "display_order": 3
+  }
+},
+{
+  "model": "api.category",
+  "pk": 4,
+  "fields": {
+    "name": "Coffee Bar",
+    "slug": "hot-beverages",
+    "display_order": 1
+  }
+},
+{
+  "model": "api.category",
+  "pk": 5,
+  "fields": {
+    "name": "Tea Special",
+    "slug": "tea-special",
+    "display_order": 2
+  }
+},
+{
+  "model": "api.category",
+  "pk": 6,
+  "fields": {
+    "name": "Cold Coffee",
+    "slug": "cold-beverages",
+    "display_order": 3
+  }
+},
+{
+  "model": "api.category",
+  "pk": 7,
+  "fields": {
+    "name": "Shakes, Frappes & Lassi",
+    "slug": "shakes-lassi",
+    "display_order": 4
+  }
+},
+{
+  "model": "api.category",
+  "pk": 8,
+  "fields": {
+    "name": "Breakfast & Eggs",
+    "slug": "breakfast",
+    "display_order": 5
+  }
+},
+{
+  "model": "api.category",
+  "pk": 9,
+  "fields": {
+    "name": "Burgers & Sandwiches",
+    "slug": "burgers-sandwiches",
+    "display_order": 6
+  }
+},
+{
+  "model": "api.category",
+  "pk": 10,
+  "fields": {
+    "name": "Mo:Mo & Platters",
+    "slug": "momo-platters",
+    "display_order": 7
+  }
+},
+{
+  "model": "api.category",
+  "pk": 11,
+  "fields": {
+    "name": "Pasta & Corn Dogs",
+    "slug": "pasta-corndogs",
+    "display_order": 8
+  }
+},
+{
+  "model": "api.category",
+  "pk": 12,
+  "fields": {
+    "name": "Laphing Special",
+    "slug": "laphing",
+    "display_order": 9
+  }
+},
+{
+  "model": "api.category",
+  "pk": 13,
+  "fields": {
+    "name": "Khaja Set & Mains",
+    "slug": "khaja-mains",
+    "display_order": 10
+  }
+},
+{
+  "model": "api.category",
+  "pk": 14,
+  "fields": {
+    "name": "Snacks, Chillies & Nan",
+    "slug": "snacks-sides",
+    "display_order": 11
+  }
+},
+{
+  "model": "api.category",
+  "pk": 15,
+  "fields": {
+    "name": "Bar, Spirits & Hukka",
+    "slug": "bar-lounge",
+    "display_order": 12
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "Cappuccino",
+    "price": 280,
+    "tag": "Popular",
+    "sub_category": "Espresso Bar",
+    "description": "Rich, balanced double espresso topped with equal parts velvety steamed milk and airy foam with signature free-pour latte art.",
+    "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMjTB-ditOYgxnlYcLY6V54j2iwNiXT1m2XqIew3Bkse2f-SZYiDFV-55N0Et_85yx-V4H22ZM_cPsw8ly8xP-9k3h7gD4LBH6sdAZPstftH2YNWoQcEz3o8r_jyvunOGXrq99_KEHJGzpwC47b1j3IQtTlsJgr7beMTWxLmM8tGpzlK6jzSf7MhyxwYluZO13U_z_-G_A9O1I7ZbGUEbPi1iDi2OYysiTSYK92b117sjC-bO6nXih",
+    "details": [
+      "🥛 Whole / Oat Milk",
+      "🔥 Hot (8oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-09-11T11:21:54.448Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "Caffè Latte",
+    "price": 310,
+    "tag": "Barista Pick",
+    "sub_category": "Silky Smooth",
+    "description": "Gentle espresso combined with generous silky textured micro-foam milk in a sage ceramic cup. Mellow, sweet, and comforting.",
+    "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuB-HydCGjJv_Tr3FhQJ-oXJCh5HT86JQnendHcw2JskFuZGYpXrv_flzBcfbWlH6zpOiIQ8GVrdVtOfZowkSqUtb-XUnOoJs_TRYLs54sZq5lvQ5FexFPcfP15FlUVcc39910_k9wJR6g54EsWJ7u_QaRy1XQxnW1TTBCi8zLh9-K6C1Tbrewg0vkMYqxL8vjmDGvlTQWE3g-docRIf5-duA2vbweeJYjTo-Q8e_Lky7XCmqM_lIrVG",
+    "details": [
+      "🥛 Customizable",
+      "🔥 Hot (10oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-09-11T11:21:54.456Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 3,
+  "fields": {
+    "category": 2,
+    "name": "Signature Iced Coffee",
+    "price": 340,
+    "tag": "Summer Fav",
+    "sub_category": "Chilled",
+    "description": "Slow-drip 14-hour cold brew layered over condensed milk swirl, served tall on crystal cubes with whole roasted coffee bean garnish.",
+    "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDNjPKlqKtESQ0TETpEvAJ6w_PSCQk9WgAA1Jgc4uHzJoZ09hVO10rICprzoG_ZB8gMYCO23wsuw-CQV0X0VvgsdhD3Y5eCXnqJGkFbUj2EZ4nLeyMkKTkPZnm92CqElBheeuEToElHeY9b_110tlgan7d383KkzKtSMQTFxQbL1heAHP0ZZ0M4-u3hl2cdUpx7-OUCjgjAi3OT0QSz4-fRL6cH04idkadg3soDM8gnkUMfW_UD4cSA",
+    "details": [
+      "🧊 Extra Chilled",
+      "⚡ High Caffeine"
+    ],
+    "is_available": true,
+    "created_at": "2026-09-11T11:21:54.460Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 4,
+  "fields": {
+    "category": 3,
+    "name": "Artisan Butter Croissant",
+    "price": 220,
+    "tag": "Fresh Baked",
+    "sub_category": "Pastry",
+    "description": "Flaky, multi-layered golden French pastry baked fresh daily at 6:30 AM with creamy alpine butter.",
+    "image_url": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80",
+    "details": [
+      "🥐 Hand-rolled",
+      "✨ Warm Served"
+    ],
+    "is_available": true,
+    "created_at": "2026-09-11T11:21:54.466Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "Cascara Sparkling Cold Brew",
+    "price": 330,
+    "tag": "Specialty",
+    "sub_category": "Refresher",
+    "description": "Infused with organic coffee cherry peel, tonic water, and a twist of local fresh lime over crystal ice.",
+    "image_url": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=800&q=80",
+    "details": [
+      "🍋 Citrus Zest",
+      "🧊 Light Fizz"
+    ],
+    "is_available": true,
+    "created_at": "2026-09-11T11:21:54.472Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 6,
+  "fields": {
+    "category": 3,
+    "name": "Chocolate Babka Brioche",
+    "price": 260,
+    "tag": "Sweet Treat",
+    "sub_category": "House Special",
+    "description": "Braided sweet yeast bread swirled with 70% dark Himalayan cocoa and fragrant Ceylon cinnamon syrup.",
+    "image_url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
+    "details": [
+      "🍫 Dark Chocolate",
+      "🍯 Honey Glaze"
+    ],
+    "is_available": true,
+    "created_at": "2026-09-11T11:21:54.477Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 7,
+  "fields": {
+    "category": 4,
+    "name": "Espresso",
+    "price": 110,
+    "tag": "Classic",
+    "sub_category": "Espresso Bar",
+    "description": "Concentrated single shot pulled with golden hazelnut crema from shade-grown high-altitude Arabica beans.",
+    "image_url": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Pure Arabica",
+      "Hot (1.5oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.180Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 8,
+  "fields": {
+    "category": 4,
+    "name": "Doppio",
+    "price": 130,
+    "tag": "Double Shot",
+    "sub_category": "Espresso Bar",
+    "description": "Bold double shot of concentrated espresso offering intense aroma and deep dark cocoa tasting notes.",
+    "image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Double Shot",
+      "High Caffeine"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.185Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 9,
+  "fields": {
+    "category": 4,
+    "name": "Americano Single Shot",
+    "price": 130,
+    "tag": "Smooth",
+    "sub_category": "Black Coffee",
+    "description": "Classic single shot espresso lengthened with hot mountain water for a clean, aromatic finish.",
+    "image_url": "https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Hot Water Dilution",
+      "Hot (8oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.187Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 10,
+  "fields": {
+    "category": 4,
+    "name": "Americano Double Shot",
+    "price": 160,
+    "tag": "Strong",
+    "sub_category": "Black Coffee",
+    "description": "Intense double espresso pulled over hot water for the caffeine purist seeking deep roasted flavor.",
+    "image_url": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Double Shot",
+      "Hot (10oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.192Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 11,
+  "fields": {
+    "category": 4,
+    "name": "Café Latte",
+    "price": 180,
+    "tag": "Barista Pick",
+    "sub_category": "Milky & Smooth",
+    "description": "Gentle espresso harmonized with generous silky micro-foam in our signature sage ceramic mug.",
+    "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuB-HydCGjJv_Tr3FhQJ-oXJCh5HT86JQnendHcw2JskFuZGYpXrv_flzBcfbWlH6zpOiIQ8GVrdVtOfZowkSqUtb-XUnOoJs_TRYLs54sZq5lvQ5FexFPcfP15FlUVcc39910_k9wJR6g54EsWJ7u_QaRy1XQxnW1TTBCi8zLh9-K6C1Tbrewg0vkMYqxL8vjmDGvlTQWE3g-docRIf5-duA2vbweeJYjTo-Q8e_Lky7XCmqM_lIrVG",
+    "details": [
+      "Silky Micro-foam",
+      "Hot (10oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.199Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 12,
+  "fields": {
+    "category": 4,
+    "name": "Cappuccino / Double",
+    "price": 180,
+    "tag": "Popular",
+    "sub_category": "Espresso Bar",
+    "description": "Rich, balanced espresso crowned with equal parts textured milk and velvety airy foam with rosetta art.",
+    "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMjTB-ditOYgxnlYcLY6V54j2iwNiXT1m2XqIew3Bkse2f-SZYiDFV-55N0Et_85yx-V4H22ZM_cPsw8ly8xP-9k3h7gD4LBH6sdAZPstftH2YNWoQcEz3o8r_jyvunOGXrq99_KEHJGzpwC47b1j3IQtTlsJgr7beMTWxLmM8tGpzlK6jzSf7MhyxwYluZO13U_z_-G_A9O1I7ZbGUEbPi1iDi2OYysiTSYK92b117sjC-bO6nXih",
+    "details": [
+      "Dense Froth",
+      "Hot (8oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.203Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 13,
+  "fields": {
+    "category": 4,
+    "name": "Café Mocha",
+    "price": 210,
+    "tag": "Indulgent",
+    "sub_category": "Chocolate Espresso",
+    "description": "Double espresso blended with molten dark chocolate, steamed milk, and light cocoa dusting.",
+    "image_url": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Dark Chocolate",
+      "Hot (8oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.208Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 14,
+  "fields": {
+    "category": 4,
+    "name": "Honey Latte",
+    "price": 220,
+    "tag": "House Special",
+    "sub_category": "Naturally Sweet",
+    "description": "Smooth espresso and steamed milk sweetened with natural wild Himalayan blossom honey.",
+    "image_url": "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Pure Honey",
+      "Hot (10oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.213Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 15,
+  "fields": {
+    "category": 4,
+    "name": "Caramel Macchiato",
+    "price": 270,
+    "tag": "Sweet Fav",
+    "sub_category": "Layered Caramel",
+    "description": "Freshly steamed milk marked with vanilla syrup, rich espresso, and buttery golden caramel drizzle.",
+    "image_url": "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Buttery Caramel",
+      "Hot (10oz)"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.219Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 16,
+  "fields": {
+    "category": 4,
+    "name": "Mocha Madness",
+    "price": 350,
+    "tag": "Chef Special",
+    "sub_category": "Signature Dessert",
+    "description": "Decadent specialty creation loaded with rich fudge, espresso, steamed cream, and dark cocoa shavings.",
+    "image_url": "https://images.unsplash.com/photo-1579888944880-d98341245702?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fudge Loaded",
+      "Signature Dessert"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.224Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 17,
+  "fields": {
+    "category": 5,
+    "name": "Black Tea",
+    "price": 50,
+    "tag": "Pure Mountain Leaf",
+    "sub_category": "Orthodox Teas",
+    "description": "Crisp and golden amber liquor brewed from handpicked high-altitude orthodox tea leaves from Eastern Nepal.",
+    "image_url": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Handpicked Leaf",
+      "Steaming Hot"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.228Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 18,
+  "fields": {
+    "category": 5,
+    "name": "Lemon Tea",
+    "price": 70,
+    "tag": "Zesty & Fresh",
+    "sub_category": "Citrus Infusions",
+    "description": "Fragrant black tea brightened with freshly squeezed mountain lemon juice for an invigorating citrus finish.",
+    "image_url": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Lemon Slice",
+      "Uplifting Sips"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.233Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 19,
+  "fields": {
+    "category": 5,
+    "name": "Milk Tea (Dudh Chiya)",
+    "price": 70,
+    "tag": "Everyday Classic",
+    "sub_category": "Traditional Chiya",
+    "description": "The soul of Nepali morning addas  -  rich black tea simmered gently with whole fresh milk and sugar.",
+    "image_url": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Simmered Milk",
+      "Authentic Dudh Chiya"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.240Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 20,
+  "fields": {
+    "category": 5,
+    "name": "Black Masala Tea",
+    "price": 100,
+    "tag": "Warming Spices",
+    "sub_category": "Ayurvedic Spices",
+    "description": "Brisk black tea boiled with crushed green cardamom, cinnamon quills, cloves, and fiery ginger root.",
+    "image_url": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Whole Spices",
+      "Warming Decoction"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.243Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 21,
+  "fields": {
+    "category": 5,
+    "name": "Milk Masala Tea",
+    "price": 120,
+    "tag": "House Favorite",
+    "sub_category": "Traditional Chiya",
+    "description": "Our house signature spiced milk tea decoction simmered with mountain cardamom, cloves, ginger, and fresh milk.",
+    "image_url": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spiced Dairy Brew",
+      "House Blend"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.243Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 22,
+  "fields": {
+    "category": 5,
+    "name": "Matka Tea (Clay Pot)",
+    "price": 120,
+    "tag": "Rustic Clay Kulhad",
+    "sub_category": "Clay Pot Special",
+    "description": "Aromatic spiced milk tea served in an authentic earthen terracotta clay pot (kulhad/matka) for an earthy smoky aroma.",
+    "image_url": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Terracotta Clay Cup",
+      "Earthy Smoky Note"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.253Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 23,
+  "fields": {
+    "category": 5,
+    "name": "Chocolate Tea",
+    "price": 140,
+    "tag": "Choco Delight",
+    "sub_category": "Dessert Teas",
+    "description": "Rich fusion of robust milk tea simmered with molten Dutch dark cocoa and topped with chocolate shavings.",
+    "image_url": "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Dark Dutch Cocoa",
+      "Creamy Dessert Sip"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.254Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 24,
+  "fields": {
+    "category": 5,
+    "name": "Green Tea",
+    "price": 80,
+    "tag": "Wellness & Detox",
+    "sub_category": "Antioxidant Greens",
+    "description": "Steamed whole green tea leaves from Ilam mountain gardens, offering gentle vegetal sweetness and light finish.",
+    "image_url": "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "100% Whole Leaf",
+      "Clean Detox"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.260Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 25,
+  "fields": {
+    "category": 5,
+    "name": "Green Tea with Lemon",
+    "price": 100,
+    "tag": "Citrus Detox",
+    "sub_category": "Antioxidant Greens",
+    "description": "Pure Ilam green tea infused with freshly cut mountain lemon slices for an energizing antioxidant-rich cup.",
+    "image_url": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Cut Lemon",
+      "Immunity Boost"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.268Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 26,
+  "fields": {
+    "category": 5,
+    "name": "Hot Lemon",
+    "price": 80,
+    "tag": "Throat Soother",
+    "sub_category": "Warm Herbal Drinks",
+    "description": "Steaming cup of freshly squeezed lemon juice steeped in hot water to soothe the throat and refresh the senses.",
+    "image_url": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "100% Real Citrus",
+      "Steaming Hot"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.268Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 27,
+  "fields": {
+    "category": 5,
+    "name": "Hot Lemon with Honey",
+    "price": 150,
+    "tag": "Immunity Boost",
+    "sub_category": "Warm Herbal Drinks",
+    "description": "Golden wild forest honey stirred with fresh tart mountain lemon juice into steaming hot mountain spring water.",
+    "image_url": "https://images.unsplash.com/photo-1546852199-2d8e8c4aaada?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Pure Wild Honey",
+      "Fresh Tart Lemon"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.277Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 28,
+  "fields": {
+    "category": 5,
+    "name": "Hot Lemon with Ginger Honey",
+    "price": 170,
+    "tag": "Winter Classic",
+    "sub_category": "Warm Herbal Drinks",
+    "description": "Freshly crushed pungent ginger root simmered with natural mountain honey and fresh lemon juice. Highly recommended for cool Budhanilkantha mornings.",
+    "image_url": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "🫚 Crushed Ginger",
+      "Mountain Honey",
+      "Tart Lemon"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.281Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 29,
+  "fields": {
+    "category": 5,
+    "name": "Rose Tea",
+    "price": 120,
+    "tag": "Calming Floral",
+    "sub_category": "Floral Infusions",
+    "description": "Dried fragrant organic rose petals steeped gently for a delicate floral aroma and calming subtle sweetness.",
+    "image_url": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Dried Rose Petals",
+      "Calming Aromatics"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.289Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 30,
+  "fields": {
+    "category": 5,
+    "name": "Peach Tea",
+    "price": 100,
+    "tag": "Fruity Delight",
+    "sub_category": "Fruity Infusions",
+    "description": "Sweet juicy peach fruit essence infused into gentle steeped tea leaves, bursting with fruity aroma.",
+    "image_url": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Juicy Peach",
+      "Refreshing Sips"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.293Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 31,
+  "fields": {
+    "category": 6,
+    "name": "Expresso on the Rock",
+    "price": 140,
+    "tag": "Crisp",
+    "sub_category": "Chilled Espresso",
+    "description": "Fresh double espresso pulled directly over hand-cut crystal clear ice cubes for instant cooling.",
+    "image_url": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "On The Rocks",
+      "Strong & Crisp"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.300Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 32,
+  "fields": {
+    "category": 6,
+    "name": "Iced Americano",
+    "price": 170,
+    "tag": "Refreshing",
+    "sub_category": "Chilled Black",
+    "description": "Cold mountain spring water mixed with bold espresso and poured over mountain ice cubes.",
+    "image_url": "https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Cold Water Brew",
+      "Zero Sugar"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.305Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 33,
+  "fields": {
+    "category": 6,
+    "name": "Iced Latte",
+    "price": 200,
+    "tag": "All-Day Fav",
+    "sub_category": "Chilled Milk Brew",
+    "description": "Fresh espresso poured gently over cold whole milk and ice, creating smooth coffee-milk layers.",
+    "image_url": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Creamy Layers",
+      "Tall Glass"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.310Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 34,
+  "fields": {
+    "category": 6,
+    "name": "Iced Cappuccino",
+    "price": 200,
+    "tag": "Frothy",
+    "sub_category": "Cold Foam",
+    "description": "Chilled espresso and milk crowned with a thick velvety layer of cold aerated milk foam.",
+    "image_url": "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Cold Micro-foam",
+      "Crisp Chill"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.312Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 35,
+  "fields": {
+    "category": 6,
+    "name": "Iced Mocha",
+    "price": 220,
+    "tag": "Popular",
+    "sub_category": "Chocolate Chill",
+    "description": "Rich dark chocolate and cold espresso combined over ice with fresh milk and chocolate swirl.",
+    "image_url": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Dark Chocolate",
+      "Cold & Rich"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.312Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 36,
+  "fields": {
+    "category": 6,
+    "name": "Iced Caramel Macchiato",
+    "price": 310,
+    "tag": "Summer Fav",
+    "sub_category": "Layered Chill",
+    "description": "Chilled vanilla milk marked with espresso shot and generous golden buttery caramel drizzle.",
+    "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDNjPKlqKtESQ0TETpEvAJ6w_PSCQk9WgAA1Jgc4uHzJoZ09hVO10rICprzoG_ZB8gMYCO23wsuw-CQV0X0VvgsdhD3Y5eCXnqJGkFbUj2EZ4nLeyMkKTkPZnm92CqElBheeuEToElHeY9b_110tlgan7d383KkzKtSMQTFxQbL1heAHP0ZZ0M4-u3hl2cdUpx7-OUCjgjAi3OT0QSz4-fRL6cH04idkadg3soDM8gnkUMfW_UD4cSA",
+    "details": [
+      "Salted Caramel",
+      "High Energy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.325Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 37,
+  "fields": {
+    "category": 6,
+    "name": "Iced Mocha Madness",
+    "price": 360,
+    "tag": "Ultimate Treat",
+    "sub_category": "Signature Shake",
+    "description": "Our show-stopping iced creation with double espresso, blended chocolate fudge, whipped cream and cocoa.",
+    "image_url": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Loaded Fudge",
+      "House Signature"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.328Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 38,
+  "fields": {
+    "category": 7,
+    "name": "Classic Mojito",
+    "price": 210,
+    "tag": "Refreshing",
+    "sub_category": "Virgin Mojito",
+    "description": "Fresh mountain garden mint leaves muddled with lime wedges, cane sugar syrup, and fizzy soda over ice.",
+    "image_url": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Mint",
+      "Lime & Soda"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.336Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 39,
+  "fields": {
+    "category": 7,
+    "name": "Fruit Crush Mojito",
+    "price": 285,
+    "tag": "Signature Chill",
+    "sub_category": "Specialty Mojito",
+    "description": "Crushed seasonal fresh fruits, muddled fresh mint, citrus juice and sparkling soda poured over ice.",
+    "image_url": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crushed Fruits",
+      "Muddled Mint"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.336Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 40,
+  "fields": {
+    "category": 7,
+    "name": "Hot Chocolate",
+    "price": 200,
+    "tag": "Comforting",
+    "sub_category": "Warm Comfort",
+    "description": "Velvety melted dark cocoa simmered with fresh whole milk and a hint of vanilla warmth.",
+    "image_url": "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Pure Cocoa",
+      "Hot Mug"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.346Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 41,
+  "fields": {
+    "category": 7,
+    "name": "Milk Shake (Choc / Van / Straw)",
+    "price": 250,
+    "tag": "Creamy Classic",
+    "sub_category": "Classic Shake",
+    "description": "Thick, creamy milkshake blended with premium dairy ice cream in your choice of Chocolate, Vanilla, or Strawberry.",
+    "image_url": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Ice Cream Blended",
+      "3 Flavor Choices"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.351Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 42,
+  "fields": {
+    "category": 7,
+    "name": "Blended Oreo Shake",
+    "price": 295,
+    "tag": "Top Favorite",
+    "sub_category": "Oreo Shake",
+    "description": "Crisp Oreo cookies crushed and blended with rich vanilla ice cream, whole milk, and dark chocolate drizzle.",
+    "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Real Oreo Cookies",
+      "Chocolate Swirl"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.351Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 43,
+  "fields": {
+    "category": 7,
+    "name": "Oreo Shake",
+    "price": 280,
+    "tag": "Popular",
+    "sub_category": "Classic Shake",
+    "description": "Rich creamy vanilla shake infused with crunchy chocolate Oreo cookie crumbles.",
+    "image_url": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Oreo Bits",
+      "Rich Cream"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.360Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 44,
+  "fields": {
+    "category": 7,
+    "name": "Kitkat Shake",
+    "price": 240,
+    "tag": "Chocolate Crunch",
+    "sub_category": "Candy Shake",
+    "description": "Crispy KitKat wafer bars blended with velvety ice cream and chocolate sauce.",
+    "image_url": "https://images.unsplash.com/photo-1579888944880-d98341245702?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "KitKat Bars",
+      "Wafer Crunch"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.366Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 45,
+  "fields": {
+    "category": 7,
+    "name": "Blueberry Milk Shake",
+    "price": 280,
+    "tag": "Fruity Delight",
+    "sub_category": "Berry Shake",
+    "description": "Wild blueberries blended smoothly with vanilla ice cream and whole milk for a rich berry treat.",
+    "image_url": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "🫐 Real Blueberries",
+      "Creamy Blend"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.371Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 46,
+  "fields": {
+    "category": 7,
+    "name": "Mint Lemonade",
+    "price": 190,
+    "tag": "Zesty Refresher",
+    "sub_category": "Citrus Cooler",
+    "description": "Freshly squeezed lemon juice, muddled wild mint, cane syrup, and chilled soda water.",
+    "image_url": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Lemons",
+      "Garden Mint"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.375Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 47,
+  "fields": {
+    "category": 7,
+    "name": "Ice Tea (Peach & Lemon)",
+    "price": 180,
+    "tag": "Cool Brew",
+    "sub_category": "Iced Tea",
+    "description": "Slow-steeped Himalayan black tea served cold over ice with natural sweet peach and freshly squeezed lemon.",
+    "image_url": "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Peach Essence",
+      "Fresh Lemon"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.380Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 48,
+  "fields": {
+    "category": 7,
+    "name": "Masala Cold Drinks",
+    "price": 140,
+    "tag": "Nepali Zing",
+    "sub_category": "Spiced Soda",
+    "description": "Chilled soda spiked with roasted cumin, chaat masala, rock salt, and tangy fresh lemon juice.",
+    "image_url": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Rock Salt & Cumin",
+      "Lemon Zing"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.386Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 49,
+  "fields": {
+    "category": 7,
+    "name": "Cranberry Juice",
+    "price": 130,
+    "tag": "Tart & Sweet",
+    "sub_category": "Fruit Juice",
+    "description": "Crisp, chilled red cranberry juice served tall with crystal ice.",
+    "image_url": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Pure Cranberry",
+      "Chilled Glass"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.389Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 50,
+  "fields": {
+    "category": 7,
+    "name": "Cold Drinks (Coke / Fanta / Sprite)",
+    "price": 100,
+    "tag": "Chilled Can",
+    "sub_category": "Soft Drink",
+    "description": "Your choice of chilled Coke, Fanta, or Sprite served over ice cubes with lemon slice.",
+    "image_url": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Choice of Soda",
+      "Served Over Ice"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.396Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 51,
+  "fields": {
+    "category": 7,
+    "name": "Smoothies in Crunch Strawberry",
+    "price": 260,
+    "tag": "Crunchy",
+    "sub_category": "Fruit Smoothie",
+    "description": "Thick real strawberry fruit smoothie blended with crushed ice, topped with crispy crunchy pearls.",
+    "image_url": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Real Strawberries",
+      "Crunchy Topping"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.400Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 52,
+  "fields": {
+    "category": 7,
+    "name": "Smoothies in Crunch Mango",
+    "price": 260,
+    "tag": "Tropical",
+    "sub_category": "Fruit Smoothie",
+    "description": "Tropical ripe mango pulp blended rich and thick, finished with crunchy roasted granola crunch.",
+    "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Sweet Mango",
+      "Granola Crunch"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.404Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 53,
+  "fields": {
+    "category": 7,
+    "name": "Smoothies in Crunch Blueberry",
+    "price": 285,
+    "tag": "Antioxidant",
+    "sub_category": "Fruit Smoothie",
+    "description": "Lush dark blueberries blended with natural mountain yogurt, honey, and a crunch topping.",
+    "image_url": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "🫐 Wild Blueberry",
+      "Mountain Yogurt"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.411Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 54,
+  "fields": {
+    "category": 7,
+    "name": "Smoothies in Seasonal Fruits",
+    "price": 365,
+    "tag": "Chef Deluxe",
+    "sub_category": "Fruit Smoothie",
+    "description": "Loaded deluxe smoothie crafted from a vibrant medley of fresh seasonal Himalayan fruits and honey.",
+    "image_url": "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Multi-fruit Blend",
+      "Pure Honey"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.414Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 55,
+  "fields": {
+    "category": 7,
+    "name": "Vanilla Frappe",
+    "price": 350,
+    "tag": "Smooth & Rich",
+    "sub_category": "Blended Coffee",
+    "description": "Iced espresso blended with Madagascar vanilla syrup, chilled milk, and whipped cream topping.",
+    "image_url": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Espresso Blend",
+      "French Vanilla"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.421Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 56,
+  "fields": {
+    "category": 7,
+    "name": "Hazelnut Frappe",
+    "price": 280,
+    "tag": "Nutty Note",
+    "sub_category": "Blended Coffee",
+    "description": "Roasted hazelnut syrup blended with chilled double espresso, milk, and crushed ice.",
+    "image_url": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Roasted Hazelnut",
+      "Double Espresso"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.426Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 57,
+  "fields": {
+    "category": 7,
+    "name": "Caramel Frappe",
+    "price": 290,
+    "tag": "Caramel Swirl",
+    "sub_category": "Blended Coffee",
+    "description": "Smooth coffee frappe blended with buttery caramel sauce and topped with golden caramel drizzle.",
+    "image_url": "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Golden Caramel",
+      "Blended Cold"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.431Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 58,
+  "fields": {
+    "category": 7,
+    "name": "Oreo Frappe",
+    "price": 300,
+    "tag": "Cookie Blend",
+    "sub_category": "Blended Coffee",
+    "description": "Blended iced coffee mixed with crunchy Oreo cookies and chocolate syrup drizzle.",
+    "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crushed Oreo",
+      "Coffee Infused"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.436Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 59,
+  "fields": {
+    "category": 7,
+    "name": "Choco Mint Frappe",
+    "price": 320,
+    "tag": "Cooling",
+    "sub_category": "Blended Coffee",
+    "description": "A cooling combination of dark chocolate, refreshing garden mint, and chilled espresso.",
+    "image_url": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Dark Chocolate",
+      "Cooling Mint"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.442Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 60,
+  "fields": {
+    "category": 7,
+    "name": "Mocha Frappe",
+    "price": 360,
+    "tag": "Decadent",
+    "sub_category": "Blended Coffee",
+    "description": "Ice-blended espresso and Belgian chocolate with whipped cream and cocoa shavings.",
+    "image_url": "https://images.unsplash.com/photo-1579888944880-d98341245702?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Belgian Chocolate",
+      "Double Espresso"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.447Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 61,
+  "fields": {
+    "category": 7,
+    "name": "Plain Lassi",
+    "price": 150,
+    "tag": "Traditional",
+    "sub_category": "Nepali Lassi",
+    "description": "Authentic curd churned traditional style with a pinch of roasted cumin and Himalayan salt.",
+    "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Curd",
+      "Refreshing"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.453Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 62,
+  "fields": {
+    "category": 7,
+    "name": "Sweet Lassi",
+    "price": 170,
+    "tag": "Popular",
+    "sub_category": "Nepali Lassi",
+    "description": "Traditional sweet yogurt beverage churned thick and chilled with aromatic green cardamom.",
+    "image_url": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Thick Sweet Curd",
+      "Green Cardamom"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.458Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 63,
+  "fields": {
+    "category": 7,
+    "name": "Banana Lassi",
+    "price": 190,
+    "tag": "Energy Booster",
+    "sub_category": "Nepali Lassi",
+    "description": "Ripe bananas blended with thick mountain yogurt and natural honey for a wholesome treat.",
+    "image_url": "https://images.unsplash.com/photo-1528498033373-3c6c08e93d79?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Sweet Bananas",
+      "Natural Honey"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.460Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 64,
+  "fields": {
+    "category": 7,
+    "name": "Vanilla Lassi",
+    "price": 180,
+    "tag": "Delicate",
+    "sub_category": "Nepali Lassi",
+    "description": "Creamy churned yogurt flavored with pure vanilla extract and crushed ice.",
+    "image_url": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Vanilla Scent",
+      "Creamy Texture"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.468Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 65,
+  "fields": {
+    "category": 7,
+    "name": "Chocolate Lassi",
+    "price": 200,
+    "tag": "Fusion Delight",
+    "sub_category": "Nepali Lassi",
+    "description": "A delicious fusion of fresh mountain curd and molten chocolate fudge syrup.",
+    "image_url": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chocolate Fudge",
+      "Fresh Curd"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.473Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 66,
+  "fields": {
+    "category": 7,
+    "name": "Strawberry Lassi",
+    "price": 200,
+    "tag": "Berry Sweet",
+    "sub_category": "Nepali Lassi",
+    "description": "Fresh local strawberries blended with rich mountain yogurt and served chilled.",
+    "image_url": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Strawberry Puree",
+      "Churned Curd"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.478Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 67,
+  "fields": {
+    "category": 8,
+    "name": "Plain Toast (2 pcs)",
+    "price": 80,
+    "tag": "Crisp & Warm",
+    "sub_category": "Toasts & Breads",
+    "description": "Two slices of freshly browned golden toasted artisan bread served warm and crisp.",
+    "image_url": "https://images.unsplash.com/photo-1584776296944-ab6fb57b0bdd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "2 Slices",
+      "Warm & Crispy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.478Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 68,
+  "fields": {
+    "category": 8,
+    "name": "Butter Toast",
+    "price": 120,
+    "tag": "Morning Classic",
+    "sub_category": "Toasts & Breads",
+    "description": "Golden toasted artisan bread slices generously slathered with rich melting dairy butter.",
+    "image_url": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Creamy Dairy Butter",
+      "2 Crisp Slices"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.489Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 69,
+  "fields": {
+    "category": 8,
+    "name": "French Toast",
+    "price": 150,
+    "tag": "Sweet Favorite",
+    "sub_category": "Sweet Breakfast",
+    "description": "Thick sliced bread dipped in a vanilla-cinnamon egg custard and griddled to golden caramel perfection.",
+    "image_url": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Cinnamon & Honey",
+      "Egg Custard Dipped"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.489Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 70,
+  "fields": {
+    "category": 8,
+    "name": "Plain Omelet",
+    "price": 80,
+    "tag": "High Protein",
+    "sub_category": "Fresh Farm Eggs",
+    "description": "Light and fluffy two-egg pan-folded omelet lightly seasoned with rock salt and ground black pepper.",
+    "image_url": "https://images.unsplash.com/photo-1510693206972-df098062cb71?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "2 Farm Eggs",
+      "Pan Folded Fluffy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.489Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 71,
+  "fields": {
+    "category": 8,
+    "name": "Masala Omelet",
+    "price": 120,
+    "tag": "Nepali Style",
+    "sub_category": "Fresh Farm Eggs",
+    "description": "Whipped double egg omelet loaded with finely chopped red onions, crisp green chilies, fresh coriander, and spices.",
+    "image_url": "https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Green Chilly & Herbs",
+      "2 Farm Eggs"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.499Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 72,
+  "fields": {
+    "category": 8,
+    "name": "Sunny Side-Up",
+    "price": 80,
+    "tag": "Runny Yolk",
+    "sub_category": "Fresh Farm Eggs",
+    "description": "Fresh skillet-fried farm egg with tender whites and delicate runny golden yolk, sprinkled with black pepper.",
+    "image_url": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Runny Yolk",
+      "Quick Protein"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.505Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 73,
+  "fields": {
+    "category": 8,
+    "name": "Boiled Eggs",
+    "price": 80,
+    "tag": "Wholesome",
+    "sub_category": "Fresh Farm Eggs",
+    "description": "Two freshly boiled high-altitude farm eggs halved and served with Himalayan black salt and cracked pepper.",
+    "image_url": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "2 Boiled Eggs",
+      "Himalayan Rock Salt"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.512Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 74,
+  "fields": {
+    "category": 8,
+    "name": "Fried Egg",
+    "price": 80,
+    "tag": "Crispy Edges",
+    "sub_category": "Fresh Farm Eggs",
+    "description": "Sizzling pan-fried egg with crispy golden lacy edges, tender whites, and soft center.",
+    "image_url": "https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crispy Lacy Edges",
+      "Sizzling Skillet"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.518Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 75,
+  "fields": {
+    "category": 8,
+    "name": "Scrambled Egg",
+    "price": 100,
+    "tag": "Velvety Soft",
+    "sub_category": "Fresh Farm Eggs",
+    "description": "Slow-cooked creamy scrambled eggs folded gently with fresh dairy butter and chives.",
+    "image_url": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Butter Folded",
+      "Silky & Soft"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.521Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 76,
+  "fields": {
+    "category": 8,
+    "name": "Coffee Adda Special Breakfast Platter",
+    "price": 650,
+    "tag": "Grand Feast",
+    "sub_category": "Grand Breakfast Combo",
+    "description": "The ultimate morning feast: Toasted artisan bread + choice of 2 savory sausages or bacon + 2 eggs (boiled or fried) + crispy garlic potatoes + dairy butter + sweet fruit jam + fresh seasonal fruit bowl.",
+    "image_url": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Toast + Butter/Jam",
+      "2 Eggs + 2 Sausages/Bacon",
+      "Crispy Garlic Potato",
+      "Seasonal Fruit Bowl"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.523Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 77,
+  "fields": {
+    "category": 9,
+    "name": "Chicken Burger",
+    "price": 290,
+    "tag": "Bestseller",
+    "sub_category": "Gourmet Burger",
+    "description": "Juicy seasoned chicken patty grilled to perfection, melted cheddar cheese, crisp lettuce, tomato & house sauce.",
+    "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Juicy Patty",
+      "Cheddar Melt"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.523Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 78,
+  "fields": {
+    "category": 9,
+    "name": "Egg Burger",
+    "price": 250,
+    "tag": "Protein Rich",
+    "sub_category": "Quick Burger",
+    "description": "Golden fried egg layered with caramelized onions, fresh garden greens, sliced tomatoes and tangy herb mayo.",
+    "image_url": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Farm Fresh Egg",
+      "Toasted Bun"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.532Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 79,
+  "fields": {
+    "category": 9,
+    "name": "Veg Burger",
+    "price": 150,
+    "tag": "Budget Friendly",
+    "sub_category": "Crispy Veg",
+    "description": "Crispy spiced vegetable patty loaded with cucumber, tomato, fresh lettuce, and signature mayonnaise.",
+    "image_url": "https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crispy Veg Patty",
+      "Garden Fresh"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.541Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 80,
+  "fields": {
+    "category": 9,
+    "name": "Veg Cheese Sandwich",
+    "price": 180,
+    "tag": "Cheesy",
+    "sub_category": "Toasted Sandwich",
+    "description": "Golden toasted artisan bread filled with fresh vegetables, house butter, and rich melted mozzarella cheese.",
+    "image_url": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Melted Mozzarella",
+      "Grilled Crisp"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.546Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 81,
+  "fields": {
+    "category": 9,
+    "name": "Chicken Sandwich",
+    "price": 210,
+    "tag": "Popular",
+    "sub_category": "Toasted Sandwich",
+    "description": "Tender spiced shredded chicken tossed with savory dressing, black pepper, and crisp lettuce in toasted bread.",
+    "image_url": "https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Shredded Chicken",
+      "Spiced Dressing"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.552Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 82,
+  "fields": {
+    "category": 9,
+    "name": "Egg Sandwich",
+    "price": 200,
+    "tag": "Classic",
+    "sub_category": "Toasted Sandwich",
+    "description": "Fluffy farm-fresh egg omelette seasoned with Himalayan herbs, sandwiched inside warm toasted bread slices.",
+    "image_url": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Farm Egg Omelette",
+      "Warm Toasted"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.557Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 83,
+  "fields": {
+    "category": 10,
+    "name": "Veg Mo:Mo Platter",
+    "price": 600,
+    "tag": "Sharing Feast",
+    "sub_category": "25 Pcs Feast",
+    "description": "Grand 25 pcs tasting platter: 5 pcs Steamed + 5 pcs Fried + 5 pcs Sadheko + 5 pcs Kothey + 5 pcs Chilly Mo:Mo with spicy chutney.",
+    "image_url": "https://images.unsplash.com/photo-1625398407796-82650a8c135f?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "25 Pieces Total",
+      "5 Styles in One"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.562Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 84,
+  "fields": {
+    "category": 10,
+    "name": "Buff Mo:Mo Platter",
+    "price": 640,
+    "tag": "Local Favorite",
+    "sub_category": "25 Pcs Feast",
+    "description": "Authentic 25 pcs buff extravaganza: 5 Steamed + 5 Deep Fried + 5 Pungent Sadheko + 5 Pan-fried Kothey + 5 Spicy Chilly Mo:Mo.",
+    "image_url": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "25 Pieces Buff",
+      "Includes Sadheko & Chilly"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.567Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 85,
+  "fields": {
+    "category": 10,
+    "name": "Chicken Mo:Mo Platter",
+    "price": 660,
+    "tag": "Chef Signature",
+    "sub_category": "25 Pcs Feast",
+    "description": "The ultimate chicken lover feast: 5 Steamed + 5 Fried + 5 Tangy Sadheko + 5 Crispy Kothey + 5 Fiery Chilly Chicken Mo:Mo.",
+    "image_url": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "25 Pieces Chicken",
+      "Perfect for Groups"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.569Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 86,
+  "fields": {
+    "category": 10,
+    "name": "Current Platter",
+    "price": 420,
+    "tag": "Hot & Spicy",
+    "sub_category": "Spicy Combo",
+    "description": "2 Packets of fiery Current Noodles wok-tossed and served with 2 Fried Eggs, 2 Savory Sausages, and fresh crisp garden salad.",
+    "image_url": "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "2x Current Noodles",
+      "2 Eggs + 2 Sausages"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.572Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 87,
+  "fields": {
+    "category": 11,
+    "name": "Spaghetti Carbonara",
+    "price": 500,
+    "tag": "House Premium",
+    "sub_category": "Classic Italian Pasta",
+    "description": "Silky al dente spaghetti twirled in rich egg yolk cream sauce, aged parmesan cheese, cracked black peppercorns, and savory crispy bits.",
+    "image_url": "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Al Dente Spaghetti",
+      "Aged Parmesan & Cream"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.579Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 88,
+  "fields": {
+    "category": 11,
+    "name": "Chicken Bolognese",
+    "price": 420,
+    "tag": "Hearty Meat Sauce",
+    "sub_category": "Slow Simmered Ragù",
+    "description": "Slow-cooked minced chicken simmered in rich San Marzano tomato sauce with aromatic garlic, basil, and Italian oregano over pasta.",
+    "image_url": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Minced Chicken Ragù",
+      "Italian Herb Tomato"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.585Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 89,
+  "fields": {
+    "category": 11,
+    "name": "Arrabbiata",
+    "price": 350,
+    "tag": "Spicy & Zesty",
+    "sub_category": "Fiery Red Sauce",
+    "description": "Tender pasta tossed in fiery red tomato sauce infused with toasted red chilies, garlic slivers, olive oil, and fresh basil leaves.",
+    "image_url": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spicy Red Chili",
+      "Fresh Basil & Garlic"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.591Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 90,
+  "fields": {
+    "category": 11,
+    "name": "Pasta Alfredo",
+    "price": 400,
+    "tag": "Rich & Creamy",
+    "sub_category": "Velvety White Sauce",
+    "description": "Decadent creamy white sauce made from fresh dairy cream, butter, and grated parmesan tossed with al dente pasta and herbs.",
+    "image_url": "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Dairy Cream & Butter",
+      "Grated Parmesan"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.591Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 91,
+  "fields": {
+    "category": 11,
+    "name": "Corn Dog (Classic Non-Veg / Veg)",
+    "price": 160,
+    "tag": "Crispy Skewer",
+    "sub_category": "Street Corn Dog",
+    "description": "Juicy sausage or spiced filling dipped in sweet golden cornmeal batter, deep-fried until crisp and drizzled with mustard and ketchup.",
+    "image_url": "https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crispy Corn Crust",
+      "Ketchup & Mustard Dip"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.600Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 92,
+  "fields": {
+    "category": 11,
+    "name": "Cheese Corn Dog",
+    "price": 180,
+    "tag": "Epic Cheese Pull",
+    "sub_category": "Molten Mozzarella",
+    "description": "Thick block of creamy mozzarella cheese enclosed in crunchy sweet cornmeal batter, fried golden with epic stretchy cheese pull.",
+    "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Stretchy Mozzarella",
+      "Crunchy Golden Crust"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.606Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 93,
+  "fields": {
+    "category": 12,
+    "name": "Plain Laphing (Jhol / Dry)",
+    "price": 65,
+    "tag": "Street Classic",
+    "sub_category": "Tibetan Cold Jelly",
+    "description": "Traditional silky cold mung bean jelly roll tossed in spicy Sichuan pepper oil, dark soy sauce, crushed garlic, and vinegar. Served in Jhol or Dry style.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spicy Chili Oil",
+      "Jhol or Dry Option"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.609Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 94,
+  "fields": {
+    "category": 12,
+    "name": "Noodles Laphing (Jhol / Dry)",
+    "price": 75,
+    "tag": "Bestseller",
+    "sub_category": "Stuffed Laphing",
+    "description": "Silky yellow laphing sheets wrapped around seasoned chewy instant noodles, immersed in fiery garlic-chili vinegar sauce.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Noodle Stuffed",
+      "Fiery Garlic Broth"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.614Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 95,
+  "fields": {
+    "category": 12,
+    "name": "Chips Laphing (Jhol / Dry)",
+    "price": 80,
+    "tag": "Crunchy Favorite",
+    "sub_category": "Crunchy Fusion",
+    "description": "Coffee Adda special twist: crisp spiced potato chips rolled snugly inside tender cold laphing with spicy tangy chili sauce.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crunchy Spiced Chips",
+      "Hot & Tangy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.621Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 96,
+  "fields": {
+    "category": 12,
+    "name": "Mix Laphing (Jhol / Dry)",
+    "price": 85,
+    "tag": "All-in-One",
+    "sub_category": "Loaded Combination",
+    "description": "The ultimate laphing bowl loaded with tender gluten jelly, noodles, and crunchy potato chips drenched in spicy Sichuan sauce.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Jelly + Noodles + Chips",
+      "Extra Spicy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.625Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 97,
+  "fields": {
+    "category": 12,
+    "name": "Chicken Laphing (Jhol / Dry)",
+    "price": 130,
+    "tag": "Savory Special",
+    "sub_category": "Savory Non-Veg",
+    "description": "Tender spiced minced chicken tucked inside silky cold laphing sheets, dressed in chili-infused garlic vinegar and roasted sesame seeds.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spiced Minced Chicken",
+      "Jhol or Dry Option"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.626Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 98,
+  "fields": {
+    "category": 13,
+    "name": "Veg Khaja Set",
+    "price": 250,
+    "tag": "Authentic",
+    "sub_category": "Traditional Nepali",
+    "description": "Crisp beaten rice (baji), roasted soybeans (bhatmas), spicy potato curry (aloo sadheko), fresh green salad and house pickles.",
+    "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Beaten Rice",
+      "Bhatmas & Aloo"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.635Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 99,
+  "fields": {
+    "category": 13,
+    "name": "Chicken Khaja Set",
+    "price": 280,
+    "tag": "Bestseller",
+    "sub_category": "Traditional Nepali",
+    "description": "Nepali style spiced chicken curry served with crunchy beaten rice, roasted bhatmas, spiced aloo and tomato chutney.",
+    "image_url": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chicken Curry",
+      "Beaten Rice Platter"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.639Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 100,
+  "fields": {
+    "category": 13,
+    "name": "Buff Khaja Set",
+    "price": 310,
+    "tag": "Local Favorite",
+    "sub_category": "Traditional Nepali",
+    "description": "Pan-fried spicy buff choila/curry paired with beaten rice, spiced potato pickle, crunchy bhatmas and fresh salad.",
+    "image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spiced Buff Meat",
+      "Authentic Flavors"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.644Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 101,
+  "fields": {
+    "category": 13,
+    "name": "Mix Khaja Set",
+    "price": 400,
+    "tag": "Special Combo",
+    "sub_category": "Grand Thali",
+    "description": "The complete feast featuring spiced chicken, savory buff, boiled egg, beaten rice, aloo sadheko and assorted condiments.",
+    "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chicken + Buff + Egg",
+      "Royal Feast"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.649Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 102,
+  "fields": {
+    "category": 13,
+    "name": "Buff Keema Noodles",
+    "price": 280,
+    "tag": "Flavorful",
+    "sub_category": "Keema Noodles",
+    "description": "Steaming noodles generously smothered in rich, aromatic minced buff keema gravy cooked with garlic, ginger and herbs.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Minced Buff Sauce",
+      "Wok Noodles"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.655Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 103,
+  "fields": {
+    "category": 13,
+    "name": "Chicken Keema Noodles",
+    "price": 250,
+    "tag": "Popular",
+    "sub_category": "Keema Noodles",
+    "description": "Wok-tossed noodles crowned with seasoned minced chicken gravy, fresh chopped scallions and fragrant spices.",
+    "image_url": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chicken Keema",
+      "Fresh Scallions"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.660Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 104,
+  "fields": {
+    "category": 13,
+    "name": "Mix Keema Noodles",
+    "price": 350,
+    "tag": "House Special",
+    "sub_category": "Keema Noodles",
+    "description": "Signature noodle bowl topped with combined minced chicken and savory buff keema simmered in house masala.",
+    "image_url": "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chicken & Buff",
+      "Rich & Spicy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.666Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 105,
+  "fields": {
+    "category": 13,
+    "name": "Chicken Thukpa",
+    "price": 220,
+    "tag": "Warm & Comforting",
+    "sub_category": "Himalayan Noodle Soup",
+    "description": "Steaming aromatic Himalayan soup noodles with tender chicken strips, carrots, cabbage, and rich spiced broth.",
+    "image_url": "https://images.unsplash.com/photo-1547928576-a4a33237cbc3?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Warm Broth",
+      "Chicken Strips"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.671Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 106,
+  "fields": {
+    "category": 13,
+    "name": "Buff Thukpa",
+    "price": 250,
+    "tag": "Hearty",
+    "sub_category": "Himalayan Noodle Soup",
+    "description": "Slow-simmered mountain broth with noodles, savory buff slices, garlic, ginger and seasonal greens.",
+    "image_url": "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Buff Slices",
+      "Spiced Soup"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.678Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 107,
+  "fields": {
+    "category": 13,
+    "name": "Egg Thukpa",
+    "price": 200,
+    "tag": "Vegetarian Option",
+    "sub_category": "Himalayan Noodle Soup",
+    "description": "Wholesome hot noodle soup with fresh boiled eggs, garden veggies, and garlic-infused vegetable broth.",
+    "image_url": "https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Farm Eggs",
+      "Comforting Broth"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.685Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 108,
+  "fields": {
+    "category": 13,
+    "name": "Veg Thukpa",
+    "price": 150,
+    "tag": "Pure Veg",
+    "sub_category": "Himalayan Noodle Soup",
+    "description": "Gentle and soothing Himalayan vegetable noodle soup packed with fresh cabbage, carrots, onion and cilantro.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "100% Vegetarian",
+      "Garden Vegetables"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.691Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 109,
+  "fields": {
+    "category": 13,
+    "name": "Mix Thukpa",
+    "price": 300,
+    "tag": "Deluxe Soup",
+    "sub_category": "Himalayan Noodle Soup",
+    "description": "Grand bowl loaded with chicken, buff, boiled egg, vegetables and hot flavored Himalayan soup broth.",
+    "image_url": "https://images.unsplash.com/photo-1547928576-a4a33237cbc3?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chicken, Buff & Egg",
+      "King Size"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.696Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 110,
+  "fields": {
+    "category": 13,
+    "name": "Veg Fry Rice",
+    "price": 200,
+    "tag": "Wok Fresh",
+    "sub_category": "Fried Rice",
+    "description": "Fluffy basmati rice tossed in hot wok with sweet carrots, green peas, capsicum and soy seasoning.",
+    "image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Basmati Rice",
+      "Fresh Vegetables"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.704Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 111,
+  "fields": {
+    "category": 13,
+    "name": "Chicken Fry Rice",
+    "price": 250,
+    "tag": "Popular",
+    "sub_category": "Fried Rice",
+    "description": "Aromatic fried rice stir-fried with diced tender chicken, scallions, eggs, and cracked black pepper.",
+    "image_url": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Tender Chicken",
+      "Wok Stirred"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.709Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 112,
+  "fields": {
+    "category": 13,
+    "name": "Buff Fry Rice",
+    "price": 250,
+    "tag": "Spicy & Savory",
+    "sub_category": "Fried Rice",
+    "description": "Smoky wok-tossed basmati rice with spiced shredded buff, soy sauce, and aromatic garlic butter.",
+    "image_url": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spiced Buff Pieces",
+      "Fragrant Rice"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.714Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 113,
+  "fields": {
+    "category": 13,
+    "name": "Mix Fry Rice",
+    "price": 300,
+    "tag": "Chef Choice",
+    "sub_category": "Fried Rice",
+    "description": "Ultimate fried rice combination with chicken, buff, egg, and crunchy garden vegetables in wok glaze.",
+    "image_url": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chicken, Buff & Egg",
+      "Deluxe Basmati"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.719Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 114,
+  "fields": {
+    "category": 14,
+    "name": "Mustang Aalu",
+    "price": 250,
+    "tag": "Must Try",
+    "sub_category": "Famous Mountain Snack",
+    "description": "Crispy fried potato wedges tossed in authentic Mustang jimbu herbs, roasted chili flakes and garlic butter.",
+    "image_url": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crispy Wedges",
+      "Authentic Jimbu Herb"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.726Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 115,
+  "fields": {
+    "category": 14,
+    "name": "Sukuti Sadheko",
+    "price": 350,
+    "tag": "Authentic",
+    "sub_category": "Nepali Delicacy",
+    "description": "Smoky dried meat shredded and tossed with raw mustard oil, roasted garlic, green chili, onion and fresh lemon.",
+    "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Smoky Dried Meat",
+      "Spicy & Pungent"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.731Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 116,
+  "fields": {
+    "category": 14,
+    "name": "Chicken Sadheko",
+    "price": 300,
+    "tag": "Bestseller",
+    "sub_category": "Nepali Sadheko",
+    "description": "Seared spiced chicken marinated with fresh coriander, diced red onions, tomatoes, green chilies and lime.",
+    "image_url": "https://images.unsplash.com/photo-1606471191009-63994c53433b?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spiced Chicken",
+      "Fresh Lime & Coriander"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.736Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 117,
+  "fields": {
+    "category": 14,
+    "name": "Buff Sadheko",
+    "price": 280,
+    "tag": "Spicy",
+    "sub_category": "Nepali Sadheko",
+    "description": "Tender spiced buff cubes marinated in roasted fenugreek, garlic ginger paste, mustard oil and fresh herbs.",
+    "image_url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Tender Buff Cubes",
+      "Roasted Fenugreek"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.742Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 118,
+  "fields": {
+    "category": 14,
+    "name": "Bhatmas Sadheko",
+    "price": 120,
+    "tag": "Classic",
+    "sub_category": "Crispy Snack",
+    "description": "Deep roasted crunchy soybeans mixed with raw mustard oil, finely chopped onions, chilies and lemon juice.",
+    "image_url": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Roasted Soybeans",
+      "High Protein Crunch"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.745Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 119,
+  "fields": {
+    "category": 14,
+    "name": "Peanut Sadheko",
+    "price": 130,
+    "tag": "Addictive",
+    "sub_category": "Crispy Snack",
+    "description": "Roasted crunchy peanuts tossed with diced tomatoes, onions, cilantro, green chilies, and tangy chaat masala.",
+    "image_url": "https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Roasted Peanuts",
+      "Tangy Chaat Masala"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.752Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 120,
+  "fields": {
+    "category": 14,
+    "name": "Wai-Wai Sadheko (2 Packets)",
+    "price": 100,
+    "tag": "Comfort Food",
+    "sub_category": "Nepali Street Food",
+    "description": "Two packets of crunchy crushed Wai-Wai noodles tossed with onions, tomatoes, green chilies, seasoning & lime.",
+    "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "2x Wai-Wai Noodles",
+      "Nostalgic Taste"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.758Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 121,
+  "fields": {
+    "category": 14,
+    "name": "Aalu Sadheko",
+    "price": 140,
+    "tag": "Traditional",
+    "sub_category": "Potato Salad",
+    "description": "Tender boiled potatoes spiced with roasted fenugreek oil, turmeric, green chilies, cilantro and lemon juice.",
+    "image_url": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spiced Potatoes",
+      "Roasted Fenugreek"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.763Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 122,
+  "fields": {
+    "category": 14,
+    "name": "French Fries",
+    "price": 170,
+    "tag": "Crispy",
+    "sub_category": "Crispy Fries",
+    "description": "Golden, crispy hand-cut potatoes fried to perfection, lightly salted and served with creamy dip.",
+    "image_url": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Golden Crispy",
+      "Sea Salted"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.768Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 123,
+  "fields": {
+    "category": 14,
+    "name": "Peri-Peri Fries",
+    "price": 190,
+    "tag": "Spicy",
+    "sub_category": "Spiced Fries",
+    "description": "Hot crispy potato fries dusted generously with zesty, tangy and fiery African peri-peri spice mix.",
+    "image_url": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Peri-Peri Dust",
+      "Zesty Kick"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.768Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 124,
+  "fields": {
+    "category": 14,
+    "name": "Cheese Ball",
+    "price": 310,
+    "tag": "Cheesy Delight",
+    "sub_category": "Deep Fried",
+    "description": "Crispy golden breaded spheres that melt in your mouth with an oozy, savory melted cheese center.",
+    "image_url": "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Molten Cheese Center",
+      "Golden Crust"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.777Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 125,
+  "fields": {
+    "category": 14,
+    "name": "Fish Finger",
+    "price": 350,
+    "tag": "Crispy Fish",
+    "sub_category": "Seafood",
+    "description": "Fresh fish fillets cut into batons, herb-marinated, rolled in crunchy breadcrumbs and fried golden.",
+    "image_url": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Tender Fish Fillet",
+      "Tartar Dip"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.784Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 126,
+  "fields": {
+    "category": 14,
+    "name": "Chicken Kabab (Pahadi Best)",
+    "price": 350,
+    "tag": "House Special",
+    "sub_category": "Himalayan Grill",
+    "description": "Chef signature mountain-spiced succulent chicken kababs grilled over hot embers with garlic mint chutney.",
+    "image_url": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Pahadi Spices",
+      "Charcoal Grilled"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.787Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 127,
+  "fields": {
+    "category": 14,
+    "name": "Veg Pakouda",
+    "price": 200,
+    "tag": "Tea Time Fav",
+    "sub_category": "Crispy Fritters",
+    "description": "Crispy chickpea-flour fritters with finely sliced onions, seasonal vegetables, green chili and cumin.",
+    "image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Gram Flour Crunch",
+      "Perfect With Coffee"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.793Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 128,
+  "fields": {
+    "category": 14,
+    "name": "Sausages (2 Pieces)",
+    "price": 120,
+    "tag": "Quick Snack",
+    "sub_category": "Quick Bite",
+    "description": "Two grilled savory sausages served hot with our house spicy tomato and mustard dipping sauces.",
+    "image_url": "https://images.unsplash.com/photo-1585325701165-351af916e581?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "2 Pieces Grilled",
+      "Spicy Dips"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.798Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 129,
+  "fields": {
+    "category": 14,
+    "name": "Sausage Sadheko",
+    "price": 160,
+    "tag": "Spicy Bite",
+    "sub_category": "Nepali Sadheko",
+    "description": "Sliced grilled sausages tossed with red onions, tomatoes, fresh cilantro, fiery green chilies and lemon.",
+    "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Sliced Sausages",
+      "Pungent Mustard Dressing"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.803Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 130,
+  "fields": {
+    "category": 14,
+    "name": "Aalu Stick",
+    "price": 160,
+    "tag": "Crunchy",
+    "sub_category": "Crispy Potato",
+    "description": "Seasoned potato sticks deep-fried to a golden crunch, dusted with savory mountain spice seasoning.",
+    "image_url": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Potato Sticks",
+      "Spice Dusted"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.809Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 131,
+  "fields": {
+    "category": 14,
+    "name": "Chicken Chilly",
+    "price": 280,
+    "tag": "Spicy Favorite",
+    "sub_category": "Indo-Chinese Chilly",
+    "description": "Wok-tossed chicken chunks stir-fried in a fiery dark soy chili sauce with bell peppers and crunchy onions.",
+    "image_url": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Boneless Chicken",
+      "Wok Tossed"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.814Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 132,
+  "fields": {
+    "category": 14,
+    "name": "Buff Chilly",
+    "price": 310,
+    "tag": "Hot & Spicy",
+    "sub_category": "Indo-Chinese Chilly",
+    "description": "Crispy seasoned buff meat stir-fried with hot green chilies, garlic, capsicum, and thick spicy gravy.",
+    "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crispy Buff",
+      "Fiery Green Chilies"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.819Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 133,
+  "fields": {
+    "category": 14,
+    "name": "Sausage Chilly",
+    "price": 250,
+    "tag": "Tangy Spicy",
+    "sub_category": "Indo-Chinese Chilly",
+    "description": "Sliced savory sausages tossed in hot wok with onions, green peppers, soy sauce and sweet chili glaze.",
+    "image_url": "https://images.unsplash.com/photo-1585325701165-351af916e581?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Sliced Sausages",
+      "Sweet & Spicy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.823Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 134,
+  "fields": {
+    "category": 14,
+    "name": "Chips Chilly",
+    "price": 230,
+    "tag": "Crispy Snack",
+    "sub_category": "Indo-Chinese Chilly",
+    "description": "Crispy potato chips tossed with garlic, ginger, chopped chilies, onions, and spicy Indo-Chinese sauce.",
+    "image_url": "https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Crispy Chips",
+      "Spicy Garlic Glaze"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.828Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 135,
+  "fields": {
+    "category": 14,
+    "name": "Nan Chicken Kima",
+    "price": 250,
+    "tag": "Stuffed Bread",
+    "sub_category": "Stuffed Naan",
+    "description": "Oven-baked flatbread stuffed generously with spiced minced chicken, fresh herbs, and coriander butter.",
+    "image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Chicken Keema Stuffed",
+      "Oven Baked"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.833Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 136,
+  "fields": {
+    "category": 14,
+    "name": "Cheese Nan",
+    "price": 120,
+    "tag": "Cheesy",
+    "sub_category": "Naan Bread",
+    "description": "Fresh clay-oven flatbread stuffed with savory melted mozzarella cheese and brushed with melted butter.",
+    "image_url": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Mozzarella Stuffed",
+      "Butter Glazed"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.838Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 137,
+  "fields": {
+    "category": 14,
+    "name": "Garlic Nan",
+    "price": 140,
+    "tag": "Aromatic",
+    "sub_category": "Naan Bread",
+    "description": "Soft tandoori flatbread studded with roasted minced garlic, fresh coriander leaves and melted butter.",
+    "image_url": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Roasted Garlic",
+      "Herb Butter"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.843Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 138,
+  "fields": {
+    "category": 14,
+    "name": "Butter Nan",
+    "price": 100,
+    "tag": "Classic",
+    "sub_category": "Naan Bread",
+    "description": "Traditional pillowy soft clay-oven baked naan brushed with golden creamy alpine butter.",
+    "image_url": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Pure Butter",
+      "Soft & Fluffy"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.849Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 139,
+  "fields": {
+    "category": 14,
+    "name": "Fruit Salad",
+    "price": 190,
+    "tag": "Fresh & Healthy",
+    "sub_category": "Fresh Salad",
+    "description": "Bowl of seasonal mountain fruits, freshly diced and dressed with light citrus honey glaze.",
+    "image_url": "https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Seasonal Fruits",
+      "Natural Honey Touch"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.852Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 140,
+  "fields": {
+    "category": 14,
+    "name": "Green Salad",
+    "price": 150,
+    "tag": "Crisp",
+    "sub_category": "Fresh Salad",
+    "description": "Crisp farm cucumbers, ripe tomatoes, carrots, sliced red onion, and green chilies served with lemon wedges.",
+    "image_url": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Cucumbers & Tomatoes",
+      "Lemon Dressing"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.857Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 141,
+  "fields": {
+    "category": 14,
+    "name": "Salad Sadheko",
+    "price": 120,
+    "tag": "Spicy Salad",
+    "sub_category": "Nepali Salad",
+    "description": "Fresh sliced garden vegetables marinated in mustard oil, roasted fenugreek, green chili and lemon.",
+    "image_url": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fresh Garden Veggies",
+      "Sadheko Dressing"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.864Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 142,
+  "fields": {
+    "category": 15,
+    "name": "Hukka (Classic Flavor)",
+    "price": 400,
+    "tag": "Lounge Ritual",
+    "sub_category": "Lounge Hukka",
+    "description": "Premium coal-heated hookah pipe prepared in your favorite fruity or mint herbal flavor.",
+    "image_url": "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Smooth Smoke",
+      "Choice of Flavor"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.869Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 143,
+  "fields": {
+    "category": 15,
+    "name": "Garnished Hukka",
+    "price": 450,
+    "tag": "Deluxe Special",
+    "sub_category": "Lounge Hukka",
+    "description": "Deluxe garnished hookah setup with chilled fruit base, fresh mint infusion, and dense cooling vapor.",
+    "image_url": "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fruit Ice Base",
+      "Long Lasting"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.873Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 144,
+  "fields": {
+    "category": 15,
+    "name": "Budweiser Beer (650ml)",
+    "price": 600,
+    "tag": "Imported Brand",
+    "sub_category": "Chilled Beer",
+    "description": "The King of Beers: crisp, clean American lager brewed with the finest barley malt and rice.",
+    "image_url": "https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "650ml Bottle",
+      "Ice Chilled"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.878Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 145,
+  "fields": {
+    "category": 15,
+    "name": "Carlsberg Beer (650ml)",
+    "price": 580,
+    "tag": "Danish Pilsner",
+    "sub_category": "Chilled Beer",
+    "description": "Probably the best beer in the world: crisp, refreshing Danish pilsner with well-balanced bitterness.",
+    "image_url": "https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "650ml Bottle",
+      "Danish Malt"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.884Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 146,
+  "fields": {
+    "category": 15,
+    "name": "Tuborg Classic (650ml)",
+    "price": 550,
+    "tag": "Local Favorite",
+    "sub_category": "Chilled Beer",
+    "description": "Crisp and bottom-fermented lager with mild bitterness and rich floral hop aroma.",
+    "image_url": "https://images.unsplash.com/photo-1618886614638-80e3c103d31a?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "650ml Bottle",
+      "Hop Aroma"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.888Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 147,
+  "fields": {
+    "category": 15,
+    "name": "Gorkha Strong (650ml)",
+    "price": 500,
+    "tag": "Nepali Brew",
+    "sub_category": "Chilled Beer",
+    "description": "Brewed with pure Himalayan water: bold, robust malt character and smooth finish.",
+    "image_url": "https://images.unsplash.com/photo-1584225065152-4a1454aa3d4e?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "650ml Bottle",
+      "Himalayan Water"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.893Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 148,
+  "fields": {
+    "category": 15,
+    "name": "Barahsinghe Craft Beer (650ml)",
+    "price": 580,
+    "tag": "Craft Brew",
+    "sub_category": "Chilled Beer",
+    "description": "Nepal premier craft pilsner brewed with imported noble hops and pure spring water.",
+    "image_url": "https://images.unsplash.com/photo-1567696911980-2eed69a46042?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "650ml Bottle",
+      "Craft Pilsner"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.899Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 149,
+  "fields": {
+    "category": 15,
+    "name": "Apple Cider",
+    "price": 250,
+    "tag": "Crisp & Sweet",
+    "sub_category": "Sparkling Cider",
+    "description": "Crisp fermented sparkling apple cider offering a refreshing fruit-forward effervescence.",
+    "image_url": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Fermented Apple",
+      "Bubbly"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.902Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 150,
+  "fields": {
+    "category": 15,
+    "name": "Margarita Cocktail",
+    "price": 450,
+    "tag": "Signature Cocktail",
+    "sub_category": "Cocktail",
+    "description": "Classic cocktail shaken with silver tequila, triple sec, and fresh lime juice, served with salted rim.",
+    "image_url": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Silver Tequila",
+      "Salted Rim"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.902Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 151,
+  "fields": {
+    "category": 15,
+    "name": "Special Hot Punch Rum",
+    "price": 400,
+    "tag": "Winter Special",
+    "sub_category": "Winter Warmer",
+    "description": "Traditional warming winter punch with spiced Khukri rum, cloves, cinnamon stick, honey and citrus peel.",
+    "image_url": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Spiced Rum",
+      "Hot Spiced Punch"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.913Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 152,
+  "fields": {
+    "category": 15,
+    "name": "Hot Punch Rum",
+    "price": 320,
+    "tag": "Warm Spirit",
+    "sub_category": "Winter Warmer",
+    "description": "Warm dark rum mixed with spiced mountain water, lemon juice, and honey warmth.",
+    "image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Dark Rum",
+      "Lemon & Honey"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.919Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 153,
+  "fields": {
+    "category": 15,
+    "name": "Old Durbar (Black Chimney)",
+    "price": 350,
+    "tag": "Peg 30ml / Rs. 600 (60ml)",
+    "sub_category": "Himalayan Whisky",
+    "description": "Smoky reserve blended malt scotch and grain spirits finished in charred oak barrels. Bottle: Rs. 4500 (Full), Rs. 2300 (Half).",
+    "image_url": "https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 350",
+      "60ml: Rs. 600",
+      "Full: Rs. 4500"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.924Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 154,
+  "fields": {
+    "category": 15,
+    "name": "Old Durbar (Red)",
+    "price": 350,
+    "tag": "Peg 30ml / Rs. 550 (60ml)",
+    "sub_category": "Himalayan Whisky",
+    "description": "Smooth blended whisky crafted with English malt and purified mountain spring water. Bottle: Rs. 3200 (Full), Rs. 1950 (Half).",
+    "image_url": "https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 350",
+      "60ml: Rs. 550",
+      "Full: Rs. 3200"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.928Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 155,
+  "fields": {
+    "category": 15,
+    "name": "Johnnie Walker Red Label",
+    "price": 450,
+    "tag": "Peg 30ml / Rs. 840 (60ml)",
+    "sub_category": "Scotch Whisky",
+    "description": "World-famous Scotch whisky blending light whiskies from Scotland east coast with dark peaty whiskies. Full Bottle: Rs. 7500.",
+    "image_url": "https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 450",
+      "60ml: Rs. 840",
+      "Full: Rs. 7500"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.934Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 156,
+  "fields": {
+    "category": 15,
+    "name": "Khukri Rum (Rumm Khukuri)",
+    "price": 350,
+    "tag": "Peg 30ml / Rs. 520 (60ml)",
+    "sub_category": "Himalayan Dark Rum",
+    "description": "Grand Himalayan dark rum distilled since 1959 with rich treacle, dark honey and caramel aromas. Full Bottle: Rs. 3100.",
+    "image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 350",
+      "60ml: Rs. 520",
+      "Full: Rs. 3100"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.939Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 157,
+  "fields": {
+    "category": 15,
+    "name": "Old Monk Rum",
+    "price": 360,
+    "tag": "Peg 30ml / Rs. 530 (60ml)",
+    "sub_category": "Dark Rum",
+    "description": "Iconic vatted 7-year aged dark rum with unmistakable notes of molasses, oak wood, and sweet vanilla. Full Bottle: Rs. 3130.",
+    "image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 360",
+      "60ml: Rs. 530",
+      "Full: Rs. 3130"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.944Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 158,
+  "fields": {
+    "category": 15,
+    "name": "8848 Vodka",
+    "price": 300,
+    "tag": "Peg 30ml / Rs. 600 (90ml)",
+    "sub_category": "Himalayan Vodka",
+    "description": "Distilled 5 times with French grain and blended with pure glacial spring water of Mt. Everest. Full Bottle: Rs. 3500.",
+    "image_url": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 300",
+      "90ml: Rs. 600",
+      "Full: Rs. 3500"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.950Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 159,
+  "fields": {
+    "category": 15,
+    "name": "Absolut Vodka",
+    "price": 500,
+    "tag": "Peg 30ml / Rs. 1000 (90ml)",
+    "sub_category": "Swedish Vodka",
+    "description": "World famous Swedish winter wheat vodka distilled continuously for legendary purity. Full Bottle: Rs. 8000.",
+    "image_url": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 500",
+      "90ml: Rs. 1000",
+      "Full: Rs. 8000"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.955Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 160,
+  "fields": {
+    "category": 15,
+    "name": "Smirnoff Vodka",
+    "price": 300,
+    "tag": "Peg 30ml / Rs. 600 (90ml)",
+    "sub_category": "Classic Vodka",
+    "description": "Triple-distilled and 10-times charcoal filtered for iconic smoothness and crisp dry taste. Full Bottle: Rs. 3500.",
+    "image_url": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "30ml: Rs. 300",
+      "90ml: Rs. 600",
+      "Full: Rs. 3500"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.960Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 161,
+  "fields": {
+    "category": 15,
+    "name": "Robertson Winery Bottle",
+    "price": 2600,
+    "tag": "Full Bottle",
+    "sub_category": "Fine Wine",
+    "description": "South African premium estate bottled wine boasting smooth ruby fruit notes and balanced finish.",
+    "image_url": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Full Bottle",
+      "South African Vintage"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.966Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 162,
+  "fields": {
+    "category": 15,
+    "name": "King Hills Wine Bottle",
+    "price": 1500,
+    "tag": "Full Bottle",
+    "sub_category": "Local Vintage",
+    "description": "Sweet and fruit-forward mountain vintage red wine crafted locally in Nepal.",
+    "image_url": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Full Bottle",
+      "Local Favorite"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.973Z"
+  }
+},
+{
+  "model": "api.menuitem",
+  "pk": 163,
+  "fields": {
+    "category": 15,
+    "name": "J.P. Chenet Wine Bottle",
+    "price": 3500,
+    "tag": "French Classic",
+    "sub_category": "French Wine",
+    "description": "Authentic French wine bottled in its distinctive curved neck bottle with luscious berry bouquet.",
+    "image_url": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80",
+    "details": [
+      "Full Bottle",
+      "Product of France"
+    ],
+    "is_available": true,
+    "created_at": "2026-10-02T08:28:51.977Z"
+  }
+},
+{
+  "model": "api.review",
+  "pk": 1,
+  "fields": {
+    "author": "Aarav Sharma",
+    "role": "Local Guide • 18 reviews",
+    "rating": 5,
+    "quote": "Coffee Adda is easily the best cafe in the Budhanilkantha area! Their cappuccino has the silkiest micro-foam and the latte art is top tier. A tranquil oasis to read or work on your laptop.",
+    "initials": "AS",
+    "avatar_bg": "bg-brand-sage text-brand-forest",
+    "is_approved": true,
+    "created_at": "2026-09-11T11:21:54.483Z"
+  }
+},
+{
+  "model": "api.review",
+  "pk": 2,
+  "fields": {
+    "author": "Pooja Thapa",
+    "role": "Regular Patron • Budhanilkantha",
+    "rating": 5,
+    "quote": "Such a cosy ambiance with plenty of natural greenery and warm wood tables. The iced cold brew with condensed milk on a sunny afternoon is pure heaven. Friendly baristas too!",
+    "initials": "PT",
+    "avatar_bg": "bg-amber-100 text-amber-900",
+    "is_approved": true,
+    "created_at": "2026-09-11T11:21:54.488Z"
+  }
+},
+{
+  "model": "api.review",
+  "pk": 3,
+  "fields": {
+    "author": "Rohan Karki",
+    "role": "Digital Nomad",
+    "rating": 5,
+    "quote": "Fair prices, superb espresso consistency, and wonderful aesthetic vibes. The pastry was warm and buttery. Highly recommended if you are heading towards Shivapuri or living nearby!",
+    "initials": "RK",
+    "avatar_bg": "bg-emerald-100 text-emerald-900",
+    "is_approved": true,
+    "created_at": "2026-09-11T11:21:54.491Z"
+  }
+},
+{
+  "model": "api.review",
+  "pk": 4,
+  "fields": {
+    "author": "Dipesh Mahato",
+    "role": "Guest",
+    "rating": 5,
+    "quote": "Good coffee with good price",
+    "initials": "",
+    "avatar_bg": "bg-brand-sage text-brand-forest",
+    "is_approved": true,
+    "created_at": "2026-09-15T14:56:12.122Z"
+  }
+}
+]

@@ -13,41 +13,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR.parent / '.env', override=True)
 load_dotenv(BASE_DIR / '.env', override=True)
 
-from django.core.exceptions import ImproperlyConfigured
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-coffee-adda-budhanilkantha-artisan-roast-key'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# Production deployments must provide a unique SECRET_KEY via deployment configuration.
-INSECURE_DEV_SECRET_KEY = 'django-insecure-coffee-adda-budhanilkantha-artisan-roast-key'
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-if not SECRET_KEY:
-    if DEBUG:
-        SECRET_KEY = INSECURE_DEV_SECRET_KEY
-    else:
-        raise ImproperlyConfigured(
-            'The SECRET_KEY environment variable must be set in production to protect cryptographic signatures.'
-        )
-elif not DEBUG and SECRET_KEY == INSECURE_DEV_SECRET_KEY:
-    raise ImproperlyConfigured(
-        'Insecure default SECRET_KEY detected in production. Set a unique SECRET_KEY in your deployment environment.'
-    )
-
-# Restrict accepted hosts in production to prevent Host header poisoning.
-# Wildcard '*' is never permitted in production environments.
-default_hosts = 'localhost,127.0.0.1,[::1],coffee-adda.vercel.app'
-raw_hosts = os.environ.get('ALLOWED_HOSTS', default_hosts)
-ALLOWED_HOSTS = [h.strip() for h in raw_hosts.split(',') if h.strip()]
-
-if not DEBUG:
-    # Strictly disallow wildcard in production
-    ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h != '*']
-    if not ALLOWED_HOSTS:
-        raise ImproperlyConfigured(
-            'ALLOWED_HOSTS must contain specific domain names in production when DEBUG=False.'
-        )
+ALLOWED_HOSTS = [
+    h.strip()
+    for h in os.environ.get(
+        'ALLOWED_HOSTS',
+        'localhost,127.0.0.1,coffee-adda.vercel.app,*'
+    ).split(',')
+    if h.strip()
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -99,44 +81,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 ASGI_APPLICATION = 'config.asgi.application'
 
 # Database Configuration
-# Preserves configurable access to PostgreSQL (for production & existing databases)
-# and SQLite (for local development or testing).
+# Uses PostgreSQL if DB_ENGINE is explicitly postgresql and DB_PASSWORD is set, or if DATABASE_URL is set;
+# otherwise falls back to SQLite so local development works immediately.
 DATABASE_URL = os.environ.get('DATABASE_URL')
-db_engine = os.environ.get('DB_ENGINE', '').lower().strip()
+db_engine = os.environ.get('DB_ENGINE', '')
+db_password = os.environ.get('DB_PASSWORD', '')
 
 if DATABASE_URL:
-    try:
-        import dj_database_url
-        DATABASES = {
-            'default': dj_database_url.parse(
-                DATABASE_URL,
-                conn_max_age=int(os.environ.get('DB_CONN_MAX_AGE', '600'))
-            )
-        }
-    except ImportError:
-        from urllib.parse import urlparse
-        url = urlparse(DATABASE_URL)
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql' if url.scheme in ('postgres', 'postgresql') else url.scheme,
-                'NAME': url.path.lstrip('/'),
-                'USER': url.username or '',
-                'PASSWORD': url.password or '',
-                'HOST': url.hostname or '',
-                'PORT': str(url.port or '5432'),
-                'CONN_MAX_AGE': int(os.environ.get('DB_CONN_MAX_AGE', '600')),
-            }
-        }
-elif 'postgresql' in db_engine:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    }
+elif 'postgresql' in db_engine and db_password and db_password != 'your_postgres_password_here':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ.get('DB_NAME', 'coffee_adda_db'),
             'USER': os.environ.get('DB_USER', 'postgres'),
-            'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+            'PASSWORD': db_password,
             'HOST': os.environ.get('DB_HOST', 'localhost'),
             'PORT': os.environ.get('DB_PORT', '5432'),
-            'CONN_MAX_AGE': int(os.environ.get('DB_CONN_MAX_AGE', '600')),
+            'CONN_MAX_AGE': 600,
         }
     }
 else:
